@@ -1,7 +1,8 @@
 @import "../theme/css/plugins.bundle.css";
 @import "../theme/css/prismjs.bundle.css";
-@import "../theme/css/style.bundle.css"; 
+@import "../theme/css/style.bundle.css";
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+@import 'handy.sass.mixins/scss/shared.scss' ;
 @import "_variables.scss";
 
 body{
