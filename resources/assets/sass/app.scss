@@ -1,0 +1,55 @@
+@import "../theme/css/plugins.bundle.css";
+@import "../theme/css/prismjs.bundle.css";
+@import "../theme/css/style.bundle.css"; 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+@import "_variables.scss";
+
+body{
+    font-family: 'Cairo', sans-serif;
+    margin:0px;
+
+}
+
+.kt-header .kt-header__top {
+    background-color: #FFFFFF;
+    color: $primary-color;
+}
+*[data-toggle="copyable"]{cursor:pointer!important;}
+span.select2{
+    width: 100%!important;
+}
+.select2-container--default.select2-container--disabled .select2-selection--multiple, .select2-container--default.select2-container--disabled .select2-selection--single {
+    background: #e9ecef!important;;
+    border: none!important;
+}
+.kt-portlet__head-title .select2-selection__rendered{
+    padding:4px 4px 4px 10px!important;
+    font-size: 15px!important;
+    font-weight: 400!important;
+}
+.kt-portlet .kt-portlet {
+    box-shadow: 0 0 20px 0 rgba(82,63,105,0.15);
+}
+.kt-portlet .kt-portlet:last-child {
+    margin-bottom: 0;
+}
+h6{
+    font-size: 16px;
+}
+
+.form-group {
+    label{
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgba($primary-color,0.7);
+    }
+}
+
+
+.localized-card{
+    @include text-align();
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow:after, .select2-container--default .select2-selection--multiple .select2-selection__arrow:after{
+    content:"";
+}
