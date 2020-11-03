@@ -27,7 +27,20 @@
 
 <body class="page-loading" >
     <div id="app">
-        @yield('content')
+        <x-layout.header-mobile></x-layout.header-mobile>
+        <div class="kt-grid kt-grid--hor kt-grid--root">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                    <x-layout.header></x-layout.header>
+                    <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
+                      <div class="kt-content" id="kt_content">
+                            @yield('content')
+                      </div>
+                  </div>
+                    <x-layout.footer></x-layout.footer>
+                </div>
+            </div>
+          </div>
     </div>
 
     <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
