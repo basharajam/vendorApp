@@ -43,6 +43,13 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'vendor'=>[
+            'web',
+            \App\Http\Middleware\checkVendor::class,
+            \App\Http\Middleware\Authenticate::class,
+
+            ]
     ];
 
     /**
