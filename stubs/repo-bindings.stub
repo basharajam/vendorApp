@@ -1,0 +1,7 @@
+    $this->app->bind('App\Repositories\{{class}}Repository', function (Application $app) {
+            return new {{class}}Repository(
+                $app->make({{class}}::class)
+            );
+    });
+
+    //add bindings

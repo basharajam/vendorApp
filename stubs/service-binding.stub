@@ -1,0 +1,6 @@
+$this->app->bind(
+    I{{class}}Service::class,
+    {{class}}Service::class
+);
+
+//add bindings

@@ -1,0 +1,16 @@
+<?php
+
+
+namespace App\Services\{{class}};
+
+
+use App\Services\Contracts\IBaseService;
+
+/**
+ * Interface I{{class}}Service
+ * @package App\Services\{{class}}
+ */
+interface I{{class}}Service extends IBaseService
+{
+
+}

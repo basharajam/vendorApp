@@ -1,0 +1,4 @@
+use App\Repositories\{{class}}Repository;
+use App\Models\{{class}};
+
+//namespaces
