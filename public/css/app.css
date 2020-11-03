@@ -111984,7 +111984,7 @@ body {
 
 .kt-header .kt-header__top {
   background-color: #FFFFFF;
-  color: #3498DB;
+  color: #ed6624;
 }
 
 *[data-toggle=copyable] {
@@ -112022,7 +112022,7 @@ h6 {
 .form-group label {
   font-size: 1rem;
   font-weight: 400;
-  color: rgba(52, 152, 219, 0.7);
+  color: rgba(237, 102, 36, 0.7);
 }
 
 [dir=ltr] .localized-card {
