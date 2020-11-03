@@ -44,134 +44,22 @@
                         <!--begin::Signin-->
                         <div class="login-form login-signin py-11">
                             <!--begin::Form-->
-                            <form class="form" method="POST" action="{{ route('login') }}" id="kt_login_signin_form">
-                                @csrf
-                                <!--begin::Title-->
-                                <div class="text-center pb-8">
-                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تسجيل دخول</h2>
-                                    <span class="text-muted font-weight-bold font-size-h4">أو
-                                    <a href="" class="text-primary font-weight-bolder" id="kt_login_signup">إنشاء حساب جديد</a></span>
-                                </div>
-                                <!--end::Title-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <label class="font-size-h6 font-weight-bolder text-dark">البردي الالكتروني</label>
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg @error('email') is-invalid  @enderror"
-                                           type="text"
-                                           name="username"
-                                           value="{{ old('email') }}"
-                                           required
-                                           autocomplete="off" />
-                                    @error('email')
-                                    <div class="fv-plugins-message-container">
-                                        <div  class="fv-help-block">{{ $message }}</div>
-                                    </div>
-                                    @enderror
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <div class="d-flex justify-content-between mt-n5">
-                                        <label class="font-size-h6 font-weight-bolder text-dark pt-5">كلمة المرور</label>
-                                        <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">نسيت كلمة المرور ?</a>
-                                    </div>
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="password" name="password" required autocomplete="off" />
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Action-->
-                                <div class="text-center pt-2">
-                                    <button id="kt_login_signin_submit" class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3">تسجيل الدخول</button>
-                                </div>
-                                <!--end::Action-->
-                            </form>
+                            @include('auth.components.login_form')
                             <!--end::Form-->
                         </div>
                         <!--end::Signin-->
                         <!--begin::Signup-->
                         <div class="login-form login-signup pt-11">
                             <!--begin::Form-->
-                            <form class="form" method="POST" action="{{ route('register') }}" id="kt_login_signup_form">
-                                @csrf
-                                <!--begin::Title-->
-                                <div class="text-center pb-8">
-                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
-                                    <p class="text-muted font-weight-bold font-size-h4">الر جاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
-                                </div>
-                                <!--end::Title-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text" placeholder="الاسم بالكامل" name="name" value="{{ old('name') }}" required autofocus />
-                                    @error('name')
-                                    <div class="fv-plugins-message-container">
-                                        <div  class="fv-help-block">{{ $message }}</div>
-                                    </div>
-                                    @enderror
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="Email" name="email" required value="{{ old('email') }}" autocomplete="off" />
-                                    @error('email')
-                                    <div class="fv-plugins-message-container">
-                                        <div  class="fv-help-block">{{ $message }}</div>
-                                    </div>
-                                    @enderror
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required autocomplete="off" />
-                                    @error('password')
-                                    <div class="fv-plugins-message-container">
-                                        <div  class="fv-help-block">{{ $message }}</div>
-                                    </div>
-                                    @enderror
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation" required autocomplete="new-password" />
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                    <button type="button" id="kt_login_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit">إرسال</button>
-                                    <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
-                                </div>
-                                <!--end::Form group-->
-                            </form>
+                            @include('auth.components.register_form')
                             <!--end::Form-->
                         </div>
                         <!--end::Signup-->
                         <!--begin::Forgot-->
                         <div class="login-form login-forgot pt-11">
                             <!--begin::Form-->
-                            <form class="form" method="POST" action="{{ route('password.email') }}" id="kt_login_forgot_form">
-                                @csrf
+                            @include('auth.components.reset_password_form')
 
-                                <!--begin::Title-->
-                                <div class="text-center pb-8">
-                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">نسيت كلمة المررو ?</h2>
-                                    <p class="text-muted font-weight-bold font-size-h4">الرجاء إدخال بريدك الالكتروني من أجل تهيئة كلمة المرور</p>
-                                </div>
-                                <!--end::Title-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="email" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                                     @error('email')
-                                     <div class="fv-plugins-message-container">
-                                         <div  class="fv-help-block">{{ $message }}</div>
-                                     </div>
-                                     @enderror
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                    <button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit">إرسال</button>
-                                    <button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إالغاء</button>
-                                </div>
-                                <!--end::Form group-->
-                            </form>
                             <!--end::Form-->
                         </div>
                         <!--end::Forgot-->
