@@ -43,6 +43,7 @@ class LoginController extends Controller
     {
         $user = auth()->user();
         if($user->hasRole(\App\Constants\UserRoles::VENDOR)){
+            toaster()->add('Welcome'.$user->name)->success();
             return '/vendor/home';
         }
         return  RouteServiceProvider::HOME;
