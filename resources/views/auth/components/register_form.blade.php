@@ -1,4 +1,4 @@
-<form class="form" method="POST" action="{{ route('register') }}" id="kt_login_signup_form">
+<form class="form" method="POST" action="{{ route('register') }}" id="kt_login_signup_form" >
     @csrf
     <!--begin::Title-->
     <div class="text-center pb-8">

@@ -112115,3 +112115,31 @@ h6 {
   font-weight: bolder;
 }
 
+.required {
+  color: #F64E60;
+}
+
+[dir=ltr] .form-group {
+  text-align: left;
+}
+
+[dir=rtl] .form-group {
+  text-align: right;
+}
+
+[dir=ltr] .form-group label {
+  text-align: left;
+}
+
+[dir=rtl] .form-group label {
+  text-align: right;
+}
+
+[dir=ltr] .form-group input {
+  text-align: left;
+}
+
+[dir=rtl] .form-group input {
+  text-align: right;
+}
+

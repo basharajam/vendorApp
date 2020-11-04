@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/supplier/new-account',[App\Http\Controllers\Supplier\RegisterController::class, 'register'])->name('supplier_registeration');
+Route::post('/supplier/new',[App\Http\Controllers\VenSupplierdor\RegisterController::class, 'create'])->name('supplier_registeration');
