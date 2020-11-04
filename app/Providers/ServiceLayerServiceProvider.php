@@ -7,7 +7,12 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\User\IUserService;
 use App\Services\User\UserService;
 
+
+use App\Services\Supplier\ISupplierService;
+use App\Services\Supplier\SupplierService;
+
 //namespaces
+
 
 
 class ServiceLayerServiceProvider extends ServiceProvider
@@ -34,7 +39,13 @@ class ServiceLayerServiceProvider extends ServiceProvider
     UserService::class
 );
 
+$this->app->bind(
+    ISupplierService::class,
+    SupplierService::class
+);
+
 //add bindings
+
 
     }
 }

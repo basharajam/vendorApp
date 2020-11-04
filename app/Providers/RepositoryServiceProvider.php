@@ -6,7 +6,11 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\UserRepository;
 use App\Models\User;
 
+use App\Repositories\SupplierRepository;
+use App\Models\Supplier;
+
 //namespaces
+
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -24,7 +28,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\SupplierRepository', function (Application $app) {
+            return new SupplierRepository(
+                $app->make(Supplier::class)
+            );
+    });
+
     //add bindings
+
 
     }
 
