@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins.bundle.css') }}" rel="stylesheet">
 </head>
 
 <body class="page-loading" >
@@ -43,8 +44,30 @@
           </div>
     </div>
 
-    <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
+
+    <script>
+        var KTAppOptions = {
+        "colors": {
+            "state": {
+                "brand": "#374afb",
+                "light": "#ffffff",
+                "dark": "#282a3c",
+                "primary": "#5867dd",
+                "success": "#34bfa3",
+                "info": "#36a3f7",
+                "warning": "#ffb822",
+                "danger": "#fd3995"
+            },
+            "base": {
+                "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"],
+            },
+        },
+        "host": "http://127.0.0.1:8000/"
+    };
+    </script>
+     <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
+     <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
 </body>
 </html>

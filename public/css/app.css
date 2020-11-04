@@ -111977,6 +111977,70 @@ body {
 /**SCSS implementation**/
 /**Aspect Ratio Mixin**/
 /**SCSS Implementation**/
+.kt-header .kt-header__bottom {
+  background-color: #0a0a0a !important;
+  border-color: #0a0a0a;
+}
+
+.kt-header .kt-header-menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.kt-header .kt-header-menu {
+  justify-self: flex-start;
+}
+
+.kt-header .kt-header-menu .kt-menu__nav {
+  direction: rtl;
+}
+
+.kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link {
+  background-color: #ed6624;
+}
+
+.kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-text {
+  color: #fff;
+}
+
+.kt-header .kt-header-menu .kt-menu__nav .dropdown-menu .kt-menu__link .kt-menu__link-text {
+  color: rgba(10, 10, 10, 0.7);
+}
+
+.kt-header .kt-header-menu .kt-menu__nav .dropdown-menu .kt-menu__link-bullet {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  font-size: 1.25rem;
+  color: rgba(10, 10, 10, 0.7);
+}
+
+.kt-header .kt-header-menu .kt-menu__nav .dropdown-menu .kt-menu__link-bullet > span {
+  background-color: rgba(10, 10, 10, 0.5);
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+}
+
+.kt-header__brand-nav {
+  width: 100px;
+}
+
+.kt-header__brand-nav img {
+  width: 100%;
+}
+
+.kt-user-card {
+  background: #ed6624 !important;
+  background-color: transparent !important;
+}
+
+.kt-header__topbar-wrapper .kt-header__topbar-username {
+  color: #ed6624 !important;
+  font-weight: 600 !important;
+}
+
 body {
   font-family: "Cairo", sans-serif;
   margin: 0px;
@@ -112036,5 +112100,18 @@ h6 {
 .select2-container--default .select2-selection--single .select2-selection__arrow:after,
 .select2-container--default .select2-selection--multiple .select2-selection__arrow:after {
   content: "";
+}
+
+.kt-footer .kt-footer__bottom {
+  background-color: #ed6624 !important;
+}
+
+.kt-footer .kt-footer__bottom .kt-footer__wrapper {
+  justify-content: center !important;
+}
+
+.kt-footer .kt-footer__bottom .kt-footer__wrapper .kt-footer__copyright a {
+  color: #fff;
+  font-weight: bolder;
 }
 
