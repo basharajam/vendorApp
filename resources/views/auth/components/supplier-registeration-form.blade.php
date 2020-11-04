@@ -7,7 +7,7 @@
         <p class="text-muted font-weight-bold font-size-h4">الر جاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
     </div>
     <!--end::Title-->
-    <div class="row" style="direction:rlt">
+    <div class="row" >
         <div class="col-md-12">
             <!--begin::Form group Company Name-->
             <div class="form-group">

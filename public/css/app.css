@@ -112143,3 +112143,21 @@ h6 {
   text-align: right;
 }
 
+[dir=ltr] .form-group .radio-inline .radio span,
+[dir=ltr] .form-group .checkbox-inline .checkbox span {
+  margin-right: 0.75rem;
+}
+
+[dir=rtl] .form-group .radio-inline .radio span,
+[dir=rtl] .form-group .checkbox-inline .checkbox span {
+  margin-left: 0.75rem;
+}
+
+[dir=ltr] .card-header {
+  text-align: left;
+}
+
+[dir=rtl] .card-header {
+  text-align: right;
+}
+

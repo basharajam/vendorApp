@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,13 +54,14 @@
                 </div>
                 <!--end: Aside Container-->
             </div>
+
             <!--begin::Aside-->
             <!--begin::Content-->
             <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
                 <!--begin::Title-->
-                <div class="d-flex flex-row-fluid bgi-no-repeat bgi-position-y-top mt-10 bgi-position-x-center" style="background-image: url({{ asset('/images/logo.png') }});"></div>
-                <div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Vendor System</h3>
+                <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
+                    <img style="width:100px;height:100px" src="{{ asset('/images/logo.png') }}">
+                     <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Vendor System</h3>
                     <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">Some Text Here                    <br />Web Application & Advanced Solutions</p>
                 </div>
                 <!--end::Title-->

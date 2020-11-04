@@ -84,4 +84,14 @@ h6{
     input{
         @include text-align();
     }
+
+    .radio-inline .radio span , .checkbox-inline .checkbox span{
+        @include margin-right(0.75rem);
+    }
+
+
 }
+.card-header {
+    @include text-align();
+}
+
