@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Supplier\StoreSupplierRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Services\Supplier\ISupplierService;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -30,50 +33,28 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+    protected $supplier_service;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ISupplierService $supplier_service)
     {
         $this->middleware('guest');
+        $this->supplier_service= $supplier_service;
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
     /**
      * returns view for new supplier account
      */
     public function register(){
         return view('auth.register-supplier');
+    }
+
+    public function create(StoreSupplierRequest $request){
+        return $this->supplier_service->store($request);
+
     }
 }

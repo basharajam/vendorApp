@@ -83,7 +83,7 @@
                    <span class="required">*</span>
                    <span>الكنية</span>
                </label>
-               <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="first_name" value="{{ old('last_name') }}" required autofocus />
+               <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ old('last_name') }}" required autofocus />
                @error('last_name')
                <div class="fv-plugins-message-container">
                    <div  class="fv-help-block">{{ $message }}</div>
@@ -196,7 +196,7 @@
                     <span>رقم حساب البنك
                     </span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_name" value="{{ old('bank_account_number') }}" required autocomplete="national_number" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{ old('bank_account_number') }}" required autocomplete="national_number" />
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -238,7 +238,7 @@
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="button" id="kt_login_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> إنشاء حساب</button>
+                <button type="submit" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> إنشاء حساب</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->

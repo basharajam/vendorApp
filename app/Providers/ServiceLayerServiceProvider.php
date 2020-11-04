@@ -32,19 +32,19 @@ class ServiceLayerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $this->app->bind(
-    IUserService::class,
-    UserService::class
-);
+        public function boot()
+        {
+            $this->app->bind(
+            IUserService::class,
+            UserService::class
+            );
 
-$this->app->bind(
-    ISupplierService::class,
-    SupplierService::class
-);
+            $this->app->bind(
+                ISupplierService::class,
+                SupplierService::class
+            );
 
-//add bindings
+            //add bindings
 
 
     }
