@@ -3,12 +3,12 @@ namespace App\Constants;
 
 class UserRoles  {
 
-    CONST VENDOR = 'vendor';
-    CONST VENDORADMIN = 'vendor_admin';
+    CONST SUPPLIER = 'supplier';
+    CONST SUPPLIERMANAGER = 'supplier_manager';
 
     CONST ALL_ROLES=[
-        self::VENDOR,
-        self::VENDORADMIN,
+        self::SUPPLIER,
+        self::SUPPLIER,
     ];
 
 

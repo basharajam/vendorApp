@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckVendor
+class CheckSupplier
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class CheckVendor
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if($user->hasRole(\App\Constants\UserRoles::VENDOR)){
+        if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
             return $next($request);
         }
         else{

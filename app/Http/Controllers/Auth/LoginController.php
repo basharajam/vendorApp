@@ -42,9 +42,9 @@ class LoginController extends Controller
     public function redirectTo()
     {
         $user = auth()->user();
-        if($user->hasRole(\App\Constants\UserRoles::VENDOR)){
+        if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
             toaster()->add('Welcome '.$user->name)->success();
-            return '/vendor/home';
+            return '/supplier/home';
         }
         return  RouteServiceProvider::HOME;
     }

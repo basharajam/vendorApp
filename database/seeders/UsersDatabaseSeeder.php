@@ -15,7 +15,7 @@ class UsersDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $vendor_id = \DB::table('users')->insertGetId([
+        $supplier_id = \DB::table('users')->insertGetId([
             'name' => 'vendor',
             'email' => 'vendor@gmail.com',
             'password' => bcrypt('12345678'),
@@ -23,10 +23,10 @@ class UsersDatabaseSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
-        $vendor_role = Role::whereName(\App\Constants\UserRoles::VENDOR)->first();
+        $supplier_role = Role::whereName(\App\Constants\UserRoles::SUPPLIER)->first();
 
-        if ($vendor_role) {
-            $vendor_role->users()->attach($vendor_id);
+        if ($supplier_role) {
+            $supplier_role->users()->attach($supplier_id);
         }
     }
 }

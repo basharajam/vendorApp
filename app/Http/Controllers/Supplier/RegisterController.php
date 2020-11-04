@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -71,13 +71,9 @@ class RegisterController extends Controller
         ]);
     }
     /**
-     * returns view for new vendor account
+     * returns view for new supplier account
      */
-    public function newVendorAccount(){
-        return view('auth.register-vendor');
-    }
-
-    public function createAccount(){
-
+    public function register(){
+        return view('auth.register-supplier');
     }
 }

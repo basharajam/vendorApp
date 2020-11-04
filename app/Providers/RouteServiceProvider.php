@@ -20,9 +20,9 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/home';
 
     /**
-     * Vendor Namespace
+     * Supplier Namespace
      */
-    protected $vendor_namespace = 'App\Http\Controllers\Vendor';
+    protected $supplier_namespace = 'App\Http\Controllers\Supplier';
 
     /**
      * The controller namespace for the application.
@@ -52,10 +52,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('vendor')
-                ->prefix('vendor')
-                ->namespace($this->vendor_namespace)
-                ->group(base_path('routes/vendor.php'));
+            Route::middleware('supplier')
+                ->prefix('supplier')
+                ->namespace($this->supplier_namespace)
+                ->group(base_path('routes/supplier.php'));
 
         });
     }

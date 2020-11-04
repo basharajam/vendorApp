@@ -14,8 +14,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::firstOrCreate(['name' => \App\Constants\UserRoles::VENDOR,'guard_name'=>'web']);
-        $role = Role::firstOrCreate(['name' => \App\Constants\UserRoles::VENDORADMIN,'guard_name'=>'web']);
+        $role = Role::firstOrCreate(['name' => \App\Constants\UserRoles::SUPPLIER,'guard_name'=>'web']);
+        $role = Role::firstOrCreate(['name' => \App\Constants\UserRoles::SUPPLIERMANAGER,'guard_name'=>'web']);
 
     }
 }
