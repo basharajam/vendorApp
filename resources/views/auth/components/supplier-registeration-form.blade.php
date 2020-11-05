@@ -196,7 +196,7 @@
                     <span>رقم حساب البنك
                     </span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{ old('bank_account_number') }}" required autocomplete="national_number" />
+                <input id="bank_account_number" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{ old('bank_account_number') }}" required autocomplete="bank_account_number" />
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -252,6 +252,9 @@
     $(function(){
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
+        let bank_account_number_Id = document.getElementById('bank_account_number');
+        Inputmask({ mask: "62289999999999" }).mask(bank_account_number_Id);
+
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
@@ -260,11 +263,16 @@
                 case "chinese":
                     $('#chinese_or_not_div').append(chinese_properties);
                     $("#chinese_properties").show();
+                    let national_number_id = document.getElementById('national_number');
+                    Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(national_number_id);
+
                 break;
                 case "not_chinese":
                     $('#chinese_or_not_div').append(not_chinese_properties);
                     $("#not_chinese_properties").show();
-                break;
+                    let passport_number_id = document.getElementById('passport_number_id');
+                    Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(passport_number_id);
+                  break;
 
             }
         });

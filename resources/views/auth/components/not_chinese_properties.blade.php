@@ -6,7 +6,7 @@
                 <span class="required">*</span>
                 <span>رقم جواز السفر</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{ old('passport_number') }}" required autocomplete="national_number" />
+            <input id="passport_number_id" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{ old('passport_number') }}" required autocomplete="national_number" />
             @error('passport_number')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

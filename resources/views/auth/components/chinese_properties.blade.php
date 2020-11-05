@@ -6,7 +6,7 @@
                 <span class="required">*</span>
                 <span>رقم البطاقة الشخصية</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{ old('national_number') }}" required autocomplete="national_number" />
+            <input id="national_number" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{ old('national_number') }}" required autocomplete="national_number" />
             @error('national_number')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -33,3 +33,5 @@
     </div>
 
 </div>
+
+
