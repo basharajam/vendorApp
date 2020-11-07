@@ -40,7 +40,7 @@ class StoreSupplierRequest extends FormRequest
         return [
             'name.required' => 'A title is required',
             'email.required' => 'A message is required',
-            'email.unique' => 'A message is required',
+            'email.unique' => 'This Email is already registered with us',
             'password.required' => 'A message is required',
             'password.min' => 'A message is required',
             'password.confirmed' => 'A message is required',
