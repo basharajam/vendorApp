@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function uploadNationalId(Request $request){
+    public function uploadImage(Request $request){
         $path = storage_path('tmp/uploads');
 
         if (!file_exists($path)) {

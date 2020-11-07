@@ -267,7 +267,7 @@
                     Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(national_number_id);
                     let national_id_image = document.getElementById('national_id_image');
                     let $dropzone =new Dropzone('#national_id_image',{
-                    url:   '{{ route('supplier.storeNationalImage') }}',
+                    url:   '{{ route('supplier.storeImage') }}',
                     addRemoveLinks: true,
                     headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -289,37 +289,7 @@
                         }
                         $('#supplier_registeration_form').find('input[name="national_id_image"][value="' + name + '"]').remove()
                     },
-                    init: function() {
-                        //for edit supplier page
-                        @if(isset($supplier) && $supplier->national_id_image)
-                                var files =
-                                {!! json_encode($supplier->national_id_image) !!}
-                                for (var i in files) {
-                                var file = files[i]
-                                this.options.addedfile.call(this, file)
-                                file.previewElement.classList.add('dz-complete')
-                                $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + file.file_name + '">')
-                                }
-                            @endif
-                        // this.on("addedfile", function(file) {
-                        // //
 
-                        // //
-                        // });
-                        // this.on("maxfilesexceeded", function(file) {
-                        //     //alert('max files exceeded');
-                        //     // handle max+1 file.
-                        // });
-                        // this.on('sending', function (data, xhr, formData) {
-                        //       console.log('data',data.dataURL);
-                        //       console.log('formData',formData);
-                        // });
-                        // this.on('complete',function(file){
-                        //         console.log('file on complete',file.url);
-                        //         // console.log($('#national_id_image .dz-image img')[0].src)
-                        //         $('#nationalImage').value = $('#national_id_image .dz-image img')[0].src;
-                        // });
-                    }
                     });
 
                 break;
@@ -328,6 +298,58 @@
                     $("#not_chinese_properties").show();
                     let passport_number_id = document.getElementById('passport_number_id');
                     Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(passport_number_id);
+                    let passport_image = document.getElementById('passport_image');
+                    let visa_image = document.getElementById('visa_image');
+                    let $dropzone_passport_image =new Dropzone('#passport_image',{
+                        url:   '{{ route('supplier.storeImage') }}',
+                        addRemoveLinks: true,
+                        headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                        method:'POST',
+                        maxFiles: 1,
+                        success: function (file, response) {
+                        $('#supplier_registeration_form').append('<input type="hidden" name="passport_image" value="' + response.name + '">')
+                            uploadedDocumentMap[file.name] = response.name
+                        },
+                        removedfile: function (file) {
+                            file.previewElement.remove()
+                            var name = ''
+                            if (typeof file.file_name !== 'undefined') {
+                                name = file.file_name
+                            } else {
+                                name = uploadedDocumentMap[file.name]
+                            }
+                            $('#supplier_registeration_form').find('input[name="passport_image"][value="' + name + '"]').remove()
+                        },
+
+                    });
+                    let $dropzone_visa_image =new Dropzone('#visa_image',{
+                        url:   '{{ route('supplier.storeImage') }}',
+                        addRemoveLinks: true,
+                        headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                        method:'POST',
+                        maxFiles: 1,
+                        success: function (file, response) {
+                        $('#supplier_registeration_form').append('<input type="hidden" name="visa_image" value="' + response.name + '">')
+                            uploadedDocumentMap[file.name] = response.name
+                        },
+                        removedfile: function (file) {
+                            file.previewElement.remove()
+                            var name = ''
+                            if (typeof file.file_name !== 'undefined') {
+                                name = file.file_name
+                            } else {
+                                name = uploadedDocumentMap[file.name]
+                            }
+                            $('#supplier_registeration_form').find('input[name="visa_image"][value="' + name + '"]').remove()
+                        },
+
+                    });
                   break;
 
             }
