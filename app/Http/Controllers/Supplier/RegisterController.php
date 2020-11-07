@@ -55,7 +55,6 @@ class RegisterController extends Controller
 
     public function create(StoreSupplierRequest $request){
 
-        dd($request);
         return $this->supplier_service->store($request);
 
     }

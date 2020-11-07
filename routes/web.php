@@ -23,4 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/supplier/new-account',[App\Http\Controllers\Supplier\RegisterController::class, 'register'])->name('supplier_registeration_view');
 Route::post('/supplier/new',[App\Http\Controllers\Supplier\RegisterController::class, 'create'])->name('supplier_registeration');
-Route::get('/supplier/national_id/upload',[App\Http\Controllers\Supplier\ImageController::class, 'uploadNationalId']);
+Route::post('/supplier/national_id/upload',[App\Http\Controllers\Supplier\ImageController::class, 'uploadNationalId'])->name('supplier.storeNationalImage');

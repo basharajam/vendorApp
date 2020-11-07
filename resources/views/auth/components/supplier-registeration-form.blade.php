@@ -1,4 +1,4 @@
-<form class="form" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="kt_login__vendor_signup_form" >
+<form class="form" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
     <!--begin::Title-->
@@ -258,7 +258,7 @@
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
-
+            let uploadedDocumentMap = {};
             switch(selected_value){
                 case "chinese":
                     $('#chinese_or_not_div').append(chinese_properties);
@@ -267,30 +267,58 @@
                     Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(national_number_id);
                     let national_id_image = document.getElementById('national_id_image');
                     let $dropzone =new Dropzone('#national_id_image',{
-                    url: '/supplier/national_id/upload',
-                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-                    method:'GET',
-                    maxFiles: 1,
+                    url:   '{{ route('supplier.storeNationalImage') }}',
                     addRemoveLinks: true,
+                    headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'POST',
+                    maxFiles: 1,
+                    success: function (file, response) {
+                    $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + response.name + '">')
+                        uploadedDocumentMap[file.name] = response.name
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        var name = ''
+                        if (typeof file.file_name !== 'undefined') {
+                            name = file.file_name
+                        } else {
+                            name = uploadedDocumentMap[file.name]
+                        }
+                        $('#supplier_registeration_form').find('input[name="national_id_image"][value="' + name + '"]').remove()
+                    },
                     init: function() {
-                        this.on("addedfile", function(file) {
-                        //
+                        //for edit supplier page
+                        @if(isset($supplier) && $supplier->national_id_image)
+                                var files =
+                                {!! json_encode($supplier->national_id_image) !!}
+                                for (var i in files) {
+                                var file = files[i]
+                                this.options.addedfile.call(this, file)
+                                file.previewElement.classList.add('dz-complete')
+                                $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + file.file_name + '">')
+                                }
+                            @endif
+                        // this.on("addedfile", function(file) {
+                        // //
 
-                        //
-                        });
-                        this.on("maxfilesexceeded", function(file) {
-                            //alert('max files exceeded');
-                            // handle max+1 file.
-                        });
-                        this.on('sending', function (data, xhr, formData) {
-                              console.log('data',data.dataURL);
-                              console.log('formData',formData);
-                        });
-                        this.on('complete',function(file){
-                                console.log('file on complete',file.url);
-                                // console.log($('#national_id_image .dz-image img')[0].src)
-                                $('#nationalImage').value = $('#national_id_image .dz-image img')[0].src;
-                        });
+                        // //
+                        // });
+                        // this.on("maxfilesexceeded", function(file) {
+                        //     //alert('max files exceeded');
+                        //     // handle max+1 file.
+                        // });
+                        // this.on('sending', function (data, xhr, formData) {
+                        //       console.log('data',data.dataURL);
+                        //       console.log('formData',formData);
+                        // });
+                        // this.on('complete',function(file){
+                        //         console.log('file on complete',file.url);
+                        //         // console.log($('#national_id_image .dz-image img')[0].src)
+                        //         $('#nationalImage').value = $('#national_id_image .dz-image img')[0].src;
+                        // });
                     }
                     });
 

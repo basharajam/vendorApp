@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Supplier extends BaseModel
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Supplier extends BaseModel implements HasMedia
 {
+    use InteractsWithMedia;
 
     protected $fillable=[
         "first_name",
@@ -30,5 +33,15 @@ class Supplier extends BaseModel
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
+    }
+
+    public function registerMediaCollections():void
+    {
+        $this->addMediaCollection('national_id_images')->singleFile();
+
+        $this->addMediaCollection('passport_images')->singleFile();
+
+        $this->addMediaCollection('visa_images')->singleFile();
+
     }
 }
