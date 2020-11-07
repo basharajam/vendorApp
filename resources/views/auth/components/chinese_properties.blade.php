@@ -22,12 +22,14 @@
             <span class="required">*</span>
             <span>صورة عن البطاقة الشخصية</span>
         </label>
-        <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_2">
+        <input type="file" name="nationalIdImage" style="display: none" id="nationalImage" >
+        <div id="national_id_image" class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_2">
             <div class="dropzone-msg dz-message needsclick">
                 <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
                 <span class="dropzone-msg-desc">Upload up to 10 files</span>
             </div>
         </div>
+
     </div>
     <!--end::Form group National ID Picture-->
     </div>

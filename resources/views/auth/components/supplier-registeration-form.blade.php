@@ -265,6 +265,34 @@
                     $("#chinese_properties").show();
                     let national_number_id = document.getElementById('national_number');
                     Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(national_number_id);
+                    let national_id_image = document.getElementById('national_id_image');
+                    let $dropzone =new Dropzone('#national_id_image',{
+                    url: '/supplier/national_id/upload',
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'GET',
+                    maxFiles: 1,
+                    addRemoveLinks: true,
+                    init: function() {
+                        this.on("addedfile", function(file) {
+                        //
+
+                        //
+                        });
+                        this.on("maxfilesexceeded", function(file) {
+                            //alert('max files exceeded');
+                            // handle max+1 file.
+                        });
+                        this.on('sending', function (data, xhr, formData) {
+                              console.log('data',data.dataURL);
+                              console.log('formData',formData);
+                        });
+                        this.on('complete',function(file){
+                                console.log('file on complete',file.url);
+                                // console.log($('#national_id_image .dz-image img')[0].src)
+                                $('#nationalImage').value = $('#national_id_image .dz-image img')[0].src;
+                        });
+                    }
+                    });
 
                 break;
                 case "not_chinese":

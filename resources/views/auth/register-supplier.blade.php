@@ -78,6 +78,7 @@
     <script src="{{ asset('js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
+    <script src="{{ asset('plugins/dropzone/dist/dropzone.js') }}"></script>
     @stack('scripts')
 </body>
 </html>
