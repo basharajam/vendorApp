@@ -44,9 +44,9 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
-        'vendor'=>[
+        'supplier'=>[
             'web',
-            \App\Http\Middleware\checkVendor::class,
+            \App\Http\Middleware\checkSupplier::class,
             \App\Http\Middleware\Authenticate::class,
 
             ]
