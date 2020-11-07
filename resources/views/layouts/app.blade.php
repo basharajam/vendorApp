@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'VendorSystem') }}</title>
-    @toaster
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -23,18 +23,20 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins.bundle.css') }}" rel="stylesheet">
+    @toaster
 </head>
 
 <body class="page-loading" >
     <div id="app">
-        <x-layout.header-mobile></x-layout.header-mobile>
+    <div class="notifications" style="width: 300px; top: 0px; right: 0px;"><span></span></div>
+    <x-layout.header-mobile></x-layout.header-mobile>
         <div class="kt-grid kt-grid--hor kt-grid--root">
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
                     <x-layout.header></x-layout.header>
                     <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
                       <div class="kt-content" id="kt_content">
-                        @toastcomponent
+
                         @yield('content')
                       </div>
                   </div>
@@ -69,5 +71,7 @@
      <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
      <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('/js/toastr.js') }}"></script>
+</body>
 </body>
 </html>

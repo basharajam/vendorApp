@@ -11,7 +11,12 @@ use App\Services\User\UserService;
 use App\Services\Supplier\ISupplierService;
 use App\Services\Supplier\SupplierService;
 
+
+use App\Services\SupportRequest\ISupportRequestService;
+use App\Services\SupportRequest\SupportRequestService;
+
 //namespaces
+
 
 
 
@@ -44,7 +49,13 @@ class ServiceLayerServiceProvider extends ServiceProvider
                 SupplierService::class
             );
 
-            //add bindings
+            $this->app->bind(
+    ISupportRequestService::class,
+    SupportRequestService::class
+);
+
+//add bindings
+
 
 
     }

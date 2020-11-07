@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    @include('supplier.support.components.support_form')
+                    @include('supplier.support.components.support_form',['type'=>"App\Models\Supplier"])
                 </div>
             </div>
 

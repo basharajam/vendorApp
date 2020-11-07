@@ -9,7 +9,11 @@ use App\Models\User;
 use App\Repositories\SupplierRepository;
 use App\Models\Supplier;
 
+use App\Repositories\SupportRequestRepository;
+use App\Models\SupportRequest;
+
 //namespaces
+
 
 
 
@@ -34,7 +38,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\SupportRequestRepository', function (Application $app) {
+            return new SupportRequestRepository(
+                $app->make(SupportRequest::class)
+            );
+    });
+
     //add bindings
+
 
 
     }
