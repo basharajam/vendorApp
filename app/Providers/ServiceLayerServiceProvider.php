@@ -15,7 +15,12 @@ use App\Services\Supplier\SupplierService;
 use App\Services\SupportRequest\ISupportRequestService;
 use App\Services\SupportRequest\SupportRequestService;
 
+
+use App\Services\Post\IPostService;
+use App\Services\Post\PostService;
+
 //namespaces
+
 
 
 
@@ -54,7 +59,13 @@ class ServiceLayerServiceProvider extends ServiceProvider
     SupportRequestService::class
 );
 
+$this->app->bind(
+    IPostService::class,
+    PostService::class
+);
+
 //add bindings
+
 
 
 

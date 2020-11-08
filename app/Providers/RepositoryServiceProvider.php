@@ -12,7 +12,11 @@ use App\Models\Supplier;
 use App\Repositories\SupportRequestRepository;
 use App\Models\SupportRequest;
 
+use App\Repositories\PostRepository;
+use App\Models\WP\Post;
+
 //namespaces
+
 
 
 
@@ -44,7 +48,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\PostRepository', function (Application $app) {
+            return new PostRepository(
+                $app->make(Post::class)
+            );
+    });
+
     //add bindings
+
 
 
 
