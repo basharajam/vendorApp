@@ -7,39 +7,7 @@
                 <ul class="kt-menu__nav">
                     <li class="kt-menu__item kt-menu__item--rel kt-menu__item--active kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="/home"  class="kt-menu__link "><span class="kt-menu__link-text">الرئيسية</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
                     <li class="kt-menu__item kt-menu__item--rel  kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{ route('supplier.support_view') }}"  class="kt-menu__link "><span class="kt-menu__link-text">المساعدة</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
-                    <li class="kt-menu__item kt-menu__item--rel kt-menu__item--submenu">
-                          <div class="kt-header__topbar-wrapper kt-menu__link kt-menu__toggle" data-toggle="dropdown" data-offset="10px,10px" aria-expanded="false">
-                             <span class="kt-menu__link-text">dropdownlink</span>
-                        </div>
-                         <ul class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl kt-menu__subnav">
-                            <!--begin: Head -->
-                            <li class="kt-menu__item " aria-haspopup="true">
-                                    <a  href="#"  class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">link1</span>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item " aria-haspopup="true">
-                                    <a  href="javascript:;"   class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">link2</span>
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-                       <li class="kt-menu__item kt-menu__item--rel kt-menu__item--submenu">
-                          <div class="kt-header__topbar-wrapper kt-menu__link kt-menu__toggle" data-toggle="dropdown" data-offset="10px,10px" aria-expanded="false">
-                             <span class="kt-menu__link-text">link2</span>
-                        </div>
-                         <ul class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl kt-menu__subnav">
-                            <!--begin: Head -->
-                            <li class="kt-menu__item " aria-haspopup="true">
-                                    <a  href="#"  class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">item1</span>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item " aria-haspopup="true">
-                                    <a  href="javascript:;"   class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">item2</span>
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-
+                    <li class="kt-menu__item kt-menu__item--rel  kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{ route('supplier.products.index') }}"  class="kt-menu__link "><span class="kt-menu__link-text">المنتجات</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
                 </ul>
             </div>
         </div>
