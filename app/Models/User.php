@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\WP\UserMeta;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable,HasRoles;
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'userable_id',
         'userable_type',
     ];
+    protected $append = ['wordpress_user'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -47,4 +49,13 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function getWordpressUserAttribute(){
+        $meta =  UserMeta::where('meta_key','user_id')
+                        ->where('meta_value',$this->id)->first();
+        if($meta){
+            return $meta->user;
+           }
+        return null;
+        }
 }

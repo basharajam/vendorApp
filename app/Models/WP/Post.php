@@ -38,7 +38,7 @@ class Post extends Model
         return $query->where('post_type','product');
     }
     public function meta(){
-        return $this->hasMany('App\Models\PostMeta');
+        return $this->hasMany('App\Models\WP\PostMeta');
     }
 
 
