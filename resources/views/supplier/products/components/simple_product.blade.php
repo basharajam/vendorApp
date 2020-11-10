@@ -69,7 +69,9 @@
         </div>
     </div>
     <div class="col-12">
-        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder">عام</h3>
+        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder has-two-lines">
+            <span>عام</span>
+        </h3>
     </div>
     <div class="col-12">
         <div class="form-group">
@@ -194,7 +196,9 @@
         </div>
     </div>
     <div class="col-12">
-        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder">المخزون</h3>
+        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder has-two-lines">
+            <span>المخزون</span>
+        </h3>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
@@ -281,7 +285,9 @@
         </div>
     </div>
     <div class="col-12">
-        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder">الشحن</h3>
+        <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder has-two-lines">
+            <span>الشحن</span>
+        </h3>
     </div>
     <div class="col-lg-6">
         <div class="form-group">

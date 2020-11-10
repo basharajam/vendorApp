@@ -10,16 +10,15 @@
                     <h3 class="card-label">إضاضة منتج جديد
                     <span class="d-block text-muted pt-2 font-size-sm">الرجاء إدخال المعلومات التالية</span></h3>
                 </div>
-
             </div>
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
                 <form>
                     @include('supplier.products.components.product_type_card')
-                <div id="product_type_form" class="mb-10">
+                    <div id="product_type_form" class="mb-10">
 
-                </div>
+                    </div>
                 </form>
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">

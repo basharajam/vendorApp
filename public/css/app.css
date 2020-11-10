@@ -112161,3 +112161,29 @@ h6 {
   text-align: right;
 }
 
+.has-two-lines {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.has-two-lines span {
+  margin: 15px;
+  font-size: 22px;
+}
+
+.has-two-lines:before,
+.has-two-lines:after {
+  content: "";
+  height: 1px;
+  width: 90%;
+  background-color: rgba(10, 10, 10, 0.2);
+  display: block;
+  border-radius: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
