@@ -68,6 +68,38 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-12">
+        <!--begin::Form group National ID Picture-->
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">
+                <span class="required">*</span>
+                <span>صورة المنتج الرئيسية</span>
+            </label>
+            <div id="product_main_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
+                <div class="dropzone-msg dz-message needsclick">
+                    <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                    <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12">
+        <!--begin::Form group National ID Picture-->
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">
+                <span>إضافة صور إضافية أو فيديو</span>
+            </label>
+            <div id="product_other_files" class="dropzone dropzone-default dropzone-primary dz-clickable" >
+                <div class="dropzone-msg dz-message needsclick">
+                    <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                    <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="col-12">
         <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder has-two-lines">
             <span>عام</span>
