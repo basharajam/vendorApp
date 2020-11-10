@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Supplier extends BaseModel implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasMediaTrait;
 
     protected $fillable=[
         "first_name",
