@@ -53,6 +53,7 @@
 
     let simple_product_form = `{!! view('supplier.products.components.simple_product') !!}`;
     let variable_product_form = `{!! view('supplier.products.components.variable_product') !!}`;
+    let add_field_component = `{!! view('supplier.products.components.add_field_component') !!}`;
     $( "input[name='product_type']" ).on('change',function(){
         $('#product_type_form').empty();
         let selected_value = $(this).val();
@@ -60,7 +61,9 @@
             case "simple":
                 $('#product_type_form').append(simple_product_form);
                  editor  =  CKEDITOR.replace( 'editor' );
-
+                 $(document).on('click','#extra_fields_button',function(){
+                    $("#extra_fields_container").append(add_field_component)
+                 })
 
             break;
             case "variable":

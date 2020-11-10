@@ -184,6 +184,16 @@
         </div>
     </div>
     <div class="col-12">
+        <div id="extra_fields_container"></div>
+        <div class="form-group row mb-0">
+            <div class="col-md-6 offset-md-4">
+                <button type="button" class="btn btn-success" id="extra_fields_button">
+                    إضافة حقل جديد
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
         <h3 class="font-size-lg text-dark mb-6 text-center font-weight-bolder">المخزون</h3>
     </div>
     <div class="col-lg-6">
