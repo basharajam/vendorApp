@@ -72,6 +72,7 @@
      <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('/js/toastr.js') }}"></script>
+    @stack('scripts')
 </body>
 </body>
 </html>

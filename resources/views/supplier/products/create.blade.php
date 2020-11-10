@@ -15,6 +15,19 @@
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
+                <form>
+                    @include('supplier.products.components.product_type_card')
+                <div id="product_type_form" class="mb-10">
+
+                </div>
+                </form>
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            إضافة منتج
+                        </button>
+                    </div>
+                </div>
             </div>
             <!--end::Body-->
         </div>
@@ -22,3 +35,39 @@
 </div>
 
 @endsection
+
+@push('styles')
+
+@endpush
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+
+    });
+    </script>
+<script>
+
+    let simple_product_form = `{!! view('supplier.products.components.simple_product') !!}`;
+    let variable_product_form = `{!! view('supplier.products.components.variable_product') !!}`;
+    $( "input[name='product_type']" ).on('change',function(){
+        $('#product_type_form').empty();
+        let selected_value = $(this).val();
+        switch(selected_value){
+            case "simple":
+                $('#product_type_form').append(simple_product_form);
+                 editor  =  CKEDITOR.replace( 'editor' );
+
+
+            break;
+            case "variable":
+                $('#product_type_form').append(variable_product_form);
+                //$("#chinese_properties").show();
+            break;
+        }
+    });
+</script>
+@endpush
