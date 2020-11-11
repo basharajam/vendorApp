@@ -11,6 +11,6 @@ class Term extends Model
     public function taxonomy(){
         return $this->hasOne("App\Models\WP\Term");
     }
-
+    public $timestamps = false;
 
 }

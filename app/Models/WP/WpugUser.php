@@ -3,11 +3,10 @@
 namespace App\Models\WP;
 use Illuminate\Database\Eloquent\Model;
 
-class WpUser extends Model
+class WpugUser extends Model
 {
-    protected $table="wpug_users";
-    protected $primaryKey="ID";
-    protected $with = ['meta'];
+    protected $table = "wpug_users";
+    //protected $primaryKey="ID";
 
     protected $fillable =  [
     "user_login" ,
@@ -22,9 +21,7 @@ class WpUser extends Model
     ];
     public $timestamps = false;
 
-    public function meta(){
-        return $this->hasMany('App\Models\WP\UserMeta');
-    }
+
 
 
 }

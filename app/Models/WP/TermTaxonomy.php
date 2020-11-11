@@ -7,9 +7,10 @@ class TermTaxonomy extends Model
 {
     protected $table="wpug_term_taxonomy";
     protected $with=['term','posts'];
+    public $timestamps = false;
 
     public function scopeCategories($query){
-        return $query->where('taxonomy','category');
+        return $query->whereIn('taxonomy',['category'])->distinct('product_cat');
     }
 
     public function term(){

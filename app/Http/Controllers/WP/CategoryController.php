@@ -13,7 +13,8 @@ class CategoryController extends Controller
     //
 
     public function getCategories(){
-        // $categories = TermTaxonomy::categories()->get();
+         $categories = TermTaxonomy::categories()->get();
+         dd($categories);
         // $products = Post::products()->get();
         $user = User::query()->orderBy('id','desc')->first();
         dd($user->wordpress_user);

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\WP\UserMeta;
+use App\Models\WP\WpugUser;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable,HasRoles;
@@ -51,6 +53,7 @@ class User extends Authenticatable
     }
 
     public function getWordpressUserAttribute(){
+
         $meta =  UserMeta::where('meta_key','user_id')
                         ->where('meta_value',$this->id)->first();
         if($meta){

@@ -58,7 +58,10 @@
                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                         id="product_category"
                         name="product_category" required>
-                    <option >category</option>
+                        <option></option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
+                        @endforeach
                 </select>
             </div>
             @error('product_category')
@@ -111,8 +114,8 @@
                 <span>وصف المنتج</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
             </label>
-            <textarea id="editor" class="form-control @error('data') is-invalid @enderror" name="data"></textarea>
-            @error('data')
+            <textarea id="editor" class="form-control @error('data') is-invalid @enderror" name="product_description"></textarea>
+            @error('product_description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -254,7 +257,7 @@
                 <span>الحد الاقصى للطلب(عدد الكراتيين)</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('product_max_order_number') is-invalid @enderror" type="text" placeholder="" name="product_min_order_number" value="{{ old('product_max_order_number') }}"   />
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('product_max_order_number') is-invalid @enderror" type="text" placeholder="" name="product_max_order_number" value="{{ old('product_max_order_number') }}"   />
             @error('product_max_order_number')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -272,7 +275,7 @@
             </label>
             <div class="kt-input-icon">
                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
-                        id="product_category"
+                        id="product_unit_price"
                         name="product_unit_price" required>
                     <option >صندوق</option>
                 </select>

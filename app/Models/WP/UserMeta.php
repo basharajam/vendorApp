@@ -7,7 +7,7 @@ class UserMeta extends Model
 {
     protected $table="wpug_usermeta";
     protected $primaryKey="umeta_id";
-    protected $with = ['user'];
+    protected $append = ['user'];
 
     protected $fillable =  [
     "user_id" ,
@@ -17,8 +17,10 @@ class UserMeta extends Model
 
     public $timestamps = false;
 
-    public function user(){
-        return $this->belongsTo('App\Models\WP\WpUser','wpug_users','user_id');
+    public function getUserAttribute(){
+        //dd(WpugUser::all());
+        return WpugUser::where("ID","=",$this->user_id)->first();
+        //return $this->belongsTo(WpugUser::class);
     }
 
 

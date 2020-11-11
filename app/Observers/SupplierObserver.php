@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\Supplier;
 use App\Models\User;
-use App\Models\WP\WpUser;
+use App\Models\WP\WpugUser;
 use App\Models\WP\UserMeta;
 class SupplierObserver
 {
@@ -23,7 +23,7 @@ class SupplierObserver
             'userable_type'=>'App\\Models\\Supplier',
             'userable_id'=>$supplier->id
         ]);
-        $wp_user = WpUser::create([
+        $wp_user = WpugUser::create([
             "user_login" =>$supplier->first_name,
             "user_pass"=>bcrypt(request()->password) ,
             "user_nicename" =>$supplier->first_name,

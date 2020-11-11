@@ -14,19 +14,21 @@
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
-                <form id="product_Form">
+                <form id="product_Form" action="{{ route('supplier.products.store') }}" method="post">
+                    @csrf
                     @include('supplier.products.components.product_type_card')
                     <div id="product_type_form" class="mb-10">
 
                     </div>
-                </form>
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            إضافة منتج
-                        </button>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                إضافة منتج
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
+
             </div>
             <!--end::Body-->
         </div>
@@ -50,7 +52,7 @@
     </script>
 <script>
 
-    let simple_product_form = `{!! view('supplier.products.components.simple_product') !!}`;
+    let simple_product_form = `{!! view('supplier.products.components.simple_product',['categories'=>$categories]) !!}`;
     let variable_product_form = `{!! view('supplier.products.components.variable_product') !!}`;
     let add_field_component = `{!! view('supplier.products.components.add_field_component') !!}`;
 

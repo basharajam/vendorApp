@@ -7,7 +7,9 @@ class Post extends Model
 {
     protected $table="wpug_posts";
     protected $primaryKey="ID";
+
     protected $with = ['meta'];
+    public $timestamps = false;
 
     protected $fillable =  [
     "post_author" ,
