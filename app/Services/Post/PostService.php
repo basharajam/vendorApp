@@ -25,6 +25,10 @@ class PostService extends BaseService implements IPostService
         parent::__construct($repository);
     }
 
+    /** stores new product in posts wordpress table
+     * @param Request $request
+     * @return Post created post
+     */
     public function store_product(Request $request):Post{
         //create product
         $post = Post::create([
@@ -75,7 +79,10 @@ class PostService extends BaseService implements IPostService
         return $post;
 
     }
-
+    /** stores simple product attributes in post_meta table in wordpress
+     * @param  $request that has the data
+     * @param $post : it's the product that we want to create the meta data for
+     */
     private function saveProductSimpleAttributes($request,$post){
         $this->creatPostMeta($post->ID,'product_number',$request->product_number);
         isset($request->product_features) ? $this->creatPostMeta($post->ID,'product_features',$request->product_features):'';
@@ -96,6 +103,11 @@ class PostService extends BaseService implements IPostService
         $this->creatPostMeta($post->ID,'delivery_dates_count',$request->delivery_dates_count);
 
     }
+    /** stores the data into wpug_postmeta table in wordpress
+     * @param int $post_id the id of the post
+     * @param int $meta_key the key name of the attribute
+     * @param int $meta_value the real value of the attribute
+     */
     private function creatPostMeta($post_id,$meta_key,$meta_value){
         PostMeta::create([
             'post_id'=>$post_id,
