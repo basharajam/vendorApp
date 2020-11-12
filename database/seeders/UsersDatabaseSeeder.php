@@ -32,5 +32,19 @@ class UsersDatabaseSeeder extends Seeder
         if ($supplier_role) {
             $supplier_role->users()->attach($user_id);
         }
+        $wp_user = WpugUser::create([
+            "user_login" =>$supplier->first_name,
+            "user_pass"=>bcrypt(request()->password) ,
+            "user_nicename" =>$supplier->first_name,
+            "user_email"=>$supplier->email ,
+            "user_url" =>'',
+            "user_registered" =>$user->created_at,
+            "display_name" =>$supplier->first_name . ' '. $supplier->last_name,
+        ]);
+        $wp_user_meta =UserMeta::create([
+            "user_id" =>$wp_user->ID,
+            "meta_key" =>'user_id',
+            "meta_value" =>$user_id,
+        ]);
     }
 }
