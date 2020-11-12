@@ -41,10 +41,6 @@ class UsersDatabaseSeeder extends Seeder
             "user_registered" =>$user->created_at,
             "display_name" =>$supplier->first_name . ' '. $supplier->last_name,
         ]);
-        $wp_user_meta =UserMeta::create([
-            "user_id" =>$wp_user->ID,
-            "meta_key" =>'user_id',
-            "meta_value" =>$user_id,
-        ]);
+
     }
 }
