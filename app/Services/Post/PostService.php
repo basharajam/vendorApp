@@ -80,12 +80,71 @@ class PostService extends BaseService implements IPostService
 
     }
 
+     /** update product's data  in posts wordpress table
+     * @param Request $request
+     * @param $post_id
+     * @return Post updated post
+     */
+    public function update_product(Request $request,$post_id){
+        $post = Post::where('ID',$post_id)->first();
+        $post->update([
+                'post_author'=>\Auth::user()->wordpress_user->ID,
+                'post_date'=>now(),
+                'post_date_gmt'=>now(),
+                'post_content'=>$request->product_description,
+                'post_title'=>$request->product_name,
+                'post_status'=>'publish',
+                'comment_status'=>'closed',
+                'ping_status'=>'closed',
+                'post_type'=>'product',
+                'post_excerpt'=>'',
+                'to_ping'=>"",
+                'pinged'=>'',
+                'post_content_filtered'=>'',
+                'post_modified'=>now(),
+                'post_modified_gmt'=>now()
+            ]);
+
+            if($request->product_type == 'simple'){
+                $term_taxonomy_id = 2;
+                $this->saveProductSimpleAttributes($request,$post);
+            }
+            else if($request->product_type=='variable'){
+                $term_taxonomy_id = 4;
+            }
+            //save product category
+            if($request->product_category != $post->category->term_taxonomy_id){
+                \DB::table('wpug_term_relationships')->where('object_id', $post->ID)
+                                                    ->where('term_taxonomy_id',$post->category->term_taxonomy_id)
+                                                    ->delete();
+                TermRelation::create([
+                    'object_id'=>$post->ID,
+                    'term_taxonomy_id'=>$request->product_category,
+                    'term_order'=>0
+                ]);
+            }
+
+
+
+    }
+
     /** get all products for a supplier
      * @param $post_author the wordpress user id for a supplier
      * @return Collection of posts which represents the products for a supplier
      */
     public function get_products_for_supplier(int $post_author){
         return Post::where('post_author',$post_author)->get();
+    }
+
+    /** find  product for a supplier
+     * @param $post_id the product  id to find
+     * @param $post_author the wordpress user id for a supplier
+     * @return Post or the product
+     */
+    public function find_product_for_supplier(int $post_id,$post_author){
+        return Post::where('post_author',$post_author)
+                    ->where('ID',$post_id)
+                    ->first();
     }
 
     /** delete rpoducts with all it's related data
@@ -141,7 +200,12 @@ class PostService extends BaseService implements IPostService
      * @param int $meta_value the real value of the attribute
      */
     private function creatPostMeta($post_id,$meta_key,$meta_value){
-        PostMeta::create([
+        PostMeta::updateOrCreate(
+            [
+                'post_id'=>$post_id,
+                'meta_key'=>$meta_key
+            ]
+            ,[
             'post_id'=>$post_id,
             'meta_key'=>$meta_key,
             'meta_value'=>$meta_value

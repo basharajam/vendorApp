@@ -52,7 +52,7 @@ class Post extends Model
                                 TermRelation::where('object_id',$this->ID)
                                             ->pluck('term_taxonomy_id'))
                                 ->whereIn('taxonomy',['product_type'])
-                                ->get();
+                                ->first();
     }
     public function getMetaAttribute(){
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();

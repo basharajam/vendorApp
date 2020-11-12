@@ -32,7 +32,16 @@ class ProductController extends Controller
     public function create(){
         $categories = TermTaxonomy::categories()->get();
         return view('supplier.products.create')
-                ->with('categories',$categories);
+                ->with('categories',$categories)
+                ->with('product',null);
+    }
+    public function edit(int $id){
+        $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
+        $categories = TermTaxonomy::categories()->get();
+        return view('supplier.products.edit')
+                ->with('categories',$categories)
+                ->with('product',$product);
+
     }
 
     public function store(StoreProductRequest $request){
@@ -40,7 +49,25 @@ class ProductController extends Controller
         //TOOD Add toaster
         return redirect()->route('supplier.products.index');
     }
+    public function update(Request $request,$post_id){
+        $product =  $this->post_service->update_product($request,$post_id);
+        //TOOD Add toaster
+        return redirect()->route('supplier.products.index');
+    }
     public function delete(int $id){
         return $this->post_service->delete($id);
+    }
+
+    public function getForm($type){
+        $categories = TermTaxonomy::categories()->get();
+        switch($type){
+            case \ProductTypes::SIMPLE:
+                $product =null;
+                return view('supplier.products.components.simple_product',compact('categories','product'));
+            break;
+            case \ProductTypes::VARIABLE:
+                return view('supplier.products.components.variable_product');
+            break;
+        }
     }
 }

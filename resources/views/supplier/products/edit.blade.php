@@ -7,26 +7,28 @@
             <!--begin::Header-->
             <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                    <h3 class="card-label">إضاضة منتج جديد
-                    <span class="d-block text-muted pt-2 font-size-sm">الرجاء إدخال المعلومات التالية</span></h3>
+                    <h3 class="card-label font-size-h1 font-weight-bolder">
+                        {{ $product->post_title }}
                 </div>
             </div>
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
-                <form id="product_Form" action="{{ route('supplier.products.store') }}" method="post">
+                <form id="product_Form" action="{{ route('supplier.products.update',$product->ID) }}" method="post">
                     @csrf
-                    @include('supplier.products.components.product_type_card',['product'=>null])
-                    <div id="loading-product_type" class="mb-15 mt-15 text-center" style="display:none">
-                        <div class="spinner spinner-primary spinner-lg mr-15" style=""></div>
-                    </div>
+                    @include('supplier.products.components.product_type_card',['product'=>$product])
                     <div id="product_type_form" class="mb-10 mt-10">
+                        @if($product->product_type!=null)
+                            @if($product->product_type->term->name == \ProductTypes::SIMPLE)
+                                @include('supplier.products.components.simple_product',['categories'=>$categories,'product'=>$product])
+                            @endif
+                        @endif
 
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
-                                إضافة منتج
+                                حفظ
                             </button>
                         </div>
                     </div>
@@ -55,29 +57,14 @@
     </script>
 <script>
 
-     let add_field_component = `{!! view('supplier.products.components.add_field_component') !!}`;
-     function get_product_form(type){
-        $('#loading-product_type').show();
-        $.ajax({
-            type: "get",
-            url: "/supplier/product/getForm/"+type,
-            success: function (data) {
-                            $('#loading-product_type').hide();
-                            _append_to_form("product_type_form",data);
-                            $(document).on('click','#extra_fields_button',function(){
-                                $("#extra_fields_container").append(add_field_component)
-                            });
-                            _init_main_image_dropzone();
-                            _init_product_other_files_dropzone();
-                            editor  =  _init_ck_editor('editor');
-            },
-            error: function () {
-                $('#loading-product_type').hide();
-                toastr.options.progressBar = true;
-                toastr.error('لقد حدث خطأ ما الرجاء المحاولة لاحقاً');
-            }
-        });
-    }
+    let add_field_component = `{!! view('supplier.products.components.add_field_component') !!}`;
+    $(document).on('click','#extra_fields_button',function(){
+        $("#extra_fields_container").append(add_field_component)
+    });
+     _init_main_image_dropzone();
+    _init_product_other_files_dropzone();
+    editor  =  _init_ck_editor('editor');
+
     function _init_main_image_dropzone(){
         let product_main_image = document.getElementById('product_main_image');
                     let $dropzone =new Dropzone('#product_main_image',{
@@ -103,8 +90,18 @@
                         }
                         $('#product_Form').find('input[name="national_id_image"][value="' + name + '"]').remove()
                     },
-
-                    });
+                    // init:function(){
+                    //         let main_image = $('#national_id_image').val();
+                    //         if(main_image){
+                    //             var mockFile = { name: main_image.split('/ ').pop(), size: 12345, type: 'image/'+main_image.split('.').pop()};
+                    //             console.log(mockFile);
+                    //             this.emit('addedfile',mockFile);
+                    //             this.options.thumbnail.call(this,mockFile,'/public'+main_image );
+                    //             $('.dz-progress').remove();
+                    //             var existingFileCount = 1; // The number of files already uploaded
+                    //             this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                    //         }
+                    // });
     }
 
     function _init_product_other_files_dropzone(){
@@ -139,13 +136,5 @@
         return    CKEDITOR.replace( element );
     }
 
-    function _append_to_form(container,content){
-        $('#'+container).append(content);
-    }
-    $( "input[name='product_type']" ).on('change',function(){
-        $('#product_type_form').empty();
-        let selected_value = $(this).val();
-       get_product_form(selected_value);
-    });
 </script>
 @endpush
