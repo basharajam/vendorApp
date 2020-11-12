@@ -79,6 +79,15 @@ class PostService extends BaseService implements IPostService
         return $post;
 
     }
+
+    /** get all products for a supplier
+     * @param $post_author the wordpress user id for a supplier
+     * @return Collection of posts which represents the products for a supplier
+     */
+    public function get_products_for_supplier(int $post_author){
+        return Post::where('post_author',$post_author)->get();
+    }
+
     /** stores simple product attributes in post_meta table in wordpress
      * @param  $request that has the data
      * @param $post : it's the product that we want to create the meta data for
@@ -103,6 +112,7 @@ class PostService extends BaseService implements IPostService
         $this->creatPostMeta($post->ID,'delivery_dates_count',$request->delivery_dates_count);
 
     }
+
     /** stores the data into wpug_postmeta table in wordpress
      * @param int $post_id the id of the post
      * @param int $meta_key the key name of the attribute
@@ -111,8 +121,8 @@ class PostService extends BaseService implements IPostService
     private function creatPostMeta($post_id,$meta_key,$meta_value){
         PostMeta::create([
             'post_id'=>$post_id,
-            'post_meta'=>$meta_key,
-            'post_value'=>$meta_value
+            'meta_key'=>$meta_key,
+            'meta_value'=>$meta_value
         ]);
     }
 }

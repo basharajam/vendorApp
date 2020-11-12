@@ -2,13 +2,14 @@
 
 namespace App\Models\WP;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\WP\PostMeta;
+use App\Models\WP\TermRelation;
 class Post extends Model
 {
     protected $table="wpug_posts";
     protected $primaryKey="ID";
 
-    protected $with = ['meta'];
+    protected $appends = ['meta','category','product_type'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -39,8 +40,22 @@ class Post extends Model
     public function scopeProducts($query){
         return $query->where('post_type','product');
     }
-    public function meta(){
-        return $this->hasMany('App\Models\WP\PostMeta');
+    public function getCategoryAttribute(){
+      return    TermTaxonomy::whereIn('term_taxonomy_id',
+                            TermRelation::where('object_id',$this->ID)
+                                        ->pluck('term_taxonomy_id'))
+                            ->whereIn('taxonomy',['category'])
+                            ->first();
+    }
+    public function getProductTypeAttribute(){
+        return    TermTaxonomy::whereIn('term_taxonomy_id',
+                                TermRelation::where('object_id',$this->ID)
+                                            ->pluck('term_taxonomy_id'))
+                                ->whereIn('taxonomy',['product_type'])
+                                ->get();
+    }
+    public function getMetaAttribute(){
+        return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();
     }
 
 

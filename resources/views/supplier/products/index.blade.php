@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
 <div class="d-flex flex-column-fluid">
     <div class="container-fluid">
@@ -31,8 +33,12 @@
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
-                <!--begin: Datatable-->
-                <!--end: Datatable-->
+                <div class="kt-section">
+                    <div class="kt-section__content">
+                        @include('supplier.products.components.products_table')
+                    </div>
+
+                </div>
             </div>
             <!--end::Body-->
         </div>

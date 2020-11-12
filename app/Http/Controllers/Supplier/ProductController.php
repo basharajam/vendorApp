@@ -23,7 +23,10 @@ class ProductController extends Controller
     }
 
     public function index(){
-        return view('supplier.products.index');
+        $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
+
+        return view('supplier.products.index')
+                ->with('products',$products);
     }
 
     public function create(){
@@ -33,7 +36,8 @@ class ProductController extends Controller
     }
 
     public function store(StoreProductRequest $request){
-
-        return $this->post_service->store_product($request);
+        $product =  $this->post_service->store_product($request);
+        //TOOD Add toaster
+        return redirect()->route('supplier.products.index');
     }
 }

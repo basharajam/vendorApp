@@ -19,4 +19,11 @@ interface IPostService extends IBaseService
      * @return Post created post
      */
     public function store_product(Request $request);
+
+    /** get all products for a supplier
+     * @param $post_author the wordpress user id for a supplier
+     * @return Collection of posts which represents the products for a supplier
+     */
+    public function get_products_for_supplier(int $post_author);
+
 }
