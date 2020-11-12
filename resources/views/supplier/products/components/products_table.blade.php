@@ -37,7 +37,7 @@
             @php
                 $meta = $product->meta;
             @endphp
-            <tr>
+            <tr id="{{ $product->ID }}">
                 <td class="datatable-cell">
                     <span style="width: 250px;">
                         <div class="d-flex align-items-center">
@@ -113,7 +113,7 @@
                     </span>
                 </td>
                 <td class="datatable-cell-sorted datatable-cell">
-                    <a class="kt-nav__link mr-5" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
+                    <a id="{{ $product->ID }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.products.delete',$product->ID) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
                     <a class="kt-nav__link"  href="javascript:;"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
                 </td>
             </tr>

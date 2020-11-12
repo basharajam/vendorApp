@@ -72,6 +72,48 @@
      <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('/js/toastr.js') }}"></script>
+    <script>
+        $(function(){
+            $(document).on('click','.delete',function(e){
+                e.preventDefault();
+                let $this = $(this);
+                let action = $this.attr('data-action-name');
+                let id = $this.attr('id');
+                console.log(id);
+                Swal.fire({
+                    title: "هل انت متأكد؟",
+                    text: "لن تستطيع التراجع عن هذه العملية",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "حذف",
+                    cancelButtonText: "إلفاء"
+                }).then(function(result) {
+                    if(result.value){
+                    var tr = "tr#" + id;
+                    console.log(tr);
+                    var url = action;
+                    $.ajax({
+                        type: "get",
+                        url: url,
+                        success: function (data) {
+                            toastr.options.progressBar = true;
+                                toastr.success('تم حذف المادة بنجاح');
+                                $(tr).css({
+                                    "display": "none"
+                                });
+                        },
+                        error: function () {
+                                toastr.options.progressBar = true;
+                                toastr.error('لقد حدث خطأ ما الرجاء المحاولة لاحقاً');
+                        }
+                     });
+                    }
+
+                });
+            });
+
+        })
+    </script>
     @stack('scripts')
 </body>
 </body>

@@ -40,4 +40,7 @@ class ProductController extends Controller
         //TOOD Add toaster
         return redirect()->route('supplier.products.index');
     }
+    public function delete(int $id){
+        return $this->post_service->delete($id);
+    }
 }

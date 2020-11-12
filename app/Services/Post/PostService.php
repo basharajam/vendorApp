@@ -88,6 +88,28 @@ class PostService extends BaseService implements IPostService
         return Post::where('post_author',$post_author)->get();
     }
 
+    /** delete rpoducts with all it's related data
+     * @param $id product id (post_id)
+     */
+    public function delete($id){
+        $post = Post::where('ID',$id)->first();
+        //delete term relation
+        $terms = TermRelation::where('object_id',$id)->get();
+        if($terms){
+            foreach($terms as $term){
+                $term->delete();
+            }
+        }
+        $post_meta = PostMeta::where('post_id',$id)->get();
+        if($post_meta){
+            foreach($post_meta as $meta){
+                $meta->delete();
+            }
+        }
+        //delete post meta
+        return $post->delete();
+    }
+
     /** stores simple product attributes in post_meta table in wordpress
      * @param  $request that has the data
      * @param $post : it's the product that we want to create the meta data for
