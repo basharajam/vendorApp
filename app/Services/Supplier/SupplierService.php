@@ -37,6 +37,7 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->visa_image))
             $supplier->addMedia(storage_path('tmp/uploads/' . $request->visa_image))->toMediaCollection('visa_images');
 
+
         return $supplier;
     }
 

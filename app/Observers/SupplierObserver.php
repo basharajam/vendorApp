@@ -6,6 +6,7 @@ use App\Models\Supplier;
 use App\Models\User;
 use App\Models\WP\WpugUser;
 use App\Models\WP\UserMeta;
+use Spatie\Permission\Models\Role;
 class SupplierObserver
 {
     /**
@@ -23,6 +24,13 @@ class SupplierObserver
             'userable_type'=>'App\\Models\\Supplier',
             'userable_id'=>$supplier->id
         ]);
+
+        $supplier_role = Role::whereName(\App\Constants\UserRoles::SUPPLIER)->first();
+        if ($supplier_role) {
+            $supplier_role->users()->attach($user->id);
+        }
+
+
         $wp_user = WpugUser::create([
             "user_login" =>$supplier->first_name,
             "user_pass"=>bcrypt(request()->password) ,
