@@ -61,8 +61,8 @@ if($product){
             </label>
             <div class="kt-input-icon">
                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
-                        id="product_category"
-                        name="product_category" required>
+                        id="price_for"
+                        name="price_for" required>
                         <option></option>
                         @foreach($categories as $category)
                             <option value="{{ $category->term_taxonomy_id }}" @if($product && $product->category && $product->category->term_taxonomy_id==$category->term_taxonomy_id) selected @endif>{{ $category->term->name }}</option>

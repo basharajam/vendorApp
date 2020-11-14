@@ -8,6 +8,176 @@
 @import './components/header-menu.scss';
 @import './components/header-user.scss';
 
+.kt-widget__pic.kt-widget__pic--brand {background: rgba(93, 120, 255, 0.1); }
+.kt-widget__pic.kt-widget__pic--light {background: rgba(255, 255, 255, 0.1); }
+.kt-widget__pic.kt-widget__pic--dark {background: rgba(40, 42, 60, 0.1); }
+.kt-widget__pic.kt-widget__pic--primary {background: rgba(88, 103, 221, 0.1); }
+.kt-widget__pic.kt-widget__pic--success {background: rgba(10, 187, 135, 0.1); }
+.kt-widget__pic.kt-widget__pic--info {background: rgba(85, 120, 235, 0.1); }
+.kt-widget__pic.kt-widget__pic--warning {background: rgba(255, 184, 34, 0.1); }
+.kt-widget__pic.kt-widget__pic--danger {background: rgba(253, 57, 122, 0.1); }
+
+.kt-avatar .kt-avatar__holder .kt-widget__pic{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 1px rgba(253, 57, 122, 0.1);
+}
+.kt-avatar.kt-avatar--changed .kt-avatar__holder .kt-widget__pic{
+    display:none;
+}
+.kt-avatar .kt-avatar__holder {
+    width: 200px;
+    height: 200px;
+}
+#AsidePhoto{
+    width:90px!important;
+    height:90px!important;
+}
+.kt-avatar__load{
+    margin:10px 0 0 0;
+}
+.img-container img {
+    max-width: 100%;
+}
+.kt-spinner.kt-spinner--select:before {
+    z-index: 100;
+    right: 6px!important;
+    top: 17px;
+}
+.schedule-table  thead th {
+    text-align:center;
+}
+.schedule-table td a{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition:all 0.4s ease-in-out;
+    -webkit-transition:all 0.4s ease-in-out;
+    -moz-transition:all 0.4s ease-in-out;
+    -ms-transition:all 0.4s ease-in-out;
+    -o-transition:all 0.4s ease-in-out;
+
+}
+.schedule-table td a:hover{
+
+    box-shadow: 0 10px 20px 0 rgba(255,255,255, 0.55);
+    background-color:#3490dc;
+    color:#fff !important;
+    border-color:#fff !important;
+}
+.first-head {
+    text-align: center;
+    padding: 0% 0%;
+    border: 3px solid #fff !important;
+    background-color: #4b7aa7;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-weight: 700 !important;
+}
+.table td, .table th {
+    font-size: 15px;
+    padding: 0.45rem  !important;
+    font-weight: 500;
+    text-align: center;
+}
+div{
+    white-space: nowrap;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-spacing: 0;
+    border:1px solid #fff;
+    table-layout: auto !important;
+    word-wrap: normal;
+}
+table th,
+table td {
+    text-align: right;
+}
+table th {
+    font-size: 16px;
+    padding: 10px 0px;
+    font-family: frankgo;
+    /*color: #5D6975;*/
+    letter-spacing: 1px;
+    font-weight: 500;
+    white-space: nowrap;
+    background-color: #d9dbe8;
+    text-align: center;
+    /* font-weight: normal; */
+    color: #000;
+    border: 3px solid #fff;
+}
+tr{
+    width: 100%;
+}
+.info {
+    border: none;
+    text-align: center;
+    border: 3px solid #fff;
+    height: 20px;
+    background-color: #fff;
+    margin: 0px;
+}
+.td-time {
+    color: #ffffff;
+    padding: 10px 0% !important;
+    text-align: center;
+    border: 3px solid #fff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: frankgo;
+}
+.td-back{
+    background: #f2f2f2;
+}
+.td-week{
+    /*background: #6c87b8;*/
+    color: #fff;
+}
+.icon-signatured{
+    float:right;
+    padding:3px 10px 0 0;
+    margin:0 0 0 -10px;
+}
+.ce-block__content{
+    max-width:100%;
+}
+.ce-toolbar__content{
+    max-width:100%;
+}
+.codex-editor__redactor{
+    /*padding:0!important;*/
+}
+.ce-toolbar__content {
+    display: none;
+}
+.kt-timeline-v2:before{
+    left:7.3rem;
+}
+
 body{
     font-family: 'Cairo', sans-serif;
     margin:0px;

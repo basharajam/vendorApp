@@ -31,7 +31,8 @@ class ProductController extends Controller
 
     public function create(){
         $categories = TermTaxonomy::categories()->get();
-        return view('supplier.products.create')
+
+        return view('supplier.products.create2')
                 ->with('categories',$categories)
                 ->with('product',null);
     }
