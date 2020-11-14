@@ -120,7 +120,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
             </label>
             <textarea id="editor" class="form-control @error('data') is-invalid @enderror" name="product_description">
-                {{ $product->post_content }}
+                {{ $product->post_content  ?? ''}}
             </textarea>
             @error('product_description')
             <span class="invalid-feedback" role="alert">
