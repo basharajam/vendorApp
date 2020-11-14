@@ -6,6 +6,7 @@ use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
+use App\Models\WP\WpugUser;
 
 class UsersDatabaseSeeder extends Seeder
 {
@@ -40,6 +41,12 @@ class UsersDatabaseSeeder extends Seeder
             "user_url" =>'',
             "user_registered" =>$user->created_at,
             "display_name" =>$supplier->first_name . ' '. $supplier->last_name,
+        ]);
+
+        $wp_user_meta =UserMeta::create([
+            "user_id" =>$wp_user->id,
+            "meta_key" =>'user_id',
+            "meta_value" =>$user->id,
         ]);
 
     }
