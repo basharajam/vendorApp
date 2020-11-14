@@ -27,7 +27,7 @@ class AddTimestampsToTermsRelation extends Migration
     public function down()
     {
         Schema::table('wpug_term_relationships', function (Blueprint $table) {
-            //
+
         });
     }
 }
