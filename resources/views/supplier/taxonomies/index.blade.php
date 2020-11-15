@@ -21,7 +21,7 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
             <div class="row">
                 <div class="col-xl-12">
-                  <h1>table</h1>
+                    @include('supplier.taxonomies.components.taxonomy_table')
                 </div>
             </div>
         </div>

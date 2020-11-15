@@ -7,7 +7,13 @@ class Term extends Model
 {
     protected $table="wpug_terms";
     protected $primaryKey="term_id";
-
+    protected $fillable=[
+        'term_id',
+        'name',
+        'slug',
+        'description',
+        'term_group'
+    ];
     public function taxonomy(){
         return $this->hasOne("App\Models\WP\Term");
     }

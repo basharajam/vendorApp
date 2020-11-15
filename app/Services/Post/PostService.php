@@ -3,7 +3,7 @@
 
 namespace App\Services\Post;
 
-
+use App\Constants\General;
 use App\Repositories\PostRepository;
 use App\Services\Contracts\BaseService;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class PostService extends BaseService implements IPostService
             'post_modified_gmt'=>now()
         ]);
         $post->update([
-            'guid'=>' https://test.alyamanlive.com/?post_type=product&p='.$post->ID
+            'guid'=>General::URL.'/?post_type=product&p='.$post->ID
         ]);
 
 

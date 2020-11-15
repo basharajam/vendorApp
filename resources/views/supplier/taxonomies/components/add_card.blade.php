@@ -26,7 +26,11 @@
             </div>
         </div>
         <div class="kt-widget__body">
-           <form>
+           <form action="{{ route('supplier.taxonomies.store') }}" method="POST" enctype="multipart/form-data">
+               @csrf
+               <input type="hidden" name="type" value="{{ $type }}">
+               <input type="hidden" name="description" value="-">
+
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
@@ -58,13 +62,20 @@
                                         id="parent"
                                         name="parent" required>
                                     <option ></option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            @error('product_category')
-                            <div class="fv-plugins-message-container">
-                                <div  class="fv-help-block">{{ $message }}</div>
-                            </div>
-                            @enderror
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label class="font-size-h6 font-weight-bolder text-dark">
+                                <span>اختر صورة </span>
+                            </label>
+                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""   />
                         </div>
                     </div>
                     @endif
@@ -80,3 +91,8 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+
+</script>
+@endpush

@@ -229,7 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'UserRoles'=>\App\Constants\UserRoles::class,
-        'ProductTypes'=>\App\Constants\ProductTypes::class
+        'ProductTypes'=>\App\Constants\ProductTypes::class,
+        'General'=>\App\Constants\General::class
 
     ],
 

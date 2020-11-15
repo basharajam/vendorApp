@@ -5,6 +5,8 @@ namespace App\Services\TermTaxonomy;
 
 
 use App\Services\Contracts\IBaseService;
+use Illuminate\Http\Request;
+
 
 /**
  * Interface ITermTaxonomyService
@@ -16,4 +18,10 @@ interface ITermTaxonomyService extends IBaseService
      * @return Collection
      */
     public function categories();
+
+    /** stores category info
+     * @param Request $request
+     * @return TermTaxonomy
+     */
+    public function storeCategory(Request $request);
 }
