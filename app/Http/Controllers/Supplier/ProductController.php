@@ -37,7 +37,8 @@ class ProductController extends Controller
                 ->with('product',null);
     }
     public function edit(int $id){
-        $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
+
+        $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->id);
         $categories = TermTaxonomy::categories()->get();
         return view('supplier.products.edit')
                 ->with('categories',$categories)

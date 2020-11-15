@@ -26,4 +26,7 @@ Route::post('/supplier/new',[App\Http\Controllers\Supplier\RegisterController::c
 Route::post('/supplier/storeimages',[App\Http\Controllers\Supplier\ImageController::class, 'uploadImage'])->name('supplier.storeImage');
 
 
-Route::get('/categories',[App\Http\Controllers\WP\CategoryController::class,'getCategories']);
+Route::get('/test',[App\Http\Controllers\WP\CategoryController::class,'getCategories']);
+
+
+

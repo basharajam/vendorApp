@@ -22,3 +22,4 @@ Route::post('/products/update/{post_id}',[App\Http\Controllers\Supplier\ProductC
 Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'delete'])->name('supplier.products.delete');
 
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);
+Route::get('/taxonomies/{type}',[App\Http\Controllers\Supplier\TaxonomyController::class,'index'])->name('supplier.taxononmies');
