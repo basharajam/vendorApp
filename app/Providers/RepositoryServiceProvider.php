@@ -15,7 +15,11 @@ use App\Models\SupportRequest;
 use App\Repositories\PostRepository;
 use App\Models\WP\Post;
 
+use App\Repositories\TermTaxonomyRepository;
+use App\Models\WP\TermTaxonomy;
+
 //namespaces
+
 
 
 
@@ -54,7 +58,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\TermTaxonomyRepository', function (Application $app) {
+            return new TermTaxonomyRepository(
+                $app->make(TermTaxonomy::class)
+            );
+    });
+
     //add bindings
+
 
 
 

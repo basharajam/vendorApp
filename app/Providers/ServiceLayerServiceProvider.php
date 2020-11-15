@@ -19,7 +19,12 @@ use App\Services\SupportRequest\SupportRequestService;
 use App\Services\Post\IPostService;
 use App\Services\Post\PostService;
 
+
+use App\Services\TermTaxonomy\ITermTaxonomyService;
+use App\Services\TermTaxonomy\TermTaxonomyService;
+
 //namespaces
+
 
 
 
@@ -64,7 +69,13 @@ $this->app->bind(
     PostService::class
 );
 
+$this->app->bind(
+    ITermTaxonomyService::class,
+    TermTaxonomyService::class
+);
+
 //add bindings
+
 
 
 
