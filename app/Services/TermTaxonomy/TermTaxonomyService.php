@@ -53,6 +53,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         ]);
         //savge image
         if($request->has('image')){
+            $file = $request->file('image');
             $now = Carbon::now();
             $year = $now->year;
             $month = $now->month;
@@ -83,11 +84,28 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'term_taxonomy_id'=>$term_taxonomy->term_taxonomy_id,
                 'term_order'=>0
             ]);
+            $path = public_path('/wp-content/uploads/'.$year.'/'.$month);
+
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+            $file = $request->file('file');
+            $name = $post->post_name.'.'.$extension;
+
+            $file->move($path, $name);
         }
 
-
-
         return $term_taxonomy;
+    }
+
+    public function delete($id){
+        $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
+        if($term_taxonomy){
+            $term_taxonomy->term->delete();
+          return  $term_taxonomy->delete();
+
+        }
+        return false;
     }
 
 }

@@ -35,4 +35,8 @@ class TaxonomyController extends Controller
         $this->taxonomy_service->storeCategory($request);
         return redirect()->back();
     }
+
+    public function delete($term_taxonomy_id){
+        return $this->taxonomy_service->delete($term_taxonomy_id);
+    }
 }
