@@ -33,7 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($categories as $taxonomy)
+                @foreach($data as $taxonomy)
                     <tr id="{{ $taxonomy->term_taxonomy_id }}">
                         @if($type=='product_cat')
                         <td class="datatable-cell">
@@ -76,7 +76,7 @@
                         </td>
                         <td class="datatable-cell-sorted datatable-cell">
                             <a id="{{ $taxonomy->term_taxonomy_id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
-                            <a class="kt-nav__link"  href="{{ route('supplier.taxonomies.edit',$taxonomy->term_taxonomy_id) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
+                            <a class="kt-nav__link edit_taxonomy" data-type="{{ $type }}" id="{{ $taxonomy->term_taxonomy_id }}" data-action-name="{{ route('supplier.taxonomies.edit') }}" href="#"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -84,3 +84,41 @@
         </table>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function(){
+            $(".edit_taxonomy").click(function(event){
+                            event.preventDefault();
+                            let url = $(this).attr("data-action-name");
+                            let id =$(this).attr('id');
+                            let taxonomy_type =$(this).attr('data-type');
+                            let  csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+                            let taxonomy_data ={
+
+                                "type":taxonomy_type,
+                                "term_taxonomy_id":id
+                            }
+                            $.ajax(url,{
+                                type:"POST",
+                                async:true,
+                                headers: {
+                                'X-CSRF-Token': csrf_token
+                                },
+                                data:taxonomy_data,
+                                success:function(response){
+                                    if(response)
+                                    {
+                                        $('body').prepend(response);
+                                        $('#EditModal').modal('show');
+                                    }
+                                },
+                                error:function(error){
+                                    console.log(error);
+                                },
+                            });
+                        });
+        })
+    </script>
+@endpush

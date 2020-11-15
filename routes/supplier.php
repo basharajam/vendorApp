@@ -23,8 +23,13 @@ Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductControl
 
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);
 
-//Taxonomies (Categories,Tags,Attributes)
-Route::get('/taxonomies/{type}',[App\Http\Controllers\Supplier\TaxonomyController::class,'index'])->name('supplier.taxononmies.index');
+//(Categories)
+Route::get('/categories',[App\Http\Controllers\Supplier\TaxonomyController::class,'categories'])->name('supplier.categories');
+Route::get('/tags',[App\Http\Controllers\Supplier\TaxonomyController::class,'tags'])->name('supplier.tags');
+
+
+//Taxonomies
 Route::post('/taxonomies/store',[App\Http\Controllers\Supplier\TaxonomyController::class,'store'])->name('supplier.taxonomies.store');
-Route::get('/taxonomies/edit/{term_taxonomy_id}',[App\Http\Controllers\Supplier\TaxonomyController::class,'edit'])->name('supplier.taxonomies.edit');
+Route::post('/taxonomies/update/{term_taxonomy_id}',[App\Http\Controllers\Supplier\TaxonomyController::class,'update'])->name('supplier.taxonomies.update');
+Route::post('/taxonomies/edit',[App\Http\Controllers\Supplier\TaxonomyController::class,'getEditModal'])->name('supplier.taxonomies.edit');
 Route::get('/taxonomies/delete/{term_taxonomy_id}',[App\Http\Controllers\Supplier\TaxonomyController::class,'delete'])->name('supplier.taxonomies.delete');

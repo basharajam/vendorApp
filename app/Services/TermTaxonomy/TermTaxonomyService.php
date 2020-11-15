@@ -35,6 +35,13 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         return TermTaxonomy::whereIn('taxonomy',['product_cat'])->get();
     }
 
+    /** gets tags from termtaxonomy and terms table
+     * @return Collection
+     */
+    public function tags(){
+        return TermTaxonomy::whereIn('taxonomy',['product_tag'])->get();
+    }
+
      /** stores category info
      * @param Request $request
      * @return TermTaxonomy
@@ -106,6 +113,27 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
 
         }
         return false;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
+        \DB::table('wpug_term_taxonomy')
+            ->where('term_taxonomy_id', $id)
+            ->update([
+                'description'=>$request->description,
+                'parent'=>$request->parent ?? 0
+            ]);
+
+        $term = $term_taxonomy->term;
+       return  \DB::table('wpug_terms')
+        ->where('term_id', $term->id)
+        ->update([
+            'name'=>$request->name,
+            'slug'=>$request->slug
+        ]);
+
+
     }
 
 }
