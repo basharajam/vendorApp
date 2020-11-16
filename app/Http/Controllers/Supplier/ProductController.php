@@ -7,19 +7,21 @@ use App\Http\Requests\Supplier\StoreProductRequest;
 use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\Post\IPostService;
+use App\Services\TermTaxonomy\ITermTaxonomyService;
 
 class ProductController extends Controller
 {
-    private $post_service;
+    private $post_service,$term_taxonomy_service;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(IPostService  $post_service)
+    public function __construct(IPostService  $post_service,ITermTaxonomyService $term_taxonomy_service)
     {
         $this->middleware('auth');
         $this->post_service=$post_service;
+        $this->term_taxonomy_service = $term_taxonomy_service;
     }
 
     public function index(){
@@ -31,9 +33,10 @@ class ProductController extends Controller
 
     public function create(){
         $categories = TermTaxonomy::categories()->get();
-
+        $attributes =$this->term_taxonomy_service->attributes();
         return view('supplier.products.create2')
                 ->with('categories',$categories)
+                ->with('attributes',$attributes)
                 ->with('product',null);
     }
     public function edit(int $id){
@@ -71,5 +74,9 @@ class ProductController extends Controller
                 return view('supplier.products.components.variable_product');
             break;
         }
+    }
+    public function getAttributeSelector(Request $request){
+        $taxonomy = TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
+        return view('supplier.products.components.product_form.attribute_selector')->with('taxonomy',$taxonomy);
     }
 }

@@ -20,8 +20,8 @@ Route::get('/products/edit/{id}',[App\Http\Controllers\Supplier\ProductControlle
 Route::post('/products/store',[App\Http\Controllers\Supplier\ProductController::class, 'store'])->name('supplier.products.store');
 Route::post('/products/update/{post_id}',[App\Http\Controllers\Supplier\ProductController::class, 'update'])->name('supplier.products.update');
 Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'delete'])->name('supplier.products.delete');
-
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);
+Route::post('/product/getAttributeSelector',[App\Http\Controllers\Supplier\ProductController::class, 'getAttributeSelector'])->name('supplier.products.getAttributeSelector');
 
 //(Categories)
 Route::get('/categories',[App\Http\Controllers\Supplier\TaxonomyController::class,'categories'])->name('supplier.categories');
