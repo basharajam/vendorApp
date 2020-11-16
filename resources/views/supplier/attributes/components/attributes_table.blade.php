@@ -6,22 +6,21 @@
             </h3>
         </div>
     </div>
-    <div class="kt-portlet__body">
+    <div class="kt-portlet__body datatable datatable-default">
         <table id="GridTaxnomies" class="table" style="direction:rtl;text-align:right">
-            <thead class="thead-light">
+            <thead class="">
                 <tr>
 
                     <th>الاسم</th>
                     <th>slug</th>
                     <th>Terms</th>
-                    <th>Count</th>
                     <th>..</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $taxonomy)
                     <tr id="{{ $taxonomy->term_taxonomy_id }}">
-                        <td class="datatable-cell-sorted datatable-cell">
+                        <td class="">
                             <span>
                                 <div class="font-weight-bolder font-size-lg mb-0">
                                     {{ str_replace('pa_','',$taxonomy->taxonomy) }}
@@ -29,36 +28,30 @@
                             </span>
                         </td>
 
-                        <td class="datatable-cell-sorted datatable-cell ">
+                        <td class=" ">
                             <span>
                                 <div class="font-weight-bolder font-size-lg mb-0">
                                      {{ $taxonomy->term->slug }}
                                 </div>
                             </span>
                         </td>
-                        <td class="datatable-cell-sorted datatable-cell">
-                            <span>
-                                <div class="font-weight-bolder font-size-lg mb-0" style="max-width:300px;word-wrap:break-word ">
+                        <td style="max-width:400px;width:400px;">
+                            <span style="width:100%;">
+                                <div class="font-weight-bolder font-size-lg mb-0" style="width:100%;display:flex;flex-wrap:wrap">
                                     @foreach($taxonomy->terms as $term)
-                                        <span class="label font-weight-bold label-lg label-light-default label-inline">
+                                        <span class="m-2 label font-weight-bold label-lg label-light-default label-inline">
                                             <a href="#" class="edit_taxonomy" data-type="{{ $type }}" id="{{ $term->term_taxonomy_id }}" data-action-name="{{ route('supplier.taxonomies.edit') }}">
-                                                {{ $term->term->name }}
+                                                {{ $term->term->name }} {{ count($term->posts) }}
                                             </a>
                                              <span id="{{ $term->term_taxonomy_id }}" class="delete" data-action-name="{{ route('supplier.taxonomies.delete',$term->term_taxonomy_id) }}" href="javascript:;"  ><i class="kt-nav__link-icon fas fa-times "></i></span>
                                         </span>
                                     @endforeach
-                                    <a href="#" class="add_term" data-type="{{ $taxonomy->taxonomy }}" data-action-name="{{ route('supplier.attributes.addTerm') }}">Add Term</a>
+                                    <a href="#" class="add_term w-100" data-type="{{ $taxonomy->taxonomy }}" data-action-name="{{ route('supplier.attributes.addTerm') }}">Add Term</a>
                                 </div>
                             </span>
                         </td>
-                        <td class="datatable-cell-sorted datatable-cell">
-                            <span>
-                                <div class="font-weight-bolder font-size-lg mb-0">
-                                     {{ count($taxonomy->posts) }}
-                                </div>
-                            </span>
-                        </td>
-                        <td class="datatable-cell-sorted datatable-cell">
+
+                        <td class="">
                             @if($taxonomy->taxonomy== "pa_color" || $taxonomy->taxonomy=="pa_size" || $taxonomy->taxonomy=="pa_language" || $taxonomy->taxonomy=="pa_packing")
                             <span>-</span>
                             @else
