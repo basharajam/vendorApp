@@ -24,9 +24,24 @@ interface ITermTaxonomyService extends IBaseService
      */
     public function tags();
 
+    /** gets Attributes from termtaxonomy and terms table
+     * @return Collection
+     */
+    public function attributes();
+
     /** stores category info
      * @param Request $request
      * @return TermTaxonomy
      */
     public function storeCategory(Request $request);
+
+
+    /** update attrbiute info
+     * @param Request $request
+     * @return TermTaxonomy
+     */
+    public function updateAttribute(Request $request,int $id);
+
+
+
 }

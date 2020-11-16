@@ -1,4 +1,4 @@
-<table id="GridStudents" class="table" style="direction:rtl;text-align:right">
+<table id="ProductsTable" class="table" style="direction:rtl;text-align:right">
     <thead class="thead-light">
         <tr>
             <th class="">
@@ -120,3 +120,10 @@
             @endforeach
     </tbody>
 </table>
+@push('scripts')
+<script>
+    $(document).ready(function() {
+    $('#ProductsTable').DataTable();
+} );
+</script>
+@endpush

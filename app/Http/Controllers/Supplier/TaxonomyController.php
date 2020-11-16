@@ -53,7 +53,14 @@ class TaxonomyController extends Controller
 
     public function store(Request $request){
         //save
-        $this->taxonomy_service->storeCategory($request);
+        $request->merge(['taxonomy' => $request->type]);
+        if($request->type=="product_cat"){
+            $this->taxonomy_service->storeCategory($request);
+        }
+        else{
+            $this->taxonomy_service->store($request);
+
+        }
         return redirect()->back();
     }
 

@@ -42,6 +42,13 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         return TermTaxonomy::whereIn('taxonomy',['product_tag'])->get();
     }
 
+     /** gets Attributes from termtaxonomy and terms table
+     * @return Collection
+     */
+    public function attributes(){
+        return TermTaxonomy::where('taxonomy','like','pa_%')->groupBy('taxonomy')->get();
+    }
+
      /** stores category info
      * @param Request $request
      * @return TermTaxonomy
@@ -105,6 +112,28 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         return $term_taxonomy;
     }
 
+    /** stores taxonomy info
+     * @param Request $request
+     * @return TermTaxonomy
+     */
+    public function store(Request $request){
+        $term = Term::create([
+            'name'=>$request->name,
+            'slug'=>$request->slug,
+            'item_group'=>0
+        ]);
+        $term_taxonomy = TermTaxonomy::create([
+            'term_id'=>$term->term_id,
+            'taxonomy'=>$request->taxonomy,
+            'description'=>$request->description,
+            'parent'=>0
+        ]);
+
+
+        return $term_taxonomy;
+    }
+
+
     public function delete($id){
         $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
         if($term_taxonomy){
@@ -114,6 +143,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         }
         return false;
     }
+
 
     public function update(Request $request, $id)
     {
@@ -133,6 +163,27 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'slug'=>$request->slug
         ]);
 
+    }
+
+     /** update attrbiute info
+     * @param Request $request
+     * @return TermTaxonomy
+     */
+    public function updateAttribute(Request $request,$id){
+        $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
+        \DB::table('wpug_term_taxonomy')
+            ->where('term_taxonomy_id', $id)
+            ->update([
+                'taxonomy'=>$request->taxonomy,
+            ]);
+
+        $term = $term_taxonomy->term;
+       return  \DB::table('wpug_terms')
+        ->where('term_id', $term->id)
+        ->update([
+            'name'=>$request->name,
+            'slug'=>$request->slug
+        ]);
 
     }
 

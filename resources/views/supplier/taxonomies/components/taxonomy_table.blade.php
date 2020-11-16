@@ -86,6 +86,11 @@
 </div>
 
 @push('scripts')
+<script>
+    $(document).ready(function() {
+    $('#GridTaxnomies').DataTable();
+} );
+</script>
     <script>
         $(function(){
             $(".edit_taxonomy").click(function(event){

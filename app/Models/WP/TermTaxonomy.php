@@ -17,7 +17,7 @@ class TermTaxonomy extends Model
     protected $with=['term','posts'];
     public $timestamps = false;
 
-    protected $appends = ['image'];
+    protected $appends = ['image','terms'];
 
     public function scopeCategories($query){
         return $query->whereIn('taxonomy',['category'])->distinct('product_cat');
@@ -29,7 +29,9 @@ class TermTaxonomy extends Model
     public function posts(){
         return $this->hasMany('App\Models\WP\TermRelation','term_taxonomy_id');
     }
-
+    public function getTermsAttribute(){
+        return TermTaxonomy::where('taxonomy',$this->taxonomy)->get();
+    }
     public function getImageAttribute()
     {
         return $this->posts()->join('wpug_posts','object_id','wpug_posts.ID')->where('wpug_posts.post_type','attachment')->first()->guid ?? null;

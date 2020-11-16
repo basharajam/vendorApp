@@ -23,6 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins.bundle.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
     @toaster
 </head>
 
@@ -54,6 +55,8 @@
      <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('/js/toastr.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.js"></script>
+
     <script>
         $(function(){
             $(document).on('click','.delete',function(e){
@@ -71,7 +74,7 @@
                     cancelButtonText: "إلفاء"
                 }).then(function(result) {
                     if(result.value){
-                    var tr = "tr#" + id;
+                    var tr = "#" + id;
                     console.log(tr);
                     var url = action;
                     $.ajax({

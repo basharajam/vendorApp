@@ -9,7 +9,7 @@
                  <span>Name / الاسم </span>
                  <span class="required">*</span>
              </label>
-             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? '' }}" required  />
+             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required  />
          </div>
      </div>
      <div class="col-12">
