@@ -19,6 +19,7 @@ Route::get('/products/create/{id?}',[App\Http\Controllers\Supplier\ProductContro
 Route::get('/products/edit/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'edit'])->name('supplier.products.edit');
 Route::post('/products/store',[App\Http\Controllers\Supplier\ProductController::class, 'store'])->name('supplier.products.store');
 Route::post('/products/store/general',[App\Http\Controllers\Supplier\ProductController::class, 'storeGeneral'])->name('supplier.products.store.general');
+Route::post('/products/store/inventory',[App\Http\Controllers\Supplier\ProductController::class, 'storeInventory'])->name('supplier.products.store.inventory');
 Route::post('/products/update/{post_id}',[App\Http\Controllers\Supplier\ProductController::class, 'update'])->name('supplier.products.update');
 Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'delete'])->name('supplier.products.delete');
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);

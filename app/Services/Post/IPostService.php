@@ -24,6 +24,11 @@ interface IPostService extends IBaseService
      * @return Post  post
      */
     public function store_product_general(Request $request , int $post_id);
+     /** stores  product inventory info  in posts wordpress table
+     * @param Request $request
+     * @return Post  post
+     */
+    public function store_product_inventory(Request $request , int $post_id);
      /** update product's data  in posts wordpress table
      * @param Request $request
      * @param $post_id

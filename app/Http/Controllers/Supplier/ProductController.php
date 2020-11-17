@@ -67,6 +67,11 @@ class ProductController extends Controller
         //TOOD Add toaster
         return redirect()->route('supplier.products.create',$product->ID);
     }
+    public function storeInventory(Request $request){
+        $product =  $this->post_service->store_product_inventory($request,$request->post_id);
+        //TOOD Add toaster
+        return redirect()->route('supplier.products.create',$product->ID);
+    }
 
     public function update(Request $request,$post_id){
         $product =  $this->post_service->update_product($request,$post_id);
