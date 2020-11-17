@@ -18,7 +18,7 @@ if($product)
             </span>
             <span class="option-label">
                 <span class="option-head">
-                    <span class="option-title">بسيط</span>
+                    <span class="option-title">قياس واحد</span>
                     <span class="option-focus"></span>
                 </span>
                 <span class="option-body">some descriptoin about this type</span>
@@ -35,7 +35,7 @@ if($product)
             </span>
             <span class="option-label">
                 <span class="option-head">
-                    <span class="option-title">متحول</span>
+                    <span class="option-title">عدة قياسات</span>
                     <span class="option-focus"></span>
                 </span>
                 <span class="option-body">some descriptoin about this type</span>

@@ -35,8 +35,8 @@ class PostService extends BaseService implements IPostService
             'post_author'=>\Auth::user()->wordpress_user->ID,
             'post_date'=>now(),
             'post_date_gmt'=>now(),
-            'post_content'=>$request->product_description,
-            'post_title'=>$request->product_name,
+            'post_content'=>$request->post_content,
+            'post_title'=>$request->post_title,
             'post_status'=>'publish',
             'comment_status'=>'closed',
             'ping_status'=>'closed',
@@ -56,7 +56,7 @@ class PostService extends BaseService implements IPostService
         $term_taxonomy_id = 0;
         if($request->product_type == 'simple'){
             $term_taxonomy_id = 2;
-            $this->saveProductSimpleAttributes($request,$post);
+            //$this->saveProductSimpleAttributes($request,$post);
         }
         else if($request->product_type=='variable'){
             $term_taxonomy_id = 4;
@@ -67,14 +67,13 @@ class PostService extends BaseService implements IPostService
             'term_taxonomy_id'=>$term_taxonomy_id,
             'term_order'=>0
         ]);
-        //save product category
-        TermRelation::create([
-            'object_id'=>$post->ID,
-            'term_taxonomy_id'=>$request->product_category,
-            'term_order'=>0
-        ]);
+        // //save product category
+        // TermRelation::create([
+        //     'object_id'=>$post->ID,
+        //     'term_taxonomy_id'=>$request->product_category,
+        //     'term_order'=>0
+        // ]);
 
-        // save product attributes
 
         return $post;
 
@@ -123,11 +122,19 @@ class PostService extends BaseService implements IPostService
                     'term_order'=>0
                 ]);
             }
-
-
-
     }
-
+    public function store_product_general(Request $request , int $post_id){
+        $post = $this->find_product_for_supplier($post_id,$request->post_author);
+        if($post){
+            $this->creatPostMeta($post->ID,'_regular_price',$request->_regular_price);
+            $this->creatPostMeta($post->ID,'_sale_price',$request->_sale_price);
+            $this->creatPostMeta($post->ID,'material',$request->material);
+            $this->creatPostMeta($post->ID,'thickness',$request->thickness);
+            $this->creatPostMeta($post->ID,'printing_single',$request->printing_single);
+            $this->creatPostMeta($post->ID,'size',$request->size);
+        }
+        return $post;        
+    }
     /** get all products for a supplier
      * @param $post_author the wordpress user id for a supplier
      * @return Collection of posts which represents the products for a supplier

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\Post\IPostService;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ProductController extends Controller
 {
@@ -31,16 +32,22 @@ class ProductController extends Controller
                 ->with('products',$products);
     }
 
-    public function create(){
+    public function create($id=0){
+        
         $categories = TermTaxonomy::categories()->get();
         $attributes =$this->term_taxonomy_service->attributes();
+        $product = null;
+        if($id!=0)
+        {
+            $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
+        }
+
         return view('supplier.products.create2')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
-                ->with('product',null);
+                ->with('product',$product);
     }
     public function edit(int $id){
-
         $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->id);
         $categories = TermTaxonomy::categories()->get();
         return view('supplier.products.edit')
@@ -49,11 +56,18 @@ class ProductController extends Controller
 
     }
 
-    public function store(StoreProductRequest $request){
+    public function store(Request $request){
         $product =  $this->post_service->store_product($request);
         //TOOD Add toaster
-        return redirect()->route('supplier.products.index');
+        return redirect()->route('supplier.products.create',$product->ID);
     }
+
+    public function storeGeneral(Request $request){
+        $product =  $this->post_service->store_product_general($request,$request->post_id);
+        //TOOD Add toaster
+        return redirect()->route('supplier.products.create',$product->ID);
+    }
+
     public function update(Request $request,$post_id){
         $product =  $this->post_service->update_product($request,$post_id);
         //TOOD Add toaster

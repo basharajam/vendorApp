@@ -7,13 +7,14 @@
     <div class="kt-portlet__body">
         <form action="{{ route('supplier.products.store') }}" method="post">
             @csrf
+            @include('supplier.products.components.product_type_card',['product'=>$product])
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label class="font-size-h6 font-weight-bolder text-dark">
                             <span>اسم المنتج</span>
                         </label>
-                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('post_title') is-invalid @enderror" type="text" placeholder="" name="post_title" value="{{ old('post_title') }}"   />
+                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('post_title') is-invalid @enderror" type="text" placeholder="" name="post_title" value="{{ $product->post_title  ?? old('post_title') }}"   />
                         @error('post_title')
                         <div class="fv-plugins-message-container">
                             <div  class="fv-help-block">{{ $message }}</div>
@@ -22,8 +23,23 @@
 
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
+                            <span>وصف المنتج</span>
+                            <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
+                        </label>
+                        <textarea id="editor" class="form-control @error('post_content') is-invalid @enderror" name="post_content">
+                            {{ $product->post_content  ?? ''}}
+                        </textarea>
+                        @error('post_content')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            @include('supplier.products.components.product_type_card',['product'=>null])
             <div class="form-group row mt-10 mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary ">
