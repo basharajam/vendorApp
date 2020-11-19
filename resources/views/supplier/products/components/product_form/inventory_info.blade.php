@@ -11,11 +11,12 @@ if($product){
         </div>
     </div>
     <div class="kt-portlet__body">
-        <form action="{{ route('supplier.products.store.inventory') }}" method="post">
+        <form action="{{ route('supplier.products.store') }}" method="post">
             @csrf
             <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
             <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
             <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+            <input type="hidden" name="request_type" value="inventory">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">

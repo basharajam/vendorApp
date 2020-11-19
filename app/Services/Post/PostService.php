@@ -133,9 +133,9 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'printing_single',$request->printing_single);
             $this->creatPostMeta($post->ID,'size',$request->size);
             $this->creatPostMeta($post->ID,'supplier_name',$request->supplier_name);
-            
+
         }
-        return $post;        
+        return $post;
     }
 
     public function store_product_inventory(Request $request , int $post_id){
@@ -151,7 +151,19 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'price_for_input',$request->price_for_input);
             $this->creatPostMeta($post->ID,'mix_of_package',$request->mix_of_package);
         }
-        return $post;        
+        return $post;
+    }
+    public function store_product_shipping(Request $request , int $post_id){
+        $post = $this->find_product_for_supplier($post_id,$request->post_author);
+        if($post){
+            $this->creatPostMeta($post->ID,'_weight',$request->_weight);
+            $this->creatPostMeta($post->ID,'_length',$request->_length);
+            $this->creatPostMeta($post->ID,'_width',$request->_width);
+            $this->creatPostMeta($post->ID,'_height',$request->_height);
+            $this->creatPostMeta($post->ID,'cbm_single',$request->cbm_single);
+            $this->creatPostMeta($post->ID,'days_to_delivery',$request->days_to_delivery);
+        }
+        return $post;
     }
     /** get all products for a supplier
      * @param $post_author the wordpress user id for a supplier

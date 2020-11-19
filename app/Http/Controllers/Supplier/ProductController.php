@@ -57,21 +57,25 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        $product =  $this->post_service->store_product($request);
+        $product = null;
+        switch($request->request_type){
+            case "product":
+                $product =  $this->post_service->store_product($request);
+            break;
+            case "general":
+                $product =  $this->post_service->store_product_general($request,$request->post_id);
+            break;
+            case "inventory":
+                $product =  $this->post_service->store_product_inventory($request,$request->post_id);
+            break;
+            case "shipping":
+                $product =  $this->post_service->store_product_shipping($request,$request->post_id);
+            break;
+        }
         //TOOD Add toaster
-        return redirect()->route('supplier.products.create',$product->ID);
+        return redirect()->route('supplier.products.create',$product->ID ?? 0);
     }
 
-    public function storeGeneral(Request $request){
-        $product =  $this->post_service->store_product_general($request,$request->post_id);
-        //TOOD Add toaster
-        return redirect()->route('supplier.products.create',$product->ID);
-    }
-    public function storeInventory(Request $request){
-        $product =  $this->post_service->store_product_inventory($request,$request->post_id);
-        //TOOD Add toaster
-        return redirect()->route('supplier.products.create',$product->ID);
-    }
 
     public function update(Request $request,$post_id){
         $product =  $this->post_service->update_product($request,$post_id);

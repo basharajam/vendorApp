@@ -7,6 +7,7 @@
     <div class="kt-portlet__body">
         <form action="{{ route('supplier.products.store') }}" method="post">
             @csrf
+            <input type="hidden" name="request_type" value="product">
             @include('supplier.products.components.product_type_card',['product'=>$product])
             <div class="row">
                 <div class="col-lg-12">
