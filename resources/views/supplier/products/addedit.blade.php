@@ -67,7 +67,7 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
             <div class="row">
                 <div class="col-xl-12">
-                   @include('supplier.products.components.product_form.product_type')
+                   @include('supplier.products.components.product_form.product_main')
                    @include('supplier.products.components.product_form.general_info')
                    @include('supplier.products.components.product_form.inventory_info')
                    @include('supplier.products.components.product_form.shipping_info')
