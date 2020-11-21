@@ -125,6 +125,7 @@ class PostService extends BaseService implements IPostService
     }
     public function store_product_general(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
+
         if($post){
             $this->creatPostMeta($post->ID,'_regular_price',$request->_regular_price);
             $this->creatPostMeta($post->ID,'_sale_price',$request->_sale_price);
@@ -162,6 +163,19 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'_height',$request->_height);
             $this->creatPostMeta($post->ID,'cbm_single',$request->cbm_single);
             $this->creatPostMeta($post->ID,'days_to_delivery',$request->days_to_delivery);
+        }
+        return $post;
+    }
+    public function store_product_attributes(Request $request , int $post_id){
+        $post = $this->find_product_for_supplier($post_id,$request->post_author);
+        if($post){
+          foreach($request->taxonomies_relation as $term_taxonomy_id){
+            TermRelation::create([
+                'object_id'=>$post->ID,
+                'term_taxonomy_id'=>$term_taxonomy_id,
+                'term_order'=>0
+            ]);
+          }
         }
         return $post;
     }

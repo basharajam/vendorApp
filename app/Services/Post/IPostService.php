@@ -37,6 +37,14 @@ interface IPostService extends IBaseService
     public function store_product_shipping(Request $request , int $post_id);
 
 
+
+    /** stores  product attributes  in posts wordpress table
+     * @param Request $request
+     * @return Post  post
+     */
+    public function store_product_attributes(Request $request , int $post_id);
+
+
      /** update product's data  in posts wordpress table
      * @param Request $request
      * @param $post_id

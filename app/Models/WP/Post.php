@@ -9,7 +9,7 @@ class Post extends Model
     protected $table="wpug_posts";
     protected $primaryKey="ID";
 
-    protected $appends = ['meta','category','product_type'];
+    protected $appends = ['meta','category','product_type','product_attributes'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -53,6 +53,15 @@ class Post extends Model
                                             ->pluck('term_taxonomy_id'))
                                 ->whereIn('taxonomy',['product_type'])
                                 ->first();
+    }
+    public function getProductAttributesAttribute(){
+        return    TermTaxonomy::whereIn('term_taxonomy_id',
+                                TermRelation::where('object_id',$this->ID)
+                                            ->pluck('term_taxonomy_id'))
+                                ->where('taxonomy','like','pa_%')
+                                // ->groupBy('taxonomy')
+                                ->get();
+
     }
     public function getMetaAttribute(){
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();

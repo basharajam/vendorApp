@@ -33,7 +33,7 @@ class ProductController extends Controller
     }
 
     public function create($id=0){
-        
+
         $categories = TermTaxonomy::categories()->get();
         $attributes =$this->term_taxonomy_service->attributes();
         $product = null;
@@ -71,6 +71,9 @@ class ProductController extends Controller
             case "shipping":
                 $product =  $this->post_service->store_product_shipping($request,$request->post_id);
             break;
+            case "attributes":
+                $product =  $this->post_service->store_product_attributes($request,$request->post_id);
+            break;
         }
         //TOOD Add toaster
         return redirect()->route('supplier.products.create',$product->ID ?? 0);
@@ -99,7 +102,12 @@ class ProductController extends Controller
         }
     }
     public function getAttributeSelector(Request $request){
-        $taxonomy = TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
-        return view('supplier.products.components.product_form.attribute_selector')->with('taxonomy',$taxonomy);
+        $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
+       return view('supplier.products.components.product_form.attribute_selector')->with('taxonomy',$taxonomy);
+    }
+
+    public function getTaxonomyTerms(Request $request){
+        $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
+        return $taxonomy->terms;
     }
 }

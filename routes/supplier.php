@@ -23,6 +23,7 @@ Route::post('/products/update/{post_id}',[App\Http\Controllers\Supplier\ProductC
 Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'delete'])->name('supplier.products.delete');
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);
 Route::post('/product/getAttributeSelector',[App\Http\Controllers\Supplier\ProductController::class, 'getAttributeSelector'])->name('supplier.products.getAttributeSelector');
+Route::post('/product/getTaxonomyTerms',[App\Http\Controllers\Supplier\ProductController::class, 'getTaxonomyTerms'])->name('supplier.products.getTaxonomyTerms');
 
 
 
