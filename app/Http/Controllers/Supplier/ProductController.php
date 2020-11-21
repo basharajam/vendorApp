@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function create($id=0){
 
-        $categories = TermTaxonomy::categories()->get();
+        $categories = $this->term_taxonomy_service->categories();
         $attributes =$this->term_taxonomy_service->attributes();
         $product = null;
         if($id!=0)
@@ -73,6 +73,9 @@ class ProductController extends Controller
             break;
             case "attributes":
                 $product =  $this->post_service->store_product_attributes($request,$request->post_id);
+            break;
+            case "categories":
+                $product =  $this->post_service->store_product_categories($request,$request->post_id);
             break;
         }
         //TOOD Add toaster

@@ -179,6 +179,23 @@ class PostService extends BaseService implements IPostService
         }
         return $post;
     }
+    public function store_product_categories(Request $request , int $post_id){
+        $post = $this->find_product_for_supplier($post_id,$request->post_author);
+        if($post){
+          foreach($request->product_categories as $term_taxonomy_id){
+            TermRelation::updateOrCreate(
+                [
+                    'term_taxonomy_id'=>$term_taxonomy_id,
+                    'object_id'=>$post->ID,
+                ]
+                ,[
+                'object_id'=>$post->ID,
+                'term_order'=>0
+            ]);
+          }
+        }
+        return $post;
+    }
     /** get all products for a supplier
      * @param $post_author the wordpress user id for a supplier
      * @return Collection of posts which represents the products for a supplier

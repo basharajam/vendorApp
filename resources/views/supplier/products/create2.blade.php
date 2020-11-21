@@ -8,8 +8,8 @@
             <i class="la la-close"></i>
         </button>
         <!--End:: App Aside Mobile Toggle-->
-
-        <!--Begin:: App Aside-->
+        <div style="display: flex;flex-direction:column">
+               <!--Begin:: App Aside-->
         <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
             <div class="kt-portlet kt-portlet--height-fluid-">
                 <div class="kt-portlet__body">
@@ -40,6 +40,28 @@
             </div>
         </div>
         <!--End:: App Aside-->
+        <!--Begin:: App Aside-->
+        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
+            <div class="kt-portlet kt-portlet--height-fluid-">
+
+                <div class="kt-portlet__body">
+                    <div class="kt-widget kt-widget--user-profile-4" >
+                        <div class="kt-widget__head">
+                            <div class="kt-widget__content">
+                                <div class="kt-widget__section">
+                                    <a href="#" class="kt-widget__username" id="">
+                                        الاصناف Categories
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @include('supplier.products.components.product_form.categories_selector')
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End:: App Aside-->
+        </div>
 
         <!--Begin:: App Content-->
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">

@@ -9,7 +9,7 @@ class Post extends Model
     protected $table="wpug_posts";
     protected $primaryKey="ID";
 
-    protected $appends = ['meta','category','product_type','product_attributes'];
+    protected $appends = ['meta','categories','product_type','product_attributes'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -40,12 +40,12 @@ class Post extends Model
     public function scopeProducts($query){
         return $query->where('post_type','product');
     }
-    public function getCategoryAttribute(){
+    public function getCategoriesAttribute(){
       return    TermTaxonomy::whereIn('term_taxonomy_id',
                             TermRelation::where('object_id',$this->ID)
                                         ->pluck('term_taxonomy_id'))
-                            ->whereIn('taxonomy',['category'])
-                            ->first();
+                            ->whereIn('taxonomy',['product_cat'])
+                            ->get();
     }
     public function getProductTypeAttribute(){
         return    TermTaxonomy::whereIn('term_taxonomy_id',
