@@ -6,8 +6,8 @@
                 <div class="font-weight-bold text-muted">Product </div>
             </th>
             <th class="">
-                <span>فئة المنتج</span>
-                <div class="font-weight-bold text-muted">Product Category</div>
+                <span>فئات المنتج</span>
+                <div class="font-weight-bold text-muted">Product Categories</div>
             </th>
             <th class="">
                 <span>السعر</span>
@@ -49,8 +49,8 @@
                                        {{$product->post_title}}
                                 </div>
                                 <span  class="text-muted font-weight-bold text-hover-primary ">
-                                    @if($meta && count($meta)>0 && array_key_exists('product_number',$meta))
-                                    {{ $meta['product_number'] }}
+                                    @if($meta && count($meta)>0 && array_key_exists('supplier_name',$meta))
+                                    {{ $meta['supplier_name'] }}
                                  @endif
                                 </span>
                             </div>
@@ -61,17 +61,19 @@
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                             @if($product->category)
-                             {{ $product->category->term->name }}
-                             @endif
+                             @foreach($product->categories as $category)
+                             <span class="m-2 label font-weight-bold label-lg label-light-default label-inline">
+                                {{ $category->term->name }}
+                            </span>
+                             @endforeach
                         </div>
                     </span>
                 </td>
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('product_price',$meta))
-                            {{ $meta['product_price'] }}
+                            @if($meta && count($meta)>0 && array_key_exists('_regular_price',$meta))
+                            {{ $meta['_regular_price'] }}
                          @endif
                         </div>
                     </span>
@@ -79,8 +81,8 @@
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('product_price_after_discount',$meta))
-                            {{ $meta['product_price_after_discount'] }}
+                            @if($meta && count($meta)>0 && array_key_exists('_sale_price',$meta))
+                            {{ $meta['_sale_price'] }}
                          @endif
                         </div>
                     </span>
@@ -88,8 +90,8 @@
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('product_size',$meta))
-                            {{ $meta['product_size'] }}
+                            @if($meta && count($meta)>0 && array_key_exists('size',$meta))
+                            {{ $meta['size'] }}
                          @endif
                         </div>
                     </span>
@@ -97,8 +99,8 @@
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('weight',$meta))
-                            {{ $meta['weight'] }}
+                            @if($meta && count($meta)>0 && array_key_exists('_weight',$meta))
+                            {{ $meta['_weight'] }}
                          @endif
                         </div>
                     </span>
@@ -106,8 +108,8 @@
                 <td class="datatable-cell-sorted datatable-cell">
                     <span>
                         <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('cbm',$meta))
-                            {{ $meta['cbm'] }}
+                            @if($meta && count($meta)>0 && array_key_exists('cbm_single',$meta))
+                            {{ $meta['cbm_single'] }}
                          @endif
                         </div>
                     </span>
