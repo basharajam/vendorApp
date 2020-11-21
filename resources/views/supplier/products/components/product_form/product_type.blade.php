@@ -8,6 +8,7 @@
         <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="request_type" value="product">
+            <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
             @include('supplier.products.components.product_type_card',['product'=>$product])
             <div class="row">
                 <div class="col-lg-12">

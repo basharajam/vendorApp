@@ -22,7 +22,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                        Product Name
+                                   {{$product->post_title ?? 'Product Name '}}
                                     </a>
                                 </div>
                             </div>

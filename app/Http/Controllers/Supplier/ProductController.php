@@ -60,7 +60,11 @@ class ProductController extends Controller
         $product = null;
         switch($request->request_type){
             case "product":
-                $product =  $this->post_service->store_product($request);
+                if($request->post_id == 0)
+                    $product =  $this->post_service->store_product($request);
+                else{
+                    $product =  $this->post_service->update_product($request,$request->post_id);
+                }
             break;
             case "general":
                 $product =  $this->post_service->store_product_general($request,$request->post_id);
@@ -79,7 +83,7 @@ class ProductController extends Controller
             break;
         }
         //TOOD Add toaster
-        return redirect()->route('supplier.products.create',$product->ID ?? 0);
+        return redirect()->route('supplier.products.create',$product->ID ?? $request->post_id  ??  0);
     }
 
 
