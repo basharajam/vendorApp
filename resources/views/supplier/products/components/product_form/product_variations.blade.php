@@ -53,12 +53,23 @@ if($product){
                         </div>
                     </div>
                 @endforeach
+                @if($product_attributes)
                 <div class="col"  >
                     <button type="submit" class="btn btn-primary ">
                         حفظ
                         <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
                     </button>
                 </div>
+                @else
+                <div class="alert alert-custom alert-light-info fade show mb-5 w-100" role="alert">
+                    <div class="alert-icon">
+                        <i class="flaticon-warning"></i>
+                    </div>
+                    <div class="alert-text mr-10" style="text-align: right">Please select product's attributes then add variations!</div>
+
+                </div>
+
+                @endif
             </div>
         </div>
         <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
