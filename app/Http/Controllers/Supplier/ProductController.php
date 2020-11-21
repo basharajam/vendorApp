@@ -86,12 +86,6 @@ class ProductController extends Controller
         return redirect()->route('supplier.products.create',$product->ID ?? $request->post_id  ??  0);
     }
 
-
-    public function update(Request $request,$post_id){
-        $product =  $this->post_service->update_product($request,$post_id);
-        //TOOD Add toaster
-        return redirect()->route('supplier.products.index');
-    }
     public function delete(int $id){
         return $this->post_service->delete($id);
     }
