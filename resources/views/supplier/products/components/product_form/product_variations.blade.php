@@ -5,7 +5,7 @@ if($product){
 }
 @endphp
 
-<div class="kt-portlet" id="ProducVariations" style="" >
+<div class="kt-portlet" id="ProductVariations" style="display:none" >
     <div class="kt-portlet__head align-items-center d-flex justify-content-between" >
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">Product Variations</h3>

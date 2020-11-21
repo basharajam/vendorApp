@@ -122,6 +122,7 @@
         ShippingInfo.hide();
         AttributesInfo.hide();
         ProductVariations.hide();
+        cmdProductVariations.hide();
         //functions
         function hideAll(){
             //product type
@@ -155,6 +156,22 @@
                 ProductVariations.slideUp(1000);
             }
         }
+        function hideSimpleFormOptions(){
+            //product general info
+            cmdGeneralInfo.slideUp(1000);
+            //product inventory info
+            cmdInventoryInfo.slideUp(1000)
+            //product shipping info
+            cmdShippingInfo.slideUp(1000);
+        }
+        function displaySimpleFormOptions(){
+            //product general info
+            cmdGeneralInfo.slideDown(1000);
+            //product inventory info
+            cmdInventoryInfo.slideDown(1000)
+            //product shipping info
+            cmdShippingInfo.slideDown(1000);
+        }
         //events
         $(".cmdPage").on("click",function (e) {
                 Offcanvas.hide();
@@ -163,6 +180,22 @@
                 window.location.hash = $(this).attr("data-target");
                 $("#"+$(this).attr("data-target")).slideDown(1000);
                 $(this).addClass("kt-widget__item--active");
+        });
+        $('input[type=radio][name=product_type]').change(function() {
+            if (this.value == 'variable') {
+                Offcanvas.hide();
+                hideAll();
+                hideSimpleFormOptions();
+                cmdProductVariations.slideDown(1000);
+                window.location.hash = "ProductVariations";
+                $("#ProductVariations").slideDown(1000);
+                $("cmdProductVariations").addClass("kt-widget__item--active");
+            }
+            else if (this.value == 'simple') {
+                displaySimpleFormOptions();
+                $("#ProductVariations").slideUp(1000);
+                cmdProductVariations.slideUp(1000);
+            }
         });
 
     });
