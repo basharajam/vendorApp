@@ -183,13 +183,8 @@
         });
         $('input[type=radio][name=product_type]').change(function() {
             if (this.value == 'variable') {
-                Offcanvas.hide();
-                hideAll();
                 hideSimpleFormOptions();
                 cmdProductVariations.slideDown(1000);
-                window.location.hash = "ProductVariations";
-                $("#ProductVariations").slideDown(1000);
-                $("cmdProductVariations").addClass("kt-widget__item--active");
             }
             else if (this.value == 'simple') {
                 displaySimpleFormOptions();
