@@ -32,7 +32,7 @@ class ProductController extends Controller
                 ->with('products',$products);
     }
 
-    public function create($id=0){
+    public function addedit($id=0){
 
         $categories = $this->term_taxonomy_service->categories();
         $attributes =$this->term_taxonomy_service->attributes();
@@ -42,18 +42,10 @@ class ProductController extends Controller
             $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
         }
 
-        return view('supplier.products.create2')
+        return view('supplier.products.addedit')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
                 ->with('product',$product);
-    }
-    public function edit(int $id){
-        $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->id);
-        $categories = TermTaxonomy::categories()->get();
-        return view('supplier.products.edit')
-                ->with('categories',$categories)
-                ->with('product',$product);
-
     }
 
     public function store(Request $request){
