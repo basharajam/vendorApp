@@ -11,7 +11,7 @@
                 <option value="{{ $term->term_taxonomy_id }}" @if($taxonomy->term_taxonomy_id==$term->term_taxonomy_id) selected @endif>{{ $term->term->name }}</option>
                 @endforeach
             </select>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success add_new_term" data-taxonomy-type="{{ $taxonomy->taxonomy }}">
                 Add New
             </button>
         </div>

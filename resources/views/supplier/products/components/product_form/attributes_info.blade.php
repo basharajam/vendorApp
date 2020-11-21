@@ -67,8 +67,8 @@ if($product){
 @push('scripts')
 
     <script>
-
-        function _initTagsInput(terms){
+            let term_modal = `{!! view('supplier.attributes.components.term_modal',['taxonomy_type'=>null,'type'=>'attributes']) !!}`;
+           function _initTagsInput(terms){
 
         }
         function getTaxonomyTerms(term_taxonomy_id){
@@ -123,6 +123,12 @@ if($product){
             }
            );
         });
+        $(document).on('click','.add_new_term',function(e){
+            let taxonomy_type = $(this).attr('data-taxonomy-type');
+            $('body').prepend(term_modal);
+            document.getElementById('taxonomy_type').value = taxonomy_type;
+            $("#AddTermModal").modal('show');
+        })
 
     </script>
 

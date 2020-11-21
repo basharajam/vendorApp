@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                <form method="POST" action="{{ route('supplier.terms.store') }}">
-                <input type="hidden" name="taxonomy" value="{{ $taxonomy_type }}">
+                <input type="hidden" name="taxonomy" id="taxonomy_type" value="{{ $taxonomy_type  ?? ''}}">
                 @include('supplier.taxonomies.components.taxonomy_form',['taxonomy'=>null])
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
