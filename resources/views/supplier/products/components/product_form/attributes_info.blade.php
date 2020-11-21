@@ -46,8 +46,8 @@ if($product){
                 <div class="spinner spinner-primary spinner-lg mr-15" style=""></div>
             </div>
             <div class="row" id="attributes_container">
-                @foreach($product_attributes as $p_attribute)
-                @include('supplier.products.components.product_form.attribute_selector',['taxonomy'=>$p_attribute])
+                @foreach($product_attributes as $key => $p_attribute)
+                @include('supplier.products.components.product_form.attribute_selector',['taxonomy'=>$key,'terms'=>$p_attribute[0]->terms,'selected_terms'=>$p_attribute])
                 @endforeach
             </div>
             <div class="form-group row mt-10 mb-0">

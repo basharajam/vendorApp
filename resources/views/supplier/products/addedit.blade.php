@@ -33,6 +33,7 @@
                             <a id="cmdInventoryInfo" data-target="InventoryInfo" class="cmdPage kt-widget__item">معلومات المخزن</a>
                             <a id="cmdShippingInfo" data-target="ShippingInfo" class="cmdPage kt-widget__item">معلومات الشحن</a>
                             <a id="cmdAttributesInfo" data-target="AttributesInfo" class="cmdPage kt-widget__item">سمات المنتج</a>
+                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item">Product Variations</a>
 
                         </div>
                     </div>
@@ -72,6 +73,7 @@
                    @include('supplier.products.components.product_form.inventory_info')
                    @include('supplier.products.components.product_form.shipping_info')
                    @include('supplier.products.components.product_form.attributes_info')
+                   @include('supplier.products.components.product_form.product_variations')
                 </div>
             </div>
         </div>
@@ -99,23 +101,27 @@
         let cmdInventoryInfo = $("#cmdInventoryInfo");
         let cmdShippingInfo = $("#cmdShippingInfo");
         let cmdAttributesInfo = $("#cmdAttributesInfo");
+        let cmdProductVariations = $("#cmdProductVariations");
         // sections
         let Productype = $("#Productype");
         let GeneralInfo = $("#GeneralInfo");
         let InventoryInfo = $("#InventoryInfo");
         let ShippingInfo = $("#ShippingInfo");
         let AttributesInfo = $("#AttributesInfo");
+        let ProductVariations = $("#ProductVariations");
         // forms
         let FormProductype = Productype.find('form');
         let FormGeneralInfo = GeneralInfo.find('form');
         let FormInventoryInfo = InventoryInfo.find('form');
         let FromShippingInfo = ShippingInfo.find('form');
         let FromAttributesInfo= AttributesInfo.find('form');
+        let FromProductVariations= ProductVariations.find('form');
         //hide sections
         GeneralInfo.hide();
         InventoryInfo.hide();
         ShippingInfo.hide();
         AttributesInfo.hide();
+        ProductVariations.hide();
         //functions
         function hideAll(){
             //product type
@@ -142,6 +148,11 @@
             if(cmdAttributesInfo.hasClass("kt-widget__item--active")) {
                 cmdAttributesInfo.removeClass("kt-widget__item--active");
                 AttributesInfo.slideUp(1000);
+            }
+            //product variations
+            if(cmdProductVariations.hasClass("kt-widget__item--active")) {
+                cmdProductVariations.removeClass("kt-widget__item--active");
+                ProductVariations.slideUp(1000);
             }
         }
         //events

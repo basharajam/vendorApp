@@ -17,12 +17,11 @@ Route::post('/support/store',[App\Http\Controllers\Supplier\SupportController::c
 Route::get('/products',[App\Http\Controllers\Supplier\ProductController::class, 'index'])->name('supplier.products.index');
 Route::get('/products/addedit/{id?}',[App\Http\Controllers\Supplier\ProductController::class, 'addedit'])->name('supplier.products.create');
 Route::post('/products/store',[App\Http\Controllers\Supplier\ProductController::class, 'store'])->name('supplier.products.store');
-
 Route::get('/products/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class, 'delete'])->name('supplier.products.delete');
 Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductController::class, 'getForm']);
 Route::post('/product/getAttributeSelector',[App\Http\Controllers\Supplier\ProductController::class, 'getAttributeSelector'])->name('supplier.products.getAttributeSelector');
 Route::post('/product/getTaxonomyTerms',[App\Http\Controllers\Supplier\ProductController::class, 'getTaxonomyTerms'])->name('supplier.products.getTaxonomyTerms');
-
+Route::post('/products/variations/store',[App\Http\Controllers\Supplier\ProductController::class, 'storeVariation'])->name('supplier.products.variation.store');
 
 
 //(Categories)

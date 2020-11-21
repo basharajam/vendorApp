@@ -56,12 +56,10 @@ class Post extends Model
     }
     public function getProductAttributesAttribute(){
         return    TermTaxonomy::whereIn('term_taxonomy_id',
-                                TermRelation::where('object_id',$this->ID)
-                                            ->pluck('term_taxonomy_id'))
+                                    TermRelation::where('object_id',$this->ID)
+                                                ->pluck('term_taxonomy_id'))
                                 ->where('taxonomy','like','pa_%')
-                                // ->groupBy('taxonomy')
-                                ->get();
-
+                                ->get()->groupBy('taxonomy');
     }
     public function getMetaAttribute(){
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();

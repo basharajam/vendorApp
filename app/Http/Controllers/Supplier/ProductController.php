@@ -41,7 +41,7 @@ class ProductController extends Controller
         {
             $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
         }
-
+        //dd($product->product_attributes);
         return view('supplier.products.addedit')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
@@ -102,5 +102,8 @@ class ProductController extends Controller
     public function getTaxonomyTerms(Request $request){
         $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
         return $taxonomy->terms;
+    }
+    public function storeVariation(Request $request){
+        return $request;
     }
 }
