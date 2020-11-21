@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="kt-portlet__body">
-        <form action="{{ route('supplier.products.store') }}" method="post">
+        <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="request_type" value="product">
             @include('supplier.products.components.product_type_card',['product'=>$product])
@@ -38,6 +38,15 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
+                            <span>صورة المنتج</span>
+                        </label>
+                       <input type="file" name="product_image" class="form-control" >
+
                     </div>
                 </div>
             </div>

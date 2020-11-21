@@ -192,8 +192,10 @@ class PostService extends BaseService implements IPostService
                 'object_id'=>$post->ID,
                 'term_order'=>0
             ]);
+
           }
         }
+
         return $post;
     }
     /** get all products for a supplier
@@ -223,9 +225,7 @@ class PostService extends BaseService implements IPostService
         //delete term relation
         $terms = TermRelation::where('object_id',$id)->get();
         if($terms){
-            foreach($terms as $term){
-                $term->delete();
-            }
+            \DB::delete("DELETE From wpug_term_relationships where object_id =".$id);
         }
         $post_meta = PostMeta::where('post_id',$id)->get();
         if($post_meta){
