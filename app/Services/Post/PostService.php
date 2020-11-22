@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\WP\Post;
 use App\Models\WP\PostMeta;
 use App\Models\WP\TermRelation;
+use Illuminate\Validation\Rules\Exists;
+
 /**
  * Class PostService
  * @package App\Services\Post
@@ -151,11 +153,15 @@ class PostService extends BaseService implements IPostService
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
         if($post){
           foreach($request->taxonomies_relation as $term_taxonomy_id){
-            TermRelation::create([
-                'object_id'=>$post->ID,
-                'term_taxonomy_id'=>$term_taxonomy_id,
-                'term_order'=>0
-            ]);
+            $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
+            if($exists==null){
+                TermRelation::create([
+                    'object_id'=>$post->ID,
+                    'term_taxonomy_id'=>$term_taxonomy_id,
+                    'term_order'=>0
+                ]);
+            }
+
           }
         }
         return $post;

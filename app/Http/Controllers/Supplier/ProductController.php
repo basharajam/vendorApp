@@ -96,7 +96,10 @@ class ProductController extends Controller
     }
     public function getAttributeSelector(Request $request){
         $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
-       return view('supplier.products.components.product_form.attribute_selector')->with('taxonomy',$taxonomy);
+       return view('supplier.products.components.product_form.attribute_selector')
+        ->with('taxonomy',$taxonomy->taxonomy)
+        ->with('terms',$taxonomy->terms)
+        ->with('selected_terms',collect());
     }
 
     public function getTaxonomyTerms(Request $request){
