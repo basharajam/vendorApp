@@ -30,11 +30,10 @@
                         <div class="kt-widget__body">
                             <a id="cmdProductType" data-target="Productype" class="cmdPage kt-widget__item kt-widget__item--active">نوع المنتج</a>
                             <a id="cmdGeneralInfo" data-target="GeneralInfo" class="cmdPage kt-widget__item">معلومات المنتج العامة</a>
-                            <a id="cmdInventoryInfo" data-target="InventoryInfo" class="cmdPage kt-widget__item">معلومات المخزن</a>
-                            <a id="cmdShippingInfo" data-target="ShippingInfo" class="cmdPage kt-widget__item">معلومات الشحن</a>
+                            <a id="cmdInventoryInfo" data-target="InventoryInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات المخزن</a>
+                            <a id="cmdShippingInfo" data-target="ShippingInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات الشحن</a>
                             <a id="cmdAttributesInfo" data-target="AttributesInfo" class="cmdPage kt-widget__item">سمات المنتج</a>
-                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item">Product Variations</a>
-
+                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item"  @if($product==null || ($product && $product->product_type->term->name!=\ProductTypes::VARIABLE)) style="display:none" @endif>Product Variations</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +121,7 @@
         ShippingInfo.hide();
         AttributesInfo.hide();
         ProductVariations.hide();
-        cmdProductVariations.hide();
+        // cmdProductVariations.hide();
         //functions
         function hideAll(){
             //product type
@@ -172,6 +171,17 @@
             //product shipping info
             cmdShippingInfo.slideDown(1000);
         }
+        function productTypeChanged(value){
+            if (value == 'variable') {
+                hideSimpleFormOptions();
+                cmdProductVariations.slideDown(1000);
+            }
+            else if (value == 'simple') {
+                displaySimpleFormOptions();
+                $("#ProductVariations").slideUp(1000);
+                cmdProductVariations.slideUp(1000);
+            }
+        }
         //events
         $(".cmdPage").on("click",function (e) {
                 Offcanvas.hide();
@@ -181,16 +191,10 @@
                 $("#"+$(this).attr("data-target")).slideDown(1000);
                 $(this).addClass("kt-widget__item--active");
         });
+
         $('input[type=radio][name=product_type]').change(function() {
-            if (this.value == 'variable') {
-                hideSimpleFormOptions();
-                cmdProductVariations.slideDown(1000);
-            }
-            else if (this.value == 'simple') {
-                displaySimpleFormOptions();
-                $("#ProductVariations").slideUp(1000);
-                cmdProductVariations.slideUp(1000);
-            }
+            productTypeChanged(this.value);
+
         });
 
     });
