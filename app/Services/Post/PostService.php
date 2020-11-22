@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\WP\Post;
 use App\Models\WP\PostMeta;
 use App\Models\WP\TermRelation;
+use App\Models\WP\TermTaxonomy;
 use Illuminate\Validation\Rules\Exists;
 
 /**
@@ -71,6 +72,60 @@ class PostService extends BaseService implements IPostService
 
         return $post;
 
+    }
+
+    /** stores new product variation in posts wordpress table
+     * @param Request $request
+     * @return Post created post
+     */
+    public function store_product_variation(Request $request){
+        $post_parent = $this->find_product_for_supplier($request->post_parent,\Auth::user()->wordpress_user->ID);
+        $post_title_appendix = ' - ';
+        $attributes_values = $request->attributes_values;
+        $post_excerpt = '';
+        foreach($attributes_values as $key => $attribute){
+            //attribute is the term_taxonomy_id
+            $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+            $post_excerpt .=str_replace('pa_','',$taxonomy->taxonomy).": ".$taxonomy->term->name;
+            $post_title_appendix .= $taxonomy->term->name;
+            if(next($attributes_values)){
+                $post_title_appendix.=' , ';
+                $post_excerpt.="\n";
+            }
+        }
+        $post_title = $post_parent->post_title .$post_title_appendix;
+        $post = Post::create([
+            'post_author'=>\Auth::user()->wordpress_user->ID,
+            'post_parent'=>$request->post_parent,
+            'post_date'=>now(),
+            'post_date_gmt'=>now(),
+            'post_content'=>'',
+            'post_title'=>$post_title,
+            'post_status'=>'publish',
+            'comment_status'=>'closed',
+            'ping_status'=>'closed',
+            'post_type'=>'product_variation',
+            'post_excerpt'=>$post_excerpt,
+            'to_ping'=>"",
+            'pinged'=>'',
+            'post_content_filtered'=>'',
+            'post_modified'=>now(),
+            'post_modified_gmt'=>now()
+        ]);
+        $post->update([
+            'guid'=>General::URL.'/?post_type=product_variation&#038;p='.$post->ID
+        ]);
+        //create term relation foreach attribute
+        foreach($request->attributes_values as  $attribute){
+            //attribute is the term_taxonomy_id
+            $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+            TermRelation::create([
+                'object_id'=>$post->ID,
+                'term_taxonomy_id'=>$taxonomy->term_taxonomy_id,
+                'term_order'=> 0
+            ]);
+        }
+        return $post;
     }
 
      /** update product's data  in posts wordpress table
@@ -190,7 +245,7 @@ class PostService extends BaseService implements IPostService
      * @return Collection of posts which represents the products for a supplier
      */
     public function get_products_for_supplier(int $post_author){
-        return Post::where('post_author',$post_author)->get();
+        return Post::where('post_author',$post_author)->where('post_type','product')->get();
     }
 
     /** find  product for a supplier

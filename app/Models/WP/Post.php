@@ -64,6 +64,9 @@ class Post extends Model
     public function getMetaAttribute(){
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();
     }
+    public function getProductVariationsAttribute(){
+        return Post::where('post_parent',$this->ID)->get();
+    }
 
 
 }

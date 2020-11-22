@@ -41,7 +41,6 @@ class ProductController extends Controller
         {
             $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
         }
-        //dd($product->product_attributes);
         return view('supplier.products.addedit')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
@@ -107,6 +106,13 @@ class ProductController extends Controller
         return $taxonomy->terms;
     }
     public function storeVariation(Request $request){
-        return $request;
+        $product = $this->post_service->store_product_variation($request);
+        return redirect()->back();
+    }
+    public function storeVariationMeta(Request $request){
+        $product= $this->post_service->store_product_general($request,$request->post_id);
+        $product =  $this->post_service->store_product_inventory($request,$request->post_id);
+        $product =  $this->post_service->store_product_shipping($request,$request->post_id);
+        return redirect()->route('supplier.products.create',$request->post_parent  ??  0);
     }
 }

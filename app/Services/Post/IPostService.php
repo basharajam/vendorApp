@@ -19,6 +19,11 @@ interface IPostService extends IBaseService
      * @return Post created post
      */
     public function store_product(Request $request);
+    /** stores new product variation in posts wordpress table
+     * @param Request $request
+     * @return Post created post
+     */
+    public function store_product_variation(Request $request);
     /** stores  product general info  in posts wordpress table
      * @param Request $request
      * @return Post  post

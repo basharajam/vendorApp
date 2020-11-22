@@ -22,6 +22,7 @@ Route::get('product/getForm/{type}',[App\Http\Controllers\Supplier\ProductContro
 Route::post('/product/getAttributeSelector',[App\Http\Controllers\Supplier\ProductController::class, 'getAttributeSelector'])->name('supplier.products.getAttributeSelector');
 Route::post('/product/getTaxonomyTerms',[App\Http\Controllers\Supplier\ProductController::class, 'getTaxonomyTerms'])->name('supplier.products.getTaxonomyTerms');
 Route::post('/products/variations/store',[App\Http\Controllers\Supplier\ProductController::class, 'storeVariation'])->name('supplier.products.variation.store');
+Route::post('/products/variations/store_meta',[App\Http\Controllers\Supplier\ProductController::class, 'storeVariationMeta'])->name('supplier.products.variation.storeMeta');
 
 
 //(Categories)
