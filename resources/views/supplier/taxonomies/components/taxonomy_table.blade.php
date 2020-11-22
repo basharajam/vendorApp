@@ -74,7 +74,7 @@
                                 </div>
                             </span>
                         </td>
-                        <td class="datatable-cell-sorted datatable-cell">
+                        <td class="datatable-cell-sorted datatable-cell" style="min-width:100px;">
                             <a id="{{ $taxonomy->term_taxonomy_id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
                             <a class="kt-nav__link edit_taxonomy" data-type="{{ $type }}" id="{{ $taxonomy->term_taxonomy_id }}" data-action-name="{{ route('supplier.taxonomies.edit') }}" href="#"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
                         </td>
