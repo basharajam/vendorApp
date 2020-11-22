@@ -9,7 +9,7 @@ use App\Services\Contracts\BaseService;
 use Illuminate\Http\Request;
 
 use App\Models\WP\TermTaxonomy;
-use App\Models\Wp\Term;
+use App\Models\WP\Term;
 use App\Models\WP\TermRelation;
 use App\Models\WP\Post;
 use Carbon\Carbon;
