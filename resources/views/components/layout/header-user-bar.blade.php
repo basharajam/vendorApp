@@ -5,9 +5,6 @@
             <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded ">
                 LS
             </span>
-
-
-
     </div>
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
         <!--begin: Head -->
