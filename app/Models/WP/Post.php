@@ -4,6 +4,8 @@ namespace App\Models\WP;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\WP\PostMeta;
 use App\Models\WP\TermRelation;
+use PhpParser\Node\Expr\FuncCall;
+
 class Post extends Model
 {
     protected $table="wpug_posts";

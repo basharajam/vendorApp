@@ -5,15 +5,9 @@
             <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded ">
                 LS
             </span>
-            <a class="dropdown-item" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-             {{ __('Logout') }}
-         </a>
 
-         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-             @csrf
-         </form>
+
+
     </div>
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
         <!--begin: Head -->
@@ -35,8 +29,13 @@
                         </div>
                     </a>
             <div class="kt-notification__custom kt-space-between">
-                <a href="#"   class="btn btn-label btn-label-brand btn-sm btn-bold">تسجيل خروج</a>
-            </div>
+                <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();"  class="btn btn-label btn-label-brand btn-sm btn-bold">تسجيل خروج</a>
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
             <!--end: Navigation -->
         </div>
     </div>
