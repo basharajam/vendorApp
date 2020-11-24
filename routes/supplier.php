@@ -48,3 +48,6 @@ Route::post('/terms/add',[App\Http\Controllers\Supplier\AttributeController::cla
 Route::post('/attributes/delete/{term_taxonomy_id}',[App\Http\Controllers\Supplier\Attribut\eController::class,'delete'])->name('supplier.attributes.delete');
 
 
+//Orders
+Route::get('/orders',[App\Http\Controllers\Supplier\OrderController::class,'index'])->name('supplier.orders');
+
