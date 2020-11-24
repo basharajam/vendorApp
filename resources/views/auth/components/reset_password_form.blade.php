@@ -1,9 +1,13 @@
 <form class="form" method="POST" action="{{ route('password.email') }}" id="kt_login_forgot_form">
     @csrf
-
     <!--begin::Title-->
     <div class="text-center pb-8">
-        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">نسيت كلمة المررو ?</h2>
+         <!--begin::Logo-->
+         <a href="/" class="text-center pt-2 mb-10 d-block">
+            <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
+        </a>
+        <!--end::Logo-->
+        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">نسيت كلمة المرور ؟</h2>
         <p class="text-muted font-weight-bold font-size-h4">الرجاء إدخال بريدك الالكتروني من أجل تهيئة كلمة المرور</p>
     </div>
     <!--end::Title-->
@@ -19,7 +23,7 @@
     <!--end::Form group-->
     <!--begin::Form group-->
     <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-        <button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit">إرسال</button>
+        <button type="submit" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit">إرسال</button>
         <button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إالغاء</button>
     </div>
     <!--end::Form group-->
