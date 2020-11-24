@@ -1,7 +1,12 @@
-<form class="form" method="POST" action="{{ route('login') }}" id="kt_login_signin_form">
+<form class="form" method="POST" action="{{ route('login') }}" id="kt_login_signin_form text-right">
     @csrf
     <!--begin::Title-->
     <div class="text-center pb-8">
+         <!--begin::Logo-->
+         <a href="/" class="text-center pt-2 mb-10 d-block">
+            <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
+        </a>
+        <!--end::Logo-->
         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تسجيل دخول</h2>
         <span class="text-muted font-weight-bold font-size-h4">أو
         <a href="{{ route('supplier_registeration_view') }}" class="text-primary font-weight-bolder" >إنشاء حساب جديد</a></span>
@@ -9,8 +14,8 @@
     <!--end::Title-->
     <!--begin::Form group-->
     <div class="form-group">
-        <label class="font-size-h6 font-weight-bolder text-dark">البريد الالكتروني</label>
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg @error('email') is-invalid  @enderror"
+        <label class="font-size-h6 font-weight-bolder text-dark text-right d-block">البريد الالكتروني</label>
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg text-right d-block @error('email') is-invalid  @enderror"
                type="text"
                name="email"
                value="{{ old('email') }}"
@@ -26,10 +31,10 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div class="d-flex justify-content-between mt-n5">
-            <label class="font-size-h6 font-weight-bolder text-dark pt-5">كلمة المرور</label>
+            <label class="font-size-h6 font-weight-bolder text-dark pt-5 text-right d-block">كلمة المرور</label>
             <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">نسيت كلمة المرور ?</a>
         </div>
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="password" name="password" required autocomplete="off" />
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off" />
     </div>
     <!--end::Form group-->
     <!--begin::Action-->

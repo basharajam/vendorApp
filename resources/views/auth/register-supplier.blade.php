@@ -36,7 +36,7 @@
                 <div class="d-flex flex-column-fluid flex-column justify-content-between py-7 px-7 py-lg-7 px-lg-7 w-100">
                     <!--begin::Logo-->
                     <a href="#" class="text-center pt-2">
-                        <img src="/metronic/theme/html/demo2/dist/assets/media/logos/logo.png" class="max-h-75px" alt="" />
+                        <img src="{{ asset('images/logo.png') }}" class="max-h-75px" alt="" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Aside body-->
