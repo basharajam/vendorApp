@@ -45,6 +45,7 @@ class SupplierObserver
             "meta_key" =>'user_id',
             "meta_value" =>$user->id,
         ]);
+
     }
 
     /**

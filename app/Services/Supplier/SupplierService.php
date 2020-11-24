@@ -3,10 +3,9 @@
 
 namespace App\Services\Supplier;
 
-
+use App\Events\SupplierRegistered;
 use App\Repositories\SupplierRepository;
 use App\Services\Contracts\BaseService;
-
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 
@@ -37,7 +36,7 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->visa_image))
             $supplier->addMedia(storage_path('tmp/uploads/' . $request->visa_image))->toMediaCollection('visa_images');
 
-
+        event(new SupplierRegistered($supplier));
         return $supplier;
     }
 
