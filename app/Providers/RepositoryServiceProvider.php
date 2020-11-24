@@ -18,11 +18,10 @@ use App\Models\WP\Post;
 use App\Repositories\TermTaxonomyRepository;
 use App\Models\WP\TermTaxonomy;
 
+use App\Repositories\OrderItemRepository;
+use App\Models\WP\OrderItem;
+
 //namespaces
-
-
-
-
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -64,7 +63,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\OrderItemRepository', function (Application $app) {
+            return new OrderItemRepository(
+                $app->make(OrderItem::class)
+            );
+    });
+
     //add bindings
+
 
 
 

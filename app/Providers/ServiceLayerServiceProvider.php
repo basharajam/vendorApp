@@ -23,7 +23,12 @@ use App\Services\Post\PostService;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
 use App\Services\TermTaxonomy\TermTaxonomyService;
 
+
+use App\Services\OrderItem\IOrderItemService;
+use App\Services\OrderItem\OrderItemService;
+
 //namespaces
+
 
 
 
@@ -74,7 +79,13 @@ $this->app->bind(
     TermTaxonomyService::class
 );
 
+$this->app->bind(
+    IOrderItemService::class,
+    OrderItemService::class
+);
+
 //add bindings
+
 
 
 
