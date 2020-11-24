@@ -9,7 +9,7 @@
     <!--end::Title-->
     <!--begin::Form group-->
     <div class="form-group">
-        <label class="font-size-h6 font-weight-bolder text-dark">البردي الالكتروني</label>
+        <label class="font-size-h6 font-weight-bolder text-dark">البريد الالكتروني</label>
         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg @error('email') is-invalid  @enderror"
                type="text"
                name="email"
