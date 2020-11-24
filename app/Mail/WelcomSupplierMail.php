@@ -6,19 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Supplier;
+
 
 class WelcomSupplierMail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $supplier;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Supplier $supplier)
     {
-        //
+        $this->supplier = $supplier;
+
     }
 
     /**
@@ -28,6 +33,10 @@ class WelcomSupplierMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.supplier.welcome');
+        return $this->subject('New Supplier Registerd | Alyaman Vendors System')
+        ->markdown('emails.supplier.welcome')
+        ->with('supplier',$this->supplier);
+
     }
+
 }
