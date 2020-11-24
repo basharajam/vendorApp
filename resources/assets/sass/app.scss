@@ -1,7 +1,7 @@
 @import "../theme/css/plugins.bundle.css";
 @import "../theme/css/prismjs.bundle.css";
 @import "../theme/css/style.bundle.css";
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+@import "../theme/fonts/cairo/cairo.css";
 @import '~handy.sass.mixins/scss/shared.scss' ;
 @import "_variables.scss";
 
@@ -181,6 +181,7 @@ tr{
 body{
     font-family: 'Cairo', sans-serif;
     margin:0px;
+    font-weight: 300;
 
 }
 

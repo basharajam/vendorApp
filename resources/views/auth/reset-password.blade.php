@@ -37,15 +37,14 @@
 
                     <!--begin::Aside body-->
                     <div class="d-flex flex-column-fluid flex-column ">
-                        <!--begin::Signin-->
-                        <div class="login-form login-signin py-11">
+                        <!--begin::Forgot-->
+                        <div class="login-form login-signin  pt-11">
                             <!--begin::Form-->
-                            @include('auth.components.login_form')
+                            @include('auth.components.reset_password_form')
+
                             <!--end::Form-->
                         </div>
-                        <!--end::Signin-->
-
-
+                        <!--end::Forgot-->
                     </div>
                     <!--end::Aside body-->
 

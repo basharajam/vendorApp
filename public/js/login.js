@@ -20,10 +20,10 @@ var KTLogin = function() {
     var _handleSignInForm = function() {
 
         // Handle forgot button
-        $('#kt_login_forgot').on('click', function (e) {
-            e.preventDefault();
-            _showForm('forgot');
-        });
+        // $('#kt_login_forgot').on('click', function (e) {
+        //     e.preventDefault();
+        //     _showForm('forgot');
+        // });
 
         // Handle signup
         $('#kt_login_signup').on('click', function (e) {
