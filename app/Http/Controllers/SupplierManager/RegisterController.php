@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Supplier\StoreSupplierRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Services\SupplierManager\ISupplierManagerService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -32,14 +33,16 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    private $supplier_manager_service ;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ISupplierManagerService $supplier_manager_service)
     {
         $this->middleware('guest');
+        $this->supplier_manager_service = $supplier_manager_service;
     }
 
 
@@ -51,7 +54,8 @@ class RegisterController extends Controller
     }
 
     public function create(StoreSupplierRequest $request){
-
+        $this->supplier_manager_service->store($request);
+        return redirect()->route('login');
    }
 
 }
