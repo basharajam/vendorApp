@@ -1,77 +1,132 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <!--ICON-->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+
+<body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Login-->
+        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row-reverse   flex-column-fluid bg-white" id="kt_login">
+            <!--begin::Aside-->
+            <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
+                <!--begin: Aside Container-->
+                <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
+                    <!--begin::Aside body-->
+                    <div class="d-flex flex-column-fluid flex-column ">
+                        <!--begin::Signin-->
+                        <div class="login-form login-signin py-11">
+                           <!--begin::Form-->
+                           <div class="row d-flex justify-content-center h-100" >
+                            <div class="col-12 mb-10" style="text-align: center">
+                                <h3>الرجاء اختيار نوع الحساب</h3>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="option">
+                                    <span class="option-control">
+                                        <span class="radio">
+                                            <input type="radio" name="account_type" value="{{ route("supplier_registeration_view") }}">
+                                            <span></span>
+                                        </span>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span class="option-label">
+                                        <span class="option-head">
+                                            <span class="option-title">مورد</span>
+                                            <span class="option-focus"></span>
+                                        </span>
+                                        <span class="option-body">إنشاء حساب مورد</span>
                                     </span>
-                                @enderror
+                                </label>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                            <div class="col-lg-12">
+                                <label class="option">
+                                    <span class="option-control">
+                                        <span class="radio">
+                                            <input type="radio" name="account_type" value="{{ route("supplier_manager_registeration_view") }}">
+                                            <span></span>
+                                        </span>
                                     </span>
-                                @enderror
+                                    <span class="option-label">
+                                        <span class="option-head">
+                                            <span class="option-title">مدير موردين</span>
+                                            <span class="option-focus"></span>
+                                        </span>
+                                        <span class="option-body">إنشاء حساب مدير  موردين</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-12">
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <a href="#" id="selected_account_type"  type="button" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                </div>
+                                <!--end::Form group-->
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                        <!--end::Form-->
                         </div>
+                        <!--end::Signin-->
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+
+                    </div>
+                    <!--end::Aside body-->
+
                 </div>
+                <!--end: Aside Container-->
             </div>
+            <!--begin::Aside-->
+            <!--begin::Content-->
+            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
+                <!--begin::Title-->
+                <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
+                    <img src="{{ asset('images/logo.png') }}" class="max-h-200px max-w-200px text-center" alt="" />
+                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Vendor System</h3>
+                    <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">Some Text Here                    <br />Web Application & Advanced Solutions</p>
+                </div>
+                <!--end::Title-->
+                <!--begin::Image-->
+                <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('/images/login-visual-2.svg') }});"></div>
+                <!--end::Image-->
+            </div>
+            <!--end::Content-->
         </div>
+        <!--end::Login-->
     </div>
-</div>
-@endsection
+
+    <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
+    <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('/js/login.js') }}"></script>
+    <script>
+        $(function(){
+            $("input[name='account_type']").on('change',function(){
+                let route = $(this).val();
+                $('#selected_account_type').attr('href',route);
+            })
+        });
+    </script>
+</body>
+</html>
+
