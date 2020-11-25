@@ -43,9 +43,12 @@ class LoginController extends Controller
     {
         $user = auth()->user();
         if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
-            toaster()->add('Welcome '.$user->name)->success();
-            return '/supplier/home';
+            return  RouteServiceProvider::SUPPLIER_HOME;
         }
+        else if($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER)){
+            return  RouteServiceProvider::SUPPLIER_MANAGER_HOME;
+        }
+        // dd($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER));
         return  RouteServiceProvider::HOME;
     }
 }
