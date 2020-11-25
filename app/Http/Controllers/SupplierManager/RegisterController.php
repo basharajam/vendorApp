@@ -42,4 +42,17 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    /**
+     * returns view for new supplier account
+     */
+    public function register(){
+        return view('auth.register-supplier-manager');
+    }
+
+    public function create(StoreSupplierRequest $request){
+
+
+   }
+
 }
