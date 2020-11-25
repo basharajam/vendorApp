@@ -22,6 +22,7 @@ class Supplier extends BaseModel implements HasMedia
         "national_number",
         "passport_number",
         "passport_end_date",
+        "manager_id"
     ];
 
     protected $appends = ["full_name"];
