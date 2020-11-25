@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Supplier;
+use App\Models\SupplierManager;
 use App\Observers\SupplierObserver;
+use App\Observers\SupplierManagerObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Supplier::observe(SupplierObserver::class);
+        SupplierManager::observe(SupplierManagerObserver::class);
     }
 }

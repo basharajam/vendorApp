@@ -30,7 +30,7 @@ class SupplierObserver
             $supplier_role->users()->attach($user->id);
         }
 
-
+        //add wordpresss user
         $wp_user = WpugUser::create([
             "user_login" =>$supplier->first_name,
             "user_pass"=>bcrypt(request()->password) ,
