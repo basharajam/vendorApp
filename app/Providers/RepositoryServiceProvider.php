@@ -21,7 +21,11 @@ use App\Models\WP\TermTaxonomy;
 use App\Repositories\OrderItemRepository;
 use App\Models\WP\OrderItem;
 
+use App\Repositories\SupplierManagerRepository;
+use App\Models\SupplierManager;
+
 //namespaces
+
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -69,7 +73,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\SupplierManagerRepository', function (Application $app) {
+            return new SupplierManagerRepository(
+                $app->make(SupplierManager::class)
+            );
+    });
+
     //add bindings
+
 
 
 

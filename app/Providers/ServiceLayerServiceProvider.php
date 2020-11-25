@@ -27,7 +27,12 @@ use App\Services\TermTaxonomy\TermTaxonomyService;
 use App\Services\OrderItem\IOrderItemService;
 use App\Services\OrderItem\OrderItemService;
 
+
+use App\Services\SupplierManager\ISupplierManagerService;
+use App\Services\SupplierManager\SupplierManagerService;
+
 //namespaces
+
 
 
 
@@ -80,7 +85,13 @@ $this->app->bind(
     OrderItemService::class
 );
 
+$this->app->bind(
+    ISupplierManagerService::class,
+    SupplierManagerService::class
+);
+
 //add bindings
+
 
 
 
