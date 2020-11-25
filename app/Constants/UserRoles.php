@@ -8,7 +8,7 @@ class UserRoles  {
 
     CONST ALL_ROLES=[
         self::SUPPLIER,
-        self::SUPPLIER,
+        self::SUPPLIERMANAGER,
     ];
 
 
