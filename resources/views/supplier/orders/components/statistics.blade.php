@@ -15,8 +15,8 @@
             <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">الطلبات غير المدفوعة</a>
         </div>
         <div class="d-flex flex-column">
-            <span class="font-weight-bolder font-size-h1">20000 </span>
-            <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span>
+            <span class="font-weight-bolder font-size-h1">{{ $not_paid_count }} </span>
+            {{-- <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span> --}}
 
         </div>
 
@@ -37,8 +37,8 @@
             <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">الطلبات المدفوعة</a>
         </div>
         <div class="d-flex flex-column">
-            <span class="font-weight-bolder font-size-h1">10000 $</span>
-            <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span>
+            <span class="font-weight-bolder font-size-h1">{{ $paid_count }}</span>
+            {{-- <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span> --}}
         </div>
 
     </div>

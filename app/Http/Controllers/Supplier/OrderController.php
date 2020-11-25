@@ -23,8 +23,11 @@ class OrderController extends Controller
     public function index(){
         $supplier_id = \Auth::user()->userable->id;
         $orders = $this->order_item_service->getSupplierOrders($supplier_id);
-
+        $paid_count = $this->order_item_service->getSupplierPaidOrders($supplier_id)->count();
+        $not_paid_count =$this->order_item_service->getSupplieNotPaidrOrders($supplier_id)->count();
         return view('supplier.orders.index')
+                ->with('not_paid_count',$not_paid_count)
+                ->with('paid_count',$paid_count)
                 ->with('orders',$orders);
     }
 }

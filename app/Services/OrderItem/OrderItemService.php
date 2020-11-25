@@ -31,5 +31,23 @@ class OrderItemService extends BaseService implements IOrderItemService
     public function getSupplierOrders($supplier_id){
         return OrderItem::where('order_item_type','line_item')->get();
     }
+    /** get paid orders for a supplier
+     * @param $supplier_id
+     * @return mixed
+     */
+    public function getSupplierPaidOrders($supplier_id){
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+            return $query->where('post_status','wc-completed');
+        })->get();
+    }
+    /** get not  paid  (canceld , and pending ) orders for a supplier
+     * @param $supplier_id
+     * @return mixed
+     */
+    public function getSupplieNotPaidrOrders($supplier_id){
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+            return $query->where('post_status','!=','wc-completed');
+        })->get();
+    }
 
 }
