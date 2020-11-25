@@ -49,6 +49,12 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\CheckSupplier::class,
             \App\Http\Middleware\Authenticate::class,
 
+        ],
+        'supplier_manager'=>[
+            'web',
+            \App\Http\Middleware\CheckSupplierManager::class,
+            \App\Http\Middleware\Authenticate::class,
+
             ]
     ];
 
