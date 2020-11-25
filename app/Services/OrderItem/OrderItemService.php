@@ -24,4 +24,12 @@ class OrderItemService extends BaseService implements IOrderItemService
         parent::__construct($repository);
     }
 
+    /** get's all orders for a supplier
+     * @param $supplier_id
+     * @return mixed
+     */
+    public function getSupplierOrders($supplier_id){
+        return OrderItem::where('order_item_type','line_item')->get();
+    }
+
 }

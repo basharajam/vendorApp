@@ -31,10 +31,6 @@ use App\Services\OrderItem\OrderItemService;
 
 
 
-
-
-
-
 class ServiceLayerServiceProvider extends ServiceProvider
 {
     /**

@@ -3,8 +3,6 @@
 
 namespace App\Services\OrderItem;
 
-
-
 use App\Services\Contracts\IBaseService;
 
 /**
@@ -13,5 +11,9 @@ use App\Services\Contracts\IBaseService;
  */
 interface IOrderItemService extends IBaseService
 {
-
+    /** get's all orders for a supplier
+     * @param $supplier_id
+     * @return mixed
+     */
+    public function getSupplierOrders($supplier_id);
 }
