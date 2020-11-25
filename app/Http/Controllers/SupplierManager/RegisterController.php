@@ -42,6 +42,4 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-
-
 }
