@@ -44,7 +44,17 @@
                         <!--begin::Signup-->
                         <div class="w-100">
                             <!--begin::Form-->
-                            @include('auth.components.supplier-registeration-form')
+                            <form class="form" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
+                                   <!--begin::Title-->
+                                    <div class="text-center pb-8">
+                                        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
+                                        <p class="text-muted font-weight-bold font-size-h4">الر جاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
+                                    </div>
+                                    <!--end::Title-->
+                                @include('auth.components.supplier-registeration-form',['supplier'=>null])
+                            </form>
                             <!--end::Form-->
                         </div>
                         <!--end::Signup-->

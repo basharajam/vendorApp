@@ -45,7 +45,7 @@ Route::post('/terms/store',[App\Http\Controllers\Supplier\AttributeController::c
 Route::post('/attributes/update/{term_taxonomy_id}',[App\Http\Controllers\Supplier\AttributeController::class,'update'])->name('supplier.attributes.update');
 Route::post('/attributes/edit',[App\Http\Controllers\Supplier\AttributeController::class,'getEditModal'])->name('supplier.attributes.edit');
 Route::post('/terms/add',[App\Http\Controllers\Supplier\AttributeController::class,'getAddTerm'])->name('supplier.attributes.addTerm');
-Route::post('/attributes/delete/{term_taxonomy_id}',[App\Http\Controllers\Supplier\Attribut\eController::class,'delete'])->name('supplier.attributes.delete');
+Route::get('/attributes/delete/{term_taxonomy_id}',[App\Http\Controllers\Supplier\Attribut\eController::class,'delete'])->name('supplier.attributes.delete');
 
 
 //Orders

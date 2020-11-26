@@ -13,4 +13,9 @@ use App\Services\Contracts\IBaseService;
 interface ISupplierService extends IBaseService
 {
 
+    /** get all manager's suppliers
+     * @param $manager_id Supplier Manager
+     * @return mixed
+     */
+    public function getSuppliersForManager($manager_id);
 }

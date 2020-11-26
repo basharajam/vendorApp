@@ -23,6 +23,13 @@ class SupplierService extends BaseService implements ISupplierService
     {
         parent::__construct($repository);
     }
+    /** get all manager's suppliers
+     * @param $manager_id Supplier Manager
+     * @return mixed
+     */
+    public function getSuppliersForManager($manager_id){
+            return Supplier::where('manager_id',$manager_id)->get();
+    }
 
     public function store(Request $request)
     {

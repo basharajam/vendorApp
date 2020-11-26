@@ -35,7 +35,7 @@
             <div class="card-body">
                 <div class="kt-section">
                     <div class="kt-section__content">
-                        Suppliers Table here
+                       @include('supplier_manager.suppliers.components.suppliers_table')
                     </div>
 
                 </div>

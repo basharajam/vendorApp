@@ -1,13 +1,4 @@
-<form class="form" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
-    <!--begin::Title-->
-    <div class="text-center pb-8">
-        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
-        <p class="text-muted font-weight-bold font-size-h4">الر جاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
-    </div>
-    <!--end::Title-->
-    <div class="row" >
+<div class="row " style="">
         <div class="col-md-12">
             <!--begin::Form group Company Name-->
             <div class="form-group">
@@ -15,7 +6,7 @@
                     <span class="required">*</span>
                     <span>اسم الشركة</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{ old('company_name') }}" required autofocus />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
                 @error('company_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -37,6 +28,7 @@
                             <input  value="chinese"
                                     type="radio"
                                     name="nationality"
+                                    @if($supplier && $supplier->nationality=="chinese") checked="checked" @endif
                                     />
                             <span></span>
                             صيني
@@ -45,6 +37,7 @@
                             <input  value="not_chinese"
                                     type="radio"
                                     name="nationality"
+                                    @if($supplier && $supplier->nationality=="not_chinese") checked="checked" @endif
                                     />
                             <span></span>
                             لست صيني
@@ -67,7 +60,7 @@
                     <span class="required">*</span>
                     <span>الاسم</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{ old('first_name') }}" required autofocus />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -83,7 +76,7 @@
                    <span class="required">*</span>
                    <span>الكنية</span>
                </label>
-               <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ old('last_name') }}" required autofocus />
+               <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ $supplier->last_name ?? old('last_name') }}" required autofocus />
                @error('last_name')
                <div class="fv-plugins-message-container">
                    <div  class="fv-help-block">{{ $message }}</div>
@@ -99,7 +92,7 @@
                     <span class="required">*</span>
                     <span>اسم المستخدم</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text" placeholder="اسم المستخدم" name="name" value="{{ old('name') }}" required autofocus />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text" placeholder="اسم المستخدم" name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus />
                 @error('name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -115,7 +108,7 @@
                     <span class="required">*</span>
                     <span>البريد الالكتروني</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="Email" name="email" required value="{{ old('email') }}" autocomplete="off" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="Email" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" />
                 @error('email')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -131,7 +124,7 @@
                     <span class="required">*</span>
                     <span>كلمة المرور</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required autocomplete="off" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" @if($supplier==null) required  @endif autocomplete="off" />
                 @error('password')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -142,12 +135,17 @@
        </div>
        <div class="col-md-6">
             <!--begin::Form group Password Confirmation-->
-            <label class="font-size-h6 font-weight-bolder text-dark">
+            <label class="font-size-h6 font-weight-bolder text-dark text-right d-block">
                 <span class="required">*</span>
                 <span>تأكيد كلمة المرور</span>
             </label>
             <div class="form-group">
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation" required autocomplete="new-password" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" />
+                @error('password_confirmation')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
             </div>
             <!--end::Form group Password Confirmation-->
        </div>
@@ -163,7 +161,7 @@
                     <span class="required">*</span>
                     <span>عنوان المحل</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="shop_address" value="{{ old('shop_address') }}" required autocomplete="national_number" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="shop_address" value="{{$supplier->shop_address ?? old('shop_address') }}" required autocomplete="national_number" />
                 @error('shop_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -179,7 +177,7 @@
                     <span class="required">*</span>
                     <span>اسم البنك</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم البنك" name="bank_name" value="{{ old('bank_name') }}" required autocomplete="national_number" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم البنك" name="bank_name" value="{{ $supplier->bank_name ?? old('bank_name') }}" required autocomplete="national_number" />
                 @error('bank_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -196,7 +194,7 @@
                     <span>رقم حساب البنك
                     </span>
                 </label>
-                <input id="bank_account_number" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{ old('bank_account_number') }}" required autocomplete="bank_account_number" />
+                <input id="bank_account_number" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number" />
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -213,7 +211,7 @@
                     <span>اسم صاحب الحساب
                     </span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{ old('bank_account_owner_name') }}" required autocomplete="national_number" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number" />
                 @error('bank_account_owner_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -238,14 +236,14 @@
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> إنشاء حساب</button>
+                <button type="submit" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->
         </div>
 
     </div>
-</form>
+
 
 @push('scripts')
 <script>
