@@ -42,7 +42,7 @@
                     <span style="width: 250px;">
                         <div class="d-flex align-items-center">
                             <div style="padding-left:10px;" class="symbol symbol-50   symbol-sm symbol-light-danger">
-                                <span class="symbol-label font-size-p" style="background-image:url(/path/to/image)"></span>
+                                <span class="symbol-label font-size-p" style="background-image:url({{ $product->product_image }})"></span>
                             </div>
                             <div class="ml-3">
                                 <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
