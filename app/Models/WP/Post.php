@@ -11,7 +11,7 @@ class Post extends Model
     protected $table="wpug_posts";
     protected $primaryKey="ID";
 
-    protected $appends = ['meta','categories','product_type','product_attributes'];
+    protected $appends = ['meta','categories','product_type','product_attributes','product_image'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -68,6 +68,16 @@ class Post extends Model
     }
     public function getProductVariationsAttribute(){
         return Post::where('post_parent',$this->ID)->get();
+    }
+    public function getProductImageAttribute(){
+        $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_thumbnail_id')->orderBy('meta_id','desc')->first();
+        if($image_post_meta){
+            $image_post =  Post::where('ID',$image_post_meta->meta_value)->first();
+            if($image_post){
+                return $image_post->guid;
+            }
+        }
+        return '';
     }
 
 

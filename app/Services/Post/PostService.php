@@ -9,6 +9,7 @@ use App\Services\Contracts\BaseService;
 use Illuminate\Http\Request;
 use App\Models\WP\Post;
 use App\Models\WP\PostMeta;
+use Carbon\Carbon;
 use App\Models\WP\TermRelation;
 use App\Models\WP\TermTaxonomy;
 use Illuminate\Validation\Rules\Exists;
@@ -54,6 +55,9 @@ class PostService extends BaseService implements IPostService
         $post->update([
             'guid'=>General::URL.'/?post_type=product&p='.$post->ID
         ]);
+        if($request->hasFile('thumbnail')){
+            $this->store_post_image($post->ID,$request);
+        }
 
 
         $term_taxonomy_id = 0;
@@ -158,6 +162,9 @@ class PostService extends BaseService implements IPostService
             }
             else if($request->product_type=='variable'){
                 $term_taxonomy_id = 4;
+            }
+            if($request->hasFile('thumbnail')){
+                $this->store_post_image($post->ID,$request);
             }
             //save product category
     }
@@ -279,31 +286,6 @@ class PostService extends BaseService implements IPostService
         return $post->delete();
     }
 
-    /** stores simple product attributes in post_meta table in wordpress
-     * @param  $request that has the data
-     * @param $post : it's the product that we want to create the meta data for
-     */
-    private function saveProductSimpleAttributes($request,$post){
-        $this->creatPostMeta($post->ID,'product_number',$request->product_number);
-        isset($request->product_features) ? $this->creatPostMeta($post->ID,'product_features',$request->product_features):'';
-        $this->creatPostMeta($post->ID,'product_price',$request->product_price);
-        isset($request->product_price_after_discount) ? $this->creatPostMeta($post->ID,'product_price_after_discount',$request->product_price_after_discount):'';
-        //نوع المنتج
-        isset($request->type) ? $this->creatPostMeta($post->ID,'type',$request->type):'';
-        isset($request->product_thikness) ? $this->creatPostMeta($post->ID,'product_thikness',$request->product_thikness):'';
-        isset($request->product_print) ? $this->creatPostMeta($post->ID,'product_print',$request->product_print):'';
-        $this->creatPostMeta($post->ID,'product_size',$request->product_size);
-        $this->creatPostMeta($post->ID,'product_min_order_number',$request->product_min_order_number);
-        isset($request->product_max_order_number) ? $this->creatPostMeta($post->ID,'product_max_order_number',$request->product_max_order_number):'';
-        $this->creatPostMeta($post->ID,'product_unit_price',$request->product_unit_price);
-        $this->creatPostMeta($post->ID,'product_count_per_unit',$request->product_count_per_unit);
-        $this->creatPostMeta($post->ID,'product_model_count_per_unit',$request->product_model_count_per_unit);
-        $this->creatPostMeta($post->ID,'weight',$request->weight);
-        $this->creatPostMeta($post->ID,'cbm',$request->cbm);
-        $this->creatPostMeta($post->ID,'delivery_dates_count',$request->delivery_dates_count);
-
-    }
-
     /** stores the data into wpug_postmeta table in wordpress
      * @param int $post_id the id of the post
      * @param int $meta_key the key name of the attribute
@@ -320,5 +302,42 @@ class PostService extends BaseService implements IPostService
             'meta_key'=>$meta_key,
             'meta_value'=>$meta_value
         ]);
+    }
+    private function store_post_image($post_id,$request){
+        $now = Carbon::now();
+        $path = public_path('wp-content/uploads/'.$now->year.'/'.$now->month);
+        $name =  $request->thumbnail->getClientOriginalName();
+        $extension = $request->thumbnail->getClientOriginalExtension();
+        $mdf5 = md5($name.'_'.time()).'.'.$extension;
+        $guid = General::URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $request->thumbnail->move($path, $mdf5);
+        $image_post = Post::create([
+            'post_author'=>\Auth::user()->wordpress_user->ID,
+            'post_date'=>now(),
+            'post_date_gmt'=>now(),
+            'post_content'=>"",
+            'post_title'=>$request->thumbnail->getClientOriginalName(),
+            'post_status'=>'inherit',
+            'comment_status'=>'closed',
+            'ping_status'=>'closed',
+            'post_type'=>'attachment',
+            'post_excerpt'=>'',
+            'to_ping'=>"",
+            'pinged'=>'',
+            'post_content_filtered'=>'',
+            'post_modified'=>now(),
+            'post_modified_gmt'=>now(),
+            'guid'=>$guid,
+            'post_mime_type'=>'image/'.$extension
+        ]);
+        PostMeta::create([
+            "post_id"=>$post_id,
+            "meta_key"=>"_thumbnail_id",
+            "meta_value"=>$image_post->ID
+        ]);
+
     }
 }

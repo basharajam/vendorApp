@@ -34,6 +34,7 @@ class ProductController extends Controller
 
     public function addedit($id=0){
 
+
         $categories = $this->term_taxonomy_service->categories();
         $attributes =$this->term_taxonomy_service->attributes();
         $product = null;

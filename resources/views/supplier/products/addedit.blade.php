@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
     <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
@@ -17,7 +18,7 @@
                         <div class="kt-widget__head">
                             <div class="kt-widget__media">
                                 <!--Product Image-->
-                                <img id="AsidePhoto" class="kt-widget__img " src="{{asset('/images/product.png')}}" style="object-fit: cover" alt="image">
+                                <img id="AsidePhoto" class="kt-widget__img " src="{{$product->product_image ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
                             </div>
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
