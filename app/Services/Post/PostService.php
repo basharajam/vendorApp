@@ -306,15 +306,18 @@ class PostService extends BaseService implements IPostService
     }
     private function store_post_image($post_id,$request){
         $now = Carbon::now();
-        $path = public_path('wp-content/uploads/'.$now->year.'/'.$now->month);
+         $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
+        // $path  = 'home2/alyamanl/public_html/vendor/wp-content/uploads/'.$now->year.'/'.$now->month;
         $name =  $request->thumbnail->getClientOriginalName();
         $extension = $request->thumbnail->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
+        $file = $request->file('thumbnail');
         $guid = General::URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
+        if (!file_exists(public_path('../../'.$path))) {
+            mkdir(public_path('../../'.$path), 777, true);
         }
-        Image::make($request->thumbnail)->save($path.'/'. $mdf5);
+        $file->move(public_path('../../'.$path), $mdf5);
+
         $image_post = Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
             'post_date'=>now(),
