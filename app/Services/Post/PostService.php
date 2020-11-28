@@ -12,6 +12,7 @@ use App\Models\WP\PostMeta;
 use Carbon\Carbon;
 use App\Models\WP\TermRelation;
 use App\Models\WP\TermTaxonomy;
+use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
 
 /**
@@ -313,7 +314,7 @@ class PostService extends BaseService implements IPostService
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
-        $request->thumbnail->move($path, $mdf5);
+        Image::make($request->thumbnail)->save($path.'/'. $mdf5);
         $image_post = Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
             'post_date'=>now(),

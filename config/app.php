@@ -230,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'UserRoles'=>\App\Constants\UserRoles::class,
         'ProductTypes'=>\App\Constants\ProductTypes::class,
-        'General'=>\App\Constants\General::class
+        'General'=>\App\Constants\General::class,
 
     ],
 
