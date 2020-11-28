@@ -1,9 +1,9 @@
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,10px" aria-expanded="false">
-        <span class="kt-header__topbar-welcome">Welcome </span>
-            <span class="kt-header__topbar-username" v-if="user">Lama Sonmez</span>
+        <span class="kt-header__topbar-welcome"> </span>
+            <span class="kt-header__topbar-username ml-5 font-size-h4" v-if="user">{{ \Auth::user()->name }}</span>
             <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded ">
-                LS
+                {{\Auth::user()->name[0] }}
             </span>
     </div>
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
