@@ -191,6 +191,7 @@
                 window.location.hash = $(this).attr("data-target");
                 $("#"+$(this).attr("data-target")).slideDown(1000);
                 $(this).addClass("kt-widget__item--active");
+                window.scrollTo(0, 0);
         });
 
         $('input[type=radio][name=product_type]').change(function() {
