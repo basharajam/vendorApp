@@ -14,10 +14,6 @@
                 <div class="font-weight-bold text-muted">Price</div>
             </th>
             <th class="">
-                <span>السعر بعد الحسم</span>
-                <div class="font-weight-bold text-muted">Price After Discount</div>
-            </th>
-            <th class="">
                 <span>الحجم</span>
                 <div class="font-weight-bold text-muted">Size</div>
             </th>
@@ -74,15 +70,6 @@
                         <div class="font-weight-bolder font-size-lg mb-0">
                             @if($meta && count($meta)>0 && array_key_exists('_regular_price',$meta))
                             {{ $meta['_regular_price'] }}
-                         @endif
-                        </div>
-                    </span>
-                </td>
-                <td class="datatable-cell-sorted datatable-cell">
-                    <span>
-                        <div class="font-weight-bolder font-size-lg mb-0">
-                            @if($meta && count($meta)>0 && array_key_exists('_sale_price',$meta))
-                            {{ $meta['_sale_price'] }}
                          @endif
                         </div>
                     </span>
