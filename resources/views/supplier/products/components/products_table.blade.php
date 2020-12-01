@@ -26,6 +26,7 @@
                 <div class="font-weight-bold text-muted">CBM</div>
             </th>
             <th>.</th>
+            <th>.</th>
         </tr>
     </thead>
     <tbody style="direction:rtl;text-align:right">
@@ -38,7 +39,9 @@
                     <span style="width: 250px;">
                         <div class="d-flex align-items-center">
                             <div style="padding-left:10px;" class="symbol symbol-50   symbol-sm symbol-light-danger">
-                                <span class="symbol-label font-size-p" style="background-image:url({{ $product->product_image }})"></span>
+                                <a class="image-link" href="{{ $product->product_image }}">
+                                    <span class="symbol-label font-size-p" style="background-image:url({{ $product->product_image }})"></span>
+                                </a>
                             </div>
                             <div class="ml-3">
                                 <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
@@ -105,14 +108,24 @@
                     <a id="{{ $product->ID }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.products.delete',$product->ID) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
                     <a class="kt-nav__link"  href="{{ route('supplier.products.create',$product->ID) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
                 </td>
+                <td></td>
             </tr>
             @endforeach
     </tbody>
 </table>
+@push('styles')
+<link rel="stylesheet" href="{{ asset('/css/magnific-popup.css') }}">
+@endpush
 @push('scripts')
+<script src="{{ asset('/js/plugins.bundle.js') }}"></script>
+<script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
+<script src="{{ asset('/js/scripts.bundle.js') }}"></script>
+<script src="{{ asset('/js/jquery.magnific-popup.js') }}"></script>
+<script src="{{ asset('/js/html-table.js') }}"></script>
 <script>
     $(document).ready(function() {
-    $('#ProductsTable').DataTable();
-} );
+     $('.image-link').magnificPopup({type:'image'});
+        // $('#ProductsTable').DataTable();
+    });
 </script>
 @endpush
