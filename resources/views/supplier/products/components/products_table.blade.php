@@ -22,7 +22,7 @@
                 <div class="font-weight-bold text-muted">Weight</div>
             </th>
               <th class="">
-                <span>CMB</span>
+                <span>CBM</span>
                 <div class="font-weight-bold text-muted">CBM</div>
             </th>
             <th>.</th>
