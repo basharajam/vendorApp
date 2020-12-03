@@ -22,14 +22,19 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> --}}
-    <!-- Styles -->
+    {{-- <!-- Styles -->
+    <link href="{{ asset('/theme/css/plugins.bundle.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/prismjs.bundle.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/style.bundle.css') }}" rel="stylesheet"> --}}
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
     @toaster
+
     @stack('styles')
 </head>
 
-<body class="page-loading" >
+<body class="fadeyellow backgroundChanger kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-page--loading-enabled kt-page--loading kt-header--minimize-topbar kt-subheader--transparent kt-page--loadin" >
     <div id="app">
     <div class="notifications" style="width: 300px; top: 0px; right: 0px;"><span></span></div>
     <x-layout.header-mobile></x-layout.header-mobile>
