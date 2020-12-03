@@ -1,5 +1,5 @@
-<div class="row m-0">
-    <div class="col bg-white px-6 py-8 rounded-xl ml-7 d-flex justify-content-between align-items-center">
+<div class="row m-0 statsitcs-container">
+    <div class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl  d-flex justify-content-between align-items-center">
         <div class="">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2 text-center">
                 <!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Design/Layers.svg-->
@@ -21,7 +21,8 @@
         </div>
 
     </div>
-    <div class="col bg-white px-6 py-8 rounded-xl d-flex mr-7 justify-content-between align-items-center">
+    <div class="col-md-2 col-sm-12"></div>
+    <div class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl d-flex justify-content-between align-items-center statsitcs-second-item" >
         <div>
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2 text-center">
                 <!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Communication/Urgent-mail.svg-->

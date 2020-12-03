@@ -112500,3 +112500,14 @@ h6 {
   }
 }
 
+@media (max-width: 1024px) {
+  #kt_content {
+    margin-top: 30px !important;
+    margin-right: 0px;
+  }
+
+  .statsitcs-second-item {
+    margin-top: 30px;
+  }
+}
+
