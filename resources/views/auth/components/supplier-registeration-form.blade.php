@@ -227,7 +227,7 @@
                 <div class="checkbox-inline">
                     <label class="checkbox">
                     <input type="checkbox">
-                    <span></span>لقد قرأت ووافقت على الشرو و الأحكام</label>
+                    <span></span>لقد قرأت ووافقت على الشروط و الأحكام</label>
 
                 </div>
             </div>
