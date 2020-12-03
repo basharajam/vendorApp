@@ -112511,3 +112511,23 @@ h6 {
   }
 }
 
+.dataTables_wrapper > .row > div:first-child {
+  text-align: right;
+}
+
+.dataTables_paginate {
+  margin-bottom: 30px;
+}
+
+.dataTables_paginate > .pagination {
+  flex-direction: row-reverse;
+}
+
+.kt-header--minimiz .kt-header__brand-nav {
+  width: 55px !important;
+}
+
+.kt-header--fixed.kt-header--minimize .kt-header .kt-header__top {
+  height: 80px;
+}
+
