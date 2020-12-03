@@ -36,7 +36,7 @@
                 <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
 
                     <!--begin::Aside body-->
-                    <div class="d-flex flex-column-fluid flex-column ">
+                    <div class="d-flex flex-column-fluid flex-column align-items-center">
                         <!--begin::Signin-->
                         <div class="login-form login-signin py-11">
                             <!--begin::Form-->
