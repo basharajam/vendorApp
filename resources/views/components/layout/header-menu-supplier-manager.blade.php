@@ -7,6 +7,8 @@
                 <ul class="kt-menu__nav">
                     <li class="kt-menu__item kt-menu__item--rel kt-menu__item--active kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{route('supplier_manager.home') }}"  class="kt-menu__link "><span class="kt-menu__link-text">الرئيسية</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
                     <li class="kt-menu__item kt-menu__item--rel  kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{route('supplier_manager.suppliers.index') }}"  class="kt-menu__link "><span class="kt-menu__link-text">الموردين</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
+                    <li class="kt-menu__item kt-menu__item--rel  kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{route('supplier_manager.orders') }}"  class="kt-menu__link "><span class="kt-menu__link-text">طلبات الموردين</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
+
                 </ul>
             </div>
         </div>

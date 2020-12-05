@@ -43,6 +43,6 @@ interface IOrderItemService extends IBaseService
      * @param $manager_id
      * @return mixed
      */
-    public function getSupplieManagerNotPaidrOrders($manager_id)
+    public function getSupplieManagerNotPaidrOrders($manager_id);
 
 }

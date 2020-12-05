@@ -16,3 +16,6 @@ Route::get('/suppliers/edit/{id}',[App\Http\Controllers\SupplierManager\Supplier
 Route::post('/suppliers/update',[App\Http\Controllers\SupplierManager\SupplierController::class, 'update'])->name('supplier_manager.suppliers.update');
 Route::get('/suppliers/delete/{id}',[App\Http\Controllers\SupplierManager\SupplierController::class, 'delete'])->name('supplier_manager.suppliers.delete');
 
+//Orders
+Route::get('/orders',[App\Http\Controllers\SupplierManager\OrderController::class,'index'])->name('supplier_manager.orders');
+
