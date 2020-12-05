@@ -9,6 +9,8 @@ use App\Services\Contracts\BaseService;
 
 use App\Models\WP\OrderItem;
 
+//TODO Modify According to Supplier and SUpplier manager
+
 /**
  * Class OrderItemService
  * @package App\Services\OrderItem
@@ -31,6 +33,13 @@ class OrderItemService extends BaseService implements IOrderItemService
     public function getSupplierOrders($supplier_id){
         return OrderItem::where('order_item_type','line_item')->get();
     }
+    /** get's all orders for a s manger
+     * @param $manager_id
+     * @return mixed
+     */
+    public function getSupplierManagerOrders($manager_id){
+        return OrderItem::where('order_item_type','line_item')->get();
+    }
     /** get paid orders for a supplier
      * @param $supplier_id
      * @return mixed
@@ -40,11 +49,29 @@ class OrderItemService extends BaseService implements IOrderItemService
             return $query->where('post_status','wc-completed');
         })->get();
     }
+     /** get paid orders for a supplier manager
+     * @param $manager_id
+     * @return mixed
+     */
+    public function getSupplierManagerPaidOrders($manager_id){
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+            return $query->where('post_status','wc-completed');
+        })->get();
+    }
     /** get not  paid  (canceld , and pending ) orders for a supplier
      * @param $supplier_id
      * @return mixed
      */
     public function getSupplieNotPaidrOrders($supplier_id){
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+            return $query->where('post_status','!=','wc-completed');
+        })->get();
+    }
+     /** get not  paid  (canceld , and pending ) orders for a supplier manager
+     * @param $manager_id
+     * @return mixed
+     */
+    public function getSupplieManagerNotPaidrOrders($manager_id){
         return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
             return $query->where('post_status','!=','wc-completed');
         })->get();
