@@ -35,7 +35,9 @@
                             <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
                         </label>
                         <textarea id="editor" class="form-control @error('post_content') is-invalid @enderror" name="post_content" required>
+                            @if($product)
                             {{ $product->post_content}}
+                            @endif
                         </textarea>
                         @error('post_content')
                         <span class="invalid-feedback" role="alert">
