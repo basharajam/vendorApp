@@ -60,7 +60,6 @@
                         <span class="required">*</span>
                     </label>
                     <textarea class="form-control form-control-solid form-control-lg" id="exampleTextarea" rows="3" name="message" required></textarea>
-                    <span class="form-text text-muted"> تنويه: لن نقوم بنشر معلوماتك بأي مكان</span>
                 </div>
                 <!--end::Input-->
             </div>

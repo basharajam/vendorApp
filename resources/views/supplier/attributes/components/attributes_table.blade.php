@@ -2,7 +2,7 @@
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                    السمات (Attributes)
+                    السمات
             </h3>
         </div>
     </div>
@@ -12,8 +12,8 @@
                 <tr>
 
                     <th>الاسم</th>
-                    <th>slug</th>
-                    <th>Terms</th>
+                    <th>عنوان الرابط</th>
+                    <th>المصطلحات</th>
                     <th>..</th>
                 </tr>
             </thead>

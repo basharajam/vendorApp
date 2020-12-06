@@ -77,10 +77,10 @@
                 Swal.fire({
                     title: "هل انت متأكد؟",
                     text: "لن تستطيع التراجع عن هذه العملية",
-                    icon: "warning",
+                    icon: "تحذير",
                     showCancelButton: true,
                     confirmButtonText: "حذف",
-                    cancelButtonText: "إلفاء"
+                    cancelButtonText: "إلغاء"
                 }).then(function(result) {
                     if(result.value){
                     var tr = "#" + id;

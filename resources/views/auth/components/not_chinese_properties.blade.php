@@ -40,8 +40,8 @@
         </label>
         <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image">
             <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
-                <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
+                <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
             </div>
         </div>
     </div>
@@ -57,8 +57,8 @@
             </label>
             <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="visa_image">
                 <div class="dropzone-msg dz-message needsclick">
-                    <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
-                    <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                    <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
+                    <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
                 </div>
             </div>
         </div>

@@ -9,13 +9,13 @@ if($product){
     <div class="kt-portlet">
         <div class="kt-portlet__head align-items-center d-flex justify-content-between" >
             <div class="kt-portlet__head-label">
-                <h3 class="kt-portlet__head-title">Product Variations</h3>
+                <h3 class="kt-portlet__head-title">انواع المنتج</h3>
             </div>
             <div class="card-toolbar">
                 <!--begin::Button-->
                 <a href="#" class="btn btn-warning font-weight-bolder" id="addVariationButton">
                 <span class="svg-icon svg-icon-md">
-                    Add Variation
+                   إضافة نوع
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"></rect>
@@ -44,7 +44,7 @@ if($product){
                                     </label>
                                     <div class="kt-input-icon d-flex justify-content-center" >
                                         <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control form-control-solid   font-size-h6 ">
-                                            <option>Any</option>
+                                            <option>اي قيمة</option>
                                             @foreach($attribute as $term)
                                             <option value="{{ $term->term_taxonomy_id }}" >{{ $term->term->name }}</option>
                                             @endforeach
@@ -65,7 +65,7 @@ if($product){
                             <div class="alert-icon">
                                 <i class="flaticon-warning"></i>
                             </div>
-                            <div class="alert-text mr-10" style="text-align: right">Please select product's attributes then add variations!</div>
+                            <div class="alert-text mr-10" style="text-align: right">يرجى تحديد سمات المنتج ثم إضافة الانواع!</div>
 
                         </div>
 

@@ -12,7 +12,7 @@
                 @endforeach
             </select>
             <button type="button" class="btn btn-success add_new_term" data-taxonomy-type="{{ $taxonomy }}">
-                Add New
+                إضافة
             </button>
         </div>
 

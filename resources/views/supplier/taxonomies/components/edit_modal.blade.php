@@ -11,7 +11,7 @@
                <form method="POST" action="{{ route('supplier.taxonomies.update',$taxonomy->term_taxonomy_id) }}">
                 @include('supplier.taxonomies.components.taxonomy_form',['taxonomy'=>$taxonomy])
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
                 </div>
                </form>
             </div>

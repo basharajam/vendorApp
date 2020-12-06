@@ -33,7 +33,7 @@ if($product){
                                 @endforeach
                             </select>
                             <button type="button" id="add_attribute" data-action-name="{{ route('supplier.products.getAttributeSelector') }}" class="btn btn-success mr-4">
-                                Add
+                                إضافة
                             </button>
                         </div>
 

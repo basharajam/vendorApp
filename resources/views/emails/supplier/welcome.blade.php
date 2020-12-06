@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# رسالة ترحيب
 
-Welcome to Vendor System
+أهلا بكم
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+فريق عمل اليمان<br>
 {{ config('app.name') }}
 @endcomponent

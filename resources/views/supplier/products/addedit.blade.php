@@ -51,7 +51,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="">
-                                        الاصناف Categories
+                                        الاصناف
                                     </a>
                                 </div>
                             </div>
