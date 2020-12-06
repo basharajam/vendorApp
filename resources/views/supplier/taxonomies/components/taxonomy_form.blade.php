@@ -2,7 +2,7 @@
 <input type="hidden" name="type" value="{{ $type }}">
 <input type="hidden" name="description" value="-">
 
- <div class="row">
+ <div class="row" style="direction: ltr">
      <div class="col-12">
          <div class="form-group">
              <label class="font-size-h6 font-weight-bolder text-dark">
