@@ -4,13 +4,13 @@
             <h3 class="kt-portlet__head-title">
                 @switch($type)
                 @case('product_cat')
-                    الاصناف (Categories)
+                    الاصناف / الفئات
                     @break
                 @case('product_tag')
-                     Tags
+                     التاغات
                     @break
                 @case('attributes')
-                    السمات (Attributes)
+                    السمات
                    @break
                 @default
 
@@ -28,7 +28,7 @@
                         @endif
                         <th>الاسم</th>
                         <th>الوصف</th>
-                        <th>slug</th>
+                        <th> عنوان الرابط</th>
                         <th>العدد</th>
                         <th>..</th>
                     </tr>

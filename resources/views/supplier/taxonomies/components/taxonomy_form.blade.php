@@ -6,7 +6,7 @@
      <div class="col-12">
          <div class="form-group">
              <label class="font-size-h6 font-weight-bolder text-dark">
-                 <span>Name / الاسم </span>
+                 <span> الاسم </span>
                  <span class="required">*</span>
              </label>
              <input id="taxonomy_name_input" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required  />
@@ -15,7 +15,7 @@
      <div class="col-12">
          <div class="form-group">
              <label class="font-size-h6 font-weight-bolder text-dark">
-                 <span>Slug </span>
+                 <span> عنوان الرابط</span>
                  <span class="required">*</span>
              </label>
              <input id="taxonomy_slug_input" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="text" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required  />
@@ -55,8 +55,16 @@
      @endif
      <div class="col-12">
          <div class="form-group mb-0">
-             <button type="submit" class="btn btn-primary">
-                 حفظ
+             <button type="submit" class="btn btn-primary font-weight-bolder font-size-h5">
+                 <span>حفظ</span>
+                 <span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-11-19-154210/theme/html/demo12/dist/../src/media/svg/icons/General/Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24"/>
+                        <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero"/>
+                        <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5"/>
+                    </g>
+                </svg><!--end::Svg Icon--></span>
+
              </button>
          </div>
      </div>

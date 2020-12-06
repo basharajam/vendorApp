@@ -112544,3 +112544,7 @@ div {
   white-space: unset;
 }
 
+label {
+  text-align: right;
+}
+
