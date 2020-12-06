@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+   // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -41,14 +41,16 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        $user = auth()->user();
+        $user = \Auth::user();
         if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
             return  RouteServiceProvider::SUPPLIER_HOME;
         }
         else if($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER)){
             return  RouteServiceProvider::SUPPLIER_MANAGER_HOME;
         }
+        else{
+            return  RouteServiceProvider::HOME;
+        }
         // dd($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER));
-        return  RouteServiceProvider::HOME;
     }
 }
