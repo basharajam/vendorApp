@@ -26,12 +26,14 @@
          <div class="form-group">
              <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
                  <span>تابع لصنف</span>
-                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري : اختر الصنف الاساسي لهذا الصنف"></span>
+                 <span class="required">*</span>
+                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اجباري : اختر الصنف الاساسي لهذا الصنف"></span>
              </label>
              <div class="kt-input-icon">
-                 <select  class="form-control form-control-solid py-7 px-6  font-size-h6"
+                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                          id="parent"
                          name="parent"
+                         required
                          >
                      <option ></option>
                      @foreach($categories  as $category)

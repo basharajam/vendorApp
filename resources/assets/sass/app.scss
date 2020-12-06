@@ -342,4 +342,15 @@ h6{
 .kt-header--fixed.kt-header--minimize .kt-header .kt-header__top{
     height: 80px;
 }
-
+//  .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single, .select2-container--default.select2-container--open .select2-selection--multiple, .select2-container--default.select2-container--open .select2-selection--single{
+//     background-color: #F3F6F9;
+//     border-color: #F3F6F9;
+//     color: #3F4254;
+// }
+.select2-selection.select2-selection--single{
+    background-color: #F3F6F9;
+    border-color: #F3F6F9;
+    color: #3F4254;
+    height: 40px;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}

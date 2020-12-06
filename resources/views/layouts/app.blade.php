@@ -13,6 +13,7 @@
 
     <title>{{ config('app.name', 'VendorSystem') }}</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <!--begin::Global Theme Styles(used by all pages)-->
   <link href="{{ asset('/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('/css/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />

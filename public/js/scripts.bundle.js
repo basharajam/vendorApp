@@ -344,7 +344,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 // Initialize KTApp class on document ready
 $(document).ready(function() {
-    KTApp.init(KTAppOptions);
+    KTApp.init(KTAppSettings);
 });
 
 // plugin setup
