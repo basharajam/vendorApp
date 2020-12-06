@@ -56,7 +56,7 @@
                     </div>
                     @enderror
                     <label for="exampleTextarea" class="font-size-h6 font-weight-bolder text-dark">
-                        <span>الرسالة\الاستفسار</span>
+                        <span>الرسالة/الاستفسار</span>
                         <span class="required">*</span>
                     </label>
                     <textarea class="form-control form-control-solid form-control-lg" id="exampleTextarea" rows="3" name="message" required></textarea>

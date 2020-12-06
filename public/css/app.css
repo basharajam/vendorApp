@@ -112099,6 +112099,7 @@ body {
 
 .kt-header__brand-nav {
   width: 80px;
+  margin: 0px !important;
 }
 
 .kt-header__brand-nav img {
