@@ -319,10 +319,10 @@ class PostService extends BaseService implements IPostService
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
         $file = $request->file('thumbnail');
         $guid = General::URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
-        if (!file_exists(public_path('../../'.$path))) {
-            mkdir(public_path('../../'.$path), 777, true);
+        if (!file_exists('../../'.$path)) {
+            mkdir('../../'.$path, 777, true);
         }
-        $file->move(public_path('../../'.$path), $mdf5);
+        $file->move('../../'.$path, $mdf5);
 
         $image_post = Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
