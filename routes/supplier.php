@@ -50,4 +50,6 @@ Route::get('/attributes/delete/{term_taxonomy_id}',[App\Http\Controllers\Supplie
 
 //Orders
 Route::get('/orders',[App\Http\Controllers\Supplier\OrderController::class,'index'])->name('supplier.orders');
+Route::get('/orders/paid',[App\Http\Controllers\Supplier\OrderController::class,'paidOrders'])->name('supplier.paid_orders');
+Route::get('/orders/not-paid',[App\Http\Controllers\Supplier\OrderController::class,'notPaidOrders'])->name('supplier.not_paid_orders');
 

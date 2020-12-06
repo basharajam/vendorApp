@@ -30,4 +30,18 @@ class OrderController extends Controller
                 ->with('paid_count',$paid_count)
                 ->with('orders',$orders);
     }
+
+    public function paidOrders(){
+        $supplier_id = \Auth::user()->userable->id;
+        $orders = $this->order_item_service->getSupplierPaidOrders($supplier_id);
+        return view('supplier.orders.paid')
+                ->with('orders',$orders);
+    }
+
+    public function notPaidOrders(){
+        $supplier_id = \Auth::user()->userable->id;
+        $orders = $this->order_item_service->getSupplieNotPaidrOrders($supplier_id);
+        return view('supplier.orders.not_paid')
+                ->with('orders',$orders);
+    }
 }
