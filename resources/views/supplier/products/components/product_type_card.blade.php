@@ -7,12 +7,13 @@ if($product)
 <div class="row">
     <div class="col-12 mb-10" style="text-align: right">
         <h3>اختر نوع المنتج</h3>
+        <span class="required">*</span>
     </div>
     <div class="col-lg-6">
         <label class="option">
             <span class="option-control">
                 <span class="radio">
-                    <input type="radio" name="product_type" value="simple" @if($product && $product_type && $product_type->term->name==\ProductTypes::SIMPLE) checked="checked" @elseif($product!=null) disabled @endif>
+                    <input type="radio" name="product_type" value="simple" @if($product && $product_type && $product_type->term &&  $product_type->term->name==\ProductTypes::SIMPLE) checked="checked" @elseif($product!=null) disabled @endif required>
                     <span></span>
                 </span>
             </span>
