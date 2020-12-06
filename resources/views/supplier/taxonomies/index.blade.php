@@ -33,6 +33,10 @@
 <script>
     $(function(){
         $('select').select2();
+        $('#taxonomy_name_input').on('change',function(ev){
+            let value = $(this).val();
+            $("#taxonomy_slug_input").val(value.replace(' ','_'));
+        })
     })
 </script>
 @endpush
