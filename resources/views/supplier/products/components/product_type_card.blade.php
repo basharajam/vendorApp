@@ -30,7 +30,7 @@ if($product)
         <label class="option">
             <span class="option-control">
                 <span class="radio">
-                    <input type="radio" name="product_type" value="variable" @if($product && $product_type && $product_type->term->name==\ProductTypes::VARIABLE) checked="checked" @elseif($product!=null) disabled @endif>
+                    <input type="radio" name="product_type" value="variable" @if($product && $product_type && $product_type->term &&  $product_type->term->name==\ProductTypes::VARIABLE) checked="checked" @elseif($product!=null) disabled @endif>
                     <span></span>
                 </span>
             </span>
