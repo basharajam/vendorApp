@@ -112523,8 +112523,8 @@ h6 {
   flex-direction: row-reverse;
 }
 
-.kt-header--minimiz .kt-header__brand-nav {
-  width: 55px !important;
+.kt-header--fixed.kt-header--minimize .kt-header__brand-nav {
+  width: 60px !important;
 }
 
 .kt-header--fixed.kt-header--minimize .kt-header .kt-header__top {

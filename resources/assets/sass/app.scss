@@ -334,11 +334,12 @@ h6{
         flex-direction: row-reverse;
     }
 }
-.kt-header--minimiz{
+.kt-header--fixed.kt-header--minimize{
     .kt-header__brand-nav{
-       width: 55px !important;
-    }
+        width: 60px !important;
+     }
 }
+
 .kt-header--fixed.kt-header--minimize .kt-header .kt-header__top{
     height: 80px;
 }

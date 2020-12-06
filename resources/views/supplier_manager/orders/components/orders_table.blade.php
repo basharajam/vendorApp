@@ -28,7 +28,7 @@
                     <div class="font-weight-bold text-muted">Products Count</div>
                 </th>
                 <th class="">
-                    <span>المحموع</span>
+                    <span>المجموع</span>
                     <div class="font-weight-bold text-muted">Total</div>
                 </th>
 
