@@ -167,6 +167,13 @@ class PostService extends BaseService implements IPostService
             if($request->hasFile('thumbnail')){
                 $this->store_post_image($post->ID,$request);
             }
+            if($post->product_type==null){
+                TermRelation::create([
+                    'object_id'=>$post->ID,
+                    'term_taxonomy_id'=>$term_taxonomy_id,
+                    'term_order'=>0
+                ]);
+            }
             //save product category
     }
     public function store_product_general(Request $request , int $post_id){
