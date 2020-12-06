@@ -356,3 +356,11 @@ div{
 label{
     text-align: right;
 }
+.attributes_list{
+    list-style: none;
+     & > li {
+         border-bottom:1px solid rgba($secondary-color,0.1);
+         padding:10px;
+         margin-bottom:5px;
+     }
+}

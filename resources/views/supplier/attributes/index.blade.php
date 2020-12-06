@@ -36,5 +36,13 @@
 @endpush
 
 @push('scripts')
+<script>
+    $(function(){
+        $(document).on('change','#taxonomy_name_input',function(ev){
+            let value = $(this).val();
+            $("#taxonomy_slug_input").val(value.replace(' ','-'));
 
+            })
+    })
+</script>
 @endpush

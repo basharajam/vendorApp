@@ -112548,3 +112548,13 @@ label {
   text-align: right;
 }
 
+.attributes_list {
+  list-style: none;
+}
+
+.attributes_list > li {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
