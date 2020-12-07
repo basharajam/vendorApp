@@ -12,6 +12,7 @@ use App\Models\WP\PostMeta;
 use Carbon\Carbon;
 use App\Models\WP\TermRelation;
 use App\Models\WP\TermTaxonomy;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
 
@@ -319,10 +320,14 @@ class PostService extends BaseService implements IPostService
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
         $file = $request->file('thumbnail');
         $guid = General::URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
-        if (!file_exists('../../'.$path)) {
-            mkdir('../../'.$path, 777, true);
+
+        if(!File::isDirectory('../../'.public_path($path))){
+
+            File::makeDirectory('../../'.public_path($path), 0777, true, true);
+
         }
-        $file->move('../../'.$path, $mdf5);
+
+        $file->move($path, $mdf5);
 
         $image_post = Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,

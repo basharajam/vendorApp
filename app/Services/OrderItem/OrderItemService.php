@@ -31,6 +31,9 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierOrders($supplier_id){
+        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use ($supplier_id){
+        //     return $query->where('post_author',$supplier_id);
+        // })->get();
         return OrderItem::where('order_item_type','line_item')->get();
     }
     /** get's all orders for a s manger
