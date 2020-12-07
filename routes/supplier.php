@@ -53,3 +53,5 @@ Route::get('/orders',[App\Http\Controllers\Supplier\OrderController::class,'inde
 Route::get('/orders/paid',[App\Http\Controllers\Supplier\OrderController::class,'paidOrders'])->name('supplier.paid_orders');
 Route::get('/orders/not-paid',[App\Http\Controllers\Supplier\OrderController::class,'notPaidOrders'])->name('supplier.not_paid_orders');
 
+//Profile
+Route::get('/profile',[App\Http\Controllers\Supplier\ProfileController::class,'profile'])->name('supplier.profile');

@@ -25,7 +25,7 @@ class Supplier extends BaseModel implements HasMedia
         "manager_id"
     ];
 
-    protected $appends = ["full_name"];
+    protected $appends = ["full_name",'national_id_image','passport_image','visa_image'];
 
     public function getFullNameAttribute(){
         return $this->first_name.' '.$this->last_name;
@@ -43,6 +43,15 @@ class Supplier extends BaseModel implements HasMedia
         $this->addMediaCollection('passport_images')->singleFile();
 
         $this->addMediaCollection('visa_images')->singleFile();
+    }
 
+    public function getNationalIdImageAttribute(){
+        return $this->getFirstMedia('national_id_images');
+    }
+    public function getPassportImageAttribute(){
+        return $this->getFirstMedia('passport_images');
+    }
+    public function getVisaImageAttribute(){
+        return $this->getFirstMedia('visa_images');
     }
 }

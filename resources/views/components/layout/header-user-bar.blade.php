@@ -9,6 +9,13 @@
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
         <!--begin: Head -->
         <div class="kt-notification">
+               <a href="{{ route("supplier.profile") }}" class="kt-notification__item" style="direction: ltr;text-align:right">
+                        <div class="kt-notification__item-details">
+                            {{-- <div class="kt-notification__item-time"></div> --}}
+                            <div class="kt-notification__item-title kt-font-bold mr-4">My Profile</div>
+                        </div>
+                        <div class="kt-notification__item-icon"><i class="flaticon2-calendar-3 kt-font-success"></i></div>
+                    </a>
             <div class="kt-notification__custom kt-space-between">
                 <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
