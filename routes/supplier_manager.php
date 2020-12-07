@@ -19,3 +19,6 @@ Route::get('/suppliers/delete/{id}',[App\Http\Controllers\SupplierManager\Suppli
 //Orders
 Route::get('/orders',[App\Http\Controllers\SupplierManager\OrderController::class,'index'])->name('supplier_manager.orders');
 
+//Support Request
+Route::get('/support',[App\Http\Controllers\SupplierManager\SupportController::class, 'viewForm'])->name('supplier_manager.support_view');
+Route::post('/support/store',[App\Http\Controllers\SupplierManager\SupportController::class, 'store'])->name('supplier_manager.send_request');
