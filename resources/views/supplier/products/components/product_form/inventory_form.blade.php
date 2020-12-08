@@ -44,18 +44,6 @@ if($product){
             @enderror
         </div>
     </div>
-    <div class="col-12">
-        <div class="form-group">
-            <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>تباع بشكل فردي</span>
-            </label>
-            <div class="checkbox-inline">
-                <label class="checkbox">
-                <input type="checkbox"  name="_sold_individually" id="_sold_individually" value="yes" @if(array_key_exists('_sold_individually',$meta) && $meta['_sold_individually']=="yes") checked="checked" @endif>
-                <span></span>قم بتمكين هذا للسماح بشراء عنصر واحد فقط من هذا العنصر بترتيب واحد</label>
-            </div>
-        </div>
-    </div>
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">

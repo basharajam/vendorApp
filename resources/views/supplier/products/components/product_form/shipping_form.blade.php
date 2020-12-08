@@ -20,27 +20,7 @@ if($product){
 
         </div>
     </div>
-    <div class="col-lg-12">
-        <div class="form-group">
-            <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الأبعاد (سم)</span>
-            </label>
-           <div class="kt-input-icon">
-               <div class="row">
-                   <div class="col-4">
-                        <input id="product_length" placeholder="الطول" class="form-control form-control-solid " size="6" type="text" name="_length" value="{{ array_key_exists('_length',$meta ) ? $meta['_length']  :  old('_length') }}">
-                   </div>
-                   <div class="col-4">
-                        <input id="product_width" placeholder="عرض" class="form-control form-control-solid " size="6" type="text" name="_width" value="{{ array_key_exists('_width',$meta ) ? $meta['_width']  :  old('_width') }}">
-                    </div>
-                    <div class="col-4">
-                            <input id="product_height" placeholder="ارتفاع" class="form-control form-control-solid " size="6" type="text" name="_height" value="{{ array_key_exists('_height',$meta ) ? $meta['_height']  :  old('_height') }}">
-                    </div>
-               </div>
-           </div>
 
-        </div>
-    </div>
     <div class="col-lg-12">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
