@@ -24,7 +24,7 @@ if($product){
                             <span class="required">*</span>
                         </label>
                         <div class="kt-input-icon d-flex justify-contenct-between">
-                            <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
+                            <select   class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}"
                                     id="attriubtes"
                                     name="attriubtes">
                                     <option></option>
@@ -32,9 +32,6 @@ if($product){
                                 <option value="{{ $attribute->term_taxonomy_id }}">  {{ str_replace('pa_','',$attribute->taxonomy) }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" id="add_attribute" data-action-name="{{ route('supplier.products.getAttributeSelector') }}" class="btn btn-success mr-4">
-                                إضافة
-                            </button>
                         </div>
 
 
@@ -95,8 +92,9 @@ if($product){
             }
            );
         }
-        $("#add_attribute").on('click',function(){
-           let selected_taxonomy = $("#attriubtes").val();
+        $("#attriubtes").select2();
+        $("#attriubtes").on('change',function(){
+           let selected_taxonomy = $(this).val();
            let action = $(this).attr('data-action-name');
            $('#loading-attribute-selector').show();
            let  csrf_token = $('meta[name="csrf-token"]').attr('content');

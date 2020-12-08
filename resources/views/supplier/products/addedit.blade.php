@@ -87,7 +87,19 @@
 @endpush
 
 @push('scripts')
+<script src="{{asset('js/select2.min.js')}}"></script>
 <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
+<script>
+    $(function(){
+        // $('#attributesSelectorInput').select2();
+        $('.tagsinput-field').select2();
+    // let collection = document.getElementsByClassName("tagsinput-field");
+    // for (let i = 0; i < collection.length; i++) { 
+    //         console.log(collection[i]); 
+    //         $(collection[i]).select2();
+    //     } 
+    });
+</script>
 <script>
     $(function(){
         let _regular_price = document.getElementById('_regular_price');
