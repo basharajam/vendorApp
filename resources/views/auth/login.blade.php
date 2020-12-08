@@ -58,7 +58,7 @@
                 <!--begin::Title-->
                 <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
                     <img src="{{ asset('images/logo.png') }}" class="max-h-200px max-w-200px text-center" alt="" />
-                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Vendor System</h3>
+                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">نظام الموردين</h3>
                     <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">Some Text Here                    <br />Web Application & Advanced Solutions</p>
                 </div>
                 <!--end::Title-->
