@@ -37,7 +37,7 @@
         </div>
         <!--End:: App Aside-->
 
-git        </div>
+   </div>
 
         <!--Begin:: App Content-->
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
