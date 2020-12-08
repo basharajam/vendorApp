@@ -66,6 +66,10 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري. قم بتعيين الحد الأقصى للكمية المسموح بها لكل طلب. أدخل رقمًا ، 1 أو أكبر"></span>
             </label>
             <input id="_wc_max_qty_product" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_wc_max_qty_product') is-invalid @enderror" type="text" placeholder="" name="_wc_max_qty_product" value="{{ array_key_exists('_wc_max_qty_product',$meta) ? $meta['_wc_max_qty_product'] : old('_wc_max_qty_product') }}"   />
+
+            <div class="fv-plugins-message-container">
+                <div  id="_wc_max_qty_product_help" class="fv-help-block"></div>
+            </div>
             @error('_wc_max_qty_product')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

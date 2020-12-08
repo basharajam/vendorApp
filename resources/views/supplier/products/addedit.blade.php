@@ -106,6 +106,29 @@
         Inputmask({ regex: "^[0-9]+$" }).mask(price_for_input);
         Inputmask({ regex: "^[0-9]+$" }).mask(days_to_delivery);
 
+        $(document).on('change',"#_sale_price",function(){
+            let value = $(this).val();
+            let regural_price_value =$("#_regular_price").val();
+            if(parseInt(value) >= parseInt(regural_price_value))
+            {
+                $("#_sale_price_help").text('الرجاء ادخال قيمة اصغر من السعر')
+            }
+            else{
+                $("#_sale_price_help").text('');
+            }
+        })
+        $(document).on('change',"#_wc_max_qty_product",function(){
+            let value = $(this).val();
+            let _wc_min_qty_product_value =$("#_wc_min_qty_product").val();
+            if(parseInt(value) < parseInt(_wc_min_qty_product_value))
+            {
+                $("#_wc_max_qty_product_help").text('الرجاء ادخال قيمة اكبر من الحد الادنى للكمية ')
+            }
+            else{
+                $("#_wc_max_qty_product_help").text('');
+            }
+        })
+
     })
 </script>
 <script>
