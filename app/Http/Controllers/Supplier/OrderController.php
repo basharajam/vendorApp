@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supplier;
 use App\Http\Controllers\Controller;
 use App\Services\OrderItem\IOrderItemService;
 use Illuminate\Http\Request;
+use ReflectionFunctionAbstract;
 
 class OrderController extends Controller
 {
@@ -21,7 +22,7 @@ class OrderController extends Controller
     }
 
     public function index(){
-        $supplier_id = \Auth::user()->userable->id;
+        $supplier_id = \Auth::user()->wordpress_user->ID;
         $orders = $this->order_item_service->getSupplierOrders($supplier_id);
         $paid_count = $this->order_item_service->getSupplierPaidOrders($supplier_id)->count();
         $not_paid_count =$this->order_item_service->getSupplieNotPaidrOrders($supplier_id)->count();
@@ -43,5 +44,10 @@ class OrderController extends Controller
         $orders = $this->order_item_service->getSupplieNotPaidrOrders($supplier_id);
         return view('supplier.orders.not_paid')
                 ->with('orders',$orders);
+    }
+
+    public function viewOrder($order_id){
+         $order = $this->order_item_service->view($order_id);
+        return view('supplier.orders.view')->with('order',$order);
     }
 }

@@ -23,6 +23,9 @@ class OrderItem extends Model
     public function order_meta(){
         return $this->hasMany(OrderItemMeta::class,'order_item_id','order_item_id');
     }
+    public function order_details(){
+        return $this->hasMany(OrderDetail::class,'order_id','order_id');
+    }
     public function getCustomerAttribute(){
         if($this->post){
           return WpugUser::where('ID',$this->post->meta['_customer_user'])->first();

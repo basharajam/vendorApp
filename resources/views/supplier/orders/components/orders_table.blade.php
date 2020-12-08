@@ -36,6 +36,7 @@
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Total</div>
                 </th>
+                <th></th>
 
             </tr>
         </thead>
@@ -69,13 +70,18 @@
                     @endif
                 </td>
                 <td>
-                    0
+                   <span>{{ $order->order_details()->count() }}</span>
                 </td>
                 <td>
                     @if($order->order_meta)
                         <span>{{ $order->order_meta()->pluck('meta_value','meta_key')->toArray()['_line_total']}}</span>
                         <span>¥</span>
                     @endif
+                </td>
+                <td>
+                    <a class="kt-nav__link"  href="{{ route('supplier.orders.view',$order->order_item_id) }}"  >
+                        <i class="kt-nav__link-icon color-primary flaticon-eye"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach

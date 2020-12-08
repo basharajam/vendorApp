@@ -48,7 +48,10 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierPaidOrders($supplier_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
+        //     return $query->where('post_status','wc-completed')->where('post_author',$supplier_id);
+        // })->get();
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
             return $query->where('post_status','wc-completed');
         })->get();
     }
@@ -66,7 +69,10 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplieNotPaidrOrders($supplier_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
+        //     return $query->where('post_status','!=','wc-completed')->where('post_author',$supplier_id);
+        // })->get();
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
             return $query->where('post_status','!=','wc-completed');
         })->get();
     }
@@ -79,5 +85,7 @@ class OrderItemService extends BaseService implements IOrderItemService
             return $query->where('post_status','!=','wc-completed');
         })->get();
     }
-
+    public function view($id){
+        return OrderItem::where('order_item_id',$id)->first();
+    }
 }
