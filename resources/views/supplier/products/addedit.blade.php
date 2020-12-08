@@ -34,7 +34,7 @@
                             <a id="cmdInventoryInfo" data-target="InventoryInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات المخزن</a>
                             <a id="cmdShippingInfo" data-target="ShippingInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات الشحن</a>
                             <a id="cmdAttributesInfo" data-target="AttributesInfo" class="cmdPage kt-widget__item">سمات المنتج</a>
-                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item"  @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::VARIABLE)) style="display:none" @endif>Product Variations</a>
+                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item"  @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::VARIABLE)) style="display:none" @endif>انواع المنتج</a>
                         </div>
                     </div>
                 </div>
