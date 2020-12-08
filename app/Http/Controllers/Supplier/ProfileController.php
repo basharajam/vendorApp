@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function profile(){
-        return view('supplier.profile.index');
+
+        return view('supplier.profile.index')
+            ->with('profile',\Auth::user()->userable);
     }
 }
