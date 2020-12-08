@@ -57,5 +57,6 @@ class RegisterController extends Controller
         $this->supplier_manager_service->store($request);
         return redirect()->route('login');
    }
+  
 
 }

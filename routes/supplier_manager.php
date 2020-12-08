@@ -22,3 +22,7 @@ Route::get('/orders',[App\Http\Controllers\SupplierManager\OrderController::clas
 //Support Request
 Route::get('/support',[App\Http\Controllers\SupplierManager\SupportController::class, 'viewForm'])->name('supplier_manager.support_view');
 Route::post('/support/store',[App\Http\Controllers\SupplierManager\SupportController::class, 'store'])->name('supplier_manager.send_request');
+
+//Profit Ratio
+
+Route::post('/profile-ratio',[App\Http\Controllers\SupplierManager\ProfileController::class,'update'])->name('supplier_manager.profit.store');

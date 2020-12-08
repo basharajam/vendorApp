@@ -4,27 +4,39 @@
             <tr>
                 <th class="">
                     <span>اسم المورد</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Supplier Name</div>
                 </th>
                 <th class="">
                     <span>اسم الشركة</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Supplier Company</div>
                 </th>
                 <th class="">
                     <span>البريد الالكتروني</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Email</div>
                 </th>
                 <th class="">
                     <span>اسم المحل</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Shop Address</div>
                 </th>
                 <th class="">
                     <span>الجنسية</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Nationality</div>
                 </th>
 
                 <th class="">
                     <span>تاريخ الاضافة</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Created At</div>
                 </th>
                 <th>

@@ -37,6 +37,7 @@
 
 <body class="fadeyellow backgroundChanger kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-page--loading-enabled kt-page--loading kt-header--minimize-topbar kt-subheader--transparent kt-page--loadin" >
     <div id="app">
+        @include('supplier_manager.components.profit_ratio_modal')
     <div class="notifications" style="width: 300px; top: 0px; right: 0px;"><span></span></div>
     <x-layout.header-mobile></x-layout.header-mobile>
         <div class="kt-grid kt-grid--hor kt-grid--root">
