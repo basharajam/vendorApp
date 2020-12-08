@@ -251,7 +251,7 @@
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
-        Inputmask({ mask: "62289999999999" }).mask(bank_account_number_Id);
+        Inputmask({ mask: "6228999999999" }).mask(bank_account_number_Id);
 
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();

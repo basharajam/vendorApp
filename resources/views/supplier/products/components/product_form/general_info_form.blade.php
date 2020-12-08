@@ -11,7 +11,7 @@ if($product){
                 <span class="required">*</span>
 
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required  />
+            <input id="_regular_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required  />
             @error('_regular_price')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -26,7 +26,7 @@ if($product){
                 <span>السعر بعد الحسم</span>
                 <span class="required">*</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}" required  />
+            <input id="_sale_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}" required  />
             @error('_sale_price')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

@@ -45,7 +45,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل عدد أيام التصنيع (إذا كان المنتج متوفرًا ، أدخل 0)."></span>
 
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('days_to_delivery') is-invalid @enderror" type="text" placeholder="0" name="days_to_delivery" value="{{ array_key_exists('days_to_delivery',$meta ) ? $meta['days_to_delivery']  :  old('days_to_delivery') }}" required  />
+            <input id="days_to_delivery" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('days_to_delivery') is-invalid @enderror" type="text" placeholder="0" name="days_to_delivery" value="{{ array_key_exists('days_to_delivery',$meta ) ? $meta['days_to_delivery']  :  old('days_to_delivery') }}" required  />
             @error('days_to_delivery')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
