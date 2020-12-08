@@ -1,8 +1,9 @@
 
 <div class="table-responsive">
-    <table id="ProductsTable" class="table table-bordered" style="direction:rtl;text-align:right">
+    <table id="ProductsTable" class="table table-bordered" style="direction:rtl;text-align:rightك">
         <thead class="thead-light">
             <tr>
+                <th></th>
                 <th class="">
                     <span>المنتج</span>
                     <span class="fas icon fa-arrow-up "></span>
@@ -40,14 +41,25 @@
                     <div class="font-weight-bold text-muted">CBM</div>
                 </th>
                 <th>.</th>
+                <th>.</th>
             </tr>
         </thead>
         <tbody style="direction:rtl;text-align:right">
-                @foreach($products as $product)
+                @foreach($products as $key=>$product)
                 @php
                     $meta = $product->meta;
+                    $product_type = \ProductTypes::SIMPLE;
+                    if($product->product_type && $product->product_type && $product->product_type->term)
+                        $product_type =$product->product_type->term->name;
                 @endphp
-                <tr id="{{ $product->ID }}">
+                <tr  id="row{{ $key }}" @if($product_type == \ProductTypes::VARIABLE ) class="parent" data-id="row{{ $key }}" data-arrow="#row-arrow{{ $key }}"@endif >
+                    <td >
+                        @if($product_type== \ProductTypes::VARIABLE)
+                        <div class="d-flex align-items-center justify-content-center">
+                            <span id="row-arrow{{ $key }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
+                        </div>
+                        @endif
+                    </td>
                     <td class="datatable-cell">
                         <span style="width: 250px;">
                             <div class="d-flex align-items-center">
@@ -69,7 +81,11 @@
                             </div>
                         </span>
                     </td>
-
+                    @if($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::VARIABLE)
+                    <td colspan="5" style="">
+                        <span>منتج عدة قياسات </span>
+                    </td>
+                    @else
                     <td class="datatable-cell-sorted datatable-cell">
                         <span>
                             <div class="font-weight-bolder font-size-lg mb-0">
@@ -117,13 +133,78 @@
                             </div>
                         </span>
                     </td>
+                    @endif
+
                     <td class="datatable-cell-sorted datatable-cell">
                         <a id="{{ $product->ID }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.products.delete',$product->ID) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
                         <a class="kt-nav__link"  href="{{ route('supplier.products.create',$product->ID) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
                     </td>
 
                 </tr>
+                @if($product_type== \ProductTypes::VARIABLE)
+                    @foreach($product->product_variations as $variation_index=>$variation)
+
+                    @if($variation_index==0)
+                    <tr class="child-row{{ $key }}" style="display:none">
+                        <th>
+                            <strong></strong>
+                        </th>
+                        <th>
+                            <strong>المنتج</strong>
+                        </th>
+                        <th>
+                            <strong>السعر</strong>
+                        </th>
+                        <th>
+                            <strong>السعر بعد الحسم</strong>
+                        </th>
+                        <th>
+                            <strong>الحجم</strong>
+                        </th>
+                        <th>
+                            <strong>الوزن</strong>
+                        </th>
+                        <th>
+                            <strong>CBM</strong>
+                        </th>
+                        <th></th>
+
+                    </tr>
+                    @endif
+                    @php
+                    $meta_variation = $variation->meta;
+                    @endphp
+                    <tr class="child-row{{ $key }}" style="display:none">
+                        <td></td>
+                        <td>
+                            <span>{{ $variation->post_title }}
+                                @foreach($variation->product_attributes as $key=>$value)
+                                <span>{{ $value[0]->term->name .' '}}</span>
+                                @endforeach
+                            </span>
+                        </td>
+                        <td>
+                            <span>{{array_key_exists('_regular_price',$meta_variation) ?  $meta_variation['_regular_price']  :''}}</span>
+                        </td>
+                        <td>
+                            <span>{{ array_key_exists('_sale_price',$meta_variation) ? $meta_variation['_sale_price'] :''}}</span>
+                        </td>
+                        <td>
+                            <span>{{array_key_exists('_size',$meta_variation) ? $meta_variation['_size'] :''}}</span>
+                        </td>
+                        <td>
+                            <span>{{array_key_exists('_weight',$meta_variation) ? $meta_variation['_weight'] :''}}</span>
+                        </td>
+                        <td>
+                            <span>{{array_key_exists('cbm_single',$meta_variation) ?  $meta_variation['cbm_single']:'' }}</span>
+                        </td>
+                        <td></td>
+
+                    </tr>
+                    @endforeach
+                @endif
                 @endforeach
+
         </tbody>
     </table>
 </div>
@@ -140,6 +221,26 @@
     $(document).ready(function() {
      $('.image-link').magnificPopup({type:'image'});
         // $('#ProductsTable').DataTable();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+            $('tr.parent')
+                .css("cursor", "pointer")
+                .attr("title", "Click to expand/collapse")
+                .click(function () {
+                    let arrow = $($(this).attr('data-arrow'));
+                    if($(arrow).hasClass("fa-arrow-alt-circle-left")){
+                        $(arrow).removeClass("fa-arrow-alt-circle-left");
+                        $(arrow).addClass("fa-arrow-alt-circle-down");
+                    }
+                    else{
+                        $(arrow).addClass("fa-arrow-alt-circle-left");
+                        $(arrow).removeClass("fa-arrow-alt-circle-down")
+                    }
+                    $(this).siblings('.child-' + this.id).toggle();
+                });
+            $('tr[class^=child-]').hide().children('td');
     });
 </script>
 <script>
@@ -193,4 +294,5 @@
     });
 } );
 </script>
+
 @endpush
