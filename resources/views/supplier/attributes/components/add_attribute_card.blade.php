@@ -8,7 +8,7 @@
             <div class="kt-widget__content">
                 <div class="kt-widget__section">
                     <h2 class="kt-widget__username font-weight-bolder" id="product_name">
-                        (Attribute) إضافة سمة جديدة
+                         إضافة سمة جديدة
                     </h2>
                 </div>
             </div>

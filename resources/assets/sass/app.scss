@@ -377,3 +377,6 @@ label{
     font-size:16px;
     padding:0.65rem 2rem;
 }
+.card.card-custom > .card-header .card-title, .card.card-custom > .card-header .card-title .card-label{
+    margin:0px;
+}
