@@ -12,7 +12,8 @@ class TermTaxonomy extends Model
         'term_id',
         'taxonomy',
         'description',
-        'parent'
+        'parent',
+        'supplier_id'
     ];
     protected $with=['term','posts'];
     public $timestamps = false;

@@ -24,7 +24,7 @@ class AttributeController extends Controller
 
     public function index(){
         $type="attributes";
-        $data = $this->taxonomy_service->attributes();
+        $data = $this->taxonomy_service->attributes(\Auth::user()->userable->id);
         return view('supplier.attributes.index')
                 ->with('data',$data)
                 ->with('type',$type);
@@ -50,7 +50,7 @@ class AttributeController extends Controller
     public function store(Request $request){
         $type="pa_".$request->name;
         $request->merge(['taxonomy' => $type]);
-        $this->taxonomy_service->store($request);
+        $this->taxonomy_service->store($request,\Auth::user()->userable->id);
         return redirect()->back();
     }
     public function storeTerm(Request $request){

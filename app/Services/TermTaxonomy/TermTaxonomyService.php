@@ -45,8 +45,12 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      /** gets Attributes from termtaxonomy and terms table
      * @return Collection
      */
-    public function attributes(){
-        return TermTaxonomy::where('taxonomy','like','pa_%')->groupBy('taxonomy')->get();
+    public function attributes($supplier_id=null){
+        return TermTaxonomy::where('taxonomy','like','pa_%')
+                            ->groupBy('taxonomy')
+                            ->when($supplier_id, function ($query, $supplier_id) {
+                                return $query->where('supplier_id', $supplier_id);
+                            })->get();
     }
 
      /** stores category info
@@ -116,17 +120,19 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      * @param Request $request
      * @return TermTaxonomy
      */
-    public function store(Request $request){
+    public function store(Request $request , $supplier_id=null){
         $term = Term::create([
             'name'=>$request->name,
             'slug'=>$request->slug,
-            'item_group'=>0
+            'item_group'=>0,
+
         ]);
         $term_taxonomy = TermTaxonomy::create([
             'term_id'=>$term->term_id,
             'taxonomy'=>$request->taxonomy,
             'description'=>$request->description,
-            'parent'=>0
+            'parent'=>0,
+            "supplier_id"=>$supplier_id
         ]);
 
 
@@ -175,6 +181,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ->where('term_taxonomy_id', $id)
             ->update([
                 'taxonomy'=>$request->taxonomy,
+
             ]);
 
         $term = $term_taxonomy->term;

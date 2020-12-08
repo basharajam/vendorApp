@@ -227,7 +227,7 @@
     $(document).ready(function () {
             $('tr.parent')
                 .css("cursor", "pointer")
-                .attr("title", "Click to expand/collapse")
+                .attr("title", "انقر لعرض المزيد")
                 .click(function () {
                     let arrow = $($(this).attr('data-arrow'));
                     if($(arrow).hasClass("fa-arrow-alt-circle-left")){

@@ -25,9 +25,17 @@ interface ITermTaxonomyService extends IBaseService
     public function tags();
 
     /** gets Attributes from termtaxonomy and terms table
+     * @param int $supplier_id optional for a supplier else bring them all
      * @return Collection
      */
-    public function attributes();
+    public function attributes($supplier_id=null);
+
+     /** stores taxonomy info
+     * @param Request $request
+     * @param $supplier_id optioanl to save some taxonomy just for that supplier
+     * @return TermTaxonomy
+     */
+    public function store(Request $request , $supplier_id=null);
 
     /** stores category info
      * @param Request $request
