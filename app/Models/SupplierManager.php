@@ -14,6 +14,7 @@ class SupplierManager extends BaseModel implements HasMedia
         "first_name",
         "last_name",
         "email",
+        'profit_ratio'
     ];
 
     protected $appends = ["full_name"];

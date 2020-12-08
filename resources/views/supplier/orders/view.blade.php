@@ -5,9 +5,6 @@
 <div class="d-flex flex-column-fluid">
     <div class="container-fluid">
         <div class="card card-custom">
-            <!--begin::Header-->
-
-            <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body">
                 <div class="kt-section">
