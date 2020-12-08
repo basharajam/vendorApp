@@ -364,3 +364,11 @@ label{
          margin-bottom:5px;
      }
 }
+.dataTables_wrapper .dataTable tfoot th, .dataTables_wrapper .dataTable thead th{
+    font-weight: 700;
+    font-size:16px;
+    letter-spacing:0px;
+    .icon{
+        font-size:12px;
+    }
+}

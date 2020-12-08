@@ -5,26 +5,38 @@
             <tr>
                 <th class="">
                     <span>المنتج</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Product </div>
                 </th>
                 <th class="">
                     <span>فئات المنتج</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Product Categories</div>
                 </th>
                 <th class="">
                     <span>السعر</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Price</div>
                 </th>
                 <th class="">
                     <span>الحجم</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Size</div>
                 </th>
                  <th class="">
                     <span>الوزن</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Weight</div>
                 </th>
                   <th class="">
                     <span>CBM</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">CBM</div>
                 </th>
                 <th>.</th>

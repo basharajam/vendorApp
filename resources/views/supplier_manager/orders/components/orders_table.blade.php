@@ -5,30 +5,44 @@
             <tr>
                 <th class="">
                     <span>رقم الطلب</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order</div>
                 </th>
                 <th class="">
                     <span>المورد</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Supplier</div>
                 </th>
                 <th class="">
                     <span>الزبون</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Customer</div>
                 </th>
                 <th class="">
                     <span>تاريخ الطلب</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Date</div>
                 </th>
                 <th class="">
                     <span>حالة الطلب</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Status</div>
                 </th>
                 <th class="">
                     <span>المنتجات</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Products Count</div>
                 </th>
                 <th class="">
                     <span>المجموع</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Total</div>
                 </th>
 
@@ -44,11 +58,7 @@
                     @endif
                 </td>
                 <td></td>
-                <td>
-                    @if($order->post)
-                    <span>{{ str_replace('wc_order_','',$order->post->meta['_order_key']) }}</span>
-                    @endif
-                </td>
+
                 <td>
                     @if($order->customer)
                     <span>{{ $order->customer->display_name ?? $order->customer->user_login }}</span>

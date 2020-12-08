@@ -1,30 +1,39 @@
 
 <div class="table-responsive">
     <table id="OrdersTable" class="table table-bordered" style="direction:rtl;text-align:right">
-        <thead class="thead-light">
+        <thead class="thead-bold">
             <tr>
                 <th class="">
-                    <span>رقم الطلب</span>
+                    <span>
+                            <span class="ml-2">رقم الطلب</span>
+                            <span class="fas icon fa-arrow-up"></span>
+                            <span class="fas icon fa-arrow-down"></span>
+
+                    </div>
                     <div class="font-weight-bold text-muted">Order</div>
                 </th>
                 <th class="">
-                    <span>الزبون</span>
-                    <div class="font-weight-bold text-muted">Customer</div>
-                </th>
-                <th class="">
-                    <span>تاريخ الطلب</span>
+                    <span class="ml-2">تاريخ الطلب</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Date</div>
                 </th>
                 <th class="">
-                    <span>حالة الطلب</span>
+                    <span class="ml-2">حالة الطلب</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Status</div>
                 </th>
                 <th class="">
-                    <span>المنتجات</span>
+                    <span class="ml-2">المنتجات</span>
+                    <span class="fas icon fa-arrow-up "></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Products Count</div>
                 </th>
                 <th class="">
-                    <span>المجموع</span>
+                    <span class="ml-2">المجموع</span>
+                    <span class="fas icon fa-arrow-up"></span>
+                    <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Total</div>
                 </th>
 
@@ -37,11 +46,6 @@
                 <td>
                     @if($order->post)
                     <span>{{ str_replace('wc_order_','',$order->post->meta['_order_key']) }}</span>
-                    @endif
-                </td>
-                <td>
-                    @if($order->customer)
-                    <span>{{ $order->customer->display_name ?? $order->customer->user_login }}</span>
                     @endif
                 </td>
                 <td>
