@@ -12,7 +12,7 @@
                <a href="{{ route("supplier.profile") }}" class="kt-notification__item" style="direction: ltr;text-align:right">
                         <div class="kt-notification__item-details">
                             {{-- <div class="kt-notification__item-time"></div> --}}
-                            <div class="kt-notification__item-title kt-font-bold mr-4">My Profile</div>
+                            <div class="kt-notification__item-title kt-font-bold mr-4">الصفحة الشخصية</div>
                         </div>
                         <div class="kt-notification__item-icon"><i class="flaticon2-calendar-3 kt-font-success"></i></div>
                     </a>
