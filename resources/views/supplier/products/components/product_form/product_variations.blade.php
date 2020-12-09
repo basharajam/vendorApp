@@ -129,6 +129,7 @@ if($product){
         $("#addVariationButton").on('click',function(e){
             e.preventDefault();
             $("#variationFormContainer").slideDown();
+            $(":input").inputmask();
         })
     });
 </script>

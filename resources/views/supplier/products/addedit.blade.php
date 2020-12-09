@@ -102,17 +102,9 @@
         let _sale_price = document.getElementById('_sale_price');
         let _wc_min_qty_product = document.getElementById('_wc_min_qty_product');
         let _wc_max_qty_product = document.getElementById('_wc_max_qty_product');
-        let cartoon_qty = document.getElementById('cartoon_qty');
-        let price_for_input = document.getElementById('price_for_input');
-        let days_to_delivery = document.getElementById('days_to_delivery');
 
-        Inputmask({ regex: "^[0-9]+$" }).mask(_regular_price);
-        Inputmask({ regex: "^[0-9]+$" }).mask(_sale_price);
-        Inputmask({ regex: "^[0-9]+$" }).mask(_wc_min_qty_product);
-        Inputmask({ regex: "^[0-9]+$" }).mask(_wc_max_qty_product);
-        Inputmask({ regex: "^[0-9]+$" }).mask(cartoon_qty);
-        Inputmask({ regex: "^[0-9]+$" }).mask(price_for_input);
-        Inputmask({ regex: "^[0-9]+$" }).mask(days_to_delivery);
+
+        Inputmask().mask(document.querySelectorAll("input"));
         function checkSalePrice(){
             let sale = $("#_sale_price").val();
             let price = $("#_regular_price").val();
