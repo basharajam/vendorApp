@@ -53,7 +53,7 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
             <div class="row">
                 <div class="col-xl-12">
-                    <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="ProductForm" action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="request_type" value="product">
                         <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
@@ -92,6 +92,8 @@
     //         console.log(collection[i]);
     //         $(collection[i]).select2();
     //     }
+
+
     });
 </script>
 <script>
@@ -111,6 +113,29 @@
         Inputmask({ regex: "^[0-9]+$" }).mask(cartoon_qty);
         Inputmask({ regex: "^[0-9]+$" }).mask(price_for_input);
         Inputmask({ regex: "^[0-9]+$" }).mask(days_to_delivery);
+        function checkSalePrice(){
+            let sale = $("#_sale_price").val();
+            let price = $("#_regular_price").val();
+            if(parseInt(sale) >= parseInt(price))
+            {
+                return false;
+            }
+            else{
+              return true;
+            }
+        }
+
+        function checkMaxQuantity(){
+            let max = $("#_wc_max_qty_product").val();
+            let min = $("#_wc_min_qty_product").val();
+            if(parseInt(max) < parseInt(min))
+            {
+                return false;
+            }
+            else{
+              return true;
+            }
+        }
 
         $(document).on('change',"#_sale_price",function(){
             let value = $(this).val();
@@ -132,6 +157,14 @@
             }
             else{
                 $("#_wc_max_qty_product_help").text('');
+            }
+        });
+
+        $("#ProductForm").submit(function(){
+           let max_validation =  checkMaxQuantity();
+            let sale_validation = checkSalePrice();
+            if(!max_validation || !sale_validation){
+                return false;
             }
         })
 
