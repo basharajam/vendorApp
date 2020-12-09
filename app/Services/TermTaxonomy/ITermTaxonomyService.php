@@ -41,7 +41,7 @@ interface ITermTaxonomyService extends IBaseService
      * @param Request $request
      * @return TermTaxonomy
      */
-    public function storeCategory(Request $request);
+    public function storeCategory(Request $request,$supplier_id=null);
 
 
     /** update attrbiute info

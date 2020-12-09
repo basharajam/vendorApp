@@ -57,7 +57,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      * @param Request $request
      * @return TermTaxonomy
      */
-    public function storeCategory(Request $request){
+    public function storeCategory(Request $request,$supplier_id=null){
         $term = Term::create([
             'name'=>$request->name,
             'slug'=>$request->slug,
@@ -67,7 +67,8 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'term_id'=>$term->term_id,
             'taxonomy'=>$request->type,
             'description'=>$request->description,
-            'parent'=>$request->parent
+            'parent'=>$request->parent,
+            'supplier_id'=>$supplier_id
         ]);
         //savge image
         if($request->has('image')){
