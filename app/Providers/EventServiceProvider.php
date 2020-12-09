@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use App\Events\SupplierRegistered;
+use App\Events\SupportStored;
 use App\Listeners\SendWelcomeMail;
+use App\Listeners\SendSupportMail;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -23,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         SupplierRegistered::class => [
             SendWelcomeMail::class,
         ],
+        SupportStored::class=>[
+            SendSupportMail::class,
+        ]
     ];
 
     /**
