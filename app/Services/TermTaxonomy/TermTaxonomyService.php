@@ -154,7 +154,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
     public function update(Request $request, $id)
     {
         $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
-        \DB::table('wpug_term_taxonomy')
+        \DB::table(\General::DB_PREFIX.'term_taxonomy')
             ->where('term_taxonomy_id', $id)
             ->update([
                 'description'=>$request->description,
@@ -162,7 +162,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ]);
 
         $term = $term_taxonomy->term;
-       return  \DB::table('wpug_terms')
+       return  \DB::table(\General::DB_PREFIX.'terms')
         ->where('term_id', $term->id)
         ->update([
             'name'=>$request->name,
@@ -177,7 +177,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      */
     public function updateAttribute(Request $request,$id){
         $term_taxonomy = TermTaxonomy::where('term_taxonomy_id',$id)->first();
-        \DB::table('wpug_term_taxonomy')
+        \DB::table(\General::DB_PREFIX.'term_taxonomy')
             ->where('term_taxonomy_id', $id)
             ->update([
                 'taxonomy'=>$request->taxonomy,
@@ -185,7 +185,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ]);
 
         $term = $term_taxonomy->term;
-       return  \DB::table('wpug_terms')
+       return  \DB::table(\General::DB_PREFIX.'terms')
         ->where('term_id', $term->id)
         ->update([
             'name'=>$request->name,

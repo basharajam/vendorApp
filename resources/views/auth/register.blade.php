@@ -37,52 +37,54 @@
                     <!--begin::Aside body-->
                     <div class="d-flex flex-column-fluid flex-column ">
                         <!--begin::Signin-->
-                        <div class="login-form login-signin py-11">
+                        <div class="login-form login-signin py-11 w-90">
                            <!--begin::Form-->
                            <div class="row d-flex justify-content-center h-100" >
                             <div class="col-12 mb-10" style="text-align: center">
                                 <h3>الرجاء اختيار نوع الحساب</h3>
                             </div>
-                            <div class="col-lg-12">
-                                <label class="option">
-                                    <span class="option-control">
-                                        <span class="radio">
-                                            <input type="radio" name="account_type" value="{{ route("supplier_registeration_view") }}">
-                                            <span></span>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="option">
+                                        <span class="option-control">
+                                            <span class="radio">
+                                                <input type="radio" name="account_type" value="{{ route("supplier_registeration_view") }}">
+                                                <span></span>
+                                            </span>
                                         </span>
-                                    </span>
-                                    <span class="option-label">
-                                        <span class="option-head">
-                                            <span class="option-title">مورد</span>
-                                            <span class="option-focus"></span>
+                                        <span class="option-label">
+                                            <span class="option-head">
+                                                <span class="option-title">مورد</span>
+                                                <span class="option-focus"></span>
+                                            </span>
+                                            <span class="option-body">إنشاء حساب مورد</span>
                                         </span>
-                                        <span class="option-body">إنشاء حساب مورد</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="col-lg-12">
-                                <label class="option">
-                                    <span class="option-control">
-                                        <span class="radio">
-                                            <input type="radio" name="account_type" value="{{ route("supplier_manager_registeration_view") }}">
-                                            <span></span>
-                                        </span>
-                                    </span>
-                                    <span class="option-label">
-                                        <span class="option-head">
-                                            <span class="option-title">مدير موردين</span>
-                                            <span class="option-focus"></span>
-                                        </span>
-                                        <span class="option-body">إنشاء حساب مدير  موردين</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="col-12">
-                                <!--begin::Form group-->
-                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                    <a href="#" id="selected_account_type"  type="button" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                    </label>
                                 </div>
-                                <!--end::Form group-->
+                                <div class="col-lg-12">
+                                    <label class="option">
+                                        <span class="option-control">
+                                            <span class="radio">
+                                                <input type="radio" name="account_type" value="{{ route("supplier_manager_registeration_view") }}">
+                                                <span></span>
+                                            </span>
+                                        </span>
+                                        <span class="option-label">
+                                            <span class="option-head">
+                                                <span class="option-title">مدير موردين</span>
+                                                <span class="option-focus"></span>
+                                            </span>
+                                            <span class="option-body">إنشاء حساب مدير  موردين</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <!--begin::Form group-->
+                                    <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                        <a href="#" id="selected_account_type"  type="button" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                    </div>
+                                    <!--end::Form group-->
+                                </div>
                             </div>
                         </div>
                         <!--end::Form-->

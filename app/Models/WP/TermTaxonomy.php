@@ -35,6 +35,6 @@ class TermTaxonomy extends Model
     }
     public function getImageAttribute()
     {
-        return $this->posts()->join('wpug_posts','object_id',\General::DB_PREFIX.'posts.ID')->where(\General::DB_PREFIX.'posts.post_type','attachment')->first()->guid ?? null;
+        return $this->posts()->join(\General::DB_PREFIX.'posts','object_id',\General::DB_PREFIX.'posts.ID')->where(\General::DB_PREFIX.'posts.post_type','attachment')->first()->guid ?? null;
     }
 }

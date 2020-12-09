@@ -380,3 +380,23 @@ label{
 .card.card-custom > .card-header .card-title, .card.card-custom > .card-header .card-title .card-label{
     margin:0px;
 }
+@media(max-width:990px){
+    .login.login-2 .login-form {
+        max-width: 100%;
+
+    }
+}
+.option{
+    flex-direction: row-reverse;
+    .option-head{
+        text-align: right;
+        flex-direction: row-reverse;
+        margin-right:10px;
+    }
+
+}
+.form-group {
+    label{
+        direction:rtl;
+    }
+}

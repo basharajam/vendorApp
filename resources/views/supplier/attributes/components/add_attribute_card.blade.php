@@ -24,7 +24,7 @@
 <script>
 
 </script>
-@endpush]
+@endpush
 
 
 @push('scripts')
