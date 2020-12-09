@@ -13,7 +13,7 @@ class AddUserIdToTermTaxonomy extends Migration
      */
     public function up()
     {
-        Schema::table(\Genderal::DB_PREFIX.'term_taxonomy', function (Blueprint $table) {
+        Schema::table(\General::DB_PREFIX.'term_taxonomy', function (Blueprint $table) {
             //
             $table->unsignedBigInteger('supplier_id')->nullable();
         });
@@ -26,7 +26,7 @@ class AddUserIdToTermTaxonomy extends Migration
      */
     public function down()
     {
-        Schema::table(\Genderal::DB_PREFIX.'term_taxonomy', function (Blueprint $table) {
+        Schema::table(\General::DB_PREFIX.'term_taxonomy', function (Blueprint $table) {
             $table->dropColumn('supplier_id');
 
         });
