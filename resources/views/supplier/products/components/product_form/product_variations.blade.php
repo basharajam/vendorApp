@@ -5,7 +5,7 @@ if($product){
 }
 @endphp
 
-<div class="w-100" id="ProductVariations" style="display:none" >
+<div class="w-100" id="ProductVariations" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::SIMPLE)) style=" display:none" @endif >
     <div class="kt-portlet">
         <div class="kt-portlet__head align-items-center d-flex justify-content-between" >
             <div class="kt-portlet__head-label">

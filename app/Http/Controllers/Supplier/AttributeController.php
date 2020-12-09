@@ -65,7 +65,7 @@ class AttributeController extends Controller
     }
     public function storeTerm(Request $request){
         try{
-            $this->taxonomy_service->store($request,$request,\Auth::user()->userable->id);
+            $this->taxonomy_service->store($request,\Auth::user()->userable->id);
             \Session::flash('message',"تمت العلية بنجاح");
             \Session::flash('status',true);
         }

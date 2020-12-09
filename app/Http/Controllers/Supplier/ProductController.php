@@ -36,7 +36,7 @@ class ProductController extends Controller
 
 
         $categories = $this->term_taxonomy_service->categories();
-        $attributes =$this->term_taxonomy_service->attributes();
+        $attributes =$this->term_taxonomy_service->attributes(\Auth::user()->userable->id);
         $product = null;
         if($id!=0)
         {
@@ -51,26 +51,16 @@ class ProductController extends Controller
     public function store(Request $request){
         $product = null;
         try{
+            if($request->post_id == 0)
+                $product =  $this->post_service->store_product($request);
+             else{
+                $product =  $this->post_service->update_product($request,$request->post_id);
+            }
+            $product =  $this->post_service->store_product_general($request,$product->ID);
+            $product =  $this->post_service->store_product_inventory($request,$product->ID);
+            $product =  $this->post_service->store_product_shipping($request,$product->ID);
+            $product =  $this->post_service->store_product_attributes($request,$product->ID);
             switch($request->request_type){
-                case "product":
-                    if($request->post_id == 0)
-                        $product =  $this->post_service->store_product($request);
-                    else{
-                        $product =  $this->post_service->update_product($request,$request->post_id);
-                    }
-                break;
-                case "general":
-                    $product =  $this->post_service->store_product_general($request,$request->post_id);
-                break;
-                case "inventory":
-                    $product =  $this->post_service->store_product_inventory($request,$request->post_id);
-                break;
-                case "shipping":
-                    $product =  $this->post_service->store_product_shipping($request,$request->post_id);
-                break;
-                case "attributes":
-                    $product =  $this->post_service->store_product_attributes($request,$request->post_id);
-                break;
                 case "categories":
                     $product =  $this->post_service->store_product_categories($request,$request->post_id);
                 break;

@@ -82,6 +82,7 @@ if($product){
                     if(response){
                         _initTagsInput(response);
                    $('#loading-attribute-selector').hide();
+                   $('.tagsinput-field').select2();
 
                     }
                 },

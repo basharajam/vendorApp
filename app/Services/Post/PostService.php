@@ -218,7 +218,7 @@ class PostService extends BaseService implements IPostService
     }
     public function store_product_attributes(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
-        if($post){
+        if($post && isset($request->taxonomies_relation)){
           foreach($request->taxonomies_relation as $term_taxonomy_id){
             $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
             if($exists==null){

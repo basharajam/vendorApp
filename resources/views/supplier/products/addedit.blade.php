@@ -20,21 +20,6 @@
                                 <!--Product Image-->
                                 <img id="AsidePhoto" class="kt-widget__img " src="{{$product->product_image ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
                             </div>
-                            <div class="kt-widget__content">
-                                <div class="kt-widget__section">
-                                    <a href="#" class="kt-widget__username" id="product_name">
-                                   {{$product->post_title ?? 'Product Name '}}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kt-widget__body">
-                            <a id="cmdProductType" data-target="Productype" class="cmdPage kt-widget__item kt-widget__item--active">نوع المنتج</a>
-                            <a id="cmdGeneralInfo" data-target="GeneralInfo" class="cmdPage kt-widget__item " @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات المنتج العامة</a>
-                            <a id="cmdInventoryInfo" data-target="InventoryInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات المخزن</a>
-                            <a id="cmdShippingInfo" data-target="ShippingInfo" class="cmdPage kt-widget__item" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::SIMPLE)) style="display:none" @endif>معلومات الشحن</a>
-                            <a id="cmdAttributesInfo" data-target="AttributesInfo" class="cmdPage kt-widget__item">سمات المنتج</a>
-                            <a id="cmdProductVariations" data-target="ProductVariations" class="cmdPage kt-widget__item"  @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name!=\ProductTypes::VARIABLE)) style="display:none" @endif>انواع المنتج</a>
                         </div>
                     </div>
                 </div>
@@ -68,12 +53,21 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
             <div class="row">
                 <div class="col-xl-12">
-                   @include('supplier.products.components.product_form.product_main')
-                   @include('supplier.products.components.product_form.general_info')
-                   @include('supplier.products.components.product_form.inventory_info')
-                   @include('supplier.products.components.product_form.shipping_info')
-                   @include('supplier.products.components.product_form.attributes_info')
-                   @include('supplier.products.components.product_form.product_variations')
+                    <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="request_type" value="product">
+                        <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+                        <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
+                        <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+                        @include('supplier.products.components.product_form.product_main')
+                        <div class="w-100" id="ProductSimple" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::VARIABLE)) style=" display:none" @endif >
+                            @include('supplier.products.components.product_form.general_info')
+                            @include('supplier.products.components.product_form.inventory_info')
+                            @include('supplier.products.components.product_form.shipping_info')
+                        </div>
+                        @include('supplier.products.components.product_form.attributes_info')
+                        @include('supplier.products.components.product_form.product_variations')
+                    </form>
                 </div>
             </div>
         </div>
@@ -94,10 +88,10 @@
         // $('#attributesSelectorInput').select2();
         $('.tagsinput-field').select2();
     // let collection = document.getElementsByClassName("tagsinput-field");
-    // for (let i = 0; i < collection.length; i++) { 
-    //         console.log(collection[i]); 
+    // for (let i = 0; i < collection.length; i++) {
+    //         console.log(collection[i]);
     //         $(collection[i]).select2();
-    //     } 
+    //     }
     });
 </script>
 <script>
@@ -145,6 +139,7 @@
 </script>
 <script>
     $(function(){
+        let simple_required_input = $("#ProductSimple input").attr('required',true);
         let Offcanvas = new KTOffcanvas('kt_user_profile_aside',{
                 overlay:true,
                 baseClass:'kt-app__aside',
@@ -152,32 +147,11 @@
                 toggleBy:'kt_subheader_mobile_toggle',
             });
         //commands
-        let cmdProductType = $("#cmdProductType");
-        let cmdGeneralInfo = $("#cmdGeneralInfo");
-        let cmdInventoryInfo = $("#cmdInventoryInfo");
-        let cmdShippingInfo = $("#cmdShippingInfo");
-        let cmdAttributesInfo = $("#cmdAttributesInfo");
-        let cmdProductVariations = $("#cmdProductVariations");
         // sections
-        let Productype = $("#Productype");
-        let GeneralInfo = $("#GeneralInfo");
-        let InventoryInfo = $("#InventoryInfo");
-        let ShippingInfo = $("#ShippingInfo");
-        let AttributesInfo = $("#AttributesInfo");
         let ProductVariations = $("#ProductVariations");
+        let ProductSimple = $("#ProductSimple");
         // forms
-        let FormProductype = Productype.find('form');
-        let FormGeneralInfo = GeneralInfo.find('form');
-        let FormInventoryInfo = InventoryInfo.find('form');
-        let FromShippingInfo = ShippingInfo.find('form');
-        let FromAttributesInfo= AttributesInfo.find('form');
-        let FromProductVariations= ProductVariations.find('form');
         //hide sections
-        GeneralInfo.hide();
-        InventoryInfo.hide();
-        ShippingInfo.hide();
-        AttributesInfo.hide();
-        ProductVariations.hide();
         // cmdProductVariations.hide();
         //functions
         function hideAll(){
@@ -212,31 +186,23 @@
                 ProductVariations.slideUp(1000);
             }
         }
-        function hideSimpleFormOptions(){
-            //product general info
-            cmdGeneralInfo.slideUp(1000);
-            //product inventory info
-            cmdInventoryInfo.slideUp(1000)
-            //product shipping info
-            cmdShippingInfo.slideUp(1000);
-        }
-        function displaySimpleFormOptions(){
-            //product general info
-            cmdGeneralInfo.slideDown(1000);
-            //product inventory info
-            cmdInventoryInfo.slideDown(1000)
-            //product shipping info
-            cmdShippingInfo.slideDown(1000);
-        }
+
         function productTypeChanged(value){
             if (value == 'variable') {
-                hideSimpleFormOptions();
-                cmdProductVariations.slideDown(1000);
+                ProductSimple.slideUp(1000);
+                ProductVariations.slideDown(1000);
+                //remove required from simple
+
+                for (let i = 0; i < simple_required_input.length; i++) {
+                    simple_required_input[i].required =false;
+                 }
             }
             else if (value == 'simple') {
-                displaySimpleFormOptions();
-                $("#ProductVariations").slideUp(1000);
-                cmdProductVariations.slideUp(1000);
+                ProductVariations.slideUp(1000);
+                ProductSimple.slideDown(1000);
+                for (let i = 0; i < simple_required_input.length; i++) {
+                    simple_required_input[i].required =true;
+                 }
             }
         }
         //events
@@ -249,10 +215,8 @@
                 $(this).addClass("kt-widget__item--active");
                 window.scrollTo(0, 0);
         });
-
         $('input[type=radio][name=product_type]').change(function() {
             productTypeChanged(this.value);
-
         });
 
     });

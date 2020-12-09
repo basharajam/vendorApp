@@ -6,10 +6,10 @@
         </div>
     </div>
     <div class="kt-portlet__body">
-        <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
+        {{-- <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="request_type" value="product">
-            <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+            <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}"> --}}
             @include('supplier.products.components.product_type_card',['product'=>$product])
             <div class="row">
                 <div class="col-lg-12">
@@ -56,14 +56,14 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row mt-10 mb-0">
+            {{-- <div class="form-group row mt-10 mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary ">
                         حفظ
                         <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
                     </button>
                 </div>
-            </div>
-        </form>
+            </div> --}}
+        {{-- </form> --}}
     </div>
 </div>
