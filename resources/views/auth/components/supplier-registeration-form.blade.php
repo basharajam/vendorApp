@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span class="required">*</span>
-                    <span>الجنسبة</span>
+                    <span>الجنسية</span>
                 </label>
                 <div class="col-12 col-form-label">
                     <div class="radio-inline">
@@ -53,13 +53,18 @@
             </div>
             <!--end::Form group Nationality-->
         </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span class="required">*</span>
+                    <span>الاسم الكامل لصاحب الشركة المسجلة داخل الرخصة التجارية</span>
+                </label>
+            </div>
+
+        </div>
         <div class="col-md-6">
              <!--begin::Form group First Name-->
              <div class="form-group">
-                <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
-                    <span>الاسم</span>
-                </label>
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
@@ -72,10 +77,6 @@
         <div class="col-md-6">
             <!--begin::Form group Last Name-->
             <div class="form-group">
-               <label class="font-size-h6 font-weight-bolder text-dark">
-                   <span class="required">*</span>
-                   <span>الكنية</span>
-               </label>
                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ $supplier->last_name ?? old('last_name') }}" required autofocus />
                @error('last_name')
                <div class="fv-plugins-message-container">

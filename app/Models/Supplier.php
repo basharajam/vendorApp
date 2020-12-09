@@ -5,6 +5,8 @@ namespace App\Models;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
+use function PHPSTORM_META\map;
+
 class Supplier extends BaseModel implements HasMedia
 {
     use HasMediaTrait;
@@ -22,7 +24,12 @@ class Supplier extends BaseModel implements HasMedia
         "national_number",
         "passport_number",
         "passport_end_date",
-        "manager_id"
+        "manager_id",
+        'age',
+        'gender',
+        'mobile_number',
+        'company_years',
+
     ];
 
     protected $appends = ["full_name",'national_id_image','passport_image','visa_image'];

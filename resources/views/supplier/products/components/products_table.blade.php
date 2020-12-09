@@ -177,7 +177,7 @@
                     <tr class="child-row{{ $key }}" style="display:none">
                         <td></td>
                         <td>
-                            <span>{{ $variation->post_title }}
+                            <span>
                                 @foreach($variation->product_attributes as $key=>$value)
                                 <span>{{ $value[0]->term->name .' '}}</span>
                                 @endforeach
