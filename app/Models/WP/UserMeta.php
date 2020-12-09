@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserMeta extends Model
 {
-    protected $table="wpug_usermeta";
+    protected $table=\General::DB_PREFIX."usermeta";
     protected $primaryKey="umeta_id";
     protected $append = ['user'];
 

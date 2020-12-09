@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostMeta extends Model
 {
-    protected $table="wpug_postmeta";
+    protected $table=\General::DB_PREFIX."postmeta";
     protected $primaryKey="meta_id";
 
     protected $fillable =  [

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WpugUser extends Model
 {
-    protected $table = "wpug_users";
+    protected $table = \General::DB_PREFIX."users";
     //protected $primaryKey="ID";
 
     protected $fillable =  [

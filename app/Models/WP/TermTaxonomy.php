@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\WP\TermRelation;
 class TermTaxonomy extends Model
 {
-    protected $table="wpug_term_taxonomy";
+    protected $table=\General::DB_PREFIX."term_taxonomy";
     protected $primaryKey="term_taxonomy_id";
 
     protected $fillable=[

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItemMeta extends Model
 {
-    protected $table="wpug_woocommerce_order_itemmeta";
+    protected $table=\General::DB_PREFIX."woocommerce_order_itemmeta";
     protected $primaryKey="meta_id";
     public $timestamps = false;
 

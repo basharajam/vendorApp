@@ -6,7 +6,7 @@ use PhpParser\Node\Expr\FuncCall;
 use App\Models\WP\WpugUser;
 class OrderItem extends Model
 {
-    protected $table="wpug_woocommerce_order_items";
+    protected $table=\General::DB_PREFIX."woocommerce_order_items";
     protected $primaryKey="order_item_id";
     protected $with = ['post','order_meta'];
     public $timestamps = false;

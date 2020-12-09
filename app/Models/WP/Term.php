@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Term extends Model
 {
-    protected $table="wpug_terms";
+    protected $table=\General::DB_PREFIX."terms";
     protected $primaryKey="term_id";
     protected $fillable=[
         'term_id',

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TermRelation extends Model
 {
-    protected $table="wpug_term_relationships";
+    protected $table=\General::DB_PREFIX."term_relationships";
 
     public $timestamps = false;
 

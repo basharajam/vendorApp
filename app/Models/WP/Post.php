@@ -8,7 +8,7 @@ use PhpParser\Node\Expr\FuncCall;
 
 class Post extends Model
 {
-    protected $table="wpug_posts";
+    protected $table=\General::DB_PREFIX."posts";
     protected $primaryKey="ID";
 
     protected $appends = ['meta','categories','product_type','product_attributes','product_image'];

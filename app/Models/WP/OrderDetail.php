@@ -6,7 +6,7 @@ use PhpParser\Node\Expr\FuncCall;
 use App\Models\WP\WpugUser;
 class OrderDetail extends Model
 {
-    protected $table="wpug_wc_order_product_lookup";
+    protected $table=\General::DB_PREFIX."wc_order_product_lookup";
     protected $primaryKey="order_item_id";
     protected $with = ['order','post'];
     public $timestamps = false;
