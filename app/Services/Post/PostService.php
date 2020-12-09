@@ -278,8 +278,9 @@ class PostService extends BaseService implements IPostService
         $post = Post::where('ID',$id)->first();
         //delete term relation
         $terms = TermRelation::where('object_id',$id)->get();
+        $table_name = \General::DB_PREFIX."term_relationships";
         if($terms){
-            \DB::delete("DELETE From wpug_term_relationships where object_id =".$id);
+            \DB::delete("DELETE From ".$table_name." where object_id =".$id);
         }
         $post_meta = PostMeta::where('post_id',$id)->get();
         if($post_meta){
