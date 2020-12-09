@@ -177,7 +177,17 @@
                     <span class="required">*</span>
                     <span>كلمة المرور</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" @if($supplier==null) required  @endif autocomplete="off" />
+                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" @if($supplier==null) required  @endif autocomplete="off" />
+                <div  class="fv-plugins-message-container" id="">
+                    <div id="strong_password_message" class="fv-help-block"></div>
+                    <div id="strong_container">
+                        <h3>يجب أن تحتوي كلمة المرور على ما يلي:</h3>
+                        <p id="letter" class="invalid">صغير حرف</p>
+                        <p id="capital" class="invalid">حرف  كبير</p>
+                        <p id="number" class="invalid">رقم</p>
+                        <p id="length" class="invalid">الحد الادنى 8 احرف</p>
+                      </div>
+                </div>
                 @error('password')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -437,8 +447,96 @@
 
     </div>
 
+@push('styles')
 
+</style>
+@endpush
 @push('scripts')
+<script>
+    var myInput = document.getElementById("password_input");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+      document.getElementById("strong_container").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+      document.getElementById("strong_container").style.display = "none";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if(myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+    </script>
+
+{{-- <script>
+    function CheckPassword(inputtxt)
+    {
+        var passw=  /^[A-Za-z]\w{7,14}$/;
+        if(inputtxt.match(passw))
+        {
+            $("#strong_password_message").text('كلمة مرور قوية');
+            $("#strong_password_message").css('color','green');
+
+            return true;
+        }
+        else
+        {
+            $("#strong_password_message").text('الرجاء ادخال كلمة مرور من 7 الى 15 حرفاً تحتوي على احرف وارقام و رموز و تبدأ بحرف')
+            return false;
+        }
+    }
+    $(function(){
+        $("#password_input").on('change',function(){
+            let value = $(this).val();
+            CheckPassword(value);
+        })
+    })
+</script> --}}
+
 <script>
     $(function(){
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
