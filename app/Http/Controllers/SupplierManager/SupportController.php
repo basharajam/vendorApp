@@ -25,9 +25,17 @@ class SupportController extends Controller
     }
 
     public function store(StoreSupportRequest $request){
-         $this->support_request_service->store($request);
-        toaster()->add('Your Request was sent sucessfully');
-         return redirect()->route('supplier.home');
+        try{
+            $this->support_request_service->store($request);
+            \Session::flash('message',"تم ارسال طلب المساعدة بنجاح");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
+         return redirect()->route('supplier_manager.home');
 
     }
 }

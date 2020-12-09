@@ -50,36 +50,54 @@ class ProductController extends Controller
 
     public function store(Request $request){
         $product = null;
-        switch($request->request_type){
-            case "product":
-                if($request->post_id == 0)
-                    $product =  $this->post_service->store_product($request);
-                else{
-                    $product =  $this->post_service->update_product($request,$request->post_id);
-                }
-            break;
-            case "general":
-                $product =  $this->post_service->store_product_general($request,$request->post_id);
-            break;
-            case "inventory":
-                $product =  $this->post_service->store_product_inventory($request,$request->post_id);
-            break;
-            case "shipping":
-                $product =  $this->post_service->store_product_shipping($request,$request->post_id);
-            break;
-            case "attributes":
-                $product =  $this->post_service->store_product_attributes($request,$request->post_id);
-            break;
-            case "categories":
-                $product =  $this->post_service->store_product_categories($request,$request->post_id);
-            break;
+        try{
+            switch($request->request_type){
+                case "product":
+                    if($request->post_id == 0)
+                        $product =  $this->post_service->store_product($request);
+                    else{
+                        $product =  $this->post_service->update_product($request,$request->post_id);
+                    }
+                break;
+                case "general":
+                    $product =  $this->post_service->store_product_general($request,$request->post_id);
+                break;
+                case "inventory":
+                    $product =  $this->post_service->store_product_inventory($request,$request->post_id);
+                break;
+                case "shipping":
+                    $product =  $this->post_service->store_product_shipping($request,$request->post_id);
+                break;
+                case "attributes":
+                    $product =  $this->post_service->store_product_attributes($request,$request->post_id);
+                break;
+                case "categories":
+                    $product =  $this->post_service->store_product_categories($request,$request->post_id);
+                break;
+            }
+            \Session::flash('message',"تمت العملية بنجاح");
+            \Session::flash('status',true);
         }
+        catch(Exception $ex){
+            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+            \Session::flash('status',false);
+        }
+
         //TOOD Add toaster
         return redirect()->route('supplier.products.create',$product->ID ?? $request->post_id  ??  0);
     }
 
     public function delete(int $id){
-        return $this->post_service->delete($id);
+        try{
+                \Session::flash('message',"تمت العملية بنجاح");
+                \Session::flash('status',true);
+                return $this->post_service->delete($id);
+            }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
     }
 
     public function getForm($type){
@@ -107,13 +125,30 @@ class ProductController extends Controller
         return $taxonomy->terms;
     }
     public function storeVariation(Request $request){
-        $product = $this->post_service->store_product_variation($request);
+        try{
+            \Session::flash('message',"تمت العملية بنجاح");
+            \Session::flash('status',true);
+            $product = $this->post_service->store_product_variation($request);
+        }
+        catch(Exception $ex){
+            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+            \Session::flash('status',false);
+    }
         return redirect()->back();
     }
     public function storeVariationMeta(Request $request){
-        $product= $this->post_service->store_product_general($request,$request->post_id);
-        $product =  $this->post_service->store_product_inventory($request,$request->post_id);
-        $product =  $this->post_service->store_product_shipping($request,$request->post_id);
+        try{
+            \Session::flash('message',"تمت العملية بنجاح");
+            \Session::flash('status',true);
+            $product= $this->post_service->store_product_general($request,$request->post_id);
+            $product =  $this->post_service->store_product_inventory($request,$request->post_id);
+            $product =  $this->post_service->store_product_shipping($request,$request->post_id);
+        }
+        catch(Exception $ex){
+            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+            \Session::flash('status',false);
+    }
+
         return redirect()->route('supplier.products.create',$request->post_parent  ??  0);
     }
 }

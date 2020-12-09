@@ -27,10 +27,10 @@
     <link href="{{ asset('/theme/css/plugins.bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('/theme/css/prismjs.bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('/theme/css/style.bundle.css') }}" rel="stylesheet"> --}}
-
+    <link href="{{ asset('css/toastr.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
-    @toaster
+
 
     @stack('styles')
 </head>
@@ -64,7 +64,8 @@
     <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
     <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('/js/toastr.js') }}"></script>
+    <link href="{{ asset('/js/toastr.min.js') }}">
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.js"></script>
 
     <script>
@@ -108,6 +109,37 @@
             });
 
         })
+    </script>
+    <script>
+        let content="{{ session('message') }}";
+        let status =" {{ session('status') }}";
+        console.log(status);
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        if(content!=''){
+            if(status==true){
+             toastr.success(content);
+            }else{
+                toastr.error(content);
+            }
+
+        }
+
     </script>
     @stack('scripts')
 </body>

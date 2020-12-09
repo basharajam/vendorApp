@@ -48,19 +48,48 @@ class AttributeController extends Controller
 
 
     public function store(Request $request){
-        $type="pa_".$request->name;
-        $request->merge(['taxonomy' => $type]);
-        $this->taxonomy_service->store($request,\Auth::user()->userable->id);
+        try{
+            $type="pa_".$request->name;
+            $request->merge(['taxonomy' => $type]);
+            $this->taxonomy_service->store($request,\Auth::user()->userable->id);
+            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
+
         return redirect()->back();
     }
     public function storeTerm(Request $request){
-        $this->taxonomy_service->store($request);
+        try{
+            $this->taxonomy_service->store($request);
+            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
         return redirect()->back();
     }
     public function update($term_taxonomy_id,Request $request){
         //save
-        $request->merge(['taxonomy' => "pa_".$request->name]);
-        $this->taxonomy_service->updateAttribute($request,$term_taxonomy_id);
+        try{
+            $request->merge(['taxonomy' => "pa_".$request->name]);
+            $this->taxonomy_service->updateAttribute($request,$term_taxonomy_id);
+            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
+
         return redirect()->back();
     }
 

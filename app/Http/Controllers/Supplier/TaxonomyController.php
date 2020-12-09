@@ -53,20 +53,39 @@ class TaxonomyController extends Controller
 
     public function store(Request $request){
         //save
-        $request->merge(['taxonomy' => $request->type]);
-        if($request->type=="product_cat"){
-            $this->taxonomy_service->storeCategory($request);
-        }
-        else{
-            $this->taxonomy_service->store($request);
+        try{
+            $request->merge(['taxonomy' => $request->type]);
+            if($request->type=="product_cat"){
+                $this->taxonomy_service->storeCategory($request);
+            }
+            else{
+                $this->taxonomy_service->store($request);
 
+            }
+            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('status',true);
         }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
+
         return redirect()->back();
     }
 
     public function update($term_taxonomy_id,Request $request){
         //save
-        $this->taxonomy_service->update($request,$term_taxonomy_id);
+        try{
+            $this->taxonomy_service->update($request,$term_taxonomy_id);
+            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
         return redirect()->back();
     }
 

@@ -54,9 +54,18 @@ class RegisterController extends Controller
     }
 
     public function create(StoreSupplierRequest $request){
-        $this->supplier_manager_service->store($request);
+        try{
+            $this->supplier_manager_service->store($request);
+            \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
+            \Session::flash('status',true);
+        }
+        catch(Exception $ex){
+                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                \Session::flash('status',false);
+                return "error";
+        }
         return redirect()->route('login');
    }
-  
+
 
 }
