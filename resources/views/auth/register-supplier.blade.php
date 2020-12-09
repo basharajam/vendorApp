@@ -99,7 +99,7 @@
                                    <!--begin::Title-->
                                     <div class="text-center pb-8">
                                         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
-                                        <p class="text-muted font-weight-bold font-size-h4">الر جاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
+                                        <p class="text-muted font-weight-bold font-size-h4">الرجاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
                                     </div>
                                     <!--end::Title-->
                                 @include('auth.components.supplier-registeration-form',['supplier'=>null])
