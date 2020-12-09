@@ -7,20 +7,22 @@ use App\Services\Supplier\ISupplierService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Supplier\StoreSupplierRequest;
 use App\Models\Supplier;
+use App\Services\TermTaxonomy\ITermTaxonomyService;
 
 class SupplierController extends Controller
 {
 
-    private $supplier_service ;
+    private $supplier_service ,$taxonomy_service;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ISupplierService $supplier_service)
+    public function __construct(ISupplierService $supplier_service,ITermTaxonomyService $taxonomy_service)
     {
         $this->middleware('auth');
         $this->supplier_service = $supplier_service;
+        $this->taxonomy_service = $taxonomy_service;
     }
     public function index(){
         $suppliers = $this->supplier_service->getSuppliersForManager(\Auth::user()->id);
@@ -28,7 +30,10 @@ class SupplierController extends Controller
                 ->with('suppliers',$suppliers);
     }
     public function create(){
-        return view("supplier_manager.suppliers.create");
+        $categories = $this->taxonomy_service->categories();
+        return view("supplier_manager.suppliers.create")
+                ->with('categories',$categories);
+
     }
     public function store(StoreSupplierRequest $request){
         $this->supplier_service->store($request);
@@ -45,7 +50,7 @@ class SupplierController extends Controller
         $this->supplier_service->update($request,$request->id);
         return redirect()->route('supplier_manager.suppliers.index');
     }
-    
+
     public function delete($id){
         return $this->supplier_service->delete($id);
     }
