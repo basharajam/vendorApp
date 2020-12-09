@@ -1,5 +1,46 @@
 @extends('layouts.app')
+@push('styles')
+<style>
 
+    /* The message box is shown when the user clicks on the password field */
+#strong_container {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  margin-top: 10px;
+
+}
+
+#strong_container p {
+  padding: 10px 10px;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:after {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:after {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+        </style>
+@endpush
 
 
 @section('content')
@@ -44,5 +85,15 @@
 
 
 @push('scripts')
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" rel="stylesheet" />
+<script>
+    $(function(){
+        $("#cateogiresSelector").select2({
+            dir: "rtl",
+        });
+        $("#CountriesSelector").select2({
+            dir: "rtl",
+        });
+    })
+</script>
 @endpush
