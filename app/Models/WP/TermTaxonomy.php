@@ -31,7 +31,12 @@ class TermTaxonomy extends Model
         return $this->hasMany('App\Models\WP\TermRelation','term_taxonomy_id');
     }
     public function getTermsAttribute(){
-        return TermTaxonomy::where('taxonomy',$this->taxonomy)->get();
+        if(\Auth::user() && \Auth::user()->hasRole(\UserRoles::SUPPLIERMANAGER)){
+            return TermTaxonomy::where('taxonomy',$this->taxonomy)->get();
+        }
+        else{
+            return TermTaxonomy::where('taxonomy',$this->taxonomy)->where('supplier_id',\Auth::user()->userable->id)->get();
+        }
     }
     public function getImageAttribute()
     {
