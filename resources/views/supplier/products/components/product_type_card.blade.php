@@ -10,7 +10,7 @@ if($product)
         <span class="required">*</span>
     </div>
     <div class="col-lg-6">
-        <label class="option">
+        <label class="option" style="direction: ltr">
             <span class="option-control">
                 <span class="radio">
                     <input type="radio" name="product_type" value="simple" @if($product && $product_type && $product_type->term &&  $product_type->term->name==\ProductTypes::SIMPLE) checked="checked" @elseif($product!=null && $product->product_type) disabled @endif required>
@@ -27,7 +27,7 @@ if($product)
         </label>
     </div>
     <div class="col-lg-6">
-        <label class="option">
+        <label class="option" style="direction:ltr">
             <span class="option-control">
                 <span class="radio">
                     <input type="radio" name="product_type" value="variable" @if($product && $product_type && $product_type->term &&  $product_type->term->name==\ProductTypes::VARIABLE) checked="checked" @elseif($product!=null && $product->product_type) disabled @endif>
