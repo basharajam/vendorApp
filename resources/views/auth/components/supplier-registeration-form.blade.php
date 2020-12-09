@@ -1,21 +1,5 @@
 <div class="row " style="">
         <div class="col-md-12">
-            <!--begin::Form group Company Name-->
-            <div class="form-group">
-                <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
-                    <span>اسم الشركة</span>
-                </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
-                @error('company_name')
-                <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
-                </div>
-                @enderror
-            </div>
-            <!--end::Form group Company Name-->
-        </div>
-        <div class="col-md-12">
              <!--begin::Form group Nationality-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
@@ -25,19 +9,19 @@
                 <div class="col-12 col-form-label">
                     <div class="radio-inline">
                         <label class="radio radio-success">
-                            <input  value="chinese"
+                            <input  value="true"
                                     type="radio"
                                     name="nationality"
-                                    @if($supplier && $supplier->nationality=="chinese") checked="checked" @endif
+                                    @if($supplier && $supplier->ischinese==true) checked="checked" @endif
                                     />
                             <span></span>
                             صيني
                         </label>
                         <label class="radio radio-success">
-                            <input  value="not_chinese"
+                            <input  value="false"
                                     type="radio"
                                     name="nationality"
-                                    @if($supplier && $supplier->nationality=="not_chinese") checked="checked" @endif
+                                    @if($supplier && $supplier->ischinese==false) checked="checked" @endif
                                     />
                             <span></span>
                             لست صيني
@@ -86,6 +70,74 @@
            </div>
            <!--end::Form group Last Name-->
        </div>
+       <div class="col-md-6">
+        <!--begin::Form group User Name-->
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">
+                <span>العمر</span>
+            </label>
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('age') is-invalid @enderror" type="text" placeholder="العمر" name="age" value="{{$supplier->age ?? old('age') }}"   />
+            @error('age')
+            <div class="fv-plugins-message-container">
+                <div  class="fv-help-block">{{ $message }}</div>
+            </div>
+            @enderror
+        </div>
+        <!--end::Form group User Name-->
+   </div>
+   <div class="col-md-6">
+        <!--begin::Form group Nationality-->
+    <div class="form-group">
+        <label class="font-size-h6 font-weight-bolder text-dark">
+            <span>الجنس</span>
+        </label>
+        <div class="col-12 col-form-label">
+            <div class="radio-inline">
+                <label class="radio radio-success">
+                    <input  value="male"
+                            type="radio"
+                            name="gender"
+                            @if($supplier && $supplier->gender=="male") checked="checked" @endif
+                            />
+                    <span></span>
+                    ذكر
+                </label>
+                <label class="radio radio-success">
+                    <input  value="female"
+                            type="radio"
+                            name="gender"
+                            @if($supplier && $supplier->gender=="female") checked="checked" @endif
+                            />
+                    <span></span>
+                    انثى
+                    </label>
+            </div>
+            @error('nationality')
+            <div class="fv-plugins-message-container">
+                <div  class="fv-help-block">{{ $message }}</div>
+            </div>
+            @enderror
+
+        </div>
+    </div>
+    <!--end::Form group Nationality-->
+    </div>
+<div class="col-md-12">
+    <!--begin::Form group User Name-->
+    <div class="form-group">
+        <label class="font-size-h6 font-weight-bolder text-dark">
+            <span class="required">*</span>
+            <span>رقم الموبايل</span>
+        </label>
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+        @error('mobile_number')
+        <div class="fv-plugins-message-container">
+            <div  class="fv-help-block">{{ $message }}</div>
+        </div>
+        @enderror
+    </div>
+    <!--end::Form group User Name-->
+</div>
        <div class="col-md-6">
             <!--begin::Form group User Name-->
             <div class="form-group">
@@ -155,12 +207,28 @@
 
         </div>
 
-       <div class="col-md-12">
+        <div class="col-md-12">
+            <!--begin::Form group Company Name-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span class="required">*</span>
+                    <span>اسم الشركة</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
+                @error('company_name')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group Company Name-->
+        </div>
+        <div class="col-md-12">
             <!--begin::Form group National Number-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span class="required">*</span>
-                    <span>عنوان المحل</span>
+                    <span> مقر الشركة (محل, مكتب, مستودع, مصنع)</span>
                 </label>
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="shop_address" value="{{$supplier->shop_address ?? old('shop_address') }}" required autocomplete="national_number" />
                 @error('shop_address')
@@ -170,6 +238,130 @@
                 @enderror
             </div>
             <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span> عمل الشركة (عدد السنوات)</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="comany_since" value="{{$supplier->comany_since ?? old('comany_since') }}" />
+                @error('comany_since')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-6">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المقاطعة التي تتبع لها الشركة</span>
+                </label>
+                <select class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
+                </select>
+                @error('company_address_sector')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-6">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المدبنة التي تتبع لها الشركة</span>
+                </label>
+                <select class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_city" value="{{$supplier->company_address_city ?? old('company_address_city') }}">
+                </select>
+                @error('company_address_city')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National ID Picture-->
+            {{-- <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span class="required">*</span>
+                    <span>صورة الرخصة التجارية</span>
+                </label>
+                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_10">
+                    <div class="dropzone-msg dz-message needsclick">
+                        <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
+                        <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                    </div>
+                </div>
+
+            </div> --}}
+            <!--end::Form group National ID Picture-->
+        </div>
+
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المنتجات التي تعمل بها الشركة</span>
+                </label>
+                <select id="cateogiresSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="">
+                    @foreach($categories  as $category)
+                        <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
+                    @endforeach
+                </select>
+                @error('company_address_city')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>اهم الدول التي تعمل بها الشركة</span>
+                </label>
+                <select id="CountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries[]" value="">
+                    <option value="">تركيا</option>
+                    <option value="">الكويت </option>
+                    <option value="">إمارات  </option>
+                    <option value="">قطر </option>
+                    <option value="">عمان</option>
+                    <option value="">سوريا</option>
+                    <option value="">لبنان</option>
+                </select>
+                @error('company_address_city')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National ID Picture-->
+            {{-- <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span class="required">*</span>
+                    <span>صورة الرخصة التجارية</span>
+                </label>
+                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_10">
+                    <div class="dropzone-msg dz-message needsclick">
+                        <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
+                        <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                    </div>
+                </div>
+
+            </div> --}}
+            <!--end::Form group National ID Picture-->
         </div>
         <div class="col-md-6">
             <!--begin::Form group Bank Name-->
@@ -253,13 +445,13 @@
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999" }).mask(bank_account_number_Id);
-
+        let commercial_license_image = document.getElementById('commercial_license_image');
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
             let uploadedDocumentMap = {};
             switch(selected_value){
-                case "chinese":
+                case "true":
                     $('#chinese_or_not_div').append(chinese_properties);
                     $("#chinese_properties").show();
                     let national_number_id = document.getElementById('national_number');
@@ -292,7 +484,7 @@
                     });
 
                 break;
-                case "not_chinese":
+                case "false":
                     $('#chinese_or_not_div').append(not_chinese_properties);
                     $("#not_chinese_properties").show();
                     let passport_number_id = document.getElementById('passport_number_id');

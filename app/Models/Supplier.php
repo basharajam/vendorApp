@@ -27,8 +27,11 @@ class Supplier extends BaseModel implements HasMedia
         "manager_id",
         'age',
         'gender',
+        'ischinese',
         'mobile_number',
-        'company_years',
+        'comany_since',
+        'company_address_sector',
+        'company_address_city'
 
     ];
 
@@ -50,6 +53,8 @@ class Supplier extends BaseModel implements HasMedia
         $this->addMediaCollection('passport_images')->singleFile();
 
         $this->addMediaCollection('visa_images')->singleFile();
+        $this->addMediaCollection('commercial_license_images')->singleFile();
+
     }
 
     public function getNationalIdImageAttribute(){
@@ -60,5 +65,8 @@ class Supplier extends BaseModel implements HasMedia
     }
     public function getVisaImageAttribute(){
         return $this->getFirstMedia('visa_images');
+    }
+    public function getCommercialLicenseImageAttribute(){
+        return $this->getFirstMedia('commercial_license_images');
     }
 }

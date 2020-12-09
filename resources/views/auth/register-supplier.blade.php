@@ -11,19 +11,29 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'VendorSystem') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <!--begin::Global Theme Styles(used by all pages)-->
+  <link href="{{ asset('/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('/css/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> --}}
+    {{-- <!-- Styles -->
+    <link href="{{ asset('/theme/css/plugins.bundle.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/prismjs.bundle.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/style.bundle.css') }}" rel="stylesheet"> --}}
 
-    <!-- Styles -->
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylehseet">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
+    @toaster
+
+    @stack('styles')
 </head>
 
 <body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
@@ -84,11 +94,27 @@
         <!--end::Login-->
     </div>
 
-    <script src="{{ asset('js/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('js/prismjs.bundle.js') }}"></script>
-    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+        <!--begin::Global Config(global config for global JS scripts)-->
+        <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+        <!--end::Global Config-->
+        <!--begin::Global Theme Bundle(used by all pages)-->
+        <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
+        <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
+        <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('plugins/dropzone/dist/dropzone.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" rel="stylesheet" />
+    <script>
+        $(function(){
+            $("#cateogiresSelector").select2({
+                dir: "rtl",
+            });
+            $("#CountriesSelector").select2({
+                dir: "rtl",
+            });
+        })
+    </script>
+
     @stack('scripts')
 </body>
 </html>

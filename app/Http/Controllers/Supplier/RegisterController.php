@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Services\Supplier\ISupplierService;
+use App\Services\TermTaxonomy\ITermTaxonomyService;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -33,16 +34,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-    protected $supplier_service;
+    protected $supplier_service,$taxonomy_service;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ISupplierService $supplier_service)
+    public function __construct(ISupplierService $supplier_service ,ITermTaxonomyService $taxonomy_service)
     {
         $this->middleware('guest');
         $this->supplier_service= $supplier_service;
+        $this->taxonomy_service = $taxonomy_service;
     }
 
 
@@ -50,7 +52,8 @@ class RegisterController extends Controller
      * returns view for new supplier account
      */
     public function register(){
-        return view('auth.register-supplier');
+        $categories = $this->taxonomy_service->categories();
+        return view('auth.register-supplier')->with('categories',$categories);
     }
 
     public function create(StoreSupplierRequest $request){
