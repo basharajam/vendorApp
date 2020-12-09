@@ -42,10 +42,10 @@ class StoreSupportRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Please provide us your name',
-            'email.required' => 'Please provide your email',
-            'phone.required' => 'Please provide your phone',
-            'message.required' => 'Please write your message',
+            'name.required' => 'الرجاء ادخال اسم المستخدم',
+            'email.required' => 'الرجاء ادخال البريدالالكتروني',
+            'phone.required' => 'الرجاء ادخال رقم الهاتف',
+            'message.required' => 'الرجاء ادخال الرسالة',
         ];
     }
 }

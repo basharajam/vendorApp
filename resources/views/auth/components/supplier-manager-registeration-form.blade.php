@@ -28,8 +28,8 @@
             <!--begin::Form group Last Name-->
             <div class="form-group">
                <label class="font-size-h6 font-weight-bolder text-dark">
-                   <span class="required">*</span>
                    <span>الكنية</span>
+                   <span class="required">*</span>
                </label>
                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ old('last_name') }}" required autofocus />
                @error('last_name')
@@ -44,8 +44,8 @@
             <!--begin::Form group User Name-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
                     <span>اسم المستخدم</span>
+                    <span class="required">*</span>
                 </label>
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text" placeholder="اسم المستخدم" name="name" value="{{ old('name') }}" required autofocus />
                 @error('name')
@@ -60,10 +60,10 @@
              <!--begin::Form group Email-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
                     <span>البريد الالكتروني</span>
+                    <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="Email" name="email" required value="{{ old('email') }}" autocomplete="off" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" placeholder="البريد الالكتروني"  name="email" required value="{{ old('email') }}" autocomplete="off" />
                 @error('email')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -76,8 +76,8 @@
             <!--begin::Form group Password-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
                     <span>كلمة المرور</span>
+                    <span class="required">*</span>
                 </label>
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required autocomplete="off" />
                 @error('password')
@@ -90,19 +90,20 @@
        </div>
        <div class="col-md-6">
             <!--begin::Form group Password Confirmation-->
-            <label class="font-size-h6 font-weight-bolder text-dark">
-                <span class="required">*</span>
-                <span>تأكيد كلمة المرور</span>
-            </label>
             <div class="form-group">
+                 <label class="font-size-h6 font-weight-bolder text-dark">
+                <span>تأكيد كلمة المرور</span>
+                <span class="required">*</span>
+            </label>
+
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation" required autocomplete="new-password" />
             </div>
             <!--end::Form group Password Confirmation-->
-       </div>
+       </div> <div class="form-group">
         <div class="col-md-12">
             <!--begin::Form group Terms And Conditions-->
             @include('auth.components.terms_and_conditions')
-            <div class="form-group">
+
                 <div class="checkbox-inline">
                     <label class="checkbox">
                     <input type="checkbox" name="terms_and_conditions">

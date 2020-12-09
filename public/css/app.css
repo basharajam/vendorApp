@@ -112619,3 +112619,12 @@ a.disabled {
   border: 1px solid #333;
 }
 
+input[name=email],
+input[name=password],
+input[name=password_confirmation],
+input[name=name] {
+  text-align: left !important;
+  -ms-writing-mode: sideways-lr !important;
+      writing-mode: sideways-lr !important;
+}
+

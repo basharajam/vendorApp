@@ -53,8 +53,8 @@ class StoreProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'product_name.required' => 'Please enter product name',
-            'product_type.required' => 'Please select product type',
+            'product_name.required' => 'الرجاء ادخال اسم المنتج',
+            'product_type.required' => 'الرجاء اختيار نوع المنتج',
             'product_number.required' => 'Please enter product number',
             'product_features.required' => 'Please enter product features',
             'product_category.required' => 'Please select product category',

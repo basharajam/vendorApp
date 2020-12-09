@@ -38,12 +38,12 @@ class StoreSupplierRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'A title is required',
-            'email.required' => 'A message is required',
-            'email.unique' => 'This Email is already registered with us',
-            'password.required' => 'A message is required',
-            'password.min' => 'A message is required',
-            'password.confirmed' => 'A message is required',
+            'name.required' => 'الرجاء ادخال اسم المستخدم',
+            'email.required' => 'الرجاء ادخال البريدالالكتروني',
+            'email.unique' => 'هذا البريد موجود مسبقاً الرجاء اختيار بريد أخر',
+            'password.required' => 'الرجاء ادخال كلمة المرور',
+            'password.min' => 'الرجاء اداخال كلمة مرور اكثر من 6 احرف',
+            'password.confirmed' => 'كلمة المرور غير مطابقة مع التاكيد',
         ];
     }
 }
