@@ -28,11 +28,21 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         parent::__construct($repository);
     }
 
+    /** gets categories  and sub cateogies from termtaxonomy and terms table
+     * @param int $supplier_id optional
+     * @return Collection
+     */
+    public function categories_and_sub($supplier_id=null){
+        return TermTaxonomy::whereIn('taxonomy',['product_cat'])->when($supplier_id,function($query,$supplier_id){
+            return $query->where('supplier_id',$supplier_id);
+        })->get();
+
+    }
     /** gets categories from termtaxonomy and terms table
      *
      */
     public function categories(){
-        return TermTaxonomy::whereIn('taxonomy',['product_cat'])->get();
+        return TermTaxonomy::whereIn('taxonomy',['product_cat'])->where('parent',0)->get();
     }
 
     /** gets tags from termtaxonomy and terms table

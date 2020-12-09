@@ -19,6 +19,12 @@ interface ITermTaxonomyService extends IBaseService
      */
     public function categories();
 
+     /** gets categories  and sub cateogies from termtaxonomy and terms table
+     * @param int $supplier_id optional
+     * @return Collection
+     */
+    public function categories_and_sub($supplier_id=null);
+
      /** gets tags from termtaxonomy and terms table
      * @return Collection
      */

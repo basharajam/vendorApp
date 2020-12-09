@@ -31,10 +31,11 @@ class TaxonomyController extends Controller
     }
 
     public function categories(){
-        $data = $this->taxonomy_service->categories();
+        $data = $this->taxonomy_service->categories_and_sub(\Auth::user()->userable->id);
+        $categories = $this->taxonomy_service->categories();
         return view('supplier.taxonomies.index')
                 ->with('data',$data)
-                ->with('categories',$data)
+                ->with('categories',$categories)
                 ->with('type','product_cat');
     }
 
