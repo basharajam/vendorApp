@@ -105,8 +105,8 @@
             <div class="form-group">
                 <div class="checkbox-inline">
                     <label class="checkbox">
-                    <input type="checkbox">
-                    <span></span>لقد قرأت ووافقت على الشروط و الأحكام</label>
+                    <input type="checkbox" name="terms_and_conditions">
+                    <span></span>لقد قرأت ووافقت على الشروط والأحكام</label>
 
                 </div>
             </div>
@@ -115,7 +115,7 @@
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> إنشاء حساب</button>
+                <button type="submit"  class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" id="create_account" disabled type="submit"> إنشاء حساب</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->
@@ -127,7 +127,14 @@
 @push('scripts')
 <script>
     $(function(){
-
+        $("input[name='terms_and_conditions']").on('change',function(){
+            if($(this).is(':checked')){
+                document.getElementById('create_account').disabled = false;
+            }
+            else{
+                document.getElementById('create_account').disabled = true;
+            }
+        });
     });
 </script>
 @endpush
