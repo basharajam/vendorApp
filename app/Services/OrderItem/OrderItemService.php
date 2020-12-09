@@ -31,10 +31,10 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierOrders($supplier_id){
-        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use ($supplier_id){
-        //     return $query->where('post_author',$supplier_id);
-        // })->get();
-        return OrderItem::where('order_item_type','line_item')->get();
+        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use ($supplier_id){
+            return $query->where('post_author',$supplier_id);
+        })->get();
+        //return OrderItem::where('order_item_type','line_item')->get();
     }
     /** get's all orders for a s manger
      * @param $manager_id
@@ -48,12 +48,12 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierPaidOrders($supplier_id){
-        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-        //     return $query->where('post_status','wc-completed')->where('post_author',$supplier_id);
-        // })->get();
         return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-            return $query->where('post_status','wc-completed');
+            return $query->where('post_status','wc-completed')->where('post_author',$supplier_id);
         })->get();
+        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
+        //     return $query->where('post_status','wc-completed');
+        // })->get();
     }
      /** get paid orders for a supplier manager
      * @param $manager_id
@@ -69,12 +69,12 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplieNotPaidrOrders($supplier_id){
-        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-        //     return $query->where('post_status','!=','wc-completed')->where('post_author',$supplier_id);
-        // })->get();
         return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-            return $query->where('post_status','!=','wc-completed');
+            return $query->where('post_status','!=','wc-completed')->where('post_author',$supplier_id);
         })->get();
+        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
+        //     return $query->where('post_status','!=','wc-completed');
+        // })->get();
     }
      /** get not  paid  (canceld , and pending ) orders for a supplier manager
      * @param $manager_id
