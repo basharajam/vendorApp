@@ -44,7 +44,7 @@
                                 <h3>الرجاء اختيار نوع الحساب</h3>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 parent">
                                     <label class="option">
                                         <span class="option-control">
                                             <span class="radio">
@@ -61,7 +61,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 parent">
                                     <label class="option">
                                         <span class="option-control">
                                             <span class="radio">
@@ -81,7 +81,7 @@
                                 <div class="col-12">
                                     <!--begin::Form group-->
                                     <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                        <a href="#" id="selected_account_type"  type="button" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                        <a href="#" id="selected_account_type"   type="button" id="" class="btn btn-primary font-weight-bolder disabled font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
                                     </div>
                                     <!--end::Form group-->
                                 </div>
@@ -125,6 +125,12 @@
             $("input[name='account_type']").on('change',function(){
                 let route = $(this).val();
                 $('#selected_account_type').attr('href',route);
+                $("#selected_account_type").removeClass('disabled');
+               // $("input[name='account_type']").style.border = 0px;
+               // $(this).parentsUntil('.parent')[2].style.border = "2px solid black";
+               $('.option').removeClass('bold');
+               $(this).parentsUntil('.parent')[2].classList.add('bold')
+                console.log();
             })
         });
     </script>

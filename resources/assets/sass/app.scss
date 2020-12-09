@@ -400,3 +400,12 @@ label{
         direction:rtl;
     }
 }
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+.option.bold{
+    border:1px solid #333;
+
+}
