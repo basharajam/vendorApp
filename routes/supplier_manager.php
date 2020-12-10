@@ -25,4 +25,6 @@ Route::post('/support/store',[App\Http\Controllers\SupplierManager\SupportContro
 
 //Profit Ratio
 
-Route::post('/profile-ratio',[App\Http\Controllers\SupplierManager\ProfileController::class,'update'])->name('supplier_manager.profit.store');
+Route::get('/profit-ratio',[App\Http\Controllers\SupplierManager\ProfitRatioController::class,'index'])->name('supplier_manager.profit.index');
+Route::post('/profit-ratio',[App\Http\Controllers\SupplierManager\ProfitRatioController::class,'update'])->name('supplier_manager.profit.store');
+
