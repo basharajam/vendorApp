@@ -31,7 +31,12 @@ use App\Services\OrderItem\OrderItemService;
 use App\Services\SupplierManager\ISupplierManagerService;
 use App\Services\SupplierManager\SupplierManagerService;
 
+
+use App\Services\ProfitRatio\IProfitRatioService;
+use App\Services\ProfitRatio\ProfitRatioService;
+
 //namespaces
+
 
 
 
@@ -90,7 +95,13 @@ $this->app->bind(
     SupplierManagerService::class
 );
 
+$this->app->bind(
+    IProfitRatioService::class,
+    ProfitRatioService::class
+);
+
 //add bindings
+
 
 
 

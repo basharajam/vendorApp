@@ -24,7 +24,11 @@ use App\Models\WP\OrderItem;
 use App\Repositories\SupplierManagerRepository;
 use App\Models\SupplierManager;
 
+use App\Repositories\ProfitRatioRepository;
+use App\Models\ProfitRatio;
+
 //namespaces
+
 
 
 
@@ -79,7 +83,14 @@ class RepositoryServiceProvider extends ServiceProvider
             );
     });
 
+        $this->app->bind('App\Repositories\ProfitRatioRepository', function (Application $app) {
+            return new ProfitRatioRepository(
+                $app->make(ProfitRatio::class)
+            );
+    });
+
     //add bindings
+
 
 
 
