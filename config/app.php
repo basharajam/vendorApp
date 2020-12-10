@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Intergo\SmsTo\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,9 +235,8 @@ return [
         'General'=>\App\Constants\General::class,
         'StockStatus'=>\App\Constants\StockStatus::class,
         'PostStatus'=>\App\Constants\PostStatus::class,
-
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
+         'SmsTo' => Intergo\SmsTo\Facades\SmsToFacade::class,
     ],
 
 ];
