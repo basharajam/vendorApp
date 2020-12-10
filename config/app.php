@@ -233,7 +233,7 @@ return [
         'ProductTypes'=>\App\Constants\ProductTypes::class,
         'General'=>\App\Constants\General::class,
         'StockStatus'=>\App\Constants\StockStatus::class,
-        'PostStatus'=>\App\Constants\StockStatus::class,
+        'PostStatus'=>\App\Constants\PostStatus::class,
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
