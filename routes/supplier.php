@@ -57,3 +57,7 @@ Route::get('/orders/view/{order_id}',[App\Http\Controllers\Supplier\OrderControl
 
 //Profile
 Route::get('/profile',[App\Http\Controllers\Supplier\ProfileController::class,'profile'])->name('supplier.profile');
+
+
+//Imports
+Route::post('/products/import',[App\Http\Controllers\ImportExcel\ProductImportController::class,'import'])->name('supplier.products.import');

@@ -27,6 +27,13 @@
                         </svg>
                         <!--end::Svg Icon-->
                     </span></a>
+                    <div>
+                        <form action="{{ route('supplier.products.import') }}" method="POST"  enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file" style="width:200px">
+                            <button type="submit">save</button>
+                        </form>
+                    </div>
                     <!--end::Button-->
                 </div>
             </div>

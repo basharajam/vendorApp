@@ -232,6 +232,9 @@ return [
         'UserRoles'=>\App\Constants\UserRoles::class,
         'ProductTypes'=>\App\Constants\ProductTypes::class,
         'General'=>\App\Constants\General::class,
+        'StockStatus'=>\App\Constants\StockStatus::class,
+        'PostStatus'=>\App\Constants\StockStatus::class,
+
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
