@@ -12,5 +12,9 @@ use App\Services\Contracts\IBaseService;
  */
 interface IProfitRatioService extends IBaseService
 {
-
+     /** get profit ratios for a manager
+     * @param $manager_id
+     * @return mixed
+     */
+    public function getProfitRatios($manager_id);
 }

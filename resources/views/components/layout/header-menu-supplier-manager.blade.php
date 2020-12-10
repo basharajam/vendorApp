@@ -9,8 +9,8 @@
                     <li class="kt-menu__item kt-menu__item--rel {{ (Route::currentRouteName() == 'supplier_manager.suppliers.index') || 'supplier_manager.suppliers.index' ? ' kt-menu__item--active' : '' }} kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{route('supplier_manager.suppliers.index') }}"  class="kt-menu__link "><span class="kt-menu__link-text">الموردين</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
                     <li class="kt-menu__item kt-menu__item--rel {{ (Route::currentRouteName() == 'supplier_manager.orders') ? ' kt-menu__item--active' : '' }} kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{route('supplier_manager.orders') }}"  class="kt-menu__link "><span class="kt-menu__link-text">طلبات الموردين</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a></li>
                     <li class="kt-menu__item kt-menu__item--rel {{ (Route::currentRouteName()  == 'supplier_manager.support_view') ? ' kt-menu__item--active' : '' }} kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="{{ route('supplier_manager.support_view') }}"  class="kt-menu__link "><span class="kt-menu__link-text">المساعدة</span><i class=""></i></a></li>
-                    <li class="kt-menu__item kt-menu__item--rel  kt-menu__item--open" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="#ProfitRatioModel" data-toggle="modal" class="kt-menu__link "><span class="kt-menu__link-text">نسبة الربح</span><i class=""></i></a></li>
-                    
+                    <li class="kt-menu__item kt-menu__item--rel {{ (Route::currentRouteName()  == 'supplier_manager.profit_ratio.index') ? ' kt-menu__item--active' : '' }} kt-menu__item--open"  aria-haspopup="true"><a href="{{ route('supplier_manager.profit.index') }}"  class="kt-menu__link "><span class="kt-menu__link-text">نسبة الربح</span><i class=""></i></a></li>
+
                 </ul>
             </div>
         </div>
