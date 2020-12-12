@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Supplier\StoreSupplierRequest;
+use App\Models\City;
+use App\Models\Province;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +55,12 @@ class RegisterController extends Controller
      */
     public function register(){
         $categories = $this->taxonomy_service->categories();
-        return view('auth.register-supplier')->with('categories',$categories);
+        $provinces = Province::all();
+        $cities = City::all();
+        return view('auth.register-supplier')
+        ->with('categories',$categories)
+        ->with('provinces',$provinces)
+        ->with('cities',$cities);
     }
 
     public function create(StoreSupplierRequest $request){

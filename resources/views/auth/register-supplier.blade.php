@@ -150,6 +150,12 @@
             $("#CountriesSelector").select2({
                 dir: "rtl",
             });
+            $("#cititesSelector").select2({
+                dir: "rtl",
+            });
+            $("#provinceSelector").select2({
+                dir: "rtl",
+            });
         })
     </script>
 

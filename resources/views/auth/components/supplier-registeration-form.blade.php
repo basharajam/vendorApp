@@ -271,7 +271,11 @@
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المقاطعة التي تتبع لها الشركة</span>
                 </label>
-                <select class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
+                <select id="provinceSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
+                    <option></option>
+                    @foreach($provinces as $province)
+                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                    @endforeach
                 </select>
                 @error('company_address_sector')
                 <div class="fv-plugins-message-container">
@@ -287,7 +291,11 @@
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المدبنة التي تتبع لها الشركة</span>
                 </label>
-                <select class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_city" value="{{$supplier->company_address_city ?? old('company_address_city') }}">
+                <select id="cititesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_city" value="{{$supplier->company_address_city ?? old('company_address_city') }}">
+                    <option></option>
+                    @foreach($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                    @endforeach
                 </select>
                 @error('company_address_city')
                 <div class="fv-plugins-message-container">
