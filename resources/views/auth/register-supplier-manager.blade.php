@@ -35,9 +35,9 @@
                 <!--begin: Aside Container-->
                 <div class="d-flex flex-column-fluid flex-column justify-content-between py-7 px-7 py-lg-7 px-lg-7 w-100">
                     <!--begin::Logo-->
-                    <a href="#" class="text-center pt-2">
-                        <img src="{{ asset('images/logo.png') }}" class="max-h-75px" alt="" />
-                    </a>
+                    <span class="text-center pt-2">
+                        <img src="{{ asset('images/logo.png') }}" class="max-h-105px mt-10" alt="">
+                    </span>
                     <!--end::Logo-->
                     <!--begin::Aside body-->
                     <div class="d-flex flex-column-fluid flex-column flex-center">
