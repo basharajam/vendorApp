@@ -143,6 +143,7 @@
     <script src="{{ asset('plugins/dropzone/dist/dropzone.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" rel="stylesheet" />
     <script>
+        let cities = {!! json_encode($cities) !!};
         $(function(){
             $("#cateogiresSelector").select2({
                 dir: "rtl",
@@ -156,6 +157,21 @@
             $("#provinceSelector").select2({
                 dir: "rtl",
             });
+            $("#provinceSelector").on('change',function(){
+                $("#cititesSelector").empty();
+                let province_id = $(this).val();
+                let citiesselector = document.getElementById('cititesSelector');
+                let filtered_cities = cities.filter((item)=>{
+                    return item.province_id = province_id
+                });
+                    let emptyOption = new Option('','');
+                    citiesselector.add(emptyOption,undefined);
+                filtered_cities.forEach((item)=>{
+                    let newOption = new Option(item.name,item.id);
+                    citiesselector.add(newOption,undefined);
+
+                })
+            })
         })
     </script>
 
