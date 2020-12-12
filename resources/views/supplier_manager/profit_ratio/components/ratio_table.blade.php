@@ -27,6 +27,7 @@
                 </td>
                 <td>
                     <input
+                        data-inputmask="'regex': '^[0-9]+$'"
                         type="text"
                         class="form-control remotelyUpdate"
                         placeholder="ادخل نسبة الربح"
@@ -48,8 +49,11 @@
 
 @endpush
 @push('scripts')
+<script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
+
 <script>
     $(function(){
+        Inputmask().mask(document.querySelectorAll("input"));
         $(document).on('change','.remotelyUpdate',function(){
             let ratio = $(this).val();
             let loader = $(this).attr('data-loader');
