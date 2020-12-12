@@ -23,7 +23,7 @@ class OTPController extends Controller
 
                 ]
             ];
-            SmsTo::setMessages($messages)->sendSingle();
+            SmsTo::setMessages($messages)->setSenderId('smsto.sender_id')->sendSingle();
             return view('auth.otp');
         }
     }
