@@ -22,7 +22,8 @@ class SupplierObserver
             'email'=>$supplier->email,
             'password'=>bcrypt(request()->password),
             'userable_type'=>'App\\Models\\Supplier',
-            'userable_id'=>$supplier->id
+            'userable_id'=>$supplier->id,
+            'mobile'=>$supplier->mobile_number
         ]);
 
         $supplier_role = Role::whereName(\App\Constants\UserRoles::SUPPLIER)->first();
