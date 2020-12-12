@@ -40,3 +40,9 @@ Route::get('/otpsent',[App\Http\Controllers\OTPController::class,'index']);
 Route::get('/sendOtp',[App\Http\Controllers\OTPController::class,'sendOtp'])->name('auth.sendOTP');
 Route::post('/verifyOtp',[App\Http\Controllers\OTPController::class,'verifyOtp'])->name('auth.verifyOTP');
 
+//TODO Remove this
+Route::get('/import-citeis',function(){
+    \Excel::import(new App\Imports\CityImport, public_path('cities.xlsx'));
+    dd('done');
+});
+
