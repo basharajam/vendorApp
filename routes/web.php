@@ -36,3 +36,7 @@ Route::get('/test',[App\Http\Controllers\WP\CategoryController::class,'getCatego
 
 
 
+Route::get('/otpsent',[App\Http\Controllers\OTPController::class,'index']);
+Route::get('/sendOtp',[App\Http\Controllers\OTPController::class,'sendOtp'])->name('auth.sendOTP');
+Route::post('/verifyOtp',[App\Http\Controllers\OTPController::class,'verifyOtp'])->name('auth.verifyOTP');
+

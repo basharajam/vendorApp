@@ -17,7 +17,7 @@ class CheckSupplier
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
+        if($user->hasRole(\App\Constants\UserRoles::SUPPLIER) ){
             return $next($request);
         }
         else{

@@ -236,7 +236,7 @@ return [
         'StockStatus'=>\App\Constants\StockStatus::class,
         'PostStatus'=>\App\Constants\PostStatus::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-         'SmsTo' => Intergo\SmsTo\Facades\SmsToFacade::class,
+        'SmsTo' => Intergo\SmsTo\Facades\SmsToFacade::class,
     ],
 
 ];
