@@ -7,7 +7,7 @@
 */
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home',[App\Http\Controllers\Supplier\OrderController::class, 'index'])->name('supplier.home');
+Route::get('/home',[App\Http\Controllers\Supplier\HomeController::class, 'index'])->name('supplier.home');
 
 //Support Request
 Route::get('/support',[App\Http\Controllers\Supplier\SupportController::class, 'viewForm'])->name('supplier.support_view');
