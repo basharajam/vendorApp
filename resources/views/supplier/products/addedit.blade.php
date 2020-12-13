@@ -55,7 +55,6 @@
                 <div class="col-xl-12">
                     <form id="ProductForm" action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="request_type" value="product">
                         <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
                         <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
                         <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
@@ -65,7 +64,7 @@
                             @include('supplier.products.components.product_form.inventory_info')
                             @include('supplier.products.components.product_form.shipping_info')
                         </div>
-                        @include('supplier.products.components.product_form.attributes_info')
+                        {{-- @include('supplier.products.components.product_form.attributes_info') --}}
                         @include('supplier.products.components.product_form.product_variations')
                     </form>
                 </div>
