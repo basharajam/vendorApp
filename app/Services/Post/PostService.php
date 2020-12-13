@@ -319,7 +319,7 @@ class PostService extends BaseService implements IPostService
         $extension = $request->thumbnail->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
         $file = $request->file('thumbnail');
-        $guid = General::URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
+        $guid = General::IMAGE_URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
 
         if(!File::isDirectory('../../'.public_path($path))){
 
