@@ -68,6 +68,8 @@ interface IPostService extends IBaseService
      */
     public function get_products_for_supplier(int $post_author);
 
+
+
     /** find  product for a supplier
      * @param $post_id the product  id to find
      * @param $post_author the wordpress user id for a supplier
@@ -75,4 +77,9 @@ interface IPostService extends IBaseService
      */
     public function find_product_for_supplier(int $post_id,$post_author);
 
+     /** get all products for a supplier manager
+     * @param $manager_id the id a manager
+     * @return Collection of posts which represents the products for a manager
+     */
+    public function get_products_for_supplier_manager(int $manager_id);
 }

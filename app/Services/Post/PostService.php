@@ -15,6 +15,7 @@ use App\Models\WP\TermTaxonomy;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
+use App\Models\Supplier;
 
 /**
  * Class PostService
@@ -350,6 +351,17 @@ class PostService extends BaseService implements IPostService
             "meta_key"=>"_thumbnail_id",
             "meta_value"=>$image_post->ID
         ]);
+
+    }
+
+      /** get all products for a supplier manager
+     * @param $manager_id the id a manager
+     * @return Collection of posts which represents the products for a manager
+     */
+    public function get_products_for_supplier_manager(int $manager_id){
+        $suppliers = Supplier::where('manager_id',$manager_id)->get();
+        $suppliers_ids= $suppliers->map(function($item){return $item->wordpress_user->ID;});
+         return  Post::whereIn('post_author',$suppliers_ids)->where('post_type','product')->get();
 
     }
 }

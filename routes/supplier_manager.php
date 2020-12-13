@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home',[App\Http\Controllers\SupplierManager\SupplierController::class, 'index'])->name('supplier_manager.home');
+Route::get('/home',[App\Http\Controllers\SupplierManager\HomeController::class, 'index'])->name('supplier_manager.home');
 
 //suppliers
 Route::get('/suppliers',[App\Http\Controllers\SupplierManager\SupplierController::class, 'index'])->name('supplier_manager.suppliers.index');
