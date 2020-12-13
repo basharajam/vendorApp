@@ -112628,3 +112628,13 @@ input[name=name] {
       writing-mode: sideways-lr !important;
 }
 
+.zoom {
+  transition: transform 0.2s;
+  /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+

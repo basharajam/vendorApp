@@ -65,7 +65,7 @@
                             <div class="d-flex align-items-center">
                                 <div style="padding-left:10px;" class="symbol symbol-50   symbol-sm symbol-light-danger">
                                     <a class="image-link" href="{{ $product->product_image }}">
-                                        <span class="symbol-label font-size-p" style="background-image:url({{ $product->product_image }})"></span>
+                                        <span class="symbol-label font-size-p zoom" style="background-image:url({{ $product->product_image}})"></span>
                                     </a>
                                 </div>
                                 <div class="ml-3">

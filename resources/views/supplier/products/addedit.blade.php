@@ -18,7 +18,7 @@
                         <div class="kt-widget__head">
                             <div class="kt-widget__media">
                                 <!--Product Image-->
-                                <img id="AsidePhoto" class="kt-widget__img " src="{{$product->product_image ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
+                                <img id="AsidePhoto" class="kt-widget__img zoom" src="{{$product->product_image ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
                             </div>
                         </div>
                     </div>
