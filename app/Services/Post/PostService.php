@@ -185,7 +185,7 @@ class PostService extends BaseService implements IPostService
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
 
         if($post){
-            $this->creatPostMeta($post->ID,'_price',$request->_regular_price);
+            $this->creatPostMeta($post->ID,'_price',$request->_price);
             $this->creatPostMeta($post->ID,'_sale_price',$request->_sale_price);
             $this->creatPostMeta($post->ID,'material',$request->material);
             $this->creatPostMeta($post->ID,'thickness',$request->thickness);
