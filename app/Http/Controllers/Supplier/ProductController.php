@@ -51,20 +51,26 @@ class ProductController extends Controller
     public function store(Request $request){
         $product = null;
         try{
-            if($request->post_id == 0)
-                $product =  $this->post_service->store_product($request);
-             else{
-                $product =  $this->post_service->update_product($request,$request->post_id);
+            if(!isset($request->request_type)){
+                if($request->post_id == 0)
+                    $product =  $this->post_service->store_product($request);
+                else{
+                    $product =  $this->post_service->update_product($request,$request->post_id);
+                }
+                $product =  $this->post_service->store_product_general($request,$product->ID);
+                $product =  $this->post_service->store_product_inventory($request,$product->ID);
+                $product =  $this->post_service->store_product_shipping($request,$product->ID);
+                $product =  $this->post_service->store_product_attributes($request,$product->ID);
+
+            }else{
+                switch($request->request_type){
+                    case "categories":
+                        $product =  $this->post_service->store_product_categories($request,$request->post_id);
+                    break;
+                }
+
             }
-            $product =  $this->post_service->store_product_general($request,$product->ID);
-            $product =  $this->post_service->store_product_inventory($request,$product->ID);
-            $product =  $this->post_service->store_product_shipping($request,$product->ID);
-            $product =  $this->post_service->store_product_attributes($request,$product->ID);
-            switch($request->request_type){
-                case "categories":
-                    $product =  $this->post_service->store_product_categories($request,$request->post_id);
-                break;
-            }
+
             \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
