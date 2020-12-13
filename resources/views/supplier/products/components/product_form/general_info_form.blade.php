@@ -12,8 +12,8 @@ if($product){
 
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'"
-            id="_regular_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required  />
-            @error('_regular_price')
+            id="_regular_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_price') is-invalid @enderror" type="text" placeholder="" name="_price" value="{{ $meta['_price'] ?? old('_price') }}" required  />
+            @error('_price')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
