@@ -56,7 +56,8 @@ class PostService extends BaseService implements IPostService
             'post_modified_gmt'=>now()
         ]);
         $post->update([
-            'guid'=>General::URL.'/?post_type=product&p='.$post->ID
+            // 'guid'=>General::URL.'/?post_type=product&p='.$post->ID
+            'guid'=>General::URL.'/product/'.$post->post_name,
         ]);
         if($request->hasFile('thumbnail')){
             $this->store_post_image($post->ID,$request);
@@ -120,7 +121,8 @@ class PostService extends BaseService implements IPostService
             'post_modified_gmt'=>now()
         ]);
         $post->update([
-            'guid'=>General::URL.'/?post_type=product_variation&#038;p='.$post->ID
+            // 'guid'=>General::URL.'/?post_type=product_variation&#038;p='.$post->ID
+            'guid'=>General::URL.'/product'.$post->post_name
         ]);
         //create term relation foreach attribute
         foreach($request->attributes_values as  $attribute){
