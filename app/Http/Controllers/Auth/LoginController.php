@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
             if(\Auth::user()->mobile_verified_at==null){
-             //   return redirect()->route('auth.sendOTP');
+                return redirect()->route('auth.sendOTP');
             }
             return $this->sendLoginResponse($request);
         }

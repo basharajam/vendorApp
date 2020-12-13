@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-               <form method="POST" action="{{ route('supplier.taxonomies.update',$taxonomy->term_taxonomy_id) }}">
+               <form method="POST" action="{{ route('supplier.taxonomies.update',$taxonomy->term_taxonomy_id) }}" enctype="multipart/form-data">
                 @include('supplier.taxonomies.components.taxonomy_form',['taxonomy'=>$taxonomy])
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
