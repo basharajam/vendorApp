@@ -182,6 +182,8 @@ body{
     font-family: 'Cairo', sans-serif;
     margin:0px;
     font-weight: 300;
+    box-sizing: border-box !important;
+    overflow-x: hidden;
 
 }
 
