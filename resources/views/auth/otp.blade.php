@@ -40,6 +40,7 @@
                         <!--begin::Forgot-->
                         <div class="login-form login-signin  pt-11">
                             <!--begin::Form-->
+                            <h1>OTP {{ $otp }}</h1>
                             @include('auth.components.otp_form')
 
                             <!--end::Form-->

@@ -23,23 +23,23 @@ class OTPController extends Controller
 
                 ]
             ];
-            SmsTo::setMessages($messages)->setSenderId('Alyaman')->sendSingle();
+            //SmsTo::setMessages($messages)->setSenderId('Alyaman')->sendSingle();
             \Session::put('OTP',$otp);
-            return view('auth.otp');
+            return view('auth.otp')->with('otp',$otp);
         }
     }
 
     public function verifyOtp(Request $request){
         $response = array();
         $enteredOtp = $request->otp;
-        $OTP = $request->session()->get('OTP');
+        $OTP = \Session::get('OTP');
         $user = \Auth::user();
         if($user){
-            if($OTP === $enteredOtp){
+            if($OTP == $enteredOtp){
                         $user->update([
                             'mobile_verified_at'=>now()
                         ]);
-                        Session::forget('OTP');
+                        \Session::forget('OTP');
                         $response['error'] = 0;
                         $response['isVerified'] = 1;
                         $response['loggedIn'] = 1;
