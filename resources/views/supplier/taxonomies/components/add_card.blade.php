@@ -10,10 +10,10 @@
                     <h2 class="kt-widget__username font-weight-bolder" id="product_name">
                       @switch($type)
                           @case('product_cat')
-                              إضافة صنف جديد   
+                              إضافة صنف جديد
                               @break
                           @case('product_tag')
-                               إضافة تاغ 
+                               إضافة تاغ
                               @break
                           @case('attributes')
                                  إضافة سمة جديدة
@@ -27,7 +27,7 @@
         </div>
         <div class="kt-widget__body">
            <form action="{{ route('supplier.taxonomies.store') }}" method="POST" enctype="multipart/form-data">
-                @include('supplier.taxonomies.components.taxonomy_form')
+                @include('supplier.taxonomies.components.taxonomy_form',['taxonomy'=>null])
            </form>
         </div>
     </div>

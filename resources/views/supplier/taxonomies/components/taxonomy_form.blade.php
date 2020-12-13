@@ -29,7 +29,7 @@
                          >
                      <option ></option>
                      @foreach($categories  as $category)
-                         <option value="{{ $category->term_taxonomy_id }}" @if($taxonomy->parent ?? old('parent') == $category->term_taxonomy_id ) selected @endif>{{ $category->term->name }}</option>
+                         <option value="{{ $category->term_taxonomy_id }}" @if( $taxonomy && $taxonomy->parent == $category->term_taxonomy_id ) selected @endif>{{ $category->term->name }}</option>
                      @endforeach
                  </select>
              </div>
