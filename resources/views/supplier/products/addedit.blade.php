@@ -65,7 +65,14 @@
                             @include('supplier.products.components.product_form.shipping_info')
                         </div>
                         {{-- @include('supplier.products.components.product_form.attributes_info') --}}
-                        @include('supplier.products.components.product_form.product_variations')
+                        {{-- @include('supplier.products.components.product_form.product_variations') --}}
+                        <div class="form-group row mt-10 mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary ">
+                                    حفظ
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

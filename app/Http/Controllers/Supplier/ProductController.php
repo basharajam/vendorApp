@@ -42,6 +42,7 @@ class ProductController extends Controller
         {
             $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
         }
+
         return view('supplier.products.addedit')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
