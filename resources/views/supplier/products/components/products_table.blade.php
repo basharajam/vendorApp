@@ -100,8 +100,8 @@
                     <td class="datatable-cell-sorted datatable-cell">
                         <span>
                             <div class="font-weight-bolder font-size-lg mb-0">
-                                @if($meta && count($meta)>0 && array_key_exists('_price',$meta))
-                                {{ $meta['_price'] }}
+                                @if($meta && count($meta)>0 && array_key_exists('_regular_price',$meta))
+                                {{ $meta['_regular_price'] }}
                              @endif
                             </div>
                         </span>
