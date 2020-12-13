@@ -10,7 +10,7 @@ class OTPController extends Controller
     //
     //page to enter the sent opt code
     public function index(Request $response){
-        return view('auth.opt');
+        return view('auth.otp');
     }
     public function sendOtp(Request $request){
         $user = \Auth::user();
@@ -24,6 +24,7 @@ class OTPController extends Controller
                 ]
             ];
             SmsTo::setMessages($messages)->setSenderId('Alyaman')->sendSingle();
+            \Session::put('OTP',$otp);
             return view('auth.otp');
         }
     }
