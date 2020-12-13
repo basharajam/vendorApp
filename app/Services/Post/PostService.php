@@ -179,6 +179,7 @@ class PostService extends BaseService implements IPostService
                 ]);
             }
             //save product category
+            return $post;
     }
     public function store_product_general(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
