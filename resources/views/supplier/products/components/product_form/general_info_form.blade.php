@@ -25,10 +25,9 @@ if($product){
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>السعر بعد الحسم</span>
-                <span class="required">*</span>
             </label>
-            <input  data-inputmask="'regex': '^[0-9]+$'"
-                id="_sale_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 _sale_price @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}" required  />
+            <input  data-inputmask="'regex': '^[0-9.]+$'"
+                id="_sale_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 _sale_price @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}"   />
             <div class="fv-plugins-message-container">
                 <div id="_sale_price_help" class="fv-help-block"></div>
             </div>

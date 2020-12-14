@@ -42,7 +42,7 @@
                         <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
                             <span>صورة المنتج</span>
                         </label>
-                       <input type="file" name="thumbnail" class="form-control" >
+                       <input id="thumbnail" type="file" name="thumbnail" class="form-control" >
 
                     </div>
                 </div>
@@ -52,7 +52,6 @@
                             <span>معرض الصور</span>
                         </label>
                        <input type="file" name="gallery" class="form-control" multiple>
-
                     </div>
                 </div>
             </div>

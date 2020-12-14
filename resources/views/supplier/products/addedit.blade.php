@@ -230,7 +230,7 @@
 </script>
 <script>
     $(function(){
-        let simple_required_input = $("#ProductSimple input").attr('required',true);
+
         let Offcanvas = new KTOffcanvas('kt_user_profile_aside',{
                 overlay:true,
                 baseClass:'kt-app__aside',
@@ -284,16 +284,12 @@
                 ProductVariations.slideDown(1000);
                 //remove required from simple
 
-                for (let i = 0; i < simple_required_input.length; i++) {
-                    simple_required_input[i].required =false;
-                 }
+
             }
             else if (value == 'simple') {
                 ProductVariations.slideUp(1000);
                 ProductSimple.slideDown(1000);
-                for (let i = 0; i < simple_required_input.length; i++) {
-                    simple_required_input[i].required =true;
-                 }
+
             }
         }
         //events
