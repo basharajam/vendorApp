@@ -57,6 +57,7 @@ Route::get('/orders/view/{order_id}',[App\Http\Controllers\Supplier\OrderControl
 
 //Profile
 Route::get('/profile',[App\Http\Controllers\Supplier\ProfileController::class,'profile'])->name('supplier.profile');
+Route::post('/profile/update',[App\Http\Controllers\Supplier\ProfileController::class,'update'])->name('supplier.profile.update');
 
 
 //Imports

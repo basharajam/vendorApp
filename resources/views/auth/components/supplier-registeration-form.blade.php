@@ -1,3 +1,46 @@
+@push('styles')
+<style>
+
+    /* The message box is shown when the user clicks on the password field */
+#strong_container {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  margin-top: 10px;
+
+}
+
+#strong_container p {
+  padding: 10px 10px;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:after {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:after {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+</style>
+@endpush
+
 <div class="row " style="">
         <div class="col-md-12">
              <!--begin::Form group Nationality-->
@@ -461,6 +504,39 @@
 
 @endpush
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+    let cities = {!! json_encode($cities) !!};
+    $(function(){
+        $("#cateogiresSelector").select2({
+            dir: "rtl",
+        });
+        $("#CountriesSelector").select2({
+            dir: "rtl",
+        });
+        $("#cititesSelector").select2({
+            dir: "rtl",
+        });
+        $("#provinceSelector").select2({
+            dir: "rtl",
+        });
+        $("#provinceSelector").on('change',function(){
+            $("#cititesSelector").empty();
+            let province_id = $(this).val();
+            let citiesselector = document.getElementById('cititesSelector');
+            let filtered_cities = cities.filter((item)=>{
+                return item.province_id = province_id
+            });
+                let emptyOption = new Option('','');
+                citiesselector.add(emptyOption,undefined);
+            filtered_cities.forEach((item)=>{
+                let newOption = new Option(item.name,item.id);
+                citiesselector.add(newOption,undefined);
+
+            })
+        })
+    })
+</script>
 <script>
     var myInput = document.getElementById("password_input");
     var letter = document.getElementById("letter");
