@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
 use App\Models\Supplier;
+use Illuminate\Auth\EloquentUserProvider;
 
 /**
  * Class PostService
@@ -68,7 +69,20 @@ class PostService extends BaseService implements IPostService
         if($request->hasFile('gallery'))
         {
             foreach ($files as $file) {
-                $this->store_post_image($post->ID,$file,'gallery');
+                $image = $this->store_post_image($post->ID,$file,'gallery');
+                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
+                if($meta){
+                    $meta->update([
+                        'meta_value'=>$meta->meta_value .','.$image->ID,
+                    ]);
+                }
+                else{
+                    PostMeta::Create([
+                        'post_id'=>$post->ID,
+                        'meta_key'=>'_product_image_gallery',
+                        'meta_value'=>$image->ID
+                    ]);
+                }
 
             }
         }
@@ -188,7 +202,20 @@ class PostService extends BaseService implements IPostService
         if($request->hasFile('gallery'))
         {
             foreach ($files as $file) {
-                $this->store_post_image($post->ID,$file,'gallery');
+                $image = $this->store_post_image($post->ID,$file,'gallery');
+                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
+                if($meta){
+                    $meta->update([
+                        'meta_value'=>$meta->meta_value .','.$image->ID,
+                    ]);
+                }
+                else{
+                    PostMeta::Create([
+                        'post_id'=>$post->ID,
+                        'meta_key'=>'_product_image_gallery',
+                        'meta_value'=>$image->ID
+                    ]);
+                }
 
             }
         }
@@ -358,8 +385,10 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post_id,'_wp_attached_file',$file->getClientOriginalName());
             $this->creatPostMeta($post_id,'_wp_attachment_metadata',$image_post->ID);
             $this->creatPostMeta($post_id,'_wc_attachment_source',$guid);
-        }
+            //_product_image_gallery
 
+        }
+        return $image_post;
     }
 
     private function createAttachmentPost($title,$guid,$extension){
