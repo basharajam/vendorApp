@@ -72,12 +72,16 @@ class Post extends Model
     public function getProductImageAttribute(){
         $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_thumbnail_id')->orderBy('meta_id','desc')->first();
         if($image_post_meta){
-            $image_post =  Post::where('ID',$image_post_meta->meta_value)->first();
+            $image_post =  Post::where('ID',$image_post_meta->meta_value)->orderBy('ID','desc')->first();
             if($image_post){
                 return $image_post->guid;
             }
         }
         return '';
+    }
+    public function getGalleryAttribute(){
+       return $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_wc_attachment_source')->orderBy('meta_id','desc')->get()->pluck('_wc_attachment_source');
+
     }
 
 
