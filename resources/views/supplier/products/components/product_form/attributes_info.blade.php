@@ -77,12 +77,12 @@ function validateForm(event) {
 		if (typeof field.willValidate !== "undefined") {
 
 			// native validation available
-			if (field.nodeName === "INPUT" && field.type !== field.getAttribute("type")) {
+			// if (field.nodeName === "INPUT" && field.type !== field.getAttribute("type")) {
 
-				// input type not supported! Use legacy JavaScript validation
-				field.setCustomValidity(LegacyValidation(field) ? "" : "error");
+			// 	// input type not supported! Use legacy JavaScript validation
+			// 	field.setCustomValidity(LegacyValidation(field) ? "" : "error");
 
-			}
+			// }
 
 			// native browser check
 			field.checkValidity();

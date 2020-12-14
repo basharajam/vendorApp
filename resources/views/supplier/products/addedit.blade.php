@@ -107,7 +107,9 @@
                                 </div>
                             </form>
                         </div>
-
+                        <div class="w-100">
+                            @include('supplier.products.components.product_form.variations_card_container')
+                        </div>
 
 
                 </div>
