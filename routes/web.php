@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use  Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +37,7 @@ Route::get('/test',[App\Http\Controllers\WP\CategoryController::class,'getCatego
 
 
 Route::get('/otpsent',[App\Http\Controllers\OTPController::class,'index']);
-Route::get('/sendOtp',[App\Http\Controllers\OTPController::class,'sendOtp'])->name('auth.sendOTP');
+Route::post('/sendOtp',[App\Http\Controllers\OTPController::class,'sendOtp'])->name('auth.sendOTP');
 Route::post('/verifyOtp',[App\Http\Controllers\OTPController::class,'verifyOtp'])->name('auth.verifyOTP');
 
 //TODO Remove this
@@ -45,4 +45,17 @@ Route::post('/verifyOtp',[App\Http\Controllers\OTPController::class,'verifyOtp']
 //     \Excel::import(new App\Imports\CityImport, public_path('cities.xlsx'));
 //     dd('done');
 // });
+
+
+
+Route::macro(
+    'sendToRoute',
+    function (Request $request, string $routeName) {
+        $route = tap($this->routes->getByName($routeName))->bind($request);
+
+        $this->current = $route;
+
+        return $this->runRoute($request, $this->current);
+    }
+);
 

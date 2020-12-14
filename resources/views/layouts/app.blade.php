@@ -64,7 +64,7 @@
     <script src="{{ asset('/js/plugins.bundle.js') }}"></script>
     <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
-    <link href="{{ asset('/js/toastr.min.js') }}">
+    <script src="{{ asset('/js/toastr.min.js') }}"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.js"></script>
 

@@ -8,7 +8,7 @@
         </a>
         <!--end::Logo-->
         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تأكيد رقم الهاتف</h2>
-        <p class="text-muted font-weight-bold font-size-h4">الرجاء إدخال الرمز الذي تم ارساله الى هاتفك</p>
+        <p class="text-muted font-weight-bold font-size-h4">الرجاء إدخال الرمز الذي تم ارساله الى الرقم {{ $mobile_number }}</p>
     </div>
     <!--end::Title-->
     <!--begin::Form group-->

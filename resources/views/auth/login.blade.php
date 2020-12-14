@@ -74,6 +74,37 @@
     <script src="{{ asset('/js/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('/js/login.js') }}"></script>
+    <script>
+        let content="{{ session('message') }}";
+        let status =" {{ session('status') }}";
+        console.log(status);
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        if(content!=''){
+            if(status==true){
+             toastr.success(content);
+            }else{
+                toastr.error(content);
+            }
+
+        }
+
+    </script>
 </body>
 </html>
 

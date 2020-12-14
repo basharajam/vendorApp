@@ -65,7 +65,8 @@ class RegisterController extends Controller
 
     public function create(StoreSupplierRequest $request){
         try{
-            $this->supplier_service->store($request);
+            $supplier = $this->supplier_service->store($request);
+            request()->merge(['user_id'=>$supplier->user->id]);
             \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
             \Session::flash('status',true);
         }
@@ -74,8 +75,8 @@ class RegisterController extends Controller
                 \Session::flash('status',false);
                 return "error";
         }
+        return \Route::sendToRoute($request, 'auth.sendOTP');
 
-         return redirect()->route('login');
 
     }
 }
