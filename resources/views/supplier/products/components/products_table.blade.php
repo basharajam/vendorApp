@@ -52,11 +52,11 @@
                     if($product->product_type && $product->product_type && $product->product_type->term)
                         $product_type =$product->product_type->term->name;
                 @endphp
-                <tr  id="row{{ $key }}" @if($product_type == \ProductTypes::VARIABLE ) class="parent" data-id="row{{ $key }}" data-arrow="#row-arrow{{ $key }}"@endif >
+                <tr  id="row{{ $product->ID }}" @if($product_type == \ProductTypes::VARIABLE ) class="parent" data-id="row{{ $product->ID }}" data-arrow="#row-arrow{{ $product->ID }}"@endif >
                     <td >
                         @if($product_type== \ProductTypes::VARIABLE)
                         <div class="d-flex align-items-center justify-content-center">
-                            <span id="row-arrow{{ $key }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
+                            <span id="row-arrow{{ $product->ID }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
                         </div>
                         @endif
                     </td>
@@ -143,9 +143,8 @@
                 </tr>
                 @if($product_type== \ProductTypes::VARIABLE)
                     @foreach($product->product_variations as $variation_index=>$variation)
-
                     @if($variation_index==0)
-                    <tr class="child-row{{ $key }}" style="display:none">
+                    <tr class="child-row{{ $product->ID }}" style="display:none">
                         <th>
                             <strong></strong>
                         </th>
@@ -174,7 +173,7 @@
                     @php
                     $meta_variation = $variation->meta;
                     @endphp
-                    <tr class="child-row{{ $key }}" style="display:none">
+                    <tr class="child-row{{ $product->ID }}" style="display:none">
                         <td></td>
                         <td>
                             <span>
