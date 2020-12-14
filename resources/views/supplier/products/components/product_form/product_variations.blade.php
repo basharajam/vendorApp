@@ -5,7 +5,7 @@ if($product){
 }
 @endphp
 
-<div class="w-100" id="ProductVariations" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::SIMPLE)) style=" display:none" @endif >
+<div class="w-100" id="">
     <div class="kt-portlet">
         <div class="kt-portlet__head align-items-center d-flex justify-content-between" >
             <div class="kt-portlet__head-label">
@@ -29,12 +29,15 @@ if($product){
             </div>
         </div>
         <div class="kt-portlet__body">
+            <div id="loading-varaiations-form" class="mb-15 mt-15 text-center" style="display:none">
+                <div class="spinner spinner-primary spinner-lg mr-15" style=""></div>
+            </div>
             <div class="w-100" id="variationFormContainer" style="display: none">
-                <form method="POST" action="{{ route('supplier.products.variation.store') }}">
+                {{-- <form method="POST" action="{{ route('supplier.products.variation.store') }}">
                     @csrf
                     <input type="hidden" name="post_parent"  value="{{ $product->ID ?? 0 }}">
                     <input type="hidden" name="post_id"  value="0">
-                    <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+                    <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}"> --}}
                     <div class="row" style="align-items:center ">
                         @foreach($product_attributes as $key => $attribute)
                             <div class="col">
@@ -55,23 +58,23 @@ if($product){
                         @endforeach
                         @if($product_attributes)
                         <div class="col"  >
-                            <button type="submit" class="btn btn-primary ">
+                            <button
+                                id="SubmitVariationButton"
+                                type="submit"
+                                class="btn btn-primary"
+                                data-action="{{ route('supplier.products.variation.store') }}"
+                                data-parent="{{ $product->ID ?? 0 }}"
+                                data-id="0"
+                                data-author="{{ \Auth::user()->wordpress_user->ID ?? 0 }}"
+                                data-token="{{ csrf_token() }}"
+                                >
                                 حفظ
                                 <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
                             </button>
                         </div>
-                        @else
-                        <div class="alert alert-custom alert-light-info fade show mb-5 w-100" role="alert">
-                            <div class="alert-icon">
-                                <i class="flaticon-warning"></i>
-                            </div>
-                            <div class="alert-text mr-10" style="text-align: right">يرجى تحديد سمات المنتج ثم إضافة الانواع!</div>
-
-                        </div>
-
                         @endif
                     </div>
-                </form>
+                {{-- </form> --}}
 
             </div>
 
@@ -130,6 +133,42 @@ if($product){
             e.preventDefault();
             $("#variationFormContainer").slideDown();
             $(":input").inputmask();
+        });
+        $(document).on('click','#SubmitVariationButton',function(e){
+            e.preventDefault();
+            let action = $(this).attr('data-action');
+            let post_author = $(this).attr('data-author');
+            let post_parent = $(this).attr('data-parent');
+            let post_id = $(this).attr('data-id');
+            let _token= $(this).attr('data-token');
+            let attributes_values = [];
+            let attributes_selectors = document.getElementsByName("attributes_values[]");
+            for(let i=0;i<attributes_selectors.length;i++){
+                let value =$(attributes_selectors[i]).val();
+                attributes_values.push(value);
+            }
+            let data = {
+                "_token":_token,
+                "post_id":post_id,
+                "post_author":post_author,
+                "post_parent":post_parent,
+                "attributes_values":attributes_values
+            }
+            $("#loading-varaiations-form").show();
+            $.ajax({
+                url:action,
+                type:"POST",
+                data:data,
+                success:function(respponse){
+                   location.reload();
+                },
+                error:function(){
+                    toastr.error('لقد حدث حطأ ما الرجاء المحاولة لاحقاً');
+                },
+                complete:function(){
+                    $("#loading-varaiations-form").hide();
+                }
+            })
         })
     });
 </script>

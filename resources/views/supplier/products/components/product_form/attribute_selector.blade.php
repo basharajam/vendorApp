@@ -6,14 +6,11 @@
 
         </label>
         <div class="kt-input-icon d-flex justify-content-center" >
-            <select  id="attributesSelectorInput"   name="taxonomies_relation[]" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6  tagsinput-field"  multiple>
+            <select   name="taxonomies_relation[]" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6  tagsinput-field"  multiple>
                 @foreach($terms as $term)
                 <option value="{{ $term->term_taxonomy_id }}" @if(in_array($term->term_taxonomy_id,$selected_terms->pluck('term_taxonomy_id')->toArray())) selected @endif>{{ $term->term->name }}</option>
                 @endforeach
             </select>
-            <button type="button" class="btn btn-success add_new_term" data-taxonomy-type="{{ $taxonomy }}">
-                إضافة
-            </button>
         </div>
 
 

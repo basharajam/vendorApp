@@ -53,27 +53,63 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-app__content mr-10">
             <div class="row">
                 <div class="col-xl-12">
-                    <form id="ProductForm" action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
-                        <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
-                        <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
-                        @include('supplier.products.components.product_form.product_main')
-                        <div class="w-100" id="ProductSimple" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::VARIABLE)) style=" display:none" @endif >
-                            @include('supplier.products.components.product_form.general_info')
-                            @include('supplier.products.components.product_form.inventory_info')
-                            @include('supplier.products.components.product_form.shipping_info')
-                        </div>
-                        {{-- @include('supplier.products.components.product_form.attributes_info') --}}
-                        {{-- @include('supplier.products.components.product_form.product_variations') --}}
-                        <div class="form-group row mt-10 mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary ">
-                                    حفظ
-                                </button>
+                    <div class="kt-portlet" id="Productype" style="" >
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">نوع المنتج</h3>
                             </div>
                         </div>
-                    </form>
+                        <div class="kt-portlet__body">
+                            @include('supplier.products.components.product_type_card',['product'=>$product])
+                        </div>
+                    </div>
+                        <div class="w-100" id="ProductSimple" @if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::VARIABLE)) style=" display:none" @endif >
+                            <form id="ProductForm" action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="product_type" value="simple">
+                                <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+                                <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+                                <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
+                                <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+                                @include('supplier.products.components.product_form.product_main')
+                                @include('supplier.products.components.product_form.general_info')
+                                @include('supplier.products.components.product_form.inventory_info')
+                                @include('supplier.products.components.product_form.shipping_info')
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group  mt-10 mb-0">
+                                            <button type="submit" class="btn btn-danger ">
+                                                حفظ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="ProductVariations"@if($product==null || ($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::SIMPLE)) style=" display:none" @endif  >
+                            <form id="ProductFormVariation" action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="product_type" value="variable">
+                                <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+                                <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
+                                <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+                                @include('supplier.products.components.product_form.product_main')
+                                @include('supplier.products.components.product_form.attributes_info')
+                                @include('supplier.products.components.product_form.product_variations')
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group  mt-10 mb-0">
+                                            <button type="submit" class="btn btn-danger ">
+                                                حفظ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -252,4 +288,5 @@
 
     });
 </script>
+
 @endpush

@@ -2,15 +2,10 @@
 <div class="kt-portlet" id="Productype" style="" >
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">نوع المنتج</h3>
+            <h3 class="kt-portlet__head-title">العملومات الاساسية</h3>
         </div>
     </div>
     <div class="kt-portlet__body">
-        {{-- <form action="{{ route('supplier.products.store') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="request_type" value="product">
-            <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}"> --}}
-            @include('supplier.products.components.product_type_card',['product'=>$product])
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
@@ -34,11 +29,7 @@
                             <span class="required">*</span>
                             <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="hi"></span>
                         </label>
-                        <textarea id="editor" class="form-control @error('post_content') is-invalid @enderror" name="post_content" required>
-                            @if($product)
-                            {{ $product->post_content}}
-                            @endif
-                        </textarea>
+                        <textarea id="editor" class="form-control @error('post_content') is-invalid @enderror" name="post_content" required>@if($product){{ $product->post_content}}@endif</textarea>
                         @error('post_content')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -56,14 +47,5 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="form-group row mt-10 mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary ">
-                        حفظ
-                        <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
-                    </button>
-                </div>
-            </div> --}}
-        {{-- </form> --}}
     </div>
 </div>
