@@ -33,11 +33,11 @@ class ProductController extends Controller
     }
 
     public function addedit($id=0){
-
-
-        $categories = $this->term_taxonomy_service->categories();
+        $categories = $this->term_taxonomy_service->categories_and_sub(\Auth::user()->userable_id);
+        $main_categories = $this->term_taxonomy_service->categories();
         $attributes =$this->term_taxonomy_service->attributes(\Auth::user()->userable->id);
         $product = null;
+
         if($id!=0)
         {
             $product = $this->post_service->find_product_for_supplier($id,\Auth::user()->wordpress_user->ID);
@@ -45,6 +45,7 @@ class ProductController extends Controller
         return view('supplier.products.addedit')
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
+                ->with('main_categories',$main_categories)
                 ->with('product',$product);
     }
 
