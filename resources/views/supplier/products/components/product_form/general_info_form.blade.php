@@ -11,7 +11,7 @@ if($product){
                 <span class="required">*</span>
 
             </label>
-            <input data-inputmask="'regex': '^[0-9]+$'"
+            <input data-inputmask="'regex': '^[0-9.]+$'"
             id="_regular_price" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required  />
             @error('_regular_price')
             <div class="fv-plugins-message-container">
@@ -46,8 +46,8 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل مادة المنتج"></span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('material') is-invalid @enderror" type="text" placeholder="" name="material" value="{{$meta['material'] ?? old('material') }}" required  />
-            @error('material')
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('material_simple') is-invalid @enderror" type="text" placeholder="" name="material_simple" value="{{$meta['material_simple'] ?? old('material_simple') }}" required  />
+            @error('material_simple')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -62,8 +62,8 @@ if($product){
 
             </label>
             <input
-             class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('thickness') is-invalid @enderror" type="text" placeholder="" name="thickness" value="{{$meta['thickness'] ??  old('thickness') }}"   />
-            @error('thickness')
+             class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('thickness_simple') is-invalid @enderror" type="text" placeholder="" name="thickness_simple" value="{{$meta['thickness_simple'] ??  old('thickness_simple') }}"   />
+            @error('thickness_simple')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -76,10 +76,9 @@ if($product){
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>الطباعة</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل ألوان الطباعة"></span>
-
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('printing_single') is-invalid @enderror" type="text" placeholder="" name="printing_single" value="{{ $meta['printing_single'] ??  old('printing_single') }}"   />
-            @error('printing_single')
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('printing_simple') is-invalid @enderror" type="text" placeholder="" name="printing_simple" value="{{ $meta['printing_simple'] ??  old('printing_simple') }}"   />
+            @error('printing_simple')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -94,8 +93,8 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل حجم كل منتج"></span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('size') is-invalid @enderror" type="text" placeholder="" name="size" value="{{ $meta['size'] ?? old('size') }}" required  />
-            @error('size')
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('size_simple') is-invalid @enderror" type="text" placeholder="" name="size_simple" value="{{ $meta['size_simple'] ?? old('size_simple') }}" required  />
+            @error('size_simple')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
