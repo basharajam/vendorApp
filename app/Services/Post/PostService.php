@@ -183,6 +183,15 @@ class PostService extends BaseService implements IPostService
             if($request->hasFile('thumbnail')){
                 $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
             }
+            $files = $request->file('gallery');
+
+        if($request->hasFile('gallery'))
+        {
+            foreach ($files as $file) {
+                $this->store_post_image($post->ID,$file,'gallery');
+
+            }
+        }
             if($post->product_type==null){
                 TermRelation::create([
                     'object_id'=>$post->ID,
