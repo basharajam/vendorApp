@@ -61,7 +61,16 @@ class PostService extends BaseService implements IPostService
             'guid'=>General::URL.'/product/'.$post->post_name,
         ]);
         if($request->hasFile('thumbnail')){
-            $this->store_post_image($post->ID,$request);
+            $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
+        }
+        $files = $request->file('gallery');
+
+        if($request->hasFile('gallery'))
+        {
+            foreach ($files as $file) {
+                $this->store_post_image($post->ID,$file,'gallery');
+
+            }
         }
 
 
@@ -172,7 +181,7 @@ class PostService extends BaseService implements IPostService
                 $term_taxonomy_id = 4;
             }
             if($request->hasFile('thumbnail')){
-                $this->store_post_image($post->ID,$request);
+                $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
             }
             if($post->product_type==null){
                 TermRelation::create([
@@ -317,29 +326,40 @@ class PostService extends BaseService implements IPostService
             'meta_value'=>$meta_value
         ]);
     }
-    private function store_post_image($post_id,$request){
+    private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
         $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
-        $name =  $request->thumbnail->getClientOriginalName();
-        $extension = $request->thumbnail->getClientOriginalExtension();
+        $name =  $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        $file = $request->file('thumbnail');
+        // $file = $request->file('thumbnail');
         $guid = General::IMAGE_URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
 
         if(!File::isDirectory('../../'.public_path($path))){
-
             File::makeDirectory('../../'.public_path($path), 0777, true, true);
-
         }
 
         $file->move($path, $mdf5);
+        $image_post = $this->createAttachmentPost($file->getClientOriginalName(),$guid,$extension);
+        if($type=="main"){
+            $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
+        }
+        //gallery
+        else{
+            $this->creatPostMeta($post_id,'_wp_attached_file',$file->getClientOriginalName());
+            $this->creatPostMeta($post_id,'_wp_attachment_metadata',$image_post->ID);
+            $this->creatPostMeta($post_id,'_wc_attachment_source',$guid);
+        }
 
-        $image_post = Post::create([
+    }
+
+    private function createAttachmentPost($title,$guid,$extension){
+        return Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
             'post_date'=>now(),
             'post_date_gmt'=>now(),
             'post_content'=>"",
-            'post_title'=>$request->thumbnail->getClientOriginalName(),
+            'post_title'=>$title,
             'post_status'=>'inherit',
             'comment_status'=>'closed',
             'ping_status'=>'closed',
@@ -353,14 +373,7 @@ class PostService extends BaseService implements IPostService
             'guid'=>$guid,
             'post_mime_type'=>'image/'.$extension
         ]);
-        PostMeta::create([
-            "post_id"=>$post_id,
-            "meta_key"=>"_thumbnail_id",
-            "meta_value"=>$image_post->ID
-        ]);
-
     }
-
       /** get all products for a supplier manager
      * @param $manager_id the id a manager
      * @return Collection of posts which represents the products for a manager

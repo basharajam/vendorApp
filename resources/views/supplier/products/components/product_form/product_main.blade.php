@@ -46,6 +46,15 @@
 
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
+                            <span>معرض الصور</span>
+                        </label>
+                       <input type="file" name="gallery" class="form-control" multiple>
+
+                    </div>
+                </div>
             </div>
     </div>
 </div>
