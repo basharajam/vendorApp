@@ -35,6 +35,7 @@ class ProductController extends Controller
     public function addedit($id=0){
         $categories = $this->term_taxonomy_service->categories_and_sub(\Auth::user()->userable_id);
         $main_categories = $this->term_taxonomy_service->categories();
+        $tags = $this->term_taxonomy_service->tags(\Auth::user()->userable_id);
         $attributes =$this->term_taxonomy_service->attributes(\Auth::user()->userable->id);
         $product = null;
 
@@ -46,6 +47,7 @@ class ProductController extends Controller
                 ->with('categories',$categories)
                 ->with('attributes',$attributes)
                 ->with('main_categories',$main_categories)
+                ->with('tags',$tags)
                 ->with('product',$product);
     }
 
@@ -67,6 +69,9 @@ class ProductController extends Controller
                 switch($request->request_type){
                     case "categories":
                         $product =  $this->post_service->store_product_categories($request,$request->post_id);
+                    break;
+                    case "tags":
+                        $product =  $this->post_service->store_product_tags($request,$request->post_id);
                     break;
                 }
 

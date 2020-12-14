@@ -11,7 +11,7 @@ class Post extends Model
     protected $table=\General::DB_PREFIX."posts";
     protected $primaryKey="ID";
 
-    protected $appends = ['meta','categories','product_type','product_attributes','product_image'];
+    protected $appends = ['meta','categories','product_type','product_attributes','product_image','tags'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -49,6 +49,13 @@ class Post extends Model
                             ->whereIn('taxonomy',['product_cat'])
                             ->get();
     }
+    public function getTagsAttribute(){
+        return    TermTaxonomy::whereIn('term_taxonomy_id',
+                              TermRelation::where('object_id',$this->ID)
+                                          ->pluck('term_taxonomy_id'))
+                              ->whereIn('taxonomy',['product_tag'])
+                              ->get();
+      }
     public function getProductTypeAttribute(){
         return    TermTaxonomy::whereIn('term_taxonomy_id',
                                 TermRelation::where('object_id',$this->ID)

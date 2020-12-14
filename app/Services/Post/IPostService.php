@@ -55,6 +55,12 @@ interface IPostService extends IBaseService
      */
     public function store_product_categories(Request $request , int $post_id);
 
+    /** stores  product tags  in posts wordpress table
+     * @param Request $request
+     * @return Post  post
+     */
+    public function store_product_tags(Request $request , int $post_id);
+
      /** update product's data  in posts wordpress table
      * @param Request $request
      * @param $post_id

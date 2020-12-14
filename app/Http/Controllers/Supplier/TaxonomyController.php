@@ -40,7 +40,7 @@ class TaxonomyController extends Controller
     }
 
     public function tags(){
-        $data = $this->taxonomy_service->tags();
+        $data = $this->taxonomy_service->tags(\Auth::user()->userable->id);
         return view('supplier.taxonomies.index')
                 ->with('data',$data)
                 ->with('type','product_tag');
@@ -60,7 +60,7 @@ class TaxonomyController extends Controller
                 $this->taxonomy_service->storeCategory($request,\Auth::user()->userable->id);
             }
             else{
-                $this->taxonomy_service->store($request);
+                $this->taxonomy_service->store($request,\Auth::user()->userable->id);
 
             }
             \Session::flash('message',"تمت العلية بنجاح");

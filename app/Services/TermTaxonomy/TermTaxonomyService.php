@@ -46,10 +46,13 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
     }
 
     /** gets tags from termtaxonomy and terms table
+     * @param int $supplier_id optional
      * @return Collection
      */
-    public function tags(){
-        return TermTaxonomy::whereIn('taxonomy',['product_tag'])->get();
+    public function tags($supplier_id=null){
+        return TermTaxonomy::whereIn('taxonomy',['product_tag'])->when($supplier_id,function($query,$supplier_id){
+            return $query->where('supplier_id',$supplier_id);
+        })->get();
     }
 
      /** gets Attributes from termtaxonomy and terms table
@@ -136,6 +139,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'name'=>$request->name,
             'slug'=>$request->slug,
             'item_group'=>0,
+
 
         ]);
         $term_taxonomy = TermTaxonomy::create([
