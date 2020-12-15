@@ -27,8 +27,6 @@ class ProductController extends Controller
     }
 
     public function index(){
-    $option_name = '_transient_wc_attribute_taxonomies';
-    dd(unserialize(Option::where('option_name',$option_name)->first()->option_value));
 
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
