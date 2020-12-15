@@ -77,7 +77,7 @@ class Post extends Model
         return Post::where('post_parent',$this->ID)->get();
     }
     public function getProductImageAttribute(){
-        $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_thumbnail_id')->orderBy('meta_id','desc')->first();
+        $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_thumbnail_id')->first();
         if($image_post_meta){
             $image_post =  Post::where('ID',$image_post_meta->meta_value)->orderBy('ID','desc')->first();
             if($image_post){
