@@ -52,6 +52,10 @@
         transition: all 0.4s ease-in-out;
         -webkit-transition: all 0.4s ease-in-out -moz-transition:all 0.4s ease-in-out -ms-transition:all 0.4s ease-in-out -o-transition:all 0.4s ease-in-out
     }
+    .img-container>.content .delete-item-container a{
+        padding:4px;
+        font-size:10px;
+    }
 
 </style>
 @endpush
