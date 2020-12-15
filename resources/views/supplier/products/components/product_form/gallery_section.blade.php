@@ -23,9 +23,10 @@
         bottom: 0;
     }
 
-    img {
-        width: 100%;
-        height: 100%;
+
+.img-container img   {
+        width: 100% !important;
+        height: 100% !important;
         object-fit: cover;
     }
 
@@ -92,7 +93,7 @@ if($product){
     </div>
 </form>
 
-<div class="row">
+<div class="row mt-5">
     @foreach($gallery as $item)
     <div class="col-md-4" id="galleryItem{{ $item->ID }}">
         <div class="img-container">
