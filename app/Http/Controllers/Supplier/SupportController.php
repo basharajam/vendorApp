@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Supplier;
 
+use App\Events\SupportStored;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSupportRequest;
 use App\Services\SupportRequest\ISupportRequestService;
@@ -28,9 +29,10 @@ class SupportController extends Controller
 
     public function store(StoreSupportRequest $request){
         try{
-            $this->support_request_service->store($request);
+           $support =  $this->support_request_service->store($request);
             \Session::flash('message',"تم ارسال طلب المساعدة بنجاح");
             \Session::flash('status',true);
+            event(new SupportStored($support));
         }
         catch(Exception $ex){
                 \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");

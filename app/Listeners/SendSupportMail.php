@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Mail\SupportMail;
 use Illuminate\Mail\Mailable;
+use Mail;
 
 class SendSupportMail
 {
