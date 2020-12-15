@@ -111972,72 +111972,36 @@ body {
 @media (max-width: 425px) {
   .offcanvas-mobile {
     width: 90% !important; } }@font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-Black.eot?58952fae977f090771c3198801bdc7c5);
-    src: url(/fonts/Cairo-Black.eot?58952fae977f090771c3198801bdc7c5?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-Black.woff2?ed36a5a2559240c86724dc99143e2dfc) format('woff2'),
-        url(/fonts/Cairo-Black.woff?117b4d172c9899fde3ae4f50b0241ae1) format('woff'),
-        url(/fonts/Cairo-Black.ttf?0d1f4d37f2be99ba2122032ee019615b) format('truetype');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-Bold.eot?80bff3fabb368d8fa48af181de58f762);
-    src: url(/fonts/Cairo-Bold.eot?80bff3fabb368d8fa48af181de58f762?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-Bold.woff2?49438566adfba2800dd4ec4bd921aa6a) format('woff2'),
-        url(/fonts/Cairo-Bold.woff?eece67382029d6af33d8125d16025a87) format('woff'),
-        url(/fonts/Cairo-Bold.ttf?435d4959057ab69e0cd499c4c3da28a0) format('truetype');
+    font-family: 'Almarai';
+    src: url(/fonts/Almarai-Bold.woff2?1ab51d5b8de93626309eae3ad758be9d) format('woff2'),
+        url(/fonts/Almarai-Bold.woff?e6f7b64ef9ddb78039d941dbf45a501a) format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-ExtraLight.eot?b01ed8569898da0e55c01ae70e964d32);
-    src: url(/fonts/Cairo-ExtraLight.eot?b01ed8569898da0e55c01ae70e964d32?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-ExtraLight.woff2?b77242842639615ce3742f49582f6898) format('woff2'),
-        url(/fonts/Cairo-ExtraLight.woff?25d73f87788023e7d9d9cc405f417c66) format('woff'),
-        url(/fonts/Cairo-ExtraLight.ttf?64908c5e25163dfcd5feb12d7ca9c4c6) format('truetype');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-Light.eot?fc95a531a8c0ade278fbc4c6282c87f3);
-    src: url(/fonts/Cairo-Light.eot?fc95a531a8c0ade278fbc4c6282c87f3?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-Light.woff2?8fc7d00d95b2563d769d8ec012143565) format('woff2'),
-        url(/fonts/Cairo-Light.woff?8e4485b498f80cd87d49b04d4bb7f938) format('woff'),
-        url(/fonts/Cairo-Light.ttf?1fd9c0bb3afbd188d127ea2126b2902a) format('truetype');
+    font-family: 'Almarai';
+    src: url(/fonts/Almarai-Light.woff2?13a2f4f6f218599214c04598bd41e071) format('woff2'),
+        url(/fonts/Almarai-Light.woff?f4485d402a967a8368d3b5b0d4febe58) format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-SemiBold.eot?b7ae036d2d395e7803f68ee39eb89fa3);
-    src: url(/fonts/Cairo-SemiBold.eot?b7ae036d2d395e7803f68ee39eb89fa3?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-SemiBold.woff2?bec8ebe6290a7be09298776fa7d7b0e8) format('woff2'),
-        url(/fonts/Cairo-SemiBold.woff?7bfda246821b2c9cb066f2da85e1c79e) format('woff'),
-        url(/fonts/Cairo-SemiBold.ttf?95bb55bddbf8c306518710cec57f286d) format('truetype');
-    font-weight: 600;
+    font-family: 'Almarai';
+    src: url(/fonts/Almarai-ExtraBold.woff2?89956c56a7ea579a1c3d808b5461c2f9) format('woff2'),
+        url(/fonts/Almarai-ExtraBold.woff?4e037bac96ef1639b45c7cdf3ff3a94c) format('woff');
+    font-weight: 800;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Cairo';
-    src: url(/fonts/Cairo-Regular.eot?337ad30b5046fbcea2bb8d3128ce7ccd);
-    src: url(/fonts/Cairo-Regular.eot?337ad30b5046fbcea2bb8d3128ce7ccd?#iefix) format('embedded-opentype'),
-        url(/fonts/Cairo-Regular.woff2?3b808aceb55ab66a5a4bc456b2550ade) format('woff2'),
-        url(/fonts/Cairo-Regular.woff?e8226b8aa7d9d72153e22f940f8402be) format('woff'),
-        url(/fonts/Cairo-Regular.ttf?77a002404c839be6e6af6a58b828c2d0) format('truetype');
+    font-family: 'Almarai';
+    src: url(/fonts/Almarai-Regular.woff2?b6495fc60f3b2221ee59144c6e7df099) format('woff2'),
+        url(/fonts/Almarai-Regular.woff?abef4beb4a98427d2e722671dacf52be) format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -112342,7 +112306,7 @@ tr {
 }
 
 body {
-  font-family: "Cairo", sans-serif;
+  font-family: "Almarai", sans-serif;
   margin: 0px;
   font-weight: 300;
   box-sizing: border-box !important;

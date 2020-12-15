@@ -1,7 +1,7 @@
 @import "../theme/css/plugins.bundle.css";
 @import "../theme/css/prismjs.bundle.css";
 @import "../theme/css/style.bundle.css";
-@import "../theme/fonts/cairo/cairo.css";
+@import "../theme/fonts/Almarai/Almarai.css";
 @import '~handy.sass.mixins/scss/shared.scss' ;
 @import "_variables.scss";
 
@@ -179,7 +179,7 @@ tr{
 }
 
 body{
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Almarai', sans-serif;
     margin:0px;
     font-weight: 300;
     box-sizing: border-box !important;
