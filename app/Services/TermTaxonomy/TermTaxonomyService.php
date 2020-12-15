@@ -171,7 +171,9 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'attribute_public'=>'0',
                 'attribute_orderby'=>'menu_order',
             ]);
-            $option->update([
+            \Db::table(\General::DB_PREFIX."options")
+            ->where('option_name',$option_name)
+            ->update([
                 'option_value'=>serialize($option_value)
             ]);
 
