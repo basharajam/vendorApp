@@ -385,8 +385,9 @@ class PostService extends BaseService implements IPostService
         // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
         $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
 
-        if(!File::isDirectory('../../../test/'.public_path($path))){
-            File::makeDirectory('../../../test/'.public_path($path), 0777, true, true);
+        if(!File::isDirectory('../test/'.public_path($path))){
+            File::makeDirectory('../test/'.public_path($path), 0777, true, true);
+
         }
 
         $file->move($path, $mdf5);
