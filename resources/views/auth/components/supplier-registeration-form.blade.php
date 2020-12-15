@@ -425,23 +425,8 @@
             </div> --}}
             <!--end::Form group National ID Picture-->
         </div>
-        <div class="col-md-6">
-            <!--begin::Form group Bank Name-->
-            <div class="form-group">
-                <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>اسم البنك</span>
-                    <span class="required">*</span>
-                </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم البنك" readonly name="bank_name" value="البنك الزراعي" required autocomplete="national_number" />
-                @error('bank_name')
-                <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
-                </div>
-                @enderror
-            </div>
-            <!--end::Form group Bank Name-->
-        </div>
-        <div class="col-md-6">
+
+        <div class="col-md-12">
             <!--begin::Form group Bank Account Number-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
