@@ -408,7 +408,7 @@ class PostService extends BaseService implements IPostService
             'post_date_gmt'=>now(),
             'post_content'=>"",
             'post_title'=>$title,
-            'post_name'=>str_replace('.','-',$file_name),
+            'post_name'=>$file_name,
             'post_status'=>'inherit',
             'comment_status'=>'closed',
             'ping_status'=>'closed',
