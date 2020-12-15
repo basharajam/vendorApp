@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use SmsTo;
 use App\Models\User;
 class OTPController extends Controller
 {
-//    use SmsTo;
+    use AuthenticatesUsers;
     //
     //page to enter the sent opt code
     public function index(Request $response){
@@ -30,7 +32,8 @@ class OTPController extends Controller
                     ->with('otp',$otp)
                     ->with('mobile_number',$request->mobile_number);
         }
-        return redirect()->route('login');
+        return \Route::sendToRoute($request, 'login');
+
     }
 
     public function verifyOtp(Request $request){
@@ -46,7 +49,7 @@ class OTPController extends Controller
                 \Session::forget('UserID');
                 \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
                 \Session::flash('status',true);
-                return redirect()->route('login');
+                \Auth::login($user);
                 }
                 else{
                     \Session::flash('message',"لقد قمت بادخال رمز خاطئ");
@@ -54,7 +57,7 @@ class OTPController extends Controller
                     return redirect()->back();
                 }
             }
-        return redirect()->back();
+        return \Route::sendToRoute($request, 'auth.sendOTP');
     }
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supplier;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Supplier\StoreProductRequest;
 use App\Models\WP\Option;
+use App\Models\WP\PostMeta;
 use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\Post\IPostService;
@@ -27,7 +28,8 @@ class ProductController extends Controller
     }
 
     public function index(){
-
+        $meta_name = "_wp_attachment_metadata";
+        dd(unserialize(PostMeta::where('meta_key',$meta_name)->get()[3]->meta_value));
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')
