@@ -29,7 +29,12 @@ class Supplier extends BaseModel implements HasMedia
         'ischinese',
         'mobile_number',
         'company_created_at',
-        'city_id'
+        'city_id',
+        'company_shop_address',
+        'company_office_address',
+        'company_warehouse_address',
+        'company_factory_address',
+
 
     ];
 

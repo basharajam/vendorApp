@@ -284,8 +284,63 @@
                     <span> مقر الشركة (محل, مكتب, مستودع, مصنع)</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="shop_address" value="{{$supplier->shop_address ?? old('shop_address') }}" required autocomplete="national_number" />
-                @error('shop_address')
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المحل</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="company_shop_address" value="{{$supplier->company_shop_address ?? old('company_shop_address') }}"  autocomplete="national_number" />
+                @error('company_shop_address')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المكتب</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المكتب" name="company_office_address" value="{{$supplier->company_office_address ?? old('company_office_address') }}"  />
+                @error('company_office_address')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المستودع</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المستودع" name="company_warehouse_address" value="{{$supplier->company_warehouse_address ?? old('company_warehouse_address') }}"  />
+                @error('company_warehouse_address')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>المصنع</span>
+                </label>
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المصنع" name="company_factory_address" value="{{$supplier->company_factory_address ?? old('company_factory_address') }}"  />
+                @error('company_factory_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
                 </div>
@@ -582,31 +637,6 @@
     }
     </script>
 
-{{-- <script>
-    function CheckPassword(inputtxt)
-    {
-        var passw=  /^[A-Za-z]\w{7,14}$/;
-        if(inputtxt.match(passw))
-        {
-            $("#strong_password_message").text('كلمة مرور قوية');
-            $("#strong_password_message").css('color','green');
-
-            return true;
-        }
-        else
-        {
-            $("#strong_password_message").text('الرجاء ادخال كلمة مرور من 7 الى 15 حرفاً تحتوي على احرف وارقام و رموز و تبدأ بحرف')
-            return false;
-        }
-    }
-    $(function(){
-        $("#password_input").on('change',function(){
-            let value = $(this).val();
-            CheckPassword(value);
-        })
-    })
-</script> --}}
-
 <script>
     $(function(){
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
@@ -728,5 +758,30 @@
         });
     });
     });
+</script>
+<script>
+    $("#supplier_registeration_form").on('submit',function(e){
+        var company_shop_address = document.getElementsByName('company_shop_address')[0].value;
+        var company_office_address = document.getElementsByName('company_office_address')[0].value;
+        var company_warehouse_address = document.getElementsByName('company_warehouse_address')[0].value;
+        var company_factory_address = document.getElementsByName('company_factory_address')[0].value;
+        console.log(company_shop_address.length)
+        if (
+            (company_shop_address.length==0)
+            &&
+            (company_office_address.length==0)
+            &&
+            (company_warehouse_address.length==0)
+            &&
+            (company_factory_address.length==0)
+            ) {
+            e.preventDefault();
+            toastr.error("الرجاء ادخال احد عنواين الشركة");
+            return false;
+        }
+        else{
+            return true;
+        }
+    })
 </script>
 @endpush

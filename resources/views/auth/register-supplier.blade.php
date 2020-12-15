@@ -93,7 +93,7 @@
                         <!--begin::Signup-->
                         <div class="w-100">
                             <!--begin::Form-->
-                            <form class="form" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
+                            <form class="form" name="supplierForm" class="w-100" method="POST" action="{{ route('supplier_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
                                    <!--begin::Title-->
