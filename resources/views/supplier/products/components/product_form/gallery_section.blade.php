@@ -4,6 +4,7 @@
     .img-container {
         position: relative;
         margin-bottom: 15px;
+        border:1px solid #aaa;
         /*Desired Aspect Ratio*/
     }
 
