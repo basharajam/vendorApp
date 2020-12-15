@@ -5,6 +5,7 @@
         position: relative;
         margin-bottom: 15px;
         border:1px solid #aaa;
+        overflow: hidden;
         /*Desired Aspect Ratio*/
     }
 
