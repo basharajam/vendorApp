@@ -432,7 +432,7 @@
                     <span>اسم البنك</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم البنك" disabled name="bank_name" value="البنك الزراعي" required autocomplete="national_number" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم البنك" readonly name="bank_name" value="البنك الزراعي" required autocomplete="national_number" />
                 @error('bank_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
