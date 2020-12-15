@@ -32,7 +32,46 @@
     <link href="{{ asset('css/login.css') }}" rel="stylehseet">
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
     @toaster
+    <style>
 
+        /* The message box is shown when the user clicks on the password field */
+    #strong_container {
+      display:none;
+      background: #f1f1f1;
+      color: #000;
+      position: relative;
+      margin-top: 10px;
+
+    }
+
+    #strong_container p {
+      padding: 10px 10px;
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      color: green;
+    }
+
+    .valid:after {
+      position: relative;
+      left: -35px;
+      content: "✔";
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+      color: red;
+    }
+
+    .invalid:after {
+      position: relative;
+      left: -35px;
+      content: "✖";
+    }
+    </style>
     @stack('styles')
 </head>
 
