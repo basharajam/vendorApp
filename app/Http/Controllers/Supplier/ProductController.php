@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Supplier\StoreProductRequest;
+use App\Models\WP\Option;
 use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\Post\IPostService;
@@ -26,6 +27,9 @@ class ProductController extends Controller
     }
 
     public function index(){
+    $option_name = '_transient_wc_attribute_taxonomies';
+    dd(unserialize(Option::where('option_name',$option_name)->first()->option_value));
+
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')

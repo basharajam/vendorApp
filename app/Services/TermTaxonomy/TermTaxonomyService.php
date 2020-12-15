@@ -12,6 +12,7 @@ use App\Models\WP\TermTaxonomy;
 use App\Models\WP\Term;
 use App\Models\WP\TermRelation;
 use App\Models\WP\Post;
+use App\Models\WP\Option;
 use Carbon\Carbon;
 use App\Models\WP\AttributeTaxonomy;
 /**
@@ -151,7 +152,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             "supplier_id"=>$supplier_id
         ]);
         if(isset($request->type) && $request->type=="attributes"){
-            AttributeTaxonomy::create([
+            $new_taxonomy = AttributeTaxonomy::create([
                 'attribute_name'=>$request->name,
                 'attribute_label'=>$request->name,
                 'attribute_type'=>'select',
@@ -160,6 +161,14 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'term_taxonomy_id'=>$term_taxonomy->term_taxonomy_id,
                 'supplier_id'=>$supplier_id
             ]);
+            $option_name = '_transient_wc_attribute_taxonomies';
+            $option = Option::where('option_name',$option_name)->first();
+            $option_value = unserialize($option->option_value);
+            array_push($option_value,$new_taxonomy);
+            $option->update([
+                'option_value'=>serialize($option_value)
+            ]);
+
         }
 
         return $term_taxonomy;
@@ -195,14 +204,15 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                     'attribute_name'=>$request->name,
                     'attribute_label'=>$request->name,
                 ]);
+
             }
-        $term = $term_taxonomy->term;
-      return \DB::table(\General::DB_PREFIX.'terms')
-        ->where('term_id', $term->term_id)
-        ->update([
-            'name'=>$request->name,
-            'slug'=>$request->slug
-        ]);
+            $term = $term_taxonomy->term;
+        return \DB::table(\General::DB_PREFIX.'terms')
+            ->where('term_id', $term->term_id)
+            ->update([
+                'name'=>$request->name,
+                'slug'=>$request->slug
+            ]);
 
     }
 
