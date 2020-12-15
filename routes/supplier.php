@@ -25,6 +25,9 @@ Route::post('/product/getTaxonomyTerms',[App\Http\Controllers\Supplier\ProductCo
 Route::post('/products/variations/store',[App\Http\Controllers\Supplier\ProductController::class, 'storeVariation'])->name('supplier.products.variation.store');
 Route::post('/products/variations/store_meta',[App\Http\Controllers\Supplier\ProductController::class, 'storeVariationMeta'])->name('supplier.products.variation.storeMeta');
 
+//Gallery
+Route::post('/products/gallery/add',[App\Http\Controllers\Supplier\ProductController::class,'store'])->name('gallery.add');
+Route::get('/products/gallery/delete/{id}',[App\Http\Controllers\Supplier\ProductController::class,'delete'])->name('gallery.delete');
 
 //(Categories)
 Route::get('/categories',[App\Http\Controllers\Supplier\TaxonomyController::class,'categories'])->name('supplier.categories');

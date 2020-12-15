@@ -36,6 +36,27 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="">
+                                        معرض الصور
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @include('supplier.products.components.product_form.gallery_section')
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End:: App Aside-->
+        <!--Begin:: App Aside-->
+        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
+            <div class="kt-portlet kt-portlet--height-fluid-">
+
+                <div class="kt-portlet__body">
+                    <div class="kt-widget kt-widget--user-profile-4" >
+                        <div class="kt-widget__head">
+                            <div class="kt-widget__content">
+                                <div class="kt-widget__section">
+                                    <a href="#" class="kt-widget__username" id="">
                                         الاصناف
                                     </a>
                                 </div>
@@ -132,8 +153,6 @@
                         <div class="w-100">
                             @include('supplier.products.components.product_form.variations_card_container')
                         </div>
-
-
                 </div>
             </div>
         </div>

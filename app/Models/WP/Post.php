@@ -87,7 +87,9 @@ class Post extends Model
         return '';
     }
     public function getGalleryAttribute(){
-       return $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_wc_attachment_source')->orderBy('meta_id','desc')->get()->pluck('_wc_attachment_source');
+       return  Post::where('post_parent',$this->ID)
+                                    ->where('post_type','attachment')
+                                    ->get();
 
     }
 

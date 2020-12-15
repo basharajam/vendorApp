@@ -75,6 +75,7 @@
                 let $this = $(this);
                 let action = $this.attr('data-action-name');
                 let id = $this.attr('id');
+                let  remove =$this.attr('data-remove');
                 console.log(id);
                 Swal.fire({
                     title: "هل انت متأكد؟",
@@ -86,6 +87,7 @@
                 }).then(function(result) {
                     if(result.value){
                     var tr = "#" + id;
+
                     console.log(tr);
                     var url = action;
                     $.ajax({
@@ -97,6 +99,9 @@
                                 $(tr).css({
                                     "display": "none"
                                 });
+                                $(remove).css({
+                                    "display":"none"
+                                })
                         },
                         error: function () {
                                 toastr.options.progressBar = true;
