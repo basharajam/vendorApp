@@ -225,7 +225,7 @@
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
                         <h3>يجب أن تحتوي كلمة المرور على ما يلي:</h3>
-                        <p id="letter" class="invalid">صغير حرف</p>
+                        <p id="letter" class="invalid"> حرف صغير</p>
                         <p id="capital" class="invalid">حرف  كبير</p>
                         <p id="number" class="invalid">رقم</p>
                         <p id="length" class="invalid">الحد الادنى 8 احرف</p>
