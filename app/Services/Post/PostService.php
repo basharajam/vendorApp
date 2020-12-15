@@ -65,27 +65,23 @@ class PostService extends BaseService implements IPostService
             $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
         }
         $files = $request->file('gallery');
-
-        if($request->hasFile('gallery'))
-        {
-            foreach ($files as $file) {
-                $image = $this->store_post_image($post->ID,$file,'gallery');
-                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
-                if($meta){
-                    $meta->update([
-                        'meta_value'=>$meta->meta_value .','.$image->ID,
-                    ]);
-                }
-                else{
-                    PostMeta::Create([
-                        'post_id'=>$post->ID,
-                        'meta_key'=>'_product_image_gallery',
-                        'meta_value'=>$image->ID
-                    ]);
-                }
-
+        foreach ($files as $file) {
+            $image = $this->store_post_image($post->ID,$file,'gallery');
+            $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
+            if($meta){
+                $meta->update([
+                    'meta_value'=>$meta->meta_value .','.$image->ID,
+                ]);
+            }
+            else{
+              $meta =  PostMeta::Create([
+                    'post_id'=>$post->ID,
+                    'meta_key'=>'_product_image_gallery',
+                    'meta_value'=>$image->ID
+                ]);
             }
         }
+
 
 
         $term_taxonomy_id = 0;
@@ -199,8 +195,6 @@ class PostService extends BaseService implements IPostService
             }
             $files = $request->file('gallery');
 
-        if($request->hasFile('gallery'))
-        {
             foreach ($files as $file) {
                 $image = $this->store_post_image($post->ID,$file,'gallery');
                 $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
@@ -218,7 +212,6 @@ class PostService extends BaseService implements IPostService
                 }
 
             }
-        }
             if($post->product_type==null){
                 TermRelation::create([
                     'object_id'=>$post->ID,

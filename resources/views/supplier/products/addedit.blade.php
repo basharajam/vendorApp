@@ -99,8 +99,8 @@
                                 @include('supplier.products.components.product_form.shipping_info')
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="form-group  mt-10 mb-0">
-                                            <button type="submit" class="btn btn-danger ">
+                                        <div class="form-group  mt-10 mb-0 p-10">
+                                            <button type="submit" class="btn btn-primary ">
                                                 حفظ
                                             </button>
                                         </div>
