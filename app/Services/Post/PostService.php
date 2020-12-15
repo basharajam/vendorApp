@@ -388,7 +388,7 @@ class PostService extends BaseService implements IPostService
         }
 
         $file->move($path, $mdf5);
-        $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension);
+        $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
         $this->creatPostMeta($post_id,'_wp_attached_file',$file->getClientOriginalName());
         $this->creatPostMeta($post_id,'_wp_attachment_metadata',$image_post->ID);
@@ -397,7 +397,7 @@ class PostService extends BaseService implements IPostService
         return $image_post;
     }
 
-    private function createAttachmentPost($post_id,$title,$guid,$extension){
+    private function createAttachmentPost($post_id,$title,$guid,$extension,$file_name){
         return Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
             'post_parent'=>$post_id,
@@ -405,6 +405,7 @@ class PostService extends BaseService implements IPostService
             'post_date_gmt'=>now(),
             'post_content'=>"",
             'post_title'=>$title,
+            'post_name'=>str_replace('.','-',$file_name),
             'post_status'=>'inherit',
             'comment_status'=>'closed',
             'ping_status'=>'closed',
