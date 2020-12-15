@@ -164,7 +164,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             $option_name = '_transient_wc_attribute_taxonomies';
             $option = Option::where('option_name',$option_name)->first();
             $option_value = unserialize($option->option_value);
-            array_push($option_value,[
+            array_push($option_value,(object)[
                 'attribute_name'=>$request->name,
                 'attribute_label'=>$request->name,
                 'attribute_type'=>'select',
