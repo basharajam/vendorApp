@@ -137,6 +137,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      * @return TermTaxonomy
      */
     public function store(Request $request , $supplier_id=null){
+
         $term = Term::create([
             'name'=>$request->name,
             'slug'=>str_replace(' ','-',$request->name),
