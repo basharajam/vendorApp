@@ -28,6 +28,10 @@
         width: 100% !important;
         height: 100% !important;
         object-fit: cover;
+        position: absolute;
+        top:0px;
+        left: 0px;
+
     }
 
     .img-container>.content .delete-item-container {
