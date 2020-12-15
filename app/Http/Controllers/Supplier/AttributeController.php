@@ -49,6 +49,7 @@ class AttributeController extends Controller
 
     public function store(Request $request){
         try{
+
             $type="pa_".$request->name;
             $request->merge(['taxonomy' => $type]);
             $this->taxonomy_service->store($request,\Auth::user()->userable->id);

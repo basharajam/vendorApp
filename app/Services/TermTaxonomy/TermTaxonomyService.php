@@ -13,6 +13,7 @@ use App\Models\WP\Term;
 use App\Models\WP\TermRelation;
 use App\Models\WP\Post;
 use Carbon\Carbon;
+use App\Models\WP\AttributeTaxonomy;
 /**
  * Class TermTaxonomyService
  * @package App\Services\TermTaxonomy
@@ -149,7 +150,17 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'parent'=>0,
             "supplier_id"=>$supplier_id
         ]);
-
+        if(isset($request->type) && $request->type=="attributes"){
+            AttributeTaxonomy::create([
+                'attribute_name'=>$request->name,
+                'attribute_label'=>$request->name,
+                'attribute_type'=>'select',
+                'attribute_public'=>'0',
+                'attribute_orderby'=>'menu_order',
+                'term_taxonomy_id'=>$term_taxonomy->term_taxonomy_id,
+                'supplier_id'=>$supplier_id
+            ]);
+        }
 
         return $term_taxonomy;
     }
@@ -176,6 +187,15 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'description'=>$request->description,
                 'parent'=>$request->parent ?? 0
             ]);
+
+            if(isset($request->type) && $request->type=="attributes"){
+                \Db::table(\General::DB_PREFIX."woocommerce_attribute_taxonomies")
+                ->where('term_taxonomy_id',$id)
+                ->update([
+                    'attribute_name'=>$request->name,
+                    'attribute_label'=>$request->name,
+                ]);
+            }
         $term = $term_taxonomy->term;
       return \DB::table(\General::DB_PREFIX.'terms')
         ->where('term_id', $term->term_id)

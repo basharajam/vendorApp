@@ -275,7 +275,7 @@ class PostService extends BaseService implements IPostService
           foreach($request->taxonomies_relation as $term_taxonomy_id){
             $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
             if($exists==null){
-                TermRelation::create([
+               $attribute =  TermRelation::create([
                     'object_id'=>$post->ID,
                     'term_taxonomy_id'=>$term_taxonomy_id,
                     'term_order'=>0
