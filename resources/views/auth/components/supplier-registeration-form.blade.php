@@ -117,10 +117,10 @@
         <!--begin::Form group User Name-->
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>العمر</span>
+                <span>تاريخ الولادة</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('age') is-invalid @enderror" type="text" placeholder="العمر" name="age" value="{{$supplier->age ?? old('age') }}"   />
-            @error('age')
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="date" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
+            @error('brithdate')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -297,10 +297,10 @@
             <!--begin::Form group National Number-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span> عمل الشركة (عدد السنوات)</span>
+                    <span>تاريخ انشاء الشركة</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="comany_since" value="{{$supplier->comany_since ?? old('comany_since') }}" />
-                @error('comany_since')
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="date" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
+                @error('company_created_at')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
                 </div>
@@ -623,7 +623,7 @@
                     $('#chinese_or_not_div').append(chinese_properties);
                     $("#chinese_properties").show();
                     let national_number_id = document.getElementById('national_number');
-                    Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(national_number_id);
+                    Inputmask({ mask: "999999999999999999" }).mask(national_number_id);
                     let national_id_image = document.getElementById('national_id_image');
                     let $dropzone =new Dropzone('#national_id_image',{
                     url:   '{{ route('supplier.storeImage') }}',

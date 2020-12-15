@@ -24,11 +24,11 @@ class Supplier extends BaseModel implements HasMedia
         "passport_number",
         "passport_end_date",
         "manager_id",
-        'age',
+        'brithdate',
         'gender',
         'ischinese',
         'mobile_number',
-        'comany_since',
+        'company_created_at',
         'city_id'
 
     ];
