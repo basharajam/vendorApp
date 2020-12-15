@@ -81,7 +81,7 @@ class Post extends Model
         if($image_post_meta){
             $image_post =  Post::where('ID',$image_post_meta->meta_value)->orderBy('ID','desc')->first();
             if($image_post){
-                return $image_post->guid;
+                return $image_post;
             }
         }
         return '';
