@@ -28,8 +28,8 @@ class ProductController extends Controller
     }
 
     public function index(){
-        $meta_name = "_wp_attachment_metadata";
-        dd(unserialize(PostMeta::where('meta_key',$meta_name)->get()[3]->meta_value));
+        // $meta_name = "_wp_attachment_metadata";
+        // dd(unserialize(PostMeta::where('meta_key',$meta_name)->get()[3]->meta_value));
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')
