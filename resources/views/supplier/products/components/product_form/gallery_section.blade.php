@@ -92,7 +92,7 @@ if($product){
     <div class="col-md-4" id="galleryItem{{ $item->ID }}">
         <div class="img-container">
             <div class="content">
-                <img src="{{\General::IMAGE_URL_UPLOADS.$item->post_title}}">
+                <img src="{{\General::IMAGE_URL_UPLOADS.$item->post_name}}">
                 <div class="delete-item-container">
                     <a class="flaticon2-trash btn btn-danger btn-sm delete" data-remove="#galleryItem{{ $item->ID }}" data-action-name="{{ route('gallery.delete',$item->ID) }}"></a>
                 </div>

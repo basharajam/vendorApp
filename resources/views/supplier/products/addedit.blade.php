@@ -19,7 +19,7 @@
                             <div class="kt-widget__media">
                                 <!--Product Image-->
                                 @if($product && $product->product_image)
-                                <img id="AsidePhoto" class="kt-widget__img zoom" src="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_title ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
+                                <img id="AsidePhoto" class="kt-widget__img zoom" src="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
                                 @endif
                             </div>
                         </div>
