@@ -100,7 +100,7 @@ if($product){
 
 <div class="row mt-5">
     @foreach($gallery as $item)
-    <div class="col-md-4" id="galleryItem{{ $item->ID }}">
+    <div class="col-md-6" id="galleryItem{{ $item->ID }}">
         <div class="img-container">
             <div class="content">
                 <img src="{{\General::IMAGE_URL_UPLOADS.$item->post_name}}">
