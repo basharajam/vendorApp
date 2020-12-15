@@ -9,7 +9,7 @@ if($product){
     <div class="col-lg-12">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الوزن (كيلوغرام)</span>
+                <span>الوزن (كيلو غرام)</span>
             </label>
             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_weight') is-invalid @enderror" type="text" placeholder="0" name="_weight" value="{{ array_key_exists('_weight',$meta ) ? $meta['_weight']  :  old('_weight')}}"   />
             @error('_weight')
@@ -24,7 +24,7 @@ if($product){
     <div class="col-lg-12">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>CBM</span>
+                <span>حجم الكرتون</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل Cbm لكل كارتون."></span>
 
             </label>

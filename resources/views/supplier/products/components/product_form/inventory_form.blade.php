@@ -10,7 +10,7 @@ if($product){
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="يشير SKU إلى وحدة حفظ المخزون ، وهو معرف فريد لكل منتج وخدمة مميزة يمكن شراؤها"></span>
                 <span class="required">*</span>
-                <span>SKU</span>
+                <span>رقم الصنف</span>
             </label>
             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sku') is-invalid @enderror" type="text" placeholder="" name="_sku" value="{{ array_key_exists('_sku',$meta ) ? $meta['_sku']  :  old('_sku') }}" required  />
             @error('_sku')
@@ -33,7 +33,6 @@ if($product){
                         id="_stock_status"
                         name="_stock_status" required>
                     <option value="instock" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='instock') selected @endif>متوفر</option>
-                    <option value="outofstock" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='outofstock') selected @endif>غير متوفر</option>
                     <option value="onbackorder" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='onbackorder') selected @endif>تحت الطلب</option>
                 </select>
             </div>
@@ -47,7 +46,7 @@ if($product){
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الحد الأدنى من الكمية</span>
+                <span>الحد الادنى للطلب (عدد الكراتين) </span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري. قم بتعيين حد أدنى للكمية المسموح بها لكل طلب. أدخل رقمًا ، 1 أو أكبر."></span>
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'"
@@ -63,7 +62,7 @@ if($product){
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الحد الاقصى من الكمية</span>
+                <span>الحد الاقصى للطلب (عدد الكراتين)</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري. قم بتعيين الحد الأقصى للكمية المسموح بها لكل طلب. أدخل رقمًا ، 1 أو أكبر"></span>
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'"
@@ -139,7 +138,7 @@ if($product){
     <div class="col-lg-12">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>النماذج بالحزمة</span>
+                <span>التوزيع ضمن الكرتونة</span>
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل عدد النماذج المختلطة في العبوة."></span>
             </label>

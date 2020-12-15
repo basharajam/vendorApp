@@ -41,7 +41,7 @@ if($product){
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>مادة المنتج</span>
+                <span>المواد المستخدمة في المنتج</span>
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل مادة المنتج"></span>
             </label>
@@ -88,7 +88,7 @@ if($product){
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الحجم</span>
+                <span>المقاس</span>
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل حجم كل منتج"></span>
             </label>
