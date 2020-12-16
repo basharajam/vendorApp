@@ -41,7 +41,6 @@
                     <div class="font-weight-bold text-muted">CBM</div>
                 </th>
                 <th>.</th>
-                <th>.</th>
             </tr>
         </thead>
         <tbody style="direction:rtl;text-align:right">

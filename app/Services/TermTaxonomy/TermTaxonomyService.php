@@ -75,7 +75,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
     public function storeCategory(Request $request,$supplier_id=null){
         $term = Term::create([
             'name'=>$request->name,
-            'slug'=>$request->slug,
+            'slug'=>str_replace(' ','-',$request->name),
             'item_group'=>0
         ]);
         $term_taxonomy = TermTaxonomy::create([
@@ -220,7 +220,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ->where('term_id', $term->term_id)
             ->update([
                 'name'=>$request->name,
-                'slug'=>$request->slug
+                'slug'=>str_replace(' ','-',$request->name),
             ]);
 
     }
@@ -243,7 +243,8 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         ->where('term_id', $term->id)
         ->update([
             'name'=>$request->name,
-            'slug'=>$request->slug
+            'slug'=>str_replace(' ','-',$request->name),
+
         ]);
 
     }
