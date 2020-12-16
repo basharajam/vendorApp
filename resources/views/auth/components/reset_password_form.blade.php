@@ -24,7 +24,7 @@
     <!--begin::Form group-->
     <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
         <button type="submit" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit">إرسال</button>
-        <button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
+        <a href="{{ URL::previous() }}" id="" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</a>
     </div>
     <!--end::Form group-->
 </form>
