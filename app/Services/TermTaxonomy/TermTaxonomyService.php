@@ -90,10 +90,9 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'supplier_id'=>$supplier_id
         ]);
         //savge image
-        if($request->has('image')){
             $file = $request->file('image');
-
-            $now = Carbon::now();
+            if($file){
+                $now = Carbon::now();
             // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
             $path = 'wp-content/uploads';
             $name =  $file->getClientOriginalName();
@@ -137,7 +136,8 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'meta_key'=>'_thumbnail_id',
                 'meta_value'=>$image_post->ID
             ]);
-        }
+            }
+
 
         return $term_taxonomy;
     }
