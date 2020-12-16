@@ -41,7 +41,6 @@ class OTPController extends Controller
         $enteredOtp = $request->otp;
         $OTP = \Session::get('OTP');
         $user_id =$request->user_id;
-        \Session::put('UserID',$user_Id);
         if($OTP == $enteredOtp){
             $user = User::where('id',$user_id)->first();
             if($user){
