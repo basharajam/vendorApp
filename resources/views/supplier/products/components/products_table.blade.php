@@ -64,9 +64,15 @@
                         <span style="width: 250px;">
                             <div class="d-flex align-items-center">
                                 <div style="padding-left:10px;" class="symbol symbol-50   symbol-sm symbol-light-danger">
-                                    <a class="image-link" href="{{ $product->product_image }}">
-                                        <span class="symbol-label font-size-p zoom" style="background-image:url({{ $product->product_image}})"></span>
+                                    @if($product->product_image)
+                                    <a class="image-link" href="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name }}">
+                                        <span class="symbol-label font-size-p zoom" style="background-image:url({{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name }})"></span>
                                     </a>
+                                    @else
+                                    <a class="image-link" href="#">
+                                        <span class="symbol-label font-size-p zoom" style=""></span>
+                                    </a>
+                                    @endif
                                 </div>
                                 <div class="ml-3">
                                     <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
