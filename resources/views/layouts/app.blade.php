@@ -39,11 +39,15 @@
     <div id="app">
         @include('supplier_manager.components.profit_ratio_modal')
     <div class="notifications" style="width: 300px; top: 0px; right: 0px;"><span></span></div>
+    @auth
     <x-layout.header-mobile></x-layout.header-mobile>
+    @endauth
         <div class="kt-grid kt-grid--hor kt-grid--root">
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                    @auth
                     <x-layout.header></x-layout.header>
+                    @endauth
                     <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
                       <div class="kt-content" id="kt_content">
 
