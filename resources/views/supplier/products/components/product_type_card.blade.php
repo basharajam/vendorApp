@@ -7,7 +7,6 @@ if($product)
 <div class="row">
     <div class="col-12 mb-10" style="text-align: right">
         <h3>اختر نوع المنتج</h3>
-        <span class="required">*</span>
     </div>
     <div class="col-lg-6">
         <label class="option" style="direction: ltr">

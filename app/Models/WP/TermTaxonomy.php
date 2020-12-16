@@ -33,7 +33,7 @@ class TermTaxonomy extends Model
     }
     public function getTermsAttribute(){
         if(\Auth::user() && \Auth::user()->hasRole(\UserRoles::SUPPLIERMANAGER)){
-            return TermTaxonomy::where('taxonomy',$this->taxonomy)->get();
+            return TermTaxonomy::where('taxonomy',$this->taxonomy)->where('term_taxonomy_id','!=',$this->term_taxonomy_id)->get();
         }
         else{
             return TermTaxonomy::where('taxonomy',$this->taxonomy)->where('supplier_id',\Auth::user()->userable->id)->get();
