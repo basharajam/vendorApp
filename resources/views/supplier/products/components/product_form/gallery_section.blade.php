@@ -95,6 +95,8 @@ if($product){
         <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
         <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
         <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+        <input type="hidden" name="request_type" value="gallery">
+
         <div class="col-12">
             <div class="form-group">
                 <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
