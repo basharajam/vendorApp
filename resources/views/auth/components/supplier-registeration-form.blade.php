@@ -172,7 +172,7 @@
             <span class="required">*</span>
             <span>رقم الموبايل</span>
         </label>
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+        <input id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
         @error('mobile_number')
         <div class="fv-plugins-message-container">
             <div  class="fv-help-block">{{ $message }}</div>
@@ -541,13 +541,17 @@
 
 @push('styles')
 
-
 @endpush
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{{ asset('/js/intlTelInput-jquery.min.js') }}"></script>
+
 <script>
     let cities = {!! json_encode($cities) !!};
     $(function(){
+        const input = document.querySelector("#phone");
+        $(input).intlTelInput();
+
         $("#cateogiresSelector").select2({
             dir: "rtl",
         });

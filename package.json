@@ -38,6 +38,7 @@
         "handlebars": "^4.7.6",
         "handy.sass.mixins": "^1.2.5",
         "inputmask": "^5.0.5",
+        "intl-tel-input": "^17.0.8",
         "ion-rangeslider": "^2.3.1",
         "jquery": "^3.5.1",
         "jquery-blockui": "^2.7.0",

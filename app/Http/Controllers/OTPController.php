@@ -39,6 +39,8 @@ class OTPController extends Controller
     public function verifyOtp(Request $request){
         $enteredOtp = $request->otp;
         $OTP = \Session::get('OTP');
+        $user_Id = \Session::get('UserID');
+        \Session::put('UserID',$user_Id);
         if($OTP == $enteredOtp){
             $user = User::where('id',\Session::get('UserID'))->first();
             if($user){
