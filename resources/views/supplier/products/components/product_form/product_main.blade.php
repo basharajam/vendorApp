@@ -2,7 +2,7 @@
 <div class="kt-portlet" id="Productype" style="" >
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">العملومات الاساسية</h3>
+            <h3 class="kt-portlet__head-title">المعلومات الاساسية</h3>
         </div>
     </div>
     <div class="kt-portlet__body">
