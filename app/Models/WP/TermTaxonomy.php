@@ -41,7 +41,7 @@ class TermTaxonomy extends Model
     }
     public function getImageAttribute()
     {
-        $image_post_meta =  TermMeta::where('term_id',$this->term_id)->where('meta_key','_thumbnail_id')->first();
+        $image_post_meta =  TermMeta::where('term_id',$this->term_id)->where('meta_key','thumbnail_id')->first();
         if($image_post_meta){
             $image_post =  Post::where('ID',$image_post_meta->meta_value)->orderBy('ID','desc')->first();
             if($image_post){
