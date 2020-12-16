@@ -224,7 +224,7 @@
         $(document).on('change',"._sale_price",function(){
             let value = $(this).val();
             let regural_price_value =$("#_regular_price").val();
-            if(parseInt(value) >= parseInt(regural_price_value))
+            if(parseFloat(value) >= parseFloat(regural_price_value))
             {
                 $("#_sale_price_help").text('الرجاء ادخال قيمة اصغر من السعر')
             }
