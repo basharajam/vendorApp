@@ -267,7 +267,7 @@ class PostService extends BaseService implements IPostService
     }
     public function store_product_categories(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
-        if($post){
+        if($post && $request->product_categories){
           foreach($request->product_categories as $term_taxonomy_id){
             TermRelation::updateOrCreate(
                 [
