@@ -65,22 +65,25 @@ class PostService extends BaseService implements IPostService
             $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
         }
         $files = $request->file('gallery');
-        foreach ($files as $file) {
-            $image = $this->store_post_image($post->ID,$file,'gallery');
-            $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
-            if($meta){
-                $meta->update([
-                    'meta_value'=>$meta->meta_value .','.$image->ID,
-                ]);
-            }
-            else{
-              $meta =  PostMeta::Create([
-                    'post_id'=>$post->ID,
-                    'meta_key'=>'_product_image_gallery',
-                    'meta_value'=>$image->ID
-                ]);
+         if($files){
+            foreach ($files as $file) {
+                $image = $this->store_post_image($post->ID,$file,'gallery');
+                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
+                if($meta){
+                    $meta->update([
+                        'meta_value'=>$meta->meta_value .','.$image->ID,
+                    ]);
+                }
+                else{
+                  $meta =  PostMeta::Create([
+                        'post_id'=>$post->ID,
+                        'meta_key'=>'_product_image_gallery',
+                        'meta_value'=>$image->ID
+                    ]);
+                }
             }
         }
+
 
 
 
