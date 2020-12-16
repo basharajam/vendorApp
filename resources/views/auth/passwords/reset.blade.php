@@ -5,13 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="text-center pb-8" style="">
+                <div class="text-center pb-8" style="margin-top:15px;">
                     <!--begin::Logo-->
-                    <a href="/" class="text-center mb-10 d-block">
+                    <a href="/" class="text-center mb-5 d-block">
                        <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
                    </a>
                 </div>
-                <div class="card-header">تغيير كلمة المرور</div>
+                <div class="card-header" style="padding-top:5px;padding-bottom:5px;">
+                <h3>
+                    تغيير كلمة المرور
+                </h3>
+            </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
