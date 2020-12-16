@@ -16,6 +16,8 @@ use App\Models\WP\Option;
 use Carbon\Carbon;
 use App\Models\WP\AttributeTaxonomy;
 use App\Models\WP\TermMeta;
+use Illuminate\Support\Facades\File;
+
 
 /**
  * Class TermTaxonomyService
