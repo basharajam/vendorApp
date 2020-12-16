@@ -23,7 +23,7 @@
                     <div class="font-weight-bold text-muted">Price</div>
                 </th>
                 <th class="">
-                    <span>الحجم</span>
+                    <span>المقاس</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Size</div>
@@ -35,7 +35,7 @@
                     <div class="font-weight-bold text-muted">Weight</div>
                 </th>
                   <th class="">
-                    <span>CBM</span>
+                    <span>حجم الكرتونة</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">CBM</div>
