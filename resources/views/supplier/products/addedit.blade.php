@@ -18,6 +18,11 @@
                 <div class="kt-portlet__body">
                     <div class="kt-widget kt-widget--user-profile-4">
                         <div class="kt-widget__head">
+                            <div class="kt-widget__section">
+                                <a href="#" class="kt-widget__username" id="">
+                                    صورة المنتج
+                                </a>
+                            </div>
                             <div class="kt-widget__media">
                                 <!--Product Image-->
                                 <img id="AsidePhoto" class="kt-widget__img zoom" src="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
