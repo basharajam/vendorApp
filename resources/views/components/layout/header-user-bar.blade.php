@@ -1,4 +1,5 @@
 <div class="kt-header__topbar-item kt-header__topbar-item--user" >
+    @auth
     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,10px" aria-expanded="false" style="flex-direction: row-reverse">
         <span class="kt-header__topbar-welcome"> </span>
             <span class="kt-header__topbar-username ml-5 font-size-h4" v-if="user">{{ \Auth::user()->name }}</span>
@@ -6,6 +7,7 @@
                 {{\Auth::user()->name[0] }}
             </span>
     </div>
+    @endauth
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
         <!--begin: Head -->
         <div class="kt-notification">
