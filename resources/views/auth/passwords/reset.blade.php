@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mb-15">
                 <div class="text-center pb-8" style="margin-top:15px;">
                     <!--begin::Logo-->
                     <a href="/" class="text-center mb-5 d-block">
