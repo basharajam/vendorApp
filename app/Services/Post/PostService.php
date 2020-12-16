@@ -32,6 +32,29 @@ class PostService extends BaseService implements IPostService
     {
         parent::__construct($repository);
     }
+    public function store_gallery(Request $request,$post_id){
+        $post = Post::where('ID',$post_id)->first();
+        $files = $request->file('gallery');
+        if($files){
+           foreach ($files as $file) {
+               $image = $this->store_post_image($post->ID,$file,'gallery');
+               $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
+               if($meta){
+                   $meta->update([
+                       'meta_value'=>$meta->meta_value .','.$image->ID,
+                   ]);
+               }
+               else{
+                 $meta =  PostMeta::Create([
+                       'post_id'=>$post->ID,
+                       'meta_key'=>'_product_image_gallery',
+                       'meta_value'=>$image->ID
+                   ]);
+               }
+           }
+       }
+
+    }
 
     /** stores new product in posts wordpress table
      * @param Request $request
@@ -64,28 +87,6 @@ class PostService extends BaseService implements IPostService
         if($request->hasFile('thumbnail')){
             $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
         }
-        $files = $request->file('gallery');
-         if($files){
-            foreach ($files as $file) {
-                $image = $this->store_post_image($post->ID,$file,'gallery');
-                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
-                if($meta){
-                    $meta->update([
-                        'meta_value'=>$meta->meta_value .','.$image->ID,
-                    ]);
-                }
-                else{
-                  $meta =  PostMeta::Create([
-                        'post_id'=>$post->ID,
-                        'meta_key'=>'_product_image_gallery',
-                        'meta_value'=>$image->ID
-                    ]);
-                }
-            }
-        }
-
-
-
 
         $term_taxonomy_id = 0;
         if($request->product_type == 'simple'){
@@ -196,25 +197,7 @@ class PostService extends BaseService implements IPostService
             if($request->hasFile('thumbnail')){
                 $this->store_post_image($post->ID,$request->file('thumbnail'),'main');
             }
-            $files = $request->file('gallery');
 
-            foreach ($files as $file) {
-                $image = $this->store_post_image($post->ID,$file,'gallery');
-                $meta =  PostMeta::where('post_id',$post->ID)->where('meta_key','_product_image_gallery')->first();
-                if($meta){
-                    $meta->update([
-                        'meta_value'=>$meta->meta_value .','.$image->ID,
-                    ]);
-                }
-                else{
-                    PostMeta::Create([
-                        'post_id'=>$post->ID,
-                        'meta_key'=>'_product_image_gallery',
-                        'meta_value'=>$image->ID
-                    ]);
-                }
-
-            }
             if($post->product_type==null){
                 TermRelation::create([
                     'object_id'=>$post->ID,

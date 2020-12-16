@@ -72,31 +72,6 @@ if($product){
     $gallery = $product->gallery;
 }
 @endphp
-<form  enctype="multipart/form-data" action="{{route('supplier.products.store')}}" method="post">
-    <div class="w-100" style="max-height: 400px; overflow-y:scroll">
-        @csrf
-        <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
-        <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
-        <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
-        <div class="col-12">
-            <div class="form-group">
-                <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
-                    <span>اضافة صور</span>
-                </label>
-               <input type="file" name="gallery[]" class="form-control" multiple>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group row mt-10 mb-0">
-        <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary ">
-                حفظ
-                <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
-            </button>
-        </div>
-    </div>
-</form>
 
 <div class="row mt-5">
     @foreach($gallery as $item)
@@ -113,3 +88,30 @@ if($product){
     @endforeach
 
 </div>
+
+<form  enctype="multipart/form-data" action="{{route('supplier.products.store')}}" method="post">
+    <div class="w-100" style="max-height: 400px; overflow-y:scroll">
+        @csrf
+        <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
+        <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
+        <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
+                    <span>اضافة صور</span>
+                </label>
+               <input type="file" name="gallery[]" class="form-control" multiple >
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row mt-10 mb-0">
+        <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary ">
+                حفظ
+                <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
+            </button>
+        </div>
+    </div>
+</form>
+

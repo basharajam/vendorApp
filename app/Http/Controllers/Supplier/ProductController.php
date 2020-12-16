@@ -71,6 +71,8 @@ class ProductController extends Controller
 
             }else{
                 switch($request->request_type){
+                    case "gallery":
+                            $this->post_service->store_gallery($request,$request->post_id);
                     case "categories":
                         $product =  $this->post_service->store_product_categories($request,$request->post_id);
                     break;
