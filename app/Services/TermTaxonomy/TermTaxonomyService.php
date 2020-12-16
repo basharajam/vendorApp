@@ -129,11 +129,11 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             TermMeta::updateOrCreate(
                 [
                     'term_id'=>$term->term_id,
-                    'meta_key'=>'_thumbnail_id'
+                    'meta_key'=>'thumbnail_id'
                 ]
                 ,[
                 'term_id'=>$term->term_id,
-                'meta_key'=>'_thumbnail_id',
+                'meta_key'=>'thumbnail_id',
                 'meta_value'=>$image_post->ID
             ]);
             }
