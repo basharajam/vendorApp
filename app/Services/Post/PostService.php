@@ -392,7 +392,7 @@ class PostService extends BaseService implements IPostService
         $file->move($destination_path, $mdf5);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
-            $this->creatPostMeta($image_post->ID,'_thumbnail_id',$image_post->ID);
+            $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
         $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
         $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
         $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
