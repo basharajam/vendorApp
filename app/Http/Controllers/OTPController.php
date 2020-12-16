@@ -25,7 +25,7 @@ class OTPController extends Controller
                     'message'=>"Welcome To Alyaman Vendor System Please verify your number by typing this code : ".$otp,
                 ]
             ];
-            SmsTo::setMessages($messages)->setSenderId('Alyaman')->sendSingle();
+          SmsTo::setMessages($messages)->setSenderId('Alyaman')->sendSingle();
             \Session::put('OTP',$otp);
             \Session::put('UserID',$request['user_id']);
             return view('auth.otp')
