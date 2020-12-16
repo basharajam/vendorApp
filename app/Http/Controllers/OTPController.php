@@ -30,7 +30,8 @@ class OTPController extends Controller
             \Session::put('UserID',$request['user_id']);
             return view('auth.otp')
                     ->with('otp',$otp)
-                    ->with('mobile_number',$request->mobile_number);
+                    ->with('mobile_number',$request->mobile_number)
+                    ->with('user_id',$request->user_id);
         }
         return \Route::sendToRoute($request, 'login');
 
@@ -39,10 +40,10 @@ class OTPController extends Controller
     public function verifyOtp(Request $request){
         $enteredOtp = $request->otp;
         $OTP = \Session::get('OTP');
-        $user_Id = \Session::get('UserID');
+        $user_Id =$request->user_id;
         \Session::put('UserID',$user_Id);
         if($OTP == $enteredOtp){
-            $user = User::where('id',\Session::get('UserID'))->first();
+            $user = User::where('id',$user_id)->first();
             if($user){
                 $user->update([
                     'mobile_verified_at'=>now()
@@ -56,7 +57,8 @@ class OTPController extends Controller
                 else{
                     \Session::flash('message',"لقد قمت بادخال رمز خاطئ");
                     \Session::flash('status',false);
-                    return redirect()->back();
+                    return \Route::sendToRoute($request, 'auth.sendOTP');
+
                 }
             }
         return \Route::sendToRoute($request, 'auth.sendOTP');

@@ -1,5 +1,6 @@
 <form class="form" method="POST" action="{{ route('auth.verifyOTP') }}" id="kt_login_forgot_form">
     @csrf
+    <input type="hidden" value="{{ $user_id }}" name="user_id">
     <!--begin::Title-->
     <div class="text-center pb-8">
          <!--begin::Logo-->
