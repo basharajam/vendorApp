@@ -73,10 +73,10 @@ class LoginController extends Controller
             return  RouteServiceProvider::SUPPLIER_HOME;
         }
         else if($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER)){
-            return  RouteServiceProvider::SUPPLIER_MANAGER_HOME;
+            return "/supplier_manager/home";
         }
         else{
-            return  RouteServiceProvider::HOME;
+            return  "/supplier_manager/home";
         }
         // dd($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER));
     }
