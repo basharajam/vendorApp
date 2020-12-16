@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
-
+use App\Http\Requests\TaxonomyRequest;
 class TaxonomyController extends Controller
 {
     private $taxonomy_service;
@@ -52,7 +52,7 @@ class TaxonomyController extends Controller
                 ->with('type',$type);
     }
 
-    public function store(Request $request){
+    public function store(TaxonomyRequest $request){
         //save
         try{
             $request->merge(['taxonomy' => $request->type]);
