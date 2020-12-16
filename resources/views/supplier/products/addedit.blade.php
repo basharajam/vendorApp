@@ -10,6 +10,8 @@
         </button>
         <!--End:: App Aside Mobile Toggle-->
         <div style="display: flex;flex-direction:column">
+            @if($product && $product->product_image)
+
                <!--Begin:: App Aside-->
         <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
             <div class="kt-portlet kt-portlet--height-fluid-">
@@ -18,9 +20,7 @@
                         <div class="kt-widget__head">
                             <div class="kt-widget__media">
                                 <!--Product Image-->
-                                @if($product && $product->product_image)
                                 <img id="AsidePhoto" class="kt-widget__img zoom" src="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name ??  asset('/images/product.png')}}" style="object-fit: cover" alt="image">
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -28,6 +28,8 @@
             </div>
         </div>
         <!--End:: App Aside-->
+        @endif
+
         @if($product)
         <!--Begin:: App Aside-->
         <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
