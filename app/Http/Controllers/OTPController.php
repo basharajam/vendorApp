@@ -52,9 +52,10 @@ class OTPController extends Controller
                 \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
                 \Session::flash('status',true);
                 \Auth::login($user);
-                }
-                else{
-                    \Session::flash('message',"لقد قمت بادخال رمز خاطئ");
+                return redirect()->route('supplier.home');
+            }
+            else{
+                \Session::flash('message',"لقد قمت بادخال رمز خاطئ");
                     \Session::flash('status',false);
                     return \Route::sendToRoute($request, 'auth.sendOTP');
 
