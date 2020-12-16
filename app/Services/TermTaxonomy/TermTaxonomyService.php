@@ -12,6 +12,7 @@ use App\Models\WP\TermTaxonomy;
 use App\Models\WP\Term;
 use App\Models\WP\TermRelation;
 use App\Models\WP\Post;
+use App\Models\WP\PostMeta;
 use App\Models\WP\Option;
 use Carbon\Carbon;
 use App\Models\WP\AttributeTaxonomy;
@@ -136,6 +137,9 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'meta_key'=>'thumbnail_id',
                 'meta_value'=>$image_post->ID
             ]);
+            $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
+            $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
+            $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
             }
 
 
@@ -258,5 +262,21 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         ]);
 
     }
-
+/** stores the data into wpug_postmeta table in wordpress
+     * @param int $post_id the id of the post
+     * @param int $meta_key the key name of the attribute
+     * @param int $meta_value the real value of the attribute
+     */
+    private function creatPostMeta($post_id,$meta_key,$meta_value){
+        PostMeta::updateOrCreate(
+            [
+                'post_id'=>$post_id,
+                'meta_key'=>$meta_key
+            ]
+            ,[
+            'post_id'=>$post_id,
+            'meta_key'=>$meta_key,
+            'meta_value'=>$meta_value
+        ]);
+    }
 }
