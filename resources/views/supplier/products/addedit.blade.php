@@ -28,6 +28,7 @@
             </div>
         </div>
         <!--End:: App Aside-->
+        @if($product)
         <!--Begin:: App Aside-->
         <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
             <div class="kt-portlet kt-portlet--height-fluid-">
@@ -49,6 +50,7 @@
             </div>
         </div>
         <!--End:: App Aside-->
+        @endif
         <!--Begin:: App Aside-->
         <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
             <div class="kt-portlet kt-portlet--height-fluid-">
@@ -197,6 +199,7 @@
             let price = $("#_regular_price").val();
             if(parseFloat(sale) >= parseFloat(price))
             {
+                toastr.error('الرجاء ادخال قيمة اصغر من السعر')
                 return false;
             }
             else{
