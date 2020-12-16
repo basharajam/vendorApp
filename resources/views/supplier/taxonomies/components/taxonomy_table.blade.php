@@ -42,7 +42,7 @@
                                     <div class="d-flex align-items-center">
                                         <div style="padding-left:10px;" class="symbol symbol-50 symbol-sm symbol-light-danger">
                                             @if($taxonomy->image)
-                                            <span class="symbol-label font-size-p" style="background-image:url({{\General::IMAGE_URL_UPLOADS.$taxonomy->image->post_name ?? 0 }})"></span>
+                                            <span class="symbol-label font-size-p" style="background-color:transparent; background-image:url({{\General::IMAGE_URL_UPLOADS.$taxonomy->image->post_name ?? 0 }})"></span>
                                             @else
                                             <span class="symbol-label font-size-p" style=""></span>
                                             @endif
