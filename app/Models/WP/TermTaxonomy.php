@@ -3,7 +3,7 @@
 namespace App\Models\WP;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\WP\TermRelation;
-use App\Models\Wp\TermMeta;
+use App\Models\WP\TermMeta;
 class TermTaxonomy extends Model
 {
     protected $table=\General::DB_PREFIX."term_taxonomy";
