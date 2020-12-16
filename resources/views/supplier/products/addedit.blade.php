@@ -195,7 +195,7 @@
         function checkSalePrice(){
             let sale = $("#_sale_price").val();
             let price = $("#_regular_price").val();
-            if(parseInt(sale) >= parseInt(price))
+            if(parseFloat(sale) >= parseFloat(price))
             {
                 return false;
             }
