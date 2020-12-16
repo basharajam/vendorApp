@@ -18,10 +18,12 @@
                 <div class="kt-portlet__body">
                     <div class="kt-widget kt-widget--user-profile-4">
                         <div class="kt-widget__head">
-                            <div class="kt-widget__section">
-                                <a href="#" class="kt-widget__username" id="">
-                                    صورة المنتج
-                                </a>
+                            <div class="kt-widget__content">
+                                <div class="kt-widget__section">
+                                    <a href="#" class="kt-widget__username" id="">
+                                        صورة المنتج
+                                    </a>
+                                </div>
                             </div>
                             <div class="kt-widget__media">
                                 <!--Product Image-->
