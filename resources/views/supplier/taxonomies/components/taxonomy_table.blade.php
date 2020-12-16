@@ -41,7 +41,7 @@
                                 <span style="width: 250px;">
                                     <div class="d-flex align-items-center">
                                         <div style="padding-left:10px;" class="symbol symbol-50 symbol-sm symbol-light-danger">
-                                            <span class="symbol-label font-size-p" style="background-image:url({{\General::IMAGE_URL_UPLOADS.$taxonomy->image }})"></span>
+                                            <span class="symbol-label font-size-p" style="background-image:url({{\General::IMAGE_URL_UPLOADS.$taxonomy->image->post_name ?? 0 }})"></span>
                                         </div>
                                     </div>
                                 </span>
