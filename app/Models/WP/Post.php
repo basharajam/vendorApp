@@ -74,7 +74,7 @@ class Post extends Model
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();
     }
     public function getProductVariationsAttribute(){
-        return Post::where('post_parent',$this->ID)->get();
+        return Post::where('post_parent',$this->ID)->where('post_type','product_variation')->get();
     }
     public function getProductImageAttribute(){
         $image_post_meta =  PostMeta::where('post_id',$this->ID)->where('meta_key','_thumbnail_id')->first();

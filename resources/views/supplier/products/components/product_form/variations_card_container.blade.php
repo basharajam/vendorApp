@@ -4,7 +4,6 @@ if($product){
     $product_attributes = $product->product_attributes;
 }
 @endphp
-@if($product && count($product->product_variations)>0 )
 <div class="w-100" id="variationsContainer">
     <div class="accordion accordion-solid accordion-panel accordion-svg-toggle" id="accordionExample8">
         @if($product)
@@ -46,4 +45,3 @@ if($product){
         @endif
     </div>
 </div>
-@endif
