@@ -25,7 +25,7 @@ class TaxonomyRequest extends FormRequest
     {
         return [
             //
-            'name'=>['unique:'.\General::DB_PREFIX.'terms']
+            'name'=>['unique:App\Models\WP\Term']
         ];
     }
       /**

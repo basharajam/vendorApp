@@ -28,7 +28,6 @@
                         @endif
                         <th>الاسم</th>
                         <th>الوصف</th>
-                        <th> عنوان الرابط</th>
                         <th>العدد</th>
                         <th>..</th>
                     </tr>
@@ -62,13 +61,6 @@
                                 <span>
                                     <div class="font-weight-bolder font-size-lg mb-0">
                                         {{ $taxonomy->term->description  ?? '--'}}
-                                    </div>
-                                </span>
-                            </td>
-                            <td class="datatable-cell-sorted datatable-cell">
-                                <span>
-                                    <div class="font-weight-bolder font-size-lg mb-0">
-                                        {{ $taxonomy->term->slug }}
                                     </div>
                                 </span>
                             </td>
