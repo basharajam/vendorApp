@@ -3,6 +3,7 @@
 namespace App\Models\WP;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\WP\TermRelation;
+use App\Models\Wp\TermMeta;
 class TermTaxonomy extends Model
 {
     protected $table=\General::DB_PREFIX."term_taxonomy";
@@ -40,6 +41,13 @@ class TermTaxonomy extends Model
     }
     public function getImageAttribute()
     {
-        return $this->posts()->join(\General::DB_PREFIX.'posts','object_id',\General::DB_PREFIX.'posts.ID')->where(\General::DB_PREFIX.'posts.post_type','attachment')->first()->guid ?? null;
+        $image_post_meta =  TermMeta::where('term_id',$this->term_id)->where('meta_key','_thumbnail_id')->first();
+        if($image_post_meta){
+            $image_post =  Post::where('ID',$image_post_meta->meta_value)->orderBy('ID','desc')->first();
+            if($image_post){
+                return $image_post;
+            }
+        }
+        return '';
     }
 }
