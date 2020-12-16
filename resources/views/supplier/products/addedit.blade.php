@@ -342,5 +342,17 @@
 
     });
 </script>
-
+<script>
+    $(function(){
+        $(function(){
+        $("#galleryForm").submit(function(){
+            var $fileUpload = $("#galleryForm input[type='file']");
+            if (parseInt($fileUpload.get(0).files.length)>15){
+                toastr.error('اقصى عدد للصور هو  15 صورة ')
+                return false;
+            }
+        });
+    });​
+    })
+</script>
 @endpush
