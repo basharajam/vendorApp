@@ -28,8 +28,21 @@ class ProductController extends Controller
     }
 
     public function index(){
-        // $meta_name = "_wp_attachment_metadata";
-        // dd(unserialize(PostMeta::where('meta_key',$meta_name)->get()[3]->meta_value));
+        //  $meta_key = "_product_attributes";
+        //  $post_id = 1951;
+        //  $meta = PostMeta::where('meta_key',$meta_key)->where('post_id',$post_id)->first();
+        //  dd(unserialize($meta->meta_value));
+        // $option_name = "_transient_wc_product_children_2086";
+        // $option_name2 = "_transient_wc_var_prices_1762";
+        // $option_name3 = "_transient_wc_child_has_weight_1762";
+        // $option_name4 = "_transient_wc_related_1762";
+        // $optoin_name5= "_transient_wc_term_counts";
+        //  $option = Option::where('option_name',$option_name)->first();
+        //  $option2 = Option::where('option_name',$option_name2)->first();
+        //  $option3 = Option::where('option_name',$option_name3)->first();
+        //  $option4 = Option::where('option_name',$option_name4)->first();
+        //  $option5 = Option::where('option_name',$optoin_name5)->first();
+        //  dd(unserialize($option->option_value));
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')
@@ -67,7 +80,8 @@ class ProductController extends Controller
                 $product =  $this->post_service->store_product_general($request,$product->ID);
                 $product =  $this->post_service->store_product_inventory($request,$product->ID);
                 $product =  $this->post_service->store_product_shipping($request,$product->ID);
-                $product =  $this->post_service->store_product_attributes($request,$product->ID);
+                $product =  $this->post_service->store_product_attributes_relation($request,$product->ID);
+
 
             }else{
                 switch($request->request_type){
@@ -121,7 +135,9 @@ class ProductController extends Controller
         }
     }
     public function getAttributeSelector(Request $request){
+
         $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
+        $product =  $this->post_service->store_product_attributes($request,$request->post_id);
         return view('supplier.products.components.product_form.attribute_selector')
         ->with('taxonomy',$taxonomy->taxonomy)
         ->with('terms',$taxonomy->terms)

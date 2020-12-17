@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
 use App\Models\Supplier;
+use App\Models\WP\Option;
 use Illuminate\Auth\EloquentUserProvider;
 
 /**
@@ -158,6 +159,31 @@ class PostService extends BaseService implements IPostService
                 'term_taxonomy_id'=>$taxonomy->term_taxonomy_id,
                 'term_order'=> 0
             ]);
+            //
+            $this->creatPostMeta($post->ID,'attribute_'.$taxonomy->taxonomy,$taxonomy->term->name);
+        }
+        //store option
+        $option_name = "_transient_wc_product_children_".$post_parent->ID;
+        $option = Option::where('option_name',$option_name)->first();
+        //if it's null create new option and this is the first variation in this product
+        if(!$option){
+           $option =  Option::create([
+                'option_name'=>$option_name,
+                'option_value'=>serialize((object)[
+                    "all"=>[$post->ID],
+                    "visible"=>[$post->ID]
+                ])
+            ]);
+        }
+        else{
+            $option_value = unserialize($option->option_value);
+            array_push($option_value['all'],$post->ID);
+            array_push($option_value['visible'],$post->ID);
+            \DB::table(\General::DB_PREFIX."options")
+            ->where('option_name',$option_name)
+            ->update([
+                'option_value'=>serialize($option_value)
+            ]);
         }
         return $post;
     }
@@ -249,9 +275,51 @@ class PostService extends BaseService implements IPostService
         return $post;
     }
     public function store_product_attributes(Request $request , int $post_id){
+        //dd($request);
+        $meta_key = "_product_attributes";
+        $meta = PostMeta::where('meta_key',$meta_key)->where('post_id',$post_id)->first();
+        $taxonomy =TermTaxonomy::where('term_taxonomy_id',$request->term_taxonomy_id)->first();
+        if(!$meta){
+            PostMeta::create([
+                "post_id"=>$post_id,
+                "meta_key"=>$meta_key,
+                "meta_value"=>serialize([
+                    $taxonomy->taxonomy=>[
+                        "name"=>$taxonomy->taxonomy,
+                        "value"=>"",
+                        "is_visible"=>1,
+                        "is_variation"=>1,
+                        "is_taxonomy"=>1
+                    ]
+                ])
+            ]);
+        }
+        else{
+            $meta_value  = unserialize($meta->meta_value);
+            $meta_value[$taxonomy->taxonomy] = [
+                "name"=>$taxonomy->taxonomy,
+                "value"=>"",
+                "is_visible"=>1,
+                "is_variation"=>1,
+                "is_taxonomy"=>1
+            ];
+            \DB::table(\General::DB_PREFIX."postmeta")
+            ->where('meta_key',$meta_key)->where('post_id',$post_id)
+            ->update([
+                'meta_value'=>serialize($meta_value)
+            ]);
+        }
+
+    }
+     /** stores  product attributes relations  in posts wordpress table
+     * @param Request $request
+     * @return Post  post
+     */
+    public function store_product_attributes_relation(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
         if($post && isset($request->taxonomies_relation)){
           foreach($request->taxonomies_relation as $term_taxonomy_id){
+            //store termRelation
             $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
             if($exists==null){
                $attribute =  TermRelation::create([

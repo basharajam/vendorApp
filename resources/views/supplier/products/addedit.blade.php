@@ -150,8 +150,10 @@
                                 <input type="hidden" name="supplier_name" value="{{ \Auth::user()->name }}">
                                 <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
                                 @include('supplier.products.components.product_form.product_main')
-                                @include('supplier.products.components.product_form.attributes_info')
-                                @include('supplier.products.components.product_form.product_variations')
+                                @if($product)
+                                    @include('supplier.products.components.product_form.attributes_info')
+                                    @include('supplier.products.components.product_form.product_variations')
+                                @endif
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group  mt-10 mb-0">

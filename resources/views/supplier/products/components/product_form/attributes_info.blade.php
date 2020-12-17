@@ -19,17 +19,15 @@ if($product){
                             <span class="required">*</span>
                         </label>
                         <div class="kt-input-icon d-flex justify-contenct-between">
-                            <select   class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}"
+                            <select  data-post="{{ $product->ID ?? 0 }}"  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}"
                                     id="attriubtes"
                                     name="attriubtes">
                                     <option></option>
                                 @foreach($attributes as $attribute)
-                                <option value="{{ $attribute->term_taxonomy_id }}">  {{ str_replace('pa_','',$attribute->taxonomy) }}</option>
+                                <option value="{{ $attribute->term_taxonomy_id }}" >  {{ str_replace('pa_','',$attribute->taxonomy) }}</option>
                                 @endforeach
                             </select>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -234,6 +232,7 @@ function LegacyValidation(field) {
         $("#attriubtes").select2();
         $("#attriubtes").on('change',function(){
            let selected_taxonomy = $(this).val();
+           let post_ID = $(this).attr('data-post');
            let action = $(this).attr('data-action-name');
            $('#loading-attribute-selector').show();
            let  csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -244,7 +243,7 @@ function LegacyValidation(field) {
                 headers: {
                     'X-CSRF-Token': csrf_token
                 },
-                data:{"term_taxonomy_id":selected_taxonomy},
+                data:{"term_taxonomy_id":selected_taxonomy,'post_id':post_ID},
                 success:function(response){
                     if(response){
                         $('#attributes_container').prepend(response);
