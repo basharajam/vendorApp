@@ -155,15 +155,18 @@ class PostService extends BaseService implements IPostService
         ]);
         //create term relation foreach attribute
         foreach($request->attributes_values as  $attribute){
-            //attribute is the term_taxonomy_id
-            $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
-            TermRelation::create([
-                'object_id'=>$post->ID,
-                'term_taxonomy_id'=>$taxonomy->term_taxonomy_id,
-                'term_order'=> 0
-            ]);
-            //
-            $this->creatPostMeta($post->ID,'attribute_'.$taxonomy->taxonomy,$taxonomy->term->name);
+            if($attribute!=0)
+            {
+                //attribute is the term_taxonomy_id
+                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+                TermRelation::create([
+                    'object_id'=>$post->ID,
+                    'term_taxonomy_id'=>$taxonomy->term_taxonomy_id,
+                    'term_order'=> 0
+                ]);
+                //
+                $this->creatPostMeta($post->ID,'attribute_'.$taxonomy->taxonomy,$taxonomy->term->name);
+            }
         }
         //store option
         $option_name = "_transient_wc_product_children_".$post_parent->ID;
