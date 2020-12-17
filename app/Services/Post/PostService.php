@@ -118,13 +118,16 @@ class PostService extends BaseService implements IPostService
         $post_excerpt = '';
         foreach($attributes_values as $key => $attribute){
             //attribute is the term_taxonomy_id
-            $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
-            $post_excerpt .=str_replace('pa_','',$taxonomy->taxonomy).": ".$taxonomy->term->name;
-            $post_title_appendix .= $taxonomy->term->name;
-            if(next($attributes_values)){
-                $post_title_appendix.=' , ';
-                $post_excerpt.="\n";
+            if($attribute!=0){
+                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+                $post_excerpt .=str_replace('pa_','',$taxonomy->taxonomy).": ".$taxonomy->term->name;
+                $post_title_appendix .= $taxonomy->term->name;
+                if(next($attributes_values)){
+                    $post_title_appendix.=' , ';
+                    $post_excerpt.="\n";
+                }
             }
+
         }
         $post_title = $post_parent->post_title .$post_title_appendix;
         $post = Post::create([

@@ -47,7 +47,7 @@ if($product){
                                     </label>
                                     <div class="kt-input-icon d-flex justify-content-center" >
                                         <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control form-control-solid   font-size-h6 ">
-                                            <option>اي قيمة</option>
+                                            <option value="0">اي قيمة</option>
                                             @foreach($attribute as $term)
                                             <option value="{{ $term->term_taxonomy_id }}" >{{ $term->term->name }}</option>
                                             @endforeach
