@@ -98,9 +98,14 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                        <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-2">{{ $product->post_content }}</a>
-                                        <span class="text-muted font-weight-bold font-size-sm mb-3">{{ $product->post_title }}</span>
-                                        <span class="text-muted font-weight-bold font-size-lg">الكمية:
+                                        <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg mb-2">{{ $product->post_title }}</a>
+                                        <span class="text-muted font-weight-bold font-size-sm mb-3">{{ $product->post_content }}</span>
+
+                                    </div>
+                                    <!--end::Title-->
+                                </div>
+                                <div class="d-flex mb-8">
+                                    <span class="text-muted font-weight-bold font-size-lg">الكمية:
                                         <span class="text-dark-75 font-weight-bolder">{{$detail->product_qty }}</span></span>
                                         <span class="text-muted font-weight-bold font-size-lg">بتاريخ:
                                             <span class="text-dark-75 font-weight-bolder">{{date('Y-m-d',strtotime($detail->date_created)) }}</span></span>
@@ -108,8 +113,6 @@
                                                 <span class="text-dark-75 font-weight-bolder">{{$detail->product_net_revenue}}</span></span>
                                                 <span class="text-muted font-weight-bold font-size-lg">إجمالي عائدات المنتج:
                                                     <span class="text-dark-75 font-weight-bolder">{{$detail->product_gross_revenue}}</span></span>
-                                    </div>
-                                    <!--end::Title-->
                                 </div>
                             </div>
                             @endforeach
