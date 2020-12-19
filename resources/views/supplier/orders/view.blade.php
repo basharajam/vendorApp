@@ -4,7 +4,7 @@
 
 <div class="d-flex flex-column-fluid">
     <div class="container-fluid">
-        <div class="card card-custom">
+        <div class="card card-custom mb-10" >
             <!--begin::Body-->
             <div class="card-body">
                 <div class="kt-section">
@@ -84,7 +84,7 @@
                             <div class="col-12">
                                 <div class="d-flex mb-8">
                                     <!--begin::Symbol-->
-                                    <div class="symbol symbol-120 flex-shrink-0 mr-4">
+                                    <div class="symbol symbol-120 flex-shrink-0 mr-4" style="background-color:transparent">
                                         <div class="d-flex flex-column">
                                             <div class="symbol-label mb-3" style="">
                                                 @if($product->product_image)
@@ -104,7 +104,7 @@
                                     </div>
                                     <!--end::Title-->
                                 </div>
-                                <div class="d-flex mb-8">
+                                <div class="d-flex mb-8 justify-content-between">
                                     <span class="text-muted font-weight-bold font-size-lg">الكمية:
                                         <span class="text-dark-75 font-weight-bolder">{{$detail->product_qty }}</span></span>
                                         <span class="text-muted font-weight-bold font-size-lg">بتاريخ:
