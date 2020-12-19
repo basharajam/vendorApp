@@ -3,6 +3,7 @@
 
 namespace App\Services\OrderItem;
 
+use App\Models\Supplier;
 use App\Models\WP\OrderDetail;
 use App\Repositories\OrderItemRepository;
 use App\Services\Contracts\BaseService;
@@ -43,7 +44,16 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierManagerOrders($manager_id){
-        return OrderItem::where('order_item_type','line_item')->get();
+        $suppliers = Supplier::where('manager_id',$manager_id)->get();
+        $suppliers_ids =[];
+        foreach($suppliers as $supplier){
+            array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
+        }
+        $products_ids =Post::whereIn('post_author',$suppliers_ids)
+        ->whereIn('post_type',['product','product_variation'])
+        ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->get();
     }
     /** get paid orders for a supplier
      * @param $supplier_id
@@ -64,7 +74,16 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierManagerPaidOrders($manager_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+        $suppliers = Supplier::where('manager_id',$manager_id)->get();
+        $suppliers_ids =[];
+        foreach($suppliers as $supplier){
+            array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
+        }
+        $products_ids =Post::where('post_author',$suppliers_ids)
+        ->whereIn('post_type',['product','product_variation'])
+        ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->whereHas('post',function($query){
             return $query->where('post_status','wc-completed');
         })->get();
     }
@@ -87,7 +106,16 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplieManagerNotPaidrOrders($manager_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query){
+        $suppliers = Supplier::where('manager_id',$manager_id)->get();
+        $suppliers_ids =[];
+        foreach($suppliers as $supplier){
+            array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
+        }
+        $products_ids =Post::where('post_author',$suppliers_ids)
+        ->whereIn('post_type',['product','product_variation'])
+        ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->whereHas('post',function($query){
             return $query->where('post_status','!=','wc-completed');
         })->get();
     }
