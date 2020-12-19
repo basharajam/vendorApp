@@ -87,7 +87,11 @@
                                     <div class="symbol symbol-120 flex-shrink-0 mr-4">
                                         <div class="d-flex flex-column">
                                             <div class="symbol-label mb-3" style="">
-                                                    <img id="AsidePhoto" class="kt-widget__img " src="{{$product->product_image ??  asset('/images/product.png')}}" style="object-fit: cover;width:100%;hegiht:100%" alt="image">
+                                                @if($product->product_image)
+                                                <img id="AsidePhoto" class="kt-widget__img " src="{{\General::IMAGE_URL_UPLOADS.$product->product_image->post_name }}" style="object-fit: cover;width:100%;hegiht:100%" alt="image">
+                                                @else
+                                                <img id="AsidePhoto" class="kt-widget__img " src="{{asset('/images/product.png') }}" style="object-fit: cover;width:100%;hegiht:100%" alt="image">
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
