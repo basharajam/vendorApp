@@ -3,10 +3,10 @@
 
 namespace App\Services\OrderItem;
 
-
+use App\Models\WP\OrderDetail;
 use App\Repositories\OrderItemRepository;
 use App\Services\Contracts\BaseService;
-
+use App\Models\WP\Post;
 use App\Models\WP\OrderItem;
 
 //TODO Modify According to Supplier and SUpplier manager
@@ -31,10 +31,12 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierOrders($supplier_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use ($supplier_id){
-            return $query->where('post_author',$supplier_id);
-        })->get();
-        //return OrderItem::where('order_item_type','line_item')->get();
+        //the supplier_id is the post_author in posts table
+        $products_ids =Post::where('post_author',$supplier_id)
+                            ->whereIn('post_type',['product','product_variation'])
+                            ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->get();
     }
     /** get's all orders for a s manger
      * @param $manager_id
@@ -48,12 +50,14 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplierPaidOrders($supplier_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-            return $query->where('post_status','wc-completed')->where('post_author',$supplier_id);
+        $products_ids =Post::where('post_author',$supplier_id)
+        ->whereIn('post_type',['product','product_variation'])
+        ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->whereHas('post',function($query){
+            return $query->where('post_status','wc-completed');
         })->get();
-        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-        //     return $query->where('post_status','wc-completed');
-        // })->get();
+
     }
      /** get paid orders for a supplier manager
      * @param $manager_id
@@ -69,12 +73,14 @@ class OrderItemService extends BaseService implements IOrderItemService
      * @return mixed
      */
     public function getSupplieNotPaidrOrders($supplier_id){
-        return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-            return $query->where('post_status','!=','wc-completed')->where('post_author',$supplier_id);
+        $products_ids =Post::where('post_author',$supplier_id)
+        ->whereIn('post_type',['product','product_variation'])
+        ->get()->pluck('ID')->toArray();
+        $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+        return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->whereHas('post',function($query){
+            return $query->where('post_status','!=','wc-completed');
         })->get();
-        // return OrderItem::where('order_item_type','line_item')->whereHas('post',function($query) use($supplier_id){
-        //     return $query->where('post_status','!=','wc-completed');
-        // })->get();
+
     }
      /** get not  paid  (canceld , and pending ) orders for a supplier manager
      * @param $manager_id
