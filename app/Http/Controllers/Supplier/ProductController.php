@@ -35,13 +35,14 @@ class ProductController extends Controller
         // $option_name = "_transient_wc_product_children_2086";
         // $option_name2 = "_transient_wc_var_prices_1762";
         // $option_name3 = "_transient_wc_child_has_weight_1762";
-        // $option_name4 = "_transient_wc_related_1762";
+         //$option_name4 = "_transient_wc_var_prices_2113";
         // $optoin_name5= "_transient_wc_term_counts";
         //  $option = Option::where('option_name',$option_name)->first();
         //  $option2 = Option::where('option_name',$option_name2)->first();
         //  $option3 = Option::where('option_name',$option_name3)->first();
-        //  $option4 = Option::where('option_name',$option_name4)->first();
-        //  $option5 = Option::where('option_name',$optoin_name5)->first();
+         // $option4 = Option::where('option_name',$option_name4)->first();
+        //dd(json_decode($option4->option_value));
+          //  $option5 = Option::where('option_name',$optoin_name5)->first();
         //  dd(unserialize($option->option_value));
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
