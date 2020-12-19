@@ -3,7 +3,13 @@
     <table id="ProductsTable" class="table table-bordered" style="direction:rtl;text-align:rightك">
         <thead class="thead-light">
             <tr>
-                <th></th>
+                <th>
+                    {{-- <label class="checkbox">
+                        <input type="checkbox"  name="checlAll" id="checkAll"/>
+                        <span></span>
+                    </label> --}}
+
+                </th>
                 <th class="">
                     <span>المنتج</span>
                     <span class="fas icon fa-arrow-up "></span>
@@ -57,6 +63,13 @@
                         <div class="d-flex align-items-center justify-content-center">
                             <span id="row-arrow{{ $product->ID }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
                         </div>
+                        @else
+                        {{-- <label class="checkbox">
+                            <input type="checkbox"  class="check" data-id="{{ $product->ID }}" name="Checkboxes4"/>
+                            <span></span>
+
+                        </label> --}}
+
                         @endif
                     </td>
                     <td class="datatable-cell">
@@ -222,6 +235,19 @@
 <script src="{{ asset('/js/jquery.magnific-popup.js') }}"></script>
 {{-- <script src="{{ asset('/js/html-table.js') }}"></script> --}}
 <script>
+     function checkAll() {
+        var inputs = document.querySelectorAll('.check');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].checked = true;
+        }
+    }
+    //create uncheckall function
+    function uncheckAll() {
+        var inputs = document.querySelectorAll('.check');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].checked = false;
+        }
+    }
     $(document).ready(function() {
      $('.image-link').magnificPopup({type:'image'});
         // $('#ProductsTable').DataTable();
@@ -245,7 +271,17 @@
                     $(this).siblings('.child-' + this.id).toggle();
                 });
             $('tr[class^=child-]').hide().children('td');
+            var checkAllCheckBox = document.getElementById("checkAll");
+
+                checkAllCheckBox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkAll();
+                } else {
+                    uncheckAll();
+                }
+            });
     });
+
 </script>
 <script>
     $(document).ready(function() {
