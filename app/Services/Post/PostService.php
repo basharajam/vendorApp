@@ -440,16 +440,27 @@ class PostService extends BaseService implements IPostService
      * @param int $meta_value the real value of the attribute
      */
     private function creatPostMeta($post_id,$meta_key,$meta_value){
-        PostMeta::updateOrCreate(
-            [
+        if($meta_value==null){
+            $meta = PostMeta::where('meta_key',$meta_key)
+                            ->where('post_id',$post_id)->first();
+            $table_name = \General::DB_PREFIX.'postmeta';
+            if($meta){
+                \DB::delete("DELETE From ".$table_name." where meta_id =".$meta->meta_id);
+            }
+        }
+        else{
+            PostMeta::updateOrCreate(
+                [
+                    'post_id'=>$post_id,
+                    'meta_key'=>$meta_key
+                ]
+                ,[
                 'post_id'=>$post_id,
-                'meta_key'=>$meta_key
-            ]
-            ,[
-            'post_id'=>$post_id,
-            'meta_key'=>$meta_key,
-            'meta_value'=>$meta_value
-        ]);
+                'meta_key'=>$meta_key,
+                'meta_value'=>$meta_value
+            ]);
+        }
+
     }
     private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
