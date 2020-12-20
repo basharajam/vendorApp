@@ -30,7 +30,6 @@ class SupplierFactory extends Factory
             "bank_account_owner_name"=>$this->faker->name ,
             "company_name"=>$this->faker->name ,
             "nationality"=>$this->faker->name ,
-            "shop_address"=>$this->faker->address ,
             "national_number"=>$this->faker->randomNumber($nbDigits = 8, $strict = false) ,
             "passport_number"=>$this->faker->randomNumber($nbDigits = 8, $strict = false) ,
             "passport_end_date"=> Carbon::now()->format('Y-m-d') ,
