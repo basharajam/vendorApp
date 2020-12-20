@@ -440,3 +440,11 @@ input[name=email], input[name=password], input[name=password_confirmation],input
   .iti{
       display:block;
   }
+
+  #kt_body{
+    // min-height: -webkit-calc(100% - 72px);
+    // min-height: -webkit-calc(100% - 72px);
+    // min-height: -moz-calc(100% - 72px);
+    // min-height: calc(100% - 72px);
+    min-height: 100%;
+  }

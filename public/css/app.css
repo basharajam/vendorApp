@@ -112621,3 +112621,7 @@ input[name=name] {
   display: block;
 }
 
+#kt_body {
+  min-height: 100%;
+}
+

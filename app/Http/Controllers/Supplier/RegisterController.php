@@ -69,13 +69,15 @@ class RegisterController extends Controller
             request()->merge(['user_id'=>$supplier->user->id]);
             \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
             \Session::flash('status',true);
+             //return \Route::sendToRoute($request, 'auth.sendOTP');
+            \Auth::login($supplier->user);
+            return redirect()->route('supplier.home');
         }
         catch(Exception $ex){
                 \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
                 \Session::flash('status',false);
-                return "error";
+                return redirect()->back();
         }
-        return \Route::sendToRoute($request, 'auth.sendOTP');
 
 
     }
