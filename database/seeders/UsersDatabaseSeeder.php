@@ -20,7 +20,7 @@ class UsersDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //$this->create_supplier();
+        $this->create_supplier();
         $this->create_supplier_manager();
     }
 
