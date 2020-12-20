@@ -246,7 +246,7 @@ class PostService extends BaseService implements IPostService
                     'term_order'=>0
                 ]);
             }
-            if($post->post_parent!=null){
+            if($post->post_parent){
                 $prices_option_name = "_transient_wc_var_prices_".$post->post_parent;
                 $option_prices = Option::where('option_name',$prices_option_name)->first();
                 if($option_prices){
