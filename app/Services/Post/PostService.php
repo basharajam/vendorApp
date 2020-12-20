@@ -268,8 +268,7 @@ class PostService extends BaseService implements IPostService
             $prices_option_name = "_transient_wc_var_prices_".$post->post_parent;
             $option_prices = Option::where('option_name',$prices_option_name)->first();
             if($option_prices){
-                $options_table_name= \General::DB_PREFIX.'options';
-                        \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
+                $option_prices->delete();
             }
         }
         return $post;
