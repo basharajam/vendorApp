@@ -168,7 +168,7 @@
 <div class="col-md-12">
     <!--begin::Form group User Name-->
     <div class="form-group">
-        <label class="font-size-h6 font-weight-bolder text-dark">
+        <label class="font-size-h6 font-weight-bolder text-dark" style="display: block">
             <span class="required">*</span>
             <span>رقم الموبايل</span>
         </label>
