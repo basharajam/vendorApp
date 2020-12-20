@@ -176,7 +176,7 @@
                             <strong>السعر بعد الحسم</strong>
                         </th>
                         <th>
-                            <strong>الحجم</strong>
+                            <strong>المقاس</strong>
                         </th>
                         <th>
                             <strong>الوزن</strong>

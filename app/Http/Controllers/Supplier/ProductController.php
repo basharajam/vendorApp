@@ -73,8 +73,10 @@ class ProductController extends Controller
         $product = null;
         try{
             if(!isset($request->request_type)){
-                if($request->post_id == 0)
+                if($request->post_id == 0){
                     $product =  $this->post_service->store_product($request);
+                    $this->post_service->store_gallery($request,$product->post_id);
+                }
                 else{
                     $product =  $this->post_service->update_product($request,$request->post_id);
                 }
