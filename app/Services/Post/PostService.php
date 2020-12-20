@@ -246,14 +246,7 @@ class PostService extends BaseService implements IPostService
                     'term_order'=>0
                 ]);
             }
-            if($post->post_parent){
-                $prices_option_name = "_transient_wc_var_prices_".$post->post_parent;
-                $option_prices = Option::where('option_name',$prices_option_name)->first();
-                if($option_prices){
-                    $options_table_name= \General::DB_PREFIX.'options';
-                            \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
-                }
-            }
+
 
             return $post;
     }
@@ -270,6 +263,14 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'size_simple',$request->size_simple);
             $this->creatPostMeta($post->ID,'supplier_name_simple',$request->supplier_name_simple);
 
+        }
+        if($post->post_parent){
+            $prices_option_name = "_transient_wc_var_prices_".$post->post_parent;
+            $option_prices = Option::where('option_name',$prices_option_name)->first();
+            if($option_prices){
+                $options_table_name= \General::DB_PREFIX.'options';
+                        \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
+            }
         }
         return $post;
     }
