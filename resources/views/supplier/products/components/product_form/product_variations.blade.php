@@ -132,4 +132,20 @@ if($product){
         })
     });
 </script>
+<script>
+    $(function(){
+        $(document).on('change',"._sale_price",function(){
+            let value = $(this).val();
+            let regural_price_value =$(this).parentsUntil('.general_row')[2].children[0].children[0].children[1].value;
+            if(parseFloat(value) >= parseFloat(regural_price_value))
+            {
+                console.log($(this).parentsUntil('.general_row'));
+                $(this).parentsUntil('.general_row')[0].children[2].children[0].innerText = 'الرجاء ادخال قيمة اصغر من السعر'
+            }
+            else{
+                $(this).parentsUntil('.general_row')[0].children[2].children[0].innerText='';
+            }
+        })
+    });
+</script>
 @endpush

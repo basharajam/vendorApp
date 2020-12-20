@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route("supplier.products.variation.storeMeta") }}" class="">
+<form method="POST" action="{{ route("supplier.products.variation.storeMeta") }}" class="general_row">
     @csrf
     <input type="hidden" name="post_id" value="{{ $variation->ID }}">
     <input type="hidden" name="post_parent" value="{{ $product->ID }}">
@@ -15,3 +15,4 @@
         </div>
     </div>
 </form>
+

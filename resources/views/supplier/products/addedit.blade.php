@@ -346,7 +346,6 @@
 </script>
 <script>
     $(function(){
-        $(function(){
         $("#galleryForm").submit(function(){
             var $fileUpload = $("#galleryForm input[type='file']");
             if (parseInt($fileUpload.get(0).files.length)>15){
@@ -354,7 +353,6 @@
                 return false;
             }
         });
-    });​
     })
 </script>
 @endpush
