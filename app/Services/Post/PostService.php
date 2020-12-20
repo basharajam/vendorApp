@@ -170,7 +170,7 @@ class PostService extends BaseService implements IPostService
         }
         //store option
         $option_name = "_transient_wc_product_children_".$post_parent->ID;
-        $prices_option_name = "_transient_timeout_wc_var_prices_".$post_parent->ID;
+        $prices_option_name = "_transient_wc_var_prices_".$post_parent->ID;
         $option = Option::where('option_name',$option_name)->first();
         $option_prices = Option::where('option_name',$prices_option_name)->first();
         if($option_prices){
