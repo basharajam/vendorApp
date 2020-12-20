@@ -174,8 +174,8 @@ class PostService extends BaseService implements IPostService
         $option = Option::where('option_name',$option_name)->first();
         $option_prices = Option::where('option_name',$prices_option_name)->first();
         if($option_prices){
-            $table_name= \General::DB_PREFIX.'options';
-                    \DB::delete("DELETE From ".$table_name." where option_name =".$prices_option_name);
+            $options_table_name= \General::DB_PREFIX.'options';
+                    \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
         }
 
         $option_value=[];
@@ -246,7 +246,15 @@ class PostService extends BaseService implements IPostService
                     'term_order'=>0
                 ]);
             }
-            //save product category
+            if($post->post_parent!=null){
+                $prices_option_name = "_transient_wc_var_prices_".$post->post_parent;
+                $option_prices = Option::where('option_name',$prices_option_name)->first();
+                if($option_prices){
+                    $options_table_name= \General::DB_PREFIX.'options';
+                            \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
+                }
+            }
+
             return $post;
     }
     public function store_product_general(Request $request , int $post_id){
