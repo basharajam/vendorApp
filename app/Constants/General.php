@@ -5,7 +5,8 @@ class General  {
 
     // CONST URL = 'https://alyamanlive.com';
     //CONST URL = 'https://vendor.alyamanlive.com';
-    CONST DB_PREFIX = "fby_";
+    // CONST DB_PREFIX = "fby_";
+    CONST DB_PREFIX = "Al_";
     CONST URL = 'https://test.alyamanlive.com';
     CONST IMAGE_URL = 'http://test.alyamanlive.com/';
     CONST IMAGE_URL_UPLOADS = "http://test.alyamanlive.com/wp-content/uploads/";
