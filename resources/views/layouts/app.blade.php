@@ -27,6 +27,7 @@
     <link href="{{ asset('/theme/css/plugins.bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('/theme/css/prismjs.bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('/theme/css/style.bundle.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('plugins/telinput/css/intlTelInput.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/toastr.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
