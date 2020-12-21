@@ -415,6 +415,7 @@ a.disabled {
 input[name=email], input[name=password], input[name=password_confirmation],input[name=name]{
     text-align: left !important;
     writing-mode: sideways-lr !important;
+    direction: ltr !important;
 }
 .zoom {
 

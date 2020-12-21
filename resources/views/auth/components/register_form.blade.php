@@ -18,7 +18,7 @@
     <!--end::Form group-->
     <!--begin::Form group-->
     <div class="form-group">
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="Email" name="email" required value="{{ old('email') }}" autocomplete="off" />
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني"  name="email" required value="{{ old('email') }}" autocomplete="off" />
         @error('email')
         <div class="fv-plugins-message-container">
             <div  class="fv-help-block">{{ $message }}</div>
@@ -28,7 +28,7 @@
     <!--end::Form group-->
     <!--begin::Form group-->
     <div class="form-group">
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required autocomplete="off" />
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="" name="password" required autocomplete="off" />
         @error('password')
         <div class="fv-plugins-message-container">
             <div  class="fv-help-block">{{ $message }}</div>
@@ -38,7 +38,7 @@
     <!--end::Form group-->
     <!--begin::Form group-->
     <div class="form-group">
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation" required autocomplete="new-password" />
+        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="" name="password_confirmation" required autocomplete="new-password" />
     </div>
     <!--end::Form group-->
     <!--begin::Form group-->

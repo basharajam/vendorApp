@@ -112592,6 +112592,7 @@ input[name=name] {
   text-align: left !important;
   -ms-writing-mode: sideways-lr !important;
       writing-mode: sideways-lr !important;
+  direction: ltr !important;
 }
 
 .zoom {
