@@ -93,7 +93,7 @@
                 </div>
                 @enderror
             </div>
-            <input type="hidden" name="last_name" value=" ">
+            <input type="hidden" name="last_name" value="-">
         </div>
         <div class="col-12" id="chinese_or_not_div">
 
@@ -385,21 +385,39 @@
         </div>
         <div class="col-md-12">
             <!--begin::Form group National ID Picture-->
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span class="required">*</span>
                     <span>صورة الرخصة التجارية</span>
                 </label>
-                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_10">
+                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
                     <div class="dropzone-msg dz-message needsclick">
                         <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
                         <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
                     </div>
                 </div>
 
-            </div> --}}
+            </div>
             <!--end::Form group National ID Picture-->
         </div>
+        <div class="col-md-12">
+            <!--begin::Form group National ID Picture-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span class="required">*</span>
+                    <span>صورة العلامة التجارية الخاصة بالشركة</span>
+                </label>
+                <div id="company_logo" class="dropzone dropzone-default dropzone-primary dz-clickable" id="">
+                    <div class="dropzone-msg dz-message needsclick">
+                        <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
+                        <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                    </div>
+                </div>
+
+            </div>
+            <!--end::Form group National ID Picture-->
+        </div>
+
 
         <div class="col-md-12">
             <!--begin::Form group National Number-->
@@ -445,22 +463,20 @@
         </div>
         <div class="col-md-12">
             <!--begin::Form group National ID Picture-->
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
-                    <span>صورة الرخصة التجارية</span>
+                    <span>صورة الشهادات لدى الشركة</span>
                 </label>
-                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" id="kt_dropzone_10">
+                <div id="license_images" class="dropzone dropzone-default dropzone-primary dz-clickable" id="">
                     <div class="dropzone-msg dz-message needsclick">
                         <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
-                        <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                        <span class="dropzone-msg-desc">قم برفع 10 ملفات  كحد اقصى</span>
                     </div>
                 </div>
 
-            </div> --}}
+            </div>
             <!--end::Form group National ID Picture-->
         </div>
-
         <div class="col-md-12">
             <!--begin::Form group Bank Account Number-->
             <div class="form-group">
@@ -625,12 +641,88 @@
     </script>
 
 <script>
+    Dropzone.autoDiscover = false;
     $(function(){
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
-        let commercial_license_image = document.getElementById('commercial_license_image');
+        let uploadedDocumentMap = {};
+        let $CommercialDropzone =new Dropzone('#commercial_license_image',{
+                    url:   '{{ route('supplier.storeImage') }}',
+                    addRemoveLinks: true,
+                    headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'POST',
+                    maxFiles: 1,
+                    success: function (file, response) {
+                    $('#supplier_registeration_form').append('<input type="hidden" name="commercial_license_image" value="' + response.name + '">')
+                        uploadedDocumentMap[file.name] = response.name
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        var name = ''
+                        if (typeof file.file_name !== 'undefined') {
+                            name = file.file_name
+                        } else {
+                            name = uploadedDocumentMap[file.name]
+                        }
+                        $('#supplier_registeration_form').find('input[name="commercial_license_image"][value="' + name + '"]').remove()
+                    },
+
+        });
+        let $CompanyDropzone =new Dropzone('#company_logo',{
+                    url:   '{{ route('supplier.storeImage') }}',
+                    addRemoveLinks: true,
+                    headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'POST',
+                    maxFiles: 1,
+                    success: function (file, response) {
+                    $('#supplier_registeration_form').append('<input type="hidden" name="company_logo" value="' + response.name + '">')
+                        uploadedDocumentMap[file.name] = response.name
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        var name = ''
+                        if (typeof file.file_name !== 'undefined') {
+                            name = file.file_name
+                        } else {
+                            name = uploadedDocumentMap[file.name]
+                        }
+                        $('#supplier_registeration_form').find('input[name="company_logo"][value="' + name + '"]').remove()
+                    },
+
+        });
+        let $LicensesDropzone =new Dropzone('#license_images',{
+                    url:   '{{ route('supplier.storeImage') }}',
+                    addRemoveLinks: true,
+                    headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'POST',
+                    maxFiles: 10,
+                    success: function (file, response) {
+                    $('#supplier_registeration_form').append('<input type="hidden" name="license_images" value="' + response.name + '">')
+                        uploadedDocumentMap[file.name] = response.name
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        var name = ''
+                        if (typeof file.file_name !== 'undefined') {
+                            name = file.file_name
+                        } else {
+                            name = uploadedDocumentMap[file.name]
+                        }
+                        $('#supplier_registeration_form').find('input[name="license_images"][value="' + name + '"]').remove()
+                    },
+
+        });
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
