@@ -71,13 +71,13 @@
                 <div class="form-group row my-2">
                     <label class="col-4 col-form-label">رقم حساب البنك:</label>
                     <div class="col-8">
-                        <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_number }}.</span>
+                        <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_number }}</span>
                     </div>
                 </div>
                 <div class="form-group row my-2">
                     <label class="col-4 col-form-label">اسم صاحب البنك:</label>
                     <div class="col-8">
-                        <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_owner_name }}.</span>
+                        <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_owner_name }}</span>
                     </div>
                 </div>
 

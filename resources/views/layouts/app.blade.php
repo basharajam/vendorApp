@@ -23,6 +23,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> --}}
+
     {{-- <!-- Styles -->
     <link href="{{ asset('/theme/css/plugins.bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('/theme/css/prismjs.bundle.css') }}" rel="stylesheet">

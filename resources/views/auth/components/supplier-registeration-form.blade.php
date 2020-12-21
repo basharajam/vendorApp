@@ -515,6 +515,7 @@
             </div>
             <!--end::Form group Bank Account Owner Name-->
         </div>
+        @if(Route::currentRouteName() != 'supplier.profile')
         <div class="col-md-12">
             <!--begin::Form group Terms And Conditions-->
             @include('auth.components.terms_and_conditions')
@@ -528,10 +529,12 @@
             </div>
             <!--end::Form group Bank Account Owner Name-->
         </div>
+        @endif
+
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit" id="create_account" disabled class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
+                <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile') disabled  @endif class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->
