@@ -101,11 +101,11 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             $extension = $file->getClientOriginalExtension();
             $mdf5 = md5($name.'_'.time()).'.'.$extension;
             $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-            if(!File::isDirectory('../../'.str_replace('vendor','test',public_path($path)))){
-                File::makeDirectory('../../'.str_replace('vendor','test',public_path($path)), 0777, true, true);
+            if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
+                File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
 
             }
-            $destination_path = "/home2/alyamanl/public_html/test/".$path;
+            $destination_path = "/home2/alyamanl/public_html/data/".$path;
             $file->move($destination_path, $mdf5);
             $image_post = Post::create([
                 'post_author'=>\Auth::user()->wordpress_user->ID,
