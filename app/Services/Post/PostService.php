@@ -492,11 +492,12 @@ class PostService extends BaseService implements IPostService
         // $file = $request->file('thumbnail');
         // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
         $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        if(!File::isDirectory('../../'.str_replace('vendor','test',public_path($path)))){
-            File::makeDirectory('../../'.str_replace('vendor','test',public_path($path)), 0777, true, true);
+        if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
+            File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
 
         }
-        $destination_path = "/home2/alyamanl/public_html/test/".$path;
+        // $destination_path = "/home2/alyamanl/public_html/test/".$path;
+        $destination_path = "/home2/alyamanl/public_html/data/".$path;
         $file->move($destination_path, $mdf5);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
