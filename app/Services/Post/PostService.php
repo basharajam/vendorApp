@@ -257,7 +257,7 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'_regular_price',$request->_regular_price);
             $this->creatPostMeta($post->ID,'_sale_price',$request->_sale_price);
             if($request->product_type == 'simple'){
-                $this->creatPostMeta($post->ID,'_price',$request->_sale_price);
+                $this->creatPostMeta($post->ID,'_price',$request->_sale_price ?? $request->_regular_price);
             }
             else if($request->product_type=='variable'){
                 $this->creatPostMeta($post->ID,'_price',$request->_regular_price);
