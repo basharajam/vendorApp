@@ -207,7 +207,7 @@
                             <span>{{ array_key_exists('_sale_price',$meta_variation) ? $meta_variation['_sale_price'] :''}}</span>
                         </td>
                         <td>
-                            <span>{{array_key_exists('_size',$meta_variation) ? $meta_variation['_size'] :''}}</span>
+                            <span>{{array_key_exists('size_simple',$meta_variation) ? $meta_variation['size_simple'] :''}}</span>
                         </td>
                         <td>
                             <span>{{array_key_exists('_weight',$meta_variation) ? $meta_variation['_weight'] :''}}</span>
