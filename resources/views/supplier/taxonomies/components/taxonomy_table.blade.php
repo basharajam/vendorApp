@@ -38,8 +38,8 @@
                             @if($type=='product_cat')
                             <td class="datatable-cell">
                                 <span style="width: 250px;">
-                                    <div class="d-flex align-items-center">
-                                        <div style="padding-left:10px;" class="symbol symbol-50 symbol-sm symbol-light-danger">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div style="padding-left:10px;" class="symbol symbol-50 symbol-sm symbol-light-danger text-center">
                                             @if($taxonomy->image)
                                             <span class="symbol-label font-size-p" style="background-color:transparent; background-image:url({{\General::IMAGE_URL_UPLOADS.$taxonomy->image->post_name ?? 0 }})"></span>
                                             @else
