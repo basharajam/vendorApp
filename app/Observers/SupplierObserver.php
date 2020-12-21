@@ -58,6 +58,16 @@ class SupplierObserver
     public function updated(Supplier $supplier)
     {
         //
+        $user = User::where('id',$supplier->userable_id)->first();
+        if(request()->password){
+            $user->update([
+                'name'=>$supplier->first_name,
+                'email'=>$supplier->email,
+                'password'=>bcrypt(request()->password),
+                'mobile'=>$supplier->mobile_number
+            ]);
+        }
+
     }
 
     /**
