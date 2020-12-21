@@ -42,8 +42,11 @@ class SupplierService extends BaseService implements ISupplierService
 
         if(isset($request->visa_image))
             $supplier->addMedia(storage_path('tmp/uploads/' . $request->visa_image))->toMediaCollection('visa_images');
-        if(isset($request->commercial_license_images)){
-            $supplier->addMedia(storage_path('tmp/uploads/' . $request->visa_image))->toMediaCollection('commercial_license_images');
+        if(isset($request->commercial_license_image)){
+            $supplier->addMedia(storage_path('tmp/uploads/' . $request->commercial_license_image))->toMediaCollection('commercial_license_images');
+        }
+        if(isset($request->company_logo)){
+            $supplier->addMedia(storage_path('tmp/uploads/' . $request->company_logo))->toMediaCollection('company_logo_images');
         }
 
         event(new SupplierRegistered($supplier));
