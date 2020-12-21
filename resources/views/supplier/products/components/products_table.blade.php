@@ -91,8 +91,8 @@
                                            {{$product->post_title}}
                                     </div>
                                     <span  class="text-muted font-weight-bold text-hover-primary ">
-                                        @if($meta && count($meta)>0 && array_key_exists('supplier_name',$meta))
-                                        {{ $meta['supplier_name'] }}
+                                        @if($meta && count($meta)>0 && array_key_exists('al_supplier_name',$meta))
+                                        {{ $meta['al_supplier_name'] }}
                                      @endif
                                     </span>
                                 </div>
@@ -127,8 +127,8 @@
                     <td class="datatable-cell-sorted datatable-cell">
                         <span>
                             <div class="font-weight-bolder font-size-lg mb-0">
-                                @if($meta && count($meta)>0 && array_key_exists('size',$meta))
-                                {{ $meta['size'] }}
+                                @if($meta && count($meta)>0 && array_key_exists('al_size',$meta))
+                                {{ $meta['al_size'] }}
                              @endif
                             </div>
                         </span>
@@ -145,8 +145,8 @@
                     <td class="datatable-cell-sorted datatable-cell">
                         <span>
                             <div class="font-weight-bolder font-size-lg mb-0">
-                                @if($meta && count($meta)>0 && array_key_exists('cbm_single',$meta))
-                                {{ $meta['cbm_single'] }}
+                                @if($meta && count($meta)>0 && array_key_exists('al_cbm',$meta))
+                                {{ $meta['al_cbm'] }}
                              @endif
                             </div>
                         </span>
@@ -207,13 +207,13 @@
                             <span>{{ array_key_exists('_sale_price',$meta_variation) ? $meta_variation['_sale_price'] :''}}</span>
                         </td>
                         <td>
-                            <span>{{array_key_exists('size_simple',$meta_variation) ? $meta_variation['size_simple'] :''}}</span>
+                            <span>{{array_key_exists('al_size',$meta_variation) ? $meta_variation['al_size'] :''}}</span>
                         </td>
                         <td>
                             <span>{{array_key_exists('_weight',$meta_variation) ? $meta_variation['_weight'] :''}}</span>
                         </td>
                         <td>
-                            <span>{{array_key_exists('cbm_single',$meta_variation) ?  $meta_variation['cbm_single']:'' }}</span>
+                            <span>{{array_key_exists('al_cbm',$meta_variation) ?  $meta_variation['al_cbm']:'' }}</span>
                         </td>
                         <td></td>
 

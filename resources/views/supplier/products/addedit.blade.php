@@ -125,7 +125,7 @@
                                 <input type="hidden" name="product_type" value="simple">
                                 <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
                                 <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
-                                <input type="hidden" name="supplier_name_simple" value="{{ \Auth::user()->name }}">
+                                <input type="hidden" name="al_supplier_name" value="{{ \Auth::user()->name }}">
                                 <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
                                 @include('supplier.products.components.product_form.product_main')
                                 @include('supplier.products.components.product_form.general_info')

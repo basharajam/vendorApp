@@ -262,11 +262,14 @@ class PostService extends BaseService implements IPostService
             else if($request->product_type=='variable'){
                 $this->creatPostMeta($post->ID,'_price',$request->_regular_price);
             }
-            $this->creatPostMeta($post->ID,'material_simple',$request->material_simple);
-            $this->creatPostMeta($post->ID,'thickness_simple',$request->thickness_simple);
-            $this->creatPostMeta($post->ID,'printing_simple',$request->printing_simple);
-            $this->creatPostMeta($post->ID,'size_simple',$request->size_simple);
-            $this->creatPostMeta($post->ID,'supplier_name_simple',$request->supplier_name_simple);
+            $this->creatPostMeta($post->ID,'al_material',$request->al_material);
+            $this->creatPostMeta($post->ID,'al_thickness',$request->al_thickness);
+            $this->creatPostMeta($post->ID,'al_printing',$request->al_printing);
+            $this->creatPostMeta($post->ID,'al_size',$request->al_size);
+            $this->creatPostMeta($post->ID,'al_supplier_name',$request->al_supplier_name);
+            $this->creatPostMeta($post->ID,'al_added ',$request->al_added );
+            $this->creatPostMeta($post->ID,'al_more_info ',$request->al_more_info);
+            $this->creatPostMeta($post->ID,'al_color',$request->al_color);
 
         }
         if($post->post_parent){
@@ -286,10 +289,10 @@ class PostService extends BaseService implements IPostService
             $this->creatPostMeta($post->ID,'_stock_status',$request->_stock_status);
             $this->creatPostMeta($post->ID,'_wc_min_qty_product',$request->_wc_min_qty_product);
             $this->creatPostMeta($post->ID,'_wc_max_qty_product',$request->_wc_max_qty_product);
-            $this->creatPostMeta($post->ID,'cartoon_qty',$request->cartoon_qty);
-            $this->creatPostMeta($post->ID,'price_for',$request->price_for);
-            $this->creatPostMeta($post->ID,'price_for_input',$request->price_for_input);
-            $this->creatPostMeta($post->ID,'mix_of_package',$request->mix_of_package);
+            $this->creatPostMeta($post->ID,'al_carton_qty',$request->al_carton_qty);
+            $this->creatPostMeta($post->ID,'al_price_for',$request->al_price_for);
+            $this->creatPostMeta($post->ID,'al_price_for_desc',$request->al_price_for_desc);
+            $this->creatPostMeta($post->ID,'al_mix_of_package',$request->al_mix_of_package);
         }
         return $post;
     }
@@ -297,8 +300,8 @@ class PostService extends BaseService implements IPostService
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
         if($post){
             $this->creatPostMeta($post->ID,'_weight',$request->_weight);
-            $this->creatPostMeta($post->ID,'cbm_single',$request->cbm_single);
-            $this->creatPostMeta($post->ID,'days_to_delivery',$request->days_to_delivery);
+            $this->creatPostMeta($post->ID,'al_cbm',$request->al_cbm);
+            $this->creatPostMeta($post->ID,'al_days_to_delivery',$request->al_days_to_delivery);
         }
         return $post;
     }

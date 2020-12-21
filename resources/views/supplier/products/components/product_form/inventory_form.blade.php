@@ -86,9 +86,9 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية كل كارتون"></span>
             </label>
-            <input id="cartoon_qty" data-inputmask="'regex': '^[0-9]+$'"
-            class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('cartoon_qty') is-invalid @enderror" type="text" placeholder="" name="cartoon_qty" value="{{ array_key_exists('cartoon_qty',$meta) ?  $meta['cartoon_qty'] : old('cartoon_qty') }}"  required />
-            @error('cartoon_qty')
+            <input id="al_carton_qty" data-inputmask="'regex': '^[0-9]+$'"
+            class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_carton_qty') is-invalid @enderror" type="text" placeholder="" name="al_carton_qty" value="{{ array_key_exists('al_carton_qty',$meta) ?  $meta['al_carton_qty'] : old('al_carton_qty') }}"  required />
+            @error('al_carton_qty')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -106,13 +106,13 @@ if($product){
             <div class="kt-input-icon">
                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                         id="price_for"
-                        name="price_for" required>
-                        <option value="box" @if( array_key_exists('price_for',$meta)  && $meta['price_for']=="box") selected @endif>علبة</option>
-                        <option value="Pcs" @if(array_key_exists('price_for',$meta)  && $meta['price_for']=="Pcs") selected @endif>قطعة</option>
-                        <option value="opp" @if(array_key_exists('price_for',$meta)  && $meta['price_for']=="opp") selected @endif>opp</option>
-                        <option value="bag" @if(array_key_exists('price_for',$meta)  && $meta['price_for']=="bag") selected @endif>كيس</option>
-                        <option value="cartoon" @if(array_key_exists('price_for',$meta) && $meta['price_for']=="cartoon") selected @endif>كرتونة</option>
-                        <option value="set" @if(array_key_exists('price_for',$meta)  && $meta['price_for']=="set") selected @endif>مجموعة</option>
+                        name="al_price_for" required>
+                        <option value="box" @if( array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="box") selected @endif>علبة</option>
+                        <option value="Pcs" @if(array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="Pcs") selected @endif>قطعة</option>
+                        <option value="opp" @if(array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="opp") selected @endif>opp</option>
+                        <option value="bag" @if(array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="bag") selected @endif>كيس</option>
+                        <option value="cartoon" @if(array_key_exists('al_price_for',$meta) && $meta['al_price_for']=="cartoon") selected @endif>كرتونة</option>
+                        <option value="set" @if(array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="set") selected @endif>مجموعة</option>
                 </select>
             </div>
 
@@ -125,8 +125,8 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية الحزمة المختارة."></span>
             </label>
-            <input data-inputmask="'regex': '^[0-9]+$'" id="price_for_input" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('price_for_input') is-invalid @enderror" type="text" placeholder="" name="price_for_input" value="{{$meta['price_for_input'] ??  old('price_for_input') }}"   />
-            @error('price_for_input')
+            <input data-inputmask="'regex': '^[0-9]+$'" id="al_price_for_desc" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_price_for_desc') is-invalid @enderror" type="text" placeholder="" name="al_price_for_desc" value="{{$meta['al_price_for_desc'] ??  old('al_price_for_desc') }}"   />
+            @error('al_price_for_desc')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
@@ -142,8 +142,8 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل عدد النماذج المختلطة في العبوة."></span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mix_of_package') is-invalid @enderror" type="text" placeholder="" name="mix_of_package" value="{{$meta['mix_of_package'] ?? old('mix_of_package') }}"   />
-            @error('mix_of_package')
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_mix_of_package') is-invalid @enderror" type="text" placeholder="" name="al_mix_of_package" value="{{$meta['al_mix_of_package'] ?? old('al_mix_of_package') }}"   />
+            @error('al_mix_of_package')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
             </div>
