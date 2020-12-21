@@ -188,7 +188,7 @@
                     <span>اسم المستخدم</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus style="direction:ltr"/>
                 @error('name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -204,7 +204,7 @@
                     <span>البريد الالكتروني</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
                 @error('email')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -220,7 +220,7 @@
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
-                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" />
+                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"/>
                 <div  class="fv-plugins-message-container" id="">
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
@@ -247,7 +247,7 @@
                 <span class="required">*</span>
             </label>
 
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" />
+                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr" />
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
