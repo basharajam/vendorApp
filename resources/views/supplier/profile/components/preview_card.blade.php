@@ -7,7 +7,7 @@
                     <!--begin::Name-->
                     <h4 class="d-flex justify-content-between">
                         <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">{{ $profile->company_name }}
-                        <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item">Edit</a>
+                        <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item">تعديل</a>
 
                         </h4>
                     <!--end::Name-->
@@ -55,7 +55,7 @@
                                 </g>
                             </svg>
                             <!--end::Svg Icon-->
-                        </span>{{ $profile->shop_address }}</a>
+                        </span>{{ $profile->company_shop_address ?? $profile->company_office_address ?? $profile->company_warehouse_address ?? $profile->company_factory_address }}</a>
 
                     </div>
                     <!--end::Contacts-->
@@ -65,7 +65,7 @@
                 <div class="form-group row my-2">
                     <label class="col-4 col-form-label">اسم البنك:</label>
                     <div class="col-8">
-                        <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_name }}.</span>
+                        <span class="form-control-plaintext font-weight-bolder">البنك الزراعي</span>
                     </div>
                 </div>
                 <div class="form-group row my-2">

@@ -10,8 +10,9 @@
         </button>
         <!--End:: App Aside Mobile Toggle-->
         <div style="display: flex;flex-direction:column">
+        @if($profile->national_id_image || $profile->passport_image || $profile->visa_image)
                <!--Begin:: App Aside-->
-        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
+               <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
             <div class="kt-portlet kt-portlet--height-fluid-">
                 <div class="kt-portlet__body">
                     <div class="kt-widget kt-widget--user-profile-4">
@@ -68,7 +69,7 @@
             </div>
         </div>
         <!--End:: App Aside-->
-
+        @endif
    </div>
 
         <!--Begin:: App Content-->
