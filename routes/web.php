@@ -14,7 +14,15 @@ use  Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return redirect()->route('supplier.home');
+    if(\Auth::user()){
+        if(\Auth::user()->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER)){
+            return redirect()->route('supplier_manager.home');
+        }
+        else if(\Auth::user()->hasRole(\App\Constants\UserRoles::SUPPLIER)){
+            return redirect()->route('supplier.home');
+        }
+    }
+    return redirect()->to('/home');
 });
 
 Route::get('/reset-password',function(){
