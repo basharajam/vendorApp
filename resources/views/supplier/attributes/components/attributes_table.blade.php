@@ -45,6 +45,7 @@
                     <div class="col-12">
                         <ul class="attributes_list w-100">
                         @foreach($taxonomy->terms as $term)
+                        @if($term->term_taxonomy_id!=$taxonomy->term_taxonomy_id)
                         <li class="w-100 list-item ">
                             <div class="d-flex justify-content-between align-items-center w-100">
                                 <div>
@@ -70,6 +71,7 @@
 
 
                         </li>
+                        @endif
                         @endforeach
 
                         </ul>
