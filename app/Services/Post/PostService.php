@@ -453,6 +453,23 @@ class PostService extends BaseService implements IPostService
                 $meta->delete();
             }
         }
+        if($post->product_type && $post->product_type->term=='variable'){
+                foreach($post->product_variations as $variation){
+                    $terms = TermRelation::where('object_id',$variation->ID)->get();
+                    $table_name = \General::DB_PREFIX."term_relationships";
+                    if($terms){
+                        \DB::delete("DELETE From ".$table_name." where object_id =".$variation->ID);
+                    }
+                    $post_meta = PostMeta::where('post_id',$variation->ID)->get();
+                    if($post_meta){
+                        foreach($post_meta as $meta){
+                            $meta->delete();
+                        }
+                    }
+                    $variation->delete();
+                }
+        }
+
         //delete post meta
         return $post->delete();
     }

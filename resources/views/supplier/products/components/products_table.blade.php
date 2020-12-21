@@ -215,7 +215,9 @@
                         <td>
                             <span>{{array_key_exists('al_cbm',$meta_variation) ?  $meta_variation['al_cbm']:'' }}</span>
                         </td>
-                        <td></td>
+                        <td class="datatable-cell-sorted datatable-cell">
+                            <a id="{{ $variation->ID }}" data-remove="#child-row{{ $variation->ID }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier.products.delete',$variation->ID) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
+                        </td>
 
                     </tr>
                     @endforeach
