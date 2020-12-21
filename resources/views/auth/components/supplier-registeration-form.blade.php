@@ -86,12 +86,6 @@
                     <span>الاسم الكامل لصاحب الشركة المسجلة داخل الرخصة التجارية</span>
                     <span class="required">*</span>
                 </label>
-            </div>
-
-        </div>
-        <div class="col-md-6">
-             <!--begin::Form group First Name-->
-             <div class="form-group">
                 <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
@@ -99,89 +93,14 @@
                 </div>
                 @enderror
             </div>
-            <!--end::Form group First Name-->
+            <input type="hidden" name="last_name" value=" ">
         </div>
-        <div class="col-md-6">
-            <!--begin::Form group Last Name-->
-            <div class="form-group">
-               <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية" name="last_name" value="{{ $supplier->last_name ?? old('last_name') }}" required autofocus />
-               @error('last_name')
-               <div class="fv-plugins-message-container">
-                   <div  class="fv-help-block">{{ $message }}</div>
-               </div>
-               @enderror
-           </div>
-           <!--end::Form group Last Name-->
-       </div>
-       <div class="col-md-6">
-        <!--begin::Form group User Name-->
-        <div class="form-group">
-            <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>تاريخ الولادة</span>
-            </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="date" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
-            @error('brithdate')
-            <div class="fv-plugins-message-container">
-                <div  class="fv-help-block">{{ $message }}</div>
-            </div>
-            @enderror
-        </div>
-        <!--end::Form group User Name-->
-   </div>
-   <div class="col-md-6">
-        <!--begin::Form group Nationality-->
-    <div class="form-group">
-        <label class="font-size-h6 font-weight-bolder text-dark">
-            <span>الجنس</span>
-        </label>
-        <div class="col-12 col-form-label">
-            <div class="radio-inline">
-                <label class="radio radio-success">
-                    <input  value="male"
-                            type="radio"
-                            name="gender"
-                            @if($supplier && $supplier->gender=="male") checked="checked" @endif
-                            />
-                    <span></span>
-                    ذكر
-                </label>
-                <label class="radio radio-success">
-                    <input  value="female"
-                            type="radio"
-                            name="gender"
-                            @if($supplier && $supplier->gender=="female") checked="checked" @endif
-                            />
-                    <span></span>
-                    انثى
-                    </label>
-            </div>
-            @error('nationality')
-            <div class="fv-plugins-message-container">
-                <div  class="fv-help-block">{{ $message }}</div>
-            </div>
-            @enderror
+        <div class="col-12" id="chinese_or_not_div">
 
         </div>
-    </div>
-    <!--end::Form group Nationality-->
-    </div>
-<div class="col-md-12">
-    <!--begin::Form group User Name-->
-    <div class="form-group">
-        <label class="font-size-h6 font-weight-bolder text-dark" style="display: block">
-            <span class="required">*</span>
-            <span>رقم الموبايل</span>
-        </label>
-        <input id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
-        @error('mobile_number')
-        <div class="fv-plugins-message-container">
-            <div  class="fv-help-block">{{ $message }}</div>
-        </div>
-        @enderror
-    </div>
-    <!--end::Form group User Name-->
-</div>
-       <div class="col-md-6">
+
+
+       <div class="col-md-12">
             <!--begin::Form group User Name-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
@@ -197,22 +116,7 @@
             </div>
             <!--end::Form group User Name-->
        </div>
-       <div class="col-md-6">
-             <!--begin::Form group Email-->
-            <div class="form-group">
-                <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>البريد الالكتروني</span>
-                    <span class="required">*</span>
-                </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
-                @error('email')
-                <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
-                </div>
-                @enderror
-            </div>
-            <!--end::Form group Email-->
-       </div>
+
        <div class="col-md-6">
             <!--begin::Form group Password-->
             <div class="form-group">
@@ -256,10 +160,86 @@
             </div>
             <!--end::Form group Password Confirmation-->
        </div>
-       <!--CHines or not-->
-       <div class="col-12" id="chinese_or_not_div">
+       <div class="col-md-6">
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">
+                <span>تاريخ الولادة</span>
+            </label>
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="date" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
+            @error('brithdate')
+            <div class="fv-plugins-message-container">
+                <div  class="fv-help-block">{{ $message }}</div>
+            </div>
+            @enderror
+        </div>
+    </div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="font-size-h6 font-weight-bolder text-dark">
+            <span>الجنس</span>
+        </label>
+        <div class="col-12 col-form-label">
+            <div class="radio-inline">
+                <label class="radio radio-success">
+                    <input  value="male"
+                            type="radio"
+                            name="gender"
+                            @if($supplier && $supplier->gender=="male") checked="checked" @endif
+                            />
+                    <span></span>
+                    ذكر
+                </label>
+                <label class="radio radio-success">
+                    <input  value="female"
+                            type="radio"
+                            name="gender"
+                            @if($supplier && $supplier->gender=="female") checked="checked" @endif
+                            />
+                    <span></span>
+                    انثى
+                    </label>
+            </div>
+            @error('nationality')
+            <div class="fv-plugins-message-container">
+                <div  class="fv-help-block">{{ $message }}</div>
+            </div>
+            @enderror
 
         </div>
+    </div>
+</div>
+       <div class="col-md-12">
+        <!--begin::Form group Email-->
+       <div class="form-group">
+           <label class="font-size-h6 font-weight-bolder text-dark">
+               <span>البريد الالكتروني</span>
+               <span class="required">*</span>
+           </label>
+           <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
+           @error('email')
+           <div class="fv-plugins-message-container">
+               <div  class="fv-help-block">{{ $message }}</div>
+           </div>
+           @enderror
+       </div>
+       <!--end::Form group Email-->
+  </div>
+  <div class="col-md-12">
+    <!--begin::Form group User Name-->
+    <div class="form-group">
+        <label class="font-size-h6 font-weight-bolder text-dark" style="display: block">
+            <span class="required">*</span>
+            <span>رقم الموبايل</span>
+        </label>
+        <input id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+        @error('mobile_number')
+        <div class="fv-plugins-message-container">
+            <div  class="fv-help-block">{{ $message }}</div>
+        </div>
+        @enderror
+    </div>
+    <!--end::Form group User Name-->
+</div>
 
         <div class="col-md-12">
             <!--begin::Form group Company Name-->
@@ -654,6 +634,7 @@
         $( "input[name='nationality']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
+            console.log('selected chinese or not',selected_value);
             let uploadedDocumentMap = {};
             switch(selected_value){
                 case "true":
