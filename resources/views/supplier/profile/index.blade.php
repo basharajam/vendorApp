@@ -12,7 +12,7 @@
         <div style="display: flex;flex-direction:column">
 
         <!--Begin:: App Aside-->
-        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside" @if($profile->national_id_image || $profile->passport_image || $profile->visa_image) style="display:none" @endif>
+        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside" @if($profile->national_id_image==null && $profile->passport_image==null && $profile->visa_image==null) style="display:none" @endif>
             <div class="kt-portlet kt-portlet--height-fluid-">
                 <div class="kt-portlet__body">
                     <div class="kt-widget kt-widget--user-profile-4">
