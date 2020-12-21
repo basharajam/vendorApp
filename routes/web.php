@@ -22,7 +22,7 @@ Route::get('/', function () {
             return redirect()->route('supplier.home');
         }
     }
-    return redirect()->to('/home');
+    return redirect()->route('login');
 });
 
 Route::get('/reset-password',function(){
