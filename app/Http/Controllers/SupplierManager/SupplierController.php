@@ -28,7 +28,7 @@ class SupplierController extends Controller
         $this->taxonomy_service = $taxonomy_service;
     }
     public function index(){
-        $suppliers = $this->supplier_service->getSuppliersForManager(\Auth::user()->id->userable_id);
+        $suppliers = $this->supplier_service->getSuppliersForManager(\Auth::user()->userable_id);
         return view('supplier_manager.suppliers.index')
                 ->with('suppliers',$suppliers);
     }
