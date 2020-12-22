@@ -54,7 +54,7 @@
                         <label class="radio radio-success">
                             <input  value="1"
                                     type="radio"
-                                    name="nationality"
+                                    name="ischinese"
                                     @if($supplier && $supplier->ischinese==true) checked="checked" @endif
                                     />
                             <span></span>
@@ -63,14 +63,14 @@
                         <label class="radio radio-success">
                             <input  value="0"
                                     type="radio"
-                                    name="nationality"
+                                    name="ischinese"
                                     @if($supplier && $supplier->ischinese==false) checked="checked" @endif
                                     />
                             <span></span>
                             لست صيني
                         </label>
                     </div>
-                    @error('nationality')
+                    @error('ischinese')
                     <div class="fv-plugins-message-container">
                         <div  class="fv-help-block">{{ $message }}</div>
                     </div>
@@ -723,7 +723,7 @@
                     },
 
         });
-        $( "input[name='nationality']" ).on('change',function(){
+        $( "input[name='ischinese']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
             console.log('selected chinese or not',selected_value);
