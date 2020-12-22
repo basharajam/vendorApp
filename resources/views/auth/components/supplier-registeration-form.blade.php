@@ -177,7 +177,7 @@ input.error {
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>تاريخ الولادة</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="date" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
+            <input id="kt_datepicker_3" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="text" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
             @error('brithdate')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -240,8 +240,8 @@ input.error {
     <!--begin::Form group User Name-->
     <div class="form-group">
         <label class="font-size-h6 font-weight-bolder text-dark" style="display: block">
-            <span class="required">*</span>
             <span>رقم الموبايل</span>
+            <span class="required">*</span>
         </label>
         <input data-inputmask="'regex': '^[0-9]+$'"
             id="phone"
@@ -362,7 +362,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>تاريخ انشاء الشركة</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="date" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
+                <input id="kt_datepicker_4" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
                 @error('company_created_at')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -415,8 +415,8 @@ input.error {
             <!--begin::Form group National ID Picture-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
                     <span>صورة الرخصة التجارية</span>
+                    <span class="required">*</span>
                 </label>
                 <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
                     <div class="dropzone-msg dz-message needsclick">
@@ -432,8 +432,8 @@ input.error {
             <!--begin::Form group National ID Picture-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span class="required">*</span>
                     <span>صورة العلامة التجارية الخاصة بالشركة</span>
+                    <span class="required">*</span>
                 </label>
                 <div id="company_logo" class="dropzone dropzone-default dropzone-primary dz-clickable" id="">
                     <div class="dropzone-msg dz-message needsclick">
@@ -595,7 +595,7 @@ input.error {
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="{{ asset('/plugins/telinput/js/intlTelInput.js') }}"></script>
-{{-- <script src="{{ asset('/plugins/telinput/js/utils.js') }}"></script> --}}
+<script src="{{ asset('/js/bootstrap-datepicker.ar.js') }}"></script>
 
 <script>
     let cities = {!! json_encode($cities) !!};
@@ -733,7 +733,28 @@ input.error {
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
        // Inputmask().mask(document.querySelectorAll("input"));
+       let  t = {
+                        leftArrow: '<i class="la la-angle-right"></i>',
+                        rightArrow: '<i class="la la-angle-left"></i>'
+                    }
+                    $("#kt_datepicker_4").datepicker({
+                        rtl: true,
+                        todayHighlight: !0,
+                        orientation: "bottom left",
+                        templates: t,
+                        language: 'ar',
+                        endDate:'12/31/2060'
 
+                    });
+       $("#kt_datepicker_3").datepicker({
+                        rtl: true,
+                        todayHighlight: !0,
+                        orientation: "bottom left",
+                        templates: t,
+                        language: 'ar',
+                        endDate:'12/31/2060'
+
+                    });
         let uploadedDocumentMap = {};
         let $CommercialDropzone =new Dropzone('#commercial_license_image',{
                     url:   '{{ route('supplier.storeImage') }}',
@@ -856,6 +877,16 @@ input.error {
                     Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(passport_number_id);
                     let passport_image = document.getElementById('passport_image');
                     let visa_image = document.getElementById('visa_image');
+
+                    $("#kt_datepicker_2, #kt_datepicker_3").datepicker({
+                        rtl: true,
+                        todayHighlight: !0,
+                        orientation: "bottom left",
+                        templates: t,
+                        language: 'ar',
+                        endDate:'12/31/2060'
+
+                    });
                     let $dropzone_passport_image =new Dropzone('#passport_image',{
                         url:   '{{ route('supplier.storeImage') }}',
                         addRemoveLinks: true,

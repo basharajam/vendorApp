@@ -22,7 +22,7 @@
                 <span class="required">*</span>
                 <span>تاريخ انتهاء جواز السفر</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="date" placeholder="تاريخ انتهاء جواز السفر" name="passport_end_date" value="{{ old('passport_end_date') }}" required autocomplete="national_number" />
+            <input type="text" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" id="kt_datepicker_2" name="passport_end_date" value="{{ old('passport_end_date') }}">
             @error('passport_end_date')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
