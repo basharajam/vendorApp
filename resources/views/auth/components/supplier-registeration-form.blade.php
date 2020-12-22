@@ -38,6 +38,18 @@
   left: -35px;
   content: "✖";
 }
+#error-msg {
+  color: red;
+}
+#valid-msg {
+  color: #00C900;
+}
+input.error {
+  border: 1px solid #FF7C7C;
+}
+.hide {
+  display: none;
+}
 </style>
 @endpush
 
@@ -231,10 +243,11 @@
             <span class="required">*</span>
             <span>رقم الموبايل</span>
         </label>
-        <input id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+        <input data-inputmask="'regex': '^[0-9]+$'" id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+
         @error('mobile_number')
         <div class="fv-plugins-message-container">
-            <div  class="fv-help-block">{{ $message }}</div>
+            <div  class="fv-help-block"     >{{ $message }}</div>
         </div>
         @enderror
     </div>
@@ -566,14 +579,34 @@
 @endpush
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="{{ asset('/js/intlTelInput-jquery.min.js') }}"></script>
+<script src="{{ asset('/plugins/telinput/js/intlTelInput.js') }}"></script>
+{{-- <script src="{{ asset('/plugins/telinput/js/utils.js') }}"></script> --}}
 
 <script>
     let cities = {!! json_encode($cities) !!};
     $(function(){
-        const input = document.querySelector("#phone");
-        $(input).intlTelInput();
+        validMsg = document.querySelector("#valid-msg");
 
+
+        const input = document.getElementById("phone");
+        var iti = window.intlTelInput(input, {
+            separateDialCode: false,
+            autoPlaceholder:'aggressive',
+            onlyCountries: ['ae','cn'],
+            utilsScript: "{{ asset('/plugins/telinput/js/utils.js') }}"
+        });
+        Inputmask({ mask: "99999999999" }).mask(input);
+
+        input.addEventListener("countrychange", function() {
+        // do something with iti.getSelectedCountryData()
+            if(iti.getSelectedCountryData().iso2=='ae'){
+                Inputmask({ mask: "999999999" }).mask(input);
+            }
+            else{
+                Inputmask({ mask: "99999999999" }).mask(input);
+
+            }
+        });
         $("#cateogiresSelector").select2({
             dir: "rtl",
         });
@@ -673,6 +706,8 @@
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
+       // Inputmask().mask(document.querySelectorAll("input"));
+
         let uploadedDocumentMap = {};
         let $CommercialDropzone =new Dropzone('#commercial_license_image',{
                     url:   '{{ route('supplier.storeImage') }}',
