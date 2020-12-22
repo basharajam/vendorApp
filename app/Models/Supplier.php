@@ -39,7 +39,7 @@ class Supplier extends BaseModel implements HasMedia
 
     ];
 
-    protected $appends = ["full_name",'national_id_image','passport_image','visa_image','commercial_license_image','company_logo'];
+    protected $appends = ["full_name",'national_id_image','passport_image','visa_image','commercial_license_image','company_logo_image'];
 
     public function getFullNameAttribute(){
         return $this->first_name.' ';

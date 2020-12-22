@@ -243,7 +243,22 @@ input.error {
             <span class="required">*</span>
             <span>رقم الموبايل</span>
         </label>
-        <input data-inputmask="'regex': '^[0-9]+$'" id="phone" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('mobile_number') is-invalid @enderror" type="text" placeholder="" name="mobile_number" value="{{$supplier->mobile_number ?? old('mobile_number') }}" required  />
+        <input data-inputmask="'regex': '^[0-9]+$'"
+            id="phone"
+            required
+            class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6
+            @error('mobile_number') is-invalid @enderror"
+            type="text"
+            placeholder=""
+            name="mobile_number_without_code"
+
+            @if($supplier && strpos($supplier->mobile_number,'+86')==0)
+            value = "{{ str_replace('+86','',$supplier->mobile_number) }}"
+            @elseif($supplier &&  strpos($supplier->mobile_number,'+971')==0)
+            value = "{{ str_replace('+971','',$supplier->mobile_number) }}"
+            @else value="{{ old('mobile_number_without_code') }}"
+            @endif
+              />
 
         @error('mobile_number')
         <div class="fv-plugins-message-container">
@@ -547,7 +562,7 @@ input.error {
             </div>
             <!--end::Form group Bank Account Owner Name-->
         </div>
-        @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create')
+        @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create' && Route::currentRouteName()!="supplier_manager.suppliers.edit")
         <div class="col-md-12">
             <!--begin::Form group Terms And Conditions-->
             @include('auth.components.terms_and_conditions')
@@ -566,7 +581,7 @@ input.error {
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create') disabled  @endif class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
+                <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create' && Route::currentRouteName()!="supplier_manager.suppliers.edit") disabled  @endif class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->
@@ -584,6 +599,8 @@ input.error {
 
 <script>
     let cities = {!! json_encode($cities) !!};
+    let supplier = {!!  json_encode($supplier)  !!};
+    console.log(supplier.mobile_number);
     $(function(){
         validMsg = document.querySelector("#valid-msg");
 
@@ -593,10 +610,20 @@ input.error {
             separateDialCode: false,
             autoPlaceholder:'aggressive',
             onlyCountries: ['ae','cn'],
+            hiddenInput:'mobile_number',
+            formatOnDisplay:true,
             utilsScript: "{{ asset('/plugins/telinput/js/utils.js') }}"
         });
         Inputmask({ mask: "99999999999" }).mask(input);
+        if(supplier){
+            if(supplier.mobile_number.indexOf('+86')!==-1){
+                iti.setCountry('cn');
+            }
+            else if(supplier.mobile_number.indexOf('+971')!==-1){
+                iti.setCountry('ae');
+            }
 
+        }
         input.addEventListener("countrychange", function() {
         // do something with iti.getSelectedCountryData()
             if(iti.getSelectedCountryData().iso2=='ae'){
