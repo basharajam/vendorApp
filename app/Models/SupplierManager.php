@@ -28,4 +28,8 @@ class SupplierManager extends BaseModel implements HasMedia
         return $this->morphOne(User::class, 'userable');
     }
 
+    public function suppliers(){
+        return $this->hasMany(Supplier::class,'manager_id');
+    }
+
 }
