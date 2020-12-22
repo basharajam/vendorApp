@@ -511,7 +511,7 @@
             </div>
             <!--end::Form group Bank Account Owner Name-->
         </div>
-        @if(Route::currentRouteName() != 'supplier.profile')
+        @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create')
         <div class="col-md-12">
             <!--begin::Form group Terms And Conditions-->
             @include('auth.components.terms_and_conditions')
