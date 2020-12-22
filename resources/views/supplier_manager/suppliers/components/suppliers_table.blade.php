@@ -55,10 +55,10 @@
                         <span>{{ $supplier->company_name }}</span>
                     </td>
                     <td>
-                        <span>{{ $supplier->eamil }}</span>
+                        <span>{{ $supplier->email }}</span>
                     </td>
                     <td>
-                        <span>{{ $supplier->shop_address }}</span>
+                        <span>{{ $supplier->company_shop_address  ?? $supplier->company_office_address ?? $supplier->company_warehouse_address ?? $supplier->company_factory_address}}</span>
                     </td>
                     <td>
 
