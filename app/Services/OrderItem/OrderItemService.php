@@ -55,6 +55,7 @@ class OrderItemService extends BaseService implements IOrderItemService
         $products_ids =Post::whereIn('post_author',$suppliers_ids)
         ->whereIn('post_type',['product','product_variation'])
         ->get()->pluck('ID')->toArray();
+
         // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
         $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
         // return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->get();

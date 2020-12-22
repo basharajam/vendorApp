@@ -557,9 +557,14 @@ class PostService extends BaseService implements IPostService
      * @return Collection of posts which represents the products for a manager
      */
     public function get_products_for_supplier_manager(int $manager_id){
-        $suppliers = Supplier::where('manager_id',$manager_id)->get();
-        $suppliers_ids= $suppliers->map(function($item){return $item->wordpress_user->ID;});
-         return  Post::whereIn('post_author',$suppliers_ids)->where('post_type','product')->get();
+         $suppliers = Supplier::where('manager_id',$manager_id)->get();
+         $suppliers_ids =[];
+         foreach($suppliers as $supplier){
+             array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
+         }
+         return Post::whereIn('post_author',$suppliers_ids)
+         ->whereIn('post_type',['product'])
+         ->get();
 
     }
 }

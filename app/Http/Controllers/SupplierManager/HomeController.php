@@ -19,10 +19,10 @@ class HomeController extends Controller
         $this->supplier_service = $supplier_service;
     }
     public function index(){
-        $products_count = 0;
-        // $products_count = $this->post_service->get_products_for_supplier_manager(\Auth::user()->userable->id)->count();
+       $products_count = $this->post_service->get_products_for_supplier_manager(\Auth::user()->userable->id)->count();
         $suppliers_count =$this->supplier_service->getSuppliersForManager(\Auth::user()->userable->id)->count();
-        $orders_count = $this->order_service->getSupplierManagerOrders(\Auth::user()->userable->id)->count();
+        $orders_count = $this->order_service->getSupplierManagerOrders(\Auth::user()->userable_id)->count();
+
         return view('supplier_manager.home.index')
                 ->with('products_count',$products_count)
                 ->with('suppliers_count',$suppliers_count)
