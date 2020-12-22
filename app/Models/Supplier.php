@@ -34,7 +34,8 @@ class Supplier extends BaseModel implements HasMedia
         'company_office_address',
         'company_warehouse_address',
         'company_factory_address',
-
+        'company_countries',
+        'countries_which_company_doesnot_work_with'
 
     ];
 

@@ -367,7 +367,7 @@
             <!--begin::Form group National Number-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>المدبنة التي تتبع لها الشركة</span>
+                    <span>المدينة التي تتبع لها الشركة</span>
                 </label>
                 <select id="cititesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="city_id" >
                     <option></option>
@@ -444,14 +444,37 @@
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>اهم الدول التي تعمل بها الشركة</span>
                 </label>
-                <select id="CountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries[]" value="">
-                    <option value="">تركيا</option>
-                    <option value="">الكويت </option>
-                    <option value="">إمارات  </option>
-                    <option value="">قطر </option>
-                    <option value="">عمان</option>
-                    <option value="">سوريا</option>
-                    <option value="">لبنان</option>
+                <select id="CountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
+                    <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
+                    <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت </option>
+                    <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات  </option>
+                    <option @if($supplier && $supplier->company_countries && in_array('قطر',explode(',',$supplier->company_countries))) selected @endif>قطر </option>
+                    <option @if($supplier && $supplier->company_countries && in_array('عمان',explode(',',$supplier->company_countries))) selected @endif>عمان</option>
+                    <option  @if($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries))) selected @endif>سوريا</option>
+                    <option @if($supplier && $supplier->company_countries && in_array('لبنان',explode(',',$supplier->company_countries))) selected @endif>لبنان</option>
+                </select>
+                @error('company_address_city')
+                <div class="fv-plugins-message-container">
+                    <div  class="fv-help-block">{{ $message }}</div>
+                </div>
+                @enderror
+            </div>
+            <!--end::Form group National Number-->
+        </div>
+        <div class="col-md-12">
+            <!--begin::Form group National Number-->
+            <div class="form-group">
+                <label class="font-size-h6 font-weight-bolder text-dark">
+                    <span>الدول التي لا يمكن بيع المنتجات لها</span>
+                </label>
+                <select id="ReCountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت </option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات  </option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('قطر',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>قطر </option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('عمان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>عمان</option>
+                    <option  @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>سوريا</option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>لبنان</option>
                 </select>
                 @error('company_address_city')
                 <div class="fv-plugins-message-container">
@@ -555,6 +578,9 @@
             dir: "rtl",
         });
         $("#CountriesSelector").select2({
+            dir: "rtl",
+        });
+        $("#ReCountriesSelector").select2({
             dir: "rtl",
         });
         $("#cititesSelector").select2({

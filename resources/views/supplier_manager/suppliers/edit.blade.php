@@ -24,7 +24,7 @@
                         <form class="form" class="w-100" method="POST" action="{{ route('supplier_manager.suppliers.update') }}" id="supplier_registeration_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
-                            <input type="hidden" name="manager_id" value="{{ \Auth::user()->id }}">
+                            <input type="hidden" name="manager_id" value="{{ \Auth::user()->userable_id }}">
                             <input type="hidden" name="id" value="{{ $supplier->id }}">
                                <!--begin::Title-->
                                 <div class="text-center pb-8">
