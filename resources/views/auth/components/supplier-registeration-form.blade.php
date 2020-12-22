@@ -52,7 +52,7 @@
                 <div class="col-12 col-form-label">
                     <div class="radio-inline">
                         <label class="radio radio-success">
-                            <input  value="true"
+                            <input  value="1"
                                     type="radio"
                                     name="nationality"
                                     @if($supplier && $supplier->ischinese==true) checked="checked" @endif
@@ -61,7 +61,7 @@
                             صيني
                         </label>
                         <label class="radio radio-success">
-                            <input  value="false"
+                            <input  value="0"
                                     type="radio"
                                     name="nationality"
                                     @if($supplier && $supplier->ischinese==false) checked="checked" @endif
@@ -729,7 +729,7 @@
             console.log('selected chinese or not',selected_value);
             let uploadedDocumentMap = {};
             switch(selected_value){
-                case "true":
+                case "1":
                     $('#chinese_or_not_div').append(chinese_properties);
                     $("#chinese_properties").show();
                     let national_number_id = document.getElementById('national_number');
@@ -762,7 +762,7 @@
                     });
 
                 break;
-                case "false":
+                case "0":
                     $('#chinese_or_not_div').append(not_chinese_properties);
                     $("#not_chinese_properties").show();
                     let passport_number_id = document.getElementById('passport_number_id');
