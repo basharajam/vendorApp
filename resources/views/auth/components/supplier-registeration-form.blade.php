@@ -600,7 +600,6 @@ input.error {
 <script>
     let cities = {!! json_encode($cities) !!};
     let supplier = {!!  json_encode($supplier)  !!};
-    console.log(supplier.mobile_number);
     $(function(){
         validMsg = document.querySelector("#valid-msg");
 
