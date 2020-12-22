@@ -61,7 +61,14 @@
                         <span>{{ $supplier->shop_address }}</span>
                     </td>
                     <td>
-                        <span>{{ $supplier->nationality }}</span>
+
+                        <span>
+                           @if($supplier->ischinese)
+                            صيني
+                            @else
+                            ليس صيني
+                           @endif
+                        </span>
                     </td>
                     <td>
                         <span>{{ date('Y-m-d',strtotime($supplier->created_at)) }}</span>
