@@ -73,9 +73,11 @@
                     <td>
                         <span>{{ date('Y-m-d',strtotime($supplier->created_at)) }}</span>
                     </td>
+
                     <td class="datatable-cell-sorted datatable-cell">
                             <a id="{{ $supplier->id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier_manager.suppliers.delete',$supplier->id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
                             <a class="kt-nav__link"  href="{{ route('supplier_manager.suppliers.edit',$supplier->id) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
+                            <a class="kt-nav__link"  href="{{ route('supplier_manager.suppliers.products',$supplier->id) }}"  title="عرض المنتجات"><i class="kt-nav__link-icon color-primary flaticon-open-box"></i></a>
                     </td>
                 </tr>
             @endforeach

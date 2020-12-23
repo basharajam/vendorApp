@@ -10,7 +10,15 @@
             <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
                     <h3 class="card-label">المنتجات
-                    <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة بك</span></h3>
+                        @if(\Auth::user()->hasRole(\UserRoles::SUPPLIERMANAGER))
+                            @if(Route::currentRouteName()  == 'supplier_manager.suppliers.all_products')
+                            <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة بالموردين لديك</span></h3>
+                            @elseif(Route::currentRouteName()=='supplier_manager.suppliers.products')
+                            <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة ب {{ $supplier->fullname }}</span></h3>
+                            @endif
+                        @else
+                        <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة بك</span></h3>
+                        @endif
                 </div>
                 <div class="card-toolbar">
 

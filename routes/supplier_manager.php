@@ -29,3 +29,7 @@ Route::post('/support/store',[App\Http\Controllers\SupplierManager\SupportContro
 Route::get('/profit-ratio',[App\Http\Controllers\SupplierManager\ProfitRatioController::class,'index'])->name('supplier_manager.profit.index');
 Route::post('/profit-ratio',[App\Http\Controllers\SupplierManager\ProfitRatioController::class,'update'])->name('supplier_manager.profit.store');
 
+
+//Products
+Route::get('/products',[App\Http\Controllers\SupplierManager\ProductController::class,'index'])->name('supplier_manager.suppliers.all_products');
+Route::get('/products/{supplier}',[App\Http\Controllers\SupplierManager\ProductController::class,'view'])->name('supplier_manager.suppliers.products');
