@@ -474,11 +474,11 @@ input.error {
                 </label>
                 <select id="CountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
                     <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
-                    <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت </option>
-                    <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات  </option>
+                    <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت</option>
+                    <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات</option>
                     <option @if($supplier && $supplier->company_countries && in_array('قطر',explode(',',$supplier->company_countries))) selected @endif>قطر </option>
                     <option @if($supplier && $supplier->company_countries && in_array('عمان',explode(',',$supplier->company_countries))) selected @endif>عمان</option>
-                    <option  @if($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries))) selected @endif>سوريا</option>
+                    <option @if($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries))) selected @endif>سوريا</option>
                     <option @if($supplier && $supplier->company_countries && in_array('لبنان',explode(',',$supplier->company_countries))) selected @endif>لبنان</option>
                 </select>
                 @error('company_address_city')
@@ -497,11 +497,11 @@ input.error {
                 </label>
                 <select id="ReCountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
-                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت </option>
-                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات  </option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت</option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات</option>
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('قطر',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>قطر </option>
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('عمان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>عمان</option>
-                    <option  @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>سوريا</option>
+                    <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>سوريا</option>
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>لبنان</option>
                 </select>
                 @error('company_address_city')
@@ -600,6 +600,8 @@ input.error {
 <script>
     let cities = {!! json_encode($cities) !!};
     let supplier = {!!  json_encode($supplier)  !!};
+    let countries = ["تركيا","قطر","عمان","الكويت","إمارات","سوريا","لبنان"];
+
     $(function(){
         validMsg = document.querySelector("#valid-msg");
 
@@ -662,6 +664,32 @@ input.error {
                 citiesselector.add(newOption,undefined);
 
             })
+        });
+
+        $(document).on('change','#CountriesSelector',function(){
+            let value = $(this).val();
+            let re_countries_selector = document.getElementById("ReCountriesSelector");
+                    var re_countries_selector_selected = [...re_countries_selector.options]
+                                                    .filter(option => option.selected)
+                                                    .map(option => option.value);
+                console.log('selected',re_countries_selector_selected);
+            re_countries_selector.options.length = 0;
+            for(let c=0;c<countries.length;c++){
+                    re_countries_selector.add(new Option(countries[c],countries[c],undefined,re_countries_selector_selected.indexOf(countries[c]) > -1 ? true:false));
+            }
+
+            for(let j=0;j<value.length;j++){
+                let index = -1;
+                console.log(re_countries_selector.options,value);
+                for (var i = 0; i < re_countries_selector.length; i++) {
+                    var option = re_countries_selector.options[i];
+                    if (option.text == value[j]) {
+                        index = i;
+                        break;
+                    }
+                }
+                re_countries_selector.remove(index);
+            }
         })
     })
 </script>
