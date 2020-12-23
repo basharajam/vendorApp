@@ -75,9 +75,9 @@
                     </td>
 
                     <td class="datatable-cell-sorted datatable-cell">
-                            <a id="{{ $supplier->id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier_manager.suppliers.delete',$supplier->id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
-                            <a class="kt-nav__link"  href="{{ route('supplier_manager.suppliers.edit',$supplier->id) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
-                            <a class="kt-nav__link"  href="{{ route('supplier_manager.suppliers.products',$supplier->id) }}"  title="عرض المنتجات"><i class="kt-nav__link-icon color-primary flaticon-open-box"></i></a>
+                            <a id="{{ $supplier->id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier_manager.suppliers.delete',$supplier->id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash text-danger "></i></a>
+                            <a class="kt-nav__link"  href="{{ route('supplier_manager.suppliers.edit',$supplier->id) }}"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 text-primary "></i></a>
+                            <a class="kt-nav__link ml-5"  href="{{ route('supplier_manager.suppliers.products',$supplier->id) }}"  title="عرض المنتجات"><i class="kt-nav__link-icon color-primary flaticon2-open-box text-warning"></i></a>
                     </td>
                 </tr>
             @endforeach
