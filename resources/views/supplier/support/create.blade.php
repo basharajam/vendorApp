@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex flex-column-fluid">
+<div class="d-flex flex-column-fluid h-100">
     <div class="container-fluid">
 
-        <div class="card card-custom gutter-b d-flex">
+        <div class="card card-custom gutter-b d-flex  align-items-stretch">
             <div class="row">
                 <div class="col-md-5">
                     <div class="text-center pt-15 w-100">

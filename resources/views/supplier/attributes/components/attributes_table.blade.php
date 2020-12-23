@@ -124,10 +124,17 @@
                                 error:function(error){
                                     console.log(error);
                                 },
+                                complete:function(){
+                                    document.querySelectorAll('.add_term').forEach(elem => {
+                                        elem.disabled = false;
+                                    });
+                                }
+
                             });
             }
 
             $(".edit_taxonomy").click(function(event){
+
                             event.preventDefault();
                             let url = $(this).attr("data-action-name");
                             let id =$(this).attr('id');
@@ -154,7 +161,11 @@
                             callModal(url,taxonomy_data,'EditAttributeModal')
             });
             $('.add_term').click(function(event){
+
                 event.preventDefault();
+                document.querySelectorAll('.add_term').forEach(elem => {
+                    elem.disabled = true;
+                });
                             let url = $(this).attr("data-action-name");
                             let id =$(this).attr('id');
                             let taxonomy_type =$(this).attr('data-type');

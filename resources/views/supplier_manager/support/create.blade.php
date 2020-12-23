@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex flex-column-fluid">
-    <div class="container-fluid">
+<div class="d-flex flex-column-fluid h-100 pb-10">
+    <div class="container-fluid h-100">
 
-        <div class="card card-custom gutter-b d-flex">
-            <div class="row">
+        <div class="card card-custom gutter-b  h-100 d-flex align-items-center">
+            <div class="row h-100 d-flex align-items-center" >
                 <div class="col-md-5">
                     <div class="text-center pt-15 w-100">
                         <h1 class="h2 font-weight-bolder text-dark mb-6">هل أنت بحاجة إلى مساعدة؟</h1>

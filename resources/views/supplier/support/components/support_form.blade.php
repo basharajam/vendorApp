@@ -21,7 +21,7 @@
                         <span>الرسالة/الاستفسار</span>
                         <span class="required">*</span>
                     </label>
-                    <textarea class="form-control  form-control-lg" id="exampleTextarea" rows="3" name="message" required></textarea>
+                    <textarea class="form-control  form-control-lg" id="exampleTextarea" rows="11" name="message" required></textarea>
                 </div>
                 <!--end::Input-->
             </div>
