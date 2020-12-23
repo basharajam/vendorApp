@@ -13,9 +13,9 @@
                       <span> {{ str_replace('pa_','',$taxonomy->taxonomy) }}</span>
                     </h3>
                 </div>
-                <a href="#" data-type="{{ $taxonomy->taxonomy }}"  data-action-name="{{ route('supplier.attributes.addTerm') }}" title="اضافة مصطلح" class="btn btn-icon btn-success btn-xs add_term ml-3">
+                <button data-type="{{ $taxonomy->taxonomy }}"  data-action-name="{{ route('supplier.attributes.addTerm') }}" title="اضافة مصطلح" class="btn btn-icon btn-success btn-xs add_term ml-3">
                     <i class="flaticon2-plus font-weigh-bolder"></i>
-                </a>
+                </button>
                 @if($taxonomy->taxonomy== "pa_color" || $taxonomy->taxonomy=="pa_size" || $taxonomy->taxonomy=="pa_language" || $taxonomy->taxonomy=="pa_packing")
                 @else
                 <a href="#"  id="{{ $taxonomy->term_taxonomy_id }}" data-type="{{ $taxonomy->taxonomy }}"  data-action-name="{{ route('supplier.attributes.edit') }}" title="تعديل" class="btn btn-icon btn-primary btn-xs edit_attribute ml-3">
