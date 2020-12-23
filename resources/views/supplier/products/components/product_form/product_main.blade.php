@@ -13,7 +13,7 @@
                             <span>اسم المنتج</span>
                             <span class="required">*</span>
                         </label>
-                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('post_title') is-invalid @enderror" type="text" placeholder="" name="post_title" value="{{ $product->post_title  ?? old('post_title') }}"  required />
+                        <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('post_title') is-invalid @enderror" type="text" placeholder="" name="post_title" value="{{ $product->post_title  ?? old('post_title') }}"  required />
                         @error('post_title')
                         <div class="fv-plugins-message-container">
                             <div  class="fv-help-block">{{ $message }}</div>

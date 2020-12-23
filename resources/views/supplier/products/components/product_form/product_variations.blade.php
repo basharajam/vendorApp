@@ -46,7 +46,7 @@ if($product){
                                         <span>{{ str_replace('pa_','',$key) }}</span>
                                     </label>
                                     <div class="kt-input-icon d-flex justify-content-center" >
-                                        <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control form-control-solid   font-size-h6 ">
+                                        <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control    font-size-h6 ">
                                             <option value="0">اي قيمة</option>
                                             @foreach($attribute as $term)
                                             <option value="{{ $term->term_taxonomy_id }}" >{{ $term->term->name }}</option>

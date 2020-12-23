@@ -19,7 +19,7 @@
                                 <span> النسبة </span>
                                 <span class="required">*</span>
                             </label>
-                            <input  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="profit_ratio" value="{{ \Auth::user()->userable->profit_ratio ?? old('profit_ratio') }}" required  />
+                            <input  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="profit_ratio" value="{{ \Auth::user()->userable->profit_ratio ?? old('profit_ratio') }}" required  />
                         </div>
                     </div>
                 </div>

@@ -98,7 +98,7 @@ input.error {
                     <span>الاسم الكامل لصاحب الشركة المسجلة داخل الرخصة التجارية</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -119,7 +119,7 @@ input.error {
                     <span>اسم المستخدم</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus style="direction:ltr"/>
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus style="direction:ltr"/>
                 @error('name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -136,7 +136,7 @@ input.error {
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
-                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"/>
+                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"/>
                 <div  class="fv-plugins-message-container" id="">
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
@@ -163,7 +163,7 @@ input.error {
                 <span class="required">*</span>
             </label>
 
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr" />
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -177,7 +177,7 @@ input.error {
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>تاريخ الولادة</span>
             </label>
-            <input id="kt_datepicker_3" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="text" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
+            <input id="kt_datepicker_3" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="text" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
             @error('brithdate')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -227,7 +227,7 @@ input.error {
                <span>البريد الالكتروني</span>
                <span class="required">*</span>
            </label>
-           <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
+           <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
            @error('email')
            <div class="fv-plugins-message-container">
                <div  class="fv-help-block">{{ $message }}</div>
@@ -246,7 +246,7 @@ input.error {
         <input data-inputmask="'regex': '^[0-9]+$'"
             id="phone"
             required
-            class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6
+            class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6
             @error('mobile_number') is-invalid @enderror"
             type="text"
             placeholder=""
@@ -276,7 +276,7 @@ input.error {
                     <span>اسم الشركة</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
                 @error('company_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -301,7 +301,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المحل</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="company_shop_address" value="{{$supplier->company_shop_address ?? old('company_shop_address') }}"  autocomplete="national_number" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="company_shop_address" value="{{$supplier->company_shop_address ?? old('company_shop_address') }}"  autocomplete="national_number" />
                 @error('company_shop_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -317,7 +317,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المكتب</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المكتب" name="company_office_address" value="{{$supplier->company_office_address ?? old('company_office_address') }}"  />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المكتب" name="company_office_address" value="{{$supplier->company_office_address ?? old('company_office_address') }}"  />
                 @error('company_office_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -332,7 +332,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المستودع</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المستودع" name="company_warehouse_address" value="{{$supplier->company_warehouse_address ?? old('company_warehouse_address') }}"  />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المستودع" name="company_warehouse_address" value="{{$supplier->company_warehouse_address ?? old('company_warehouse_address') }}"  />
                 @error('company_warehouse_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -347,7 +347,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المصنع</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المصنع" name="company_factory_address" value="{{$supplier->company_factory_address ?? old('company_factory_address') }}"  />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المصنع" name="company_factory_address" value="{{$supplier->company_factory_address ?? old('company_factory_address') }}"  />
                 @error('company_factory_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -362,7 +362,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>تاريخ انشاء الشركة</span>
                 </label>
-                <input id="kt_datepicker_4" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
+                <input id="kt_datepicker_4" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
                 @error('company_created_at')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -377,7 +377,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المقاطعة التي تتبع لها الشركة</span>
                 </label>
-                <select id="provinceSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
+                <select id="provinceSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
                     <option></option>
                     @foreach($provinces as $province)
                         <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -397,7 +397,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المدينة التي تتبع لها الشركة</span>
                 </label>
-                <select id="cititesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="city_id" >
+                <select id="cititesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="city_id" >
                     <option></option>
                     @foreach($cities as $city)
                         <option @if(($supplier && $supplier->city_id == $city->id )|| old('city_id')==$city->id ) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
@@ -453,7 +453,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المنتجات التي تعمل بها الشركة</span>
                 </label>
-                <select id="cateogiresSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="">
+                <select id="cateogiresSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="">
                     @foreach($categories  as $category)
                         <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
                     @endforeach
@@ -472,7 +472,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>اهم الدول التي تعمل بها الشركة</span>
                 </label>
-                <select id="CountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
+                <select id="CountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
                     <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
                     <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت</option>
                     <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات</option>
@@ -495,7 +495,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>الدول التي لا يمكن بيع المنتجات لها</span>
                 </label>
-                <select id="ReCountriesSelector" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
+                <select id="ReCountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت</option>
                     <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات</option>
@@ -536,7 +536,7 @@ input.error {
                     </span>
                     <span class="required">*</span>
                 </label>
-                <input id="bank_account_number" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number" />
+                <input id="bank_account_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number" />
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -553,7 +553,7 @@ input.error {
                     </span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number" />
                 @error('bank_account_owner_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>

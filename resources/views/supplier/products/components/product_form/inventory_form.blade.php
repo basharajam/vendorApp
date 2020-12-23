@@ -12,7 +12,7 @@ if($product){
                 <span class="required">*</span>
                 <span>رقم الصنف</span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sku') is-invalid @enderror" type="text" placeholder="" name="_sku" value="{{ array_key_exists('_sku',$meta ) ? $meta['_sku']  :  old('_sku') }}" required  />
+            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sku') is-invalid @enderror" type="text" placeholder="" name="_sku" value="{{ array_key_exists('_sku',$meta ) ? $meta['_sku']  :  old('_sku') }}" required  />
             @error('_sku')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -29,7 +29,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title='يتحكم في ما إذا كان المنتج مدرجًا على أنه "متوفر" أو "غير متوفر".'></span>
             </label>
             <div class="kt-input-icon">
-                <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
+                <select  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
                         id="_stock_status"
                         name="_stock_status" required>
                     <option value="instock" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='instock') selected @endif>متوفر</option>
@@ -50,7 +50,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري. قم بتعيين حد أدنى للكمية المسموح بها لكل طلب. أدخل رقمًا ، 1 أو أكبر."></span>
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'"
-            id="_wc_min_qty_product" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('_wc_min_qty_product') is-invalid @enderror" type="text" placeholder="" name="_wc_min_qty_product" value="{{ array_key_exists('_wc_min_qty_product',$meta) ?  $meta['_wc_min_qty_product'] :  old('_wc_min_qty_product') }}"   />
+            id="_wc_min_qty_product" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_wc_min_qty_product') is-invalid @enderror" type="text" placeholder="" name="_wc_min_qty_product" value="{{ array_key_exists('_wc_min_qty_product',$meta) ?  $meta['_wc_min_qty_product'] :  old('_wc_min_qty_product') }}"   />
             @error('_wc_min_qty_product')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -66,7 +66,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اختياري. قم بتعيين الحد الأقصى للكمية المسموح بها لكل طلب. أدخل رقمًا ، 1 أو أكبر"></span>
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'"
-            id="_wc_max_qty_product" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 _wc_max_qty_product @error('_wc_max_qty_product') is-invalid @enderror" type="text" placeholder="" name="_wc_max_qty_product" value="{{ array_key_exists('_wc_max_qty_product',$meta) ? $meta['_wc_max_qty_product'] : old('_wc_max_qty_product') }}"   />
+            id="_wc_max_qty_product" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 _wc_max_qty_product @error('_wc_max_qty_product') is-invalid @enderror" type="text" placeholder="" name="_wc_max_qty_product" value="{{ array_key_exists('_wc_max_qty_product',$meta) ? $meta['_wc_max_qty_product'] : old('_wc_max_qty_product') }}"   />
 
             <div class="fv-plugins-message-container">
                 <div  id="_wc_max_qty_product_help" class="fv-help-block"></div>
@@ -87,7 +87,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية كل كارتون"></span>
             </label>
             <input id="al_carton_qty" data-inputmask="'regex': '^[0-9]+$'"
-            class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_carton_qty') is-invalid @enderror" type="text" placeholder="" name="al_carton_qty" value="{{ array_key_exists('al_carton_qty',$meta) ?  $meta['al_carton_qty'] : old('al_carton_qty') }}"  required />
+            class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_carton_qty') is-invalid @enderror" type="text" placeholder="" name="al_carton_qty" value="{{ array_key_exists('al_carton_qty',$meta) ?  $meta['al_carton_qty'] : old('al_carton_qty') }}"  required />
             @error('al_carton_qty')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -104,7 +104,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية كل كارتون"></span>
             </label>
             <div class="kt-input-icon">
-                <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
+                <select  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
                         id="price_for"
                         name="al_price_for" required>
                         <option value="box" @if( array_key_exists('al_price_for',$meta)  && $meta['al_price_for']=="box") selected @endif>علبة</option>
@@ -125,7 +125,7 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية الحزمة المختارة."></span>
             </label>
-            <input data-inputmask="'regex': '^[0-9]+$'" id="al_price_for_desc" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_price_for_desc') is-invalid @enderror" type="text" placeholder="" name="al_price_for_desc" value="{{$meta['al_price_for_desc'] ??  old('al_price_for_desc') }}"   />
+            <input data-inputmask="'regex': '^[0-9]+$'" id="al_price_for_desc" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_price_for_desc') is-invalid @enderror" type="text" placeholder="" name="al_price_for_desc" value="{{$meta['al_price_for_desc'] ??  old('al_price_for_desc') }}"   />
             @error('al_price_for_desc')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -142,7 +142,7 @@ if($product){
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل عدد النماذج المختلطة في العبوة."></span>
             </label>
-            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_mix_of_package') is-invalid @enderror" type="text" placeholder="" name="al_mix_of_package" value="{{$meta['al_mix_of_package'] ?? old('al_mix_of_package') }}"   />
+            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_mix_of_package') is-invalid @enderror" type="text" placeholder="" name="al_mix_of_package" value="{{$meta['al_mix_of_package'] ?? old('al_mix_of_package') }}"   />
             @error('al_mix_of_package')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

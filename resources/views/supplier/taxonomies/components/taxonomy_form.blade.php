@@ -9,10 +9,10 @@
                  <span> الاسم </span>
                  <span class="required">*</span>
              </label>
-             <input id="taxonomy_name_input" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required  />
+             <input id="taxonomy_name_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required  />
          </div>
      </div>
-     <input id="taxonomy_slug_input" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="hidden" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required  />
+     <input id="taxonomy_slug_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="hidden" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required  />
      @if($type=="product_cat")
      <div class="col-12">
          <div class="form-group">
@@ -22,7 +22,7 @@
                  <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="اجباري : اختر الصنف الاساسي لهذا الصنف"></span>
              </label>
              <div class="kt-input-icon">
-                 <select  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
+                 <select  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
                          id="parent"
                          name="parent"
                          required
@@ -41,7 +41,7 @@
              <label class="font-size-h6 font-weight-bolder text-dark">
                  <span>اختر صورة </span>
              </label>
-             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""   />
+             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""   />
          </div>
      </div>
      @endif

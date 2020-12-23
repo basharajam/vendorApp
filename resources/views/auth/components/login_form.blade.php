@@ -16,7 +16,7 @@
     <!--begin::Form group-->
     <div class="form-group">
         <label class="font-size-h6 font-weight-bolder text-dark text-right d-block">البريد الالكتروني</label>
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg text-right d-block @error('email') is-invalid  @enderror"
+        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block @error('email') is-invalid  @enderror"
                type="text"
                name="email"
                value="{{ old('email') }}"
@@ -34,7 +34,7 @@
         <div class="d-flex justify-content-between mt-n5">
             <label class="font-size-h6 font-weight-bolder text-dark pt-5 text-right d-block w-100">كلمة المرور</label>
         </div>
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off" />
+        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off" />
         <a href="{{ route('reset-password-page') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5 text-right d-block" id="kt_login_forgot"> نسيت كلمة المرور ؟</a>
     </div>
     <!--end::Form group-->

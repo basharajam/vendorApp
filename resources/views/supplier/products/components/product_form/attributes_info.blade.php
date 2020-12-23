@@ -19,7 +19,7 @@ if($product){
                             <span class="required">*</span>
                         </label>
                         <div class="kt-input-icon d-flex justify-contenct-between">
-                            <select  data-post="{{ $product->ID ?? 0 }}"  class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}"
+                            <select  data-post="{{ $product->ID ?? 0 }}"  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}"
                                     id="attriubtes"
                                     name="attriubtes">
                                     <option></option>

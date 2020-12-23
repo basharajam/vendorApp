@@ -12,7 +12,7 @@
                         <span>الاسم</span>
                         <span class="required">*</span>
                     </label>
-                    <input id="name"  name="name" type="text" class="form-control form-control-solid form-control-lg" placeholder="الاسم الكامل" required>
+                    <input id="name"  name="name" type="text" class="form-control  form-control-lg" placeholder="الاسم الكامل" required>
                     @error('name')
                     <div class="fv-plugins-message-container">
                         <div  class="fv-help-block">{{ $message }}</div>
@@ -26,7 +26,7 @@
                         <span>الهاتف</span>
                         <span class="required">*</span>
                     </label>
-                    <input id="phone" name="phone" type="text" class="form-control form-control-solid form-control-lg" placeholder="رقم الهاتف" required>
+                    <input id="phone" name="phone" type="text" class="form-control  form-control-lg" placeholder="رقم الهاتف" required>
                     @error('phone')
                     <div class="fv-plugins-message-container">
                         <div  class="fv-help-block">{{ $message }}</div>
@@ -40,7 +40,7 @@
                         <span>البريد الالكتروني</span>
                         <span class="required">*</span>
                     </label>
-                    <input id="email" type="email" name="email" class="form-control form-control-solid form-control-lg" placeholder="البرديد الالكتروني" required>
+                    <input id="email" type="email" name="email" class="form-control  form-control-lg" placeholder="البرديد الالكتروني" required>
                     @error('email')
                     <div class="fv-plugins-message-container">
                         <div  class="fv-help-block">{{ $message }}</div>
@@ -59,7 +59,7 @@
                         <span>الرسالة/الاستفسار</span>
                         <span class="required">*</span>
                     </label>
-                    <textarea class="form-control form-control-solid form-control-lg" id="exampleTextarea" rows="3" name="message" required></textarea>
+                    <textarea class="form-control  form-control-lg" id="exampleTextarea" rows="3" name="message" required></textarea>
                 </div>
                 <!--end::Input-->
             </div>

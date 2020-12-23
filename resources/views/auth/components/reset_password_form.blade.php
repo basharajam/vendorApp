@@ -13,7 +13,7 @@
     <!--end::Title-->
     <!--begin::Form group-->
     <div class="form-group">
-        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 d-block text-right @error('email') is-invalid @enderror" type="email" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
+        <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 d-block text-right @error('email') is-invalid @enderror" type="email" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
          @error('email')
          <div class="fv-plugins-message-container">
              <div  class="fv-help-block">{{ $message }}</div>
