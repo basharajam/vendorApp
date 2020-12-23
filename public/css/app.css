@@ -112688,3 +112688,14 @@ input[name=name] {
   min-height: 100%;
 }
 
+.input-group-prepend .select2-container--default .select2-selection--single,
+.input-group-prepend .select2-container--default .select2-selection--multiple {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.input-group-prepend .input-group-text {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
