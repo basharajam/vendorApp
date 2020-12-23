@@ -9,7 +9,7 @@
         <!--end::Logo-->
         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تسجيل دخول</h2>
         <span class="text-muted font-weight-bold font-size-h5 d-block">أو</span>
-        <span class="text-muted font-weight-bold font-size-h5"><a href="{{ route('supplier_registeration_view') }}" class="text-primary font-weight-bolder" >إنشاء حساب جديد</a></span>
+        <span class="text-muted font-weight-bold font-size-h5"><a href="{{ route('register') }}" class="text-primary font-weight-bolder" >إنشاء حساب جديد</a></span>
         {{-- <a href="{{ route('supplier_registeration_view') }}" class="text-primary font-weight-bolder" >إنشاء حساب جديد</a></span> --}}
     </div>
     <!--end::Title-->
