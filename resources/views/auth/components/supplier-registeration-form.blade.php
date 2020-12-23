@@ -667,18 +667,18 @@ input.error {
         $("#provinceSelector").select2({
             dir: "rtl",
         });
-        $("#provinceSelector").on('change',function(){
-            $("#cititesSelector").empty();
+        $(document).on('change','#provinceSelector',function(){
             let province_id = $(this).val();
             let citiesselector = document.getElementById('cititesSelector');
+            citiesselector.options.length = 0;
             let filtered_cities = cities.filter((item)=>{
-                return item.province_id = province_id
+                return item.province_id == province_id
             });
                 let emptyOption = new Option('','');
                 citiesselector.add(emptyOption,undefined);
             filtered_cities.forEach((item)=>{
-                let newOption = new Option(item.name,item.id);
-                citiesselector.add(newOption,undefined);
+                let newOption = new Option(item.name,item.id,undefined);
+                citiesselector.add(newOption);
 
             })
         });
@@ -689,7 +689,6 @@ input.error {
                     var re_countries_selector_selected = [...re_countries_selector.options]
                                                     .filter(option => option.selected)
                                                     .map(option => option.value);
-                console.log('selected',re_countries_selector_selected);
             re_countries_selector.options.length = 0;
             for(let c=0;c<countries.length;c++){
                     re_countries_selector.add(new Option(countries[c],countries[c],undefined,re_countries_selector_selected.indexOf(countries[c]) > -1 ? true:false));
@@ -697,7 +696,6 @@ input.error {
 
             for(let j=0;j<value.length;j++){
                 let index = -1;
-                console.log(re_countries_selector.options,value);
                 for (var i = 0; i < re_countries_selector.length; i++) {
                     var option = re_countries_selector.options[i];
                     if (option.text == value[j]) {
@@ -879,7 +877,6 @@ input.error {
         $( "input[name='ischinese']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
-            console.log('selected chinese or not',selected_value);
             let uploadedDocumentMap = {};
             switch(selected_value){
                 case "1":
@@ -1008,7 +1005,6 @@ input.error {
         var company_office_address = document.getElementsByName('company_office_address')[0].value;
         var company_warehouse_address = document.getElementsByName('company_warehouse_address')[0].value;
         var company_factory_address = document.getElementsByName('company_factory_address')[0].value;
-        console.log(company_shop_address.length)
         if (
             (company_shop_address.length==0)
             &&
