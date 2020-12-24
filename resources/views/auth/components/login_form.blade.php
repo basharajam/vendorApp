@@ -43,7 +43,7 @@
             </label>
         </div>
         <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password"
-        required autocomplete="off"   title="الرجاء تعبئة هذه الحقل"
+        required autocomplete="off"   title="الرجاء تعبئة هذا الحقل"
         oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
         oninput="setCustomValidity('')"
         />
