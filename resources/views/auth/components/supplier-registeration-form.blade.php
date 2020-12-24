@@ -748,7 +748,7 @@ input.error {
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create' && Route::currentRouteName()!="supplier_manager.suppliers.edit") disabled  @endif class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
+                <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create' && Route::currentRouteName()!="supplier_manager.suppliers.edit") disabled  @endif class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
                 <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
             </div>
             <!--end::Form group-->
