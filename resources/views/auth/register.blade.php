@@ -43,7 +43,7 @@
                            <!--begin::Form-->
                            <div class="d-flex justify-content-center h-100 w-90 pr-10 pl-10" >
                                <div class="row">
-                                    <div class="col-12 mb-10" style="text-align: center">
+                                    <div class="col-12" style="text-align: center">
                                         <div class="text-center pb-8">
                                             <!--begin::Logo-->
                                             <a href="/" class="text-center mb-5 d-block">
