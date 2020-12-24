@@ -346,8 +346,8 @@ h6{
     height: 80px;
 }
 .select2-selection.select2-selection--single{
-    background-color: #F3F6F9;
-    border-color: #F3F6F9;
+    background-color: #fff;
+    border-color: #3F4254;
     color: #3F4254;
     height: 40px;
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
@@ -449,7 +449,8 @@ input[name=email], input[name=password], input[name=password_confirmation],input
   }
 .input-group-prepend .input-group-text {
     border-top-right-radius: 0px;;
-    border-bottom-right-radius: 0px;;
+    border-bottom-right-radius: 0px;
+    border-color:#3F4254;
 }
 .form-control{
     border:1px solid #3F4254 !important;
@@ -467,4 +468,12 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 }
 .radio.radio-outline > span{
     border-color:#666;
+}
+.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple{
+    border :1px solid #3F4254;
+
+}
+.input-group-prepend .select2-container--default .select2-selection--single , .input-group-prepend .select2-container--default .select2-selection--multiple
+{
+    border-left:0px;
 }
