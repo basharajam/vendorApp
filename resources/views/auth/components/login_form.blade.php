@@ -22,6 +22,7 @@
                name="email"
                value="{{ old('email') }}"
                required
+               title="الرجاء تعبئة هذه الحقل"
                autocomplete="off" />
         @error('email')
         <div class="fv-plugins-message-container">
@@ -38,7 +39,7 @@
                 <a href="{{ route('reset-password-page') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary  text-right d-block" id="kt_login_forgot"> نسيت كلمة المرور ؟</a>
             </label>
         </div>
-        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off" />
+        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off"   title="الرجاء تعبئة هذه الحقل" />
     </div>
     <!--end::Form group-->
     <!--begin::Action-->
