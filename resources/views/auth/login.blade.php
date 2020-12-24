@@ -33,7 +33,7 @@
             <!--begin::Aside-->
             <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
                 <!--begin: Aside Container-->
-                <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
+                <div class="d-flex flex-column-fluid flex-column justify-content-between">
 
                     <!--begin::Aside body-->
                     <div class="d-flex flex-column-fluid flex-column align-items-center">

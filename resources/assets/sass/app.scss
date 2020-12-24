@@ -454,3 +454,8 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 .system-color {
    color: $light-blue !important;
 }
+.btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-primary:focus:not(.btn-text), .btn.btn-primary.focus:not(.btn-text){
+    color: #ffffff;
+    background-color: #131628;
+    border-color: #131628;
+}
