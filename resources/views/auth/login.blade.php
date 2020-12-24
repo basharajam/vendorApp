@@ -29,7 +29,7 @@
 <body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
     <div class="d-flex flex-column flex-root">
         <!--begin::Login-->
-        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row-reverse   flex-column-fluid bg-white" id="kt_login">
+        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row-reverse  justify-content-center flex-column-fluid bg-white" id="kt_login">
             <!--begin::Aside-->
             <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
                 <!--begin: Aside Container-->
@@ -53,19 +53,7 @@
                 <!--end: Aside Container-->
             </div>
             <!--begin::Aside-->
-            <!--begin::Content-->
-            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
-                <!--begin::Title-->
-                <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <img src="{{ asset('images/logo.png') }}" class="max-h-200px max-w-200px text-center" alt="" />
-                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">نظام الموردين</h3>
-                </div>
-                <!--end::Title-->
-                <!--begin::Image-->
-                <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('/images/login-visual-2.svg') }});"></div>
-                <!--end::Image-->
-            </div>
-            <!--end::Content-->
+
         </div>
         <!--end::Login-->
     </div>

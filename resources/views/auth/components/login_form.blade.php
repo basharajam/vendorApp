@@ -32,10 +32,12 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div class="d-flex justify-content-between mt-n5">
-            <label class="font-size-h6 font-weight-bolder text-dark pt-5 text-right d-block w-100">كلمة المرور</label>
+            <label class="font-size-h6 font-weight-bolder text-dark pt-5 text-right d-flex w-100 justify-content-between align-items-center">
+                <span>كلمة المرور</span>
+                <a href="{{ route('reset-password-page') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary  text-right d-block" id="kt_login_forgot"> نسيت كلمة المرور ؟</a>
+            </label>
         </div>
         <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off" />
-        <a href="{{ route('reset-password-page') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5 text-right d-block" id="kt_login_forgot"> نسيت كلمة المرور ؟</a>
     </div>
     <!--end::Form group-->
     <!--begin::Action-->
