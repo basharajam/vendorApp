@@ -3,7 +3,7 @@
     <!--begin::Title-->
     <div class="text-center pb-8">
          <!--begin::Logo-->
-         <a href="/" class="text-center pt-2 mb-5 d-block">
+         <a href="/" class="text-center mb-5 d-block">
             <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
         </a>
         <!--end::Logo-->
