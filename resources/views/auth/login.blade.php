@@ -38,7 +38,7 @@
                     <!--begin::Aside body-->
                     <div class="d-flex flex-column-fluid flex-column align-items-center">
                         <!--begin::Signin-->
-                        <div class="login-form login-signin py-11">
+                        <div class="login-form login-signin py-11 pl-6 pr-6">
                             <!--begin::Form-->
                             @include('auth.components.login_form')
                             <!--end::Form-->

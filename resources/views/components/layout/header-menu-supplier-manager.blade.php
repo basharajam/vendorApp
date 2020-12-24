@@ -12,7 +12,6 @@
                     <li class="kt-menu__item kt-menu__item--rel {{ (Route::currentRouteName()  == 'supplier_manager.profit_ratio.index') ? ' kt-menu__item--active' : '' }} kt-menu__item--open"  aria-haspopup="true"><a href="{{ route('supplier_manager.profit.index') }}"  class="kt-menu__link "><span class="kt-menu__link-text">نسبة الربح</span><i class=""></i></a></li>
                     <li class="kt-menu__item kt-menu__item--rel {{ (request()->is('supplier_manager/products/*') || request()->is('supplier_manager/products')) ? ' kt-menu__item--active' : '' }} kt-menu__item--open"  aria-haspopup="true"><a href="{{ route('supplier_manager.suppliers.all_products') }}"  class="kt-menu__link "><span class="kt-menu__link-text">المنتجات</span><i class=""></i></a></li>
 
-
                 </ul>
             </div>
         </div>
