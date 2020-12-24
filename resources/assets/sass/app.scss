@@ -425,62 +425,9 @@ input[name=email], input[name=password], input[name=password_confirmation],input
   .zoom:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
-  .form-control.form-control-solid{
-    transition: color all 0.3s ease-in;
-    -moz-transition: color all 0.3s ease-in;
-    -o-transition: color all 0.3s ease-in;
-    -ms-transition: color all 0.3s ease-in;
-    -webkit-transition: color all 0.3s ease-in;
-    background-color: #fff;
-    border-color:  #E4E6EF;
-
-  }
-  .form-control-solid {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 1.3rem + 2px);
-    padding: 0.65rem 1rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #3F4254;
-    background-color: #ffffff;
-    background-clip: padding-box;
-    border: 1px solid #E4E6EF;
-    border-radius: 0.42rem;
-    box-shadow: none;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
-    @media (prefers-reduced-motion: reduce) {
-      .form-control-solid {
-        transition: none; } }
-    .form-control-solid::-ms-expand {
-      background-color: transparent;
-      border: 0; }
-    .form-control-solid:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 #3F4254; }
-    .form-control-solid:focus {
-      color: #3F4254;
-      background-color: #ffffff;
-      border-color: #9cb8ff;
-      outline: 0; }
-    .form-control-solid::-moz-placeholder {
-      color: #B5B5C3;
-      opacity: 1; }
-    .form-control-solid:-ms-input-placeholder {
-      color: #B5B5C3;
-      opacity: 1; }
-    .form-control-solid::placeholder {
-      color: #B5B5C3;
-      opacity: 1; }
-    .form-control-solid:disabled, .form-control[readonly] {
-      background-color: #F3F6F9;
-      opacity: 1; }
 
 
-  .form-control.form-control-solid:hover , .form-control.form-control-solid:focus{
-      border-color: #ccc;
-  }
+
   .iti{
       display:block !important;
   }
@@ -500,4 +447,10 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 .input-group-prepend .input-group-text {
     border-top-right-radius: 0px;;
     border-bottom-right-radius: 0px;;
+}
+.form-control{
+    border:1px solid #3F4254 !important;
+}
+.system-color {
+   color: $light-blue !important;
 }
