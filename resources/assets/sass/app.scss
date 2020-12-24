@@ -407,6 +407,9 @@ a.disabled {
     pointer-events: none;
     cursor: default;
   }
+  .option{
+      border:1px solid #666;
+  }
 .option.bold{
     border:1px solid #333;
 

@@ -78,9 +78,9 @@
 </head>
 
 <body id="kt_body" style="" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
-    <div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-column justify-content-center flex-root">
         <!--begin::Login-->
-        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+        <div class="login login-2 login-signin-on d-flex flex-column justify-content-center flex-lg-row flex-column-fluid bg-white" id="kt_login">
             <!--begin::Aside-->
             <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden" style="max-width:900px;">
                 <!--begin: Aside Container-->
@@ -117,18 +117,7 @@
             </div>
 
             <!--begin::Aside-->
-            <!--begin::Content-->
-            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
-                <!--begin::Title-->
-                <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <img style="width:100px;height:100px" src="{{ asset('/images/logo.png') }}">
-                     <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">نظام موردين</h3>
-                </div>
-                <!--end::Title-->
-                <!--begin::Image-->
-                <!--end::Image-->
-            </div>
-            <!--end::Content-->
+
         </div>
         <!--end::Login-->
     </div>
