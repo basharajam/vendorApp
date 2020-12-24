@@ -22,7 +22,7 @@
                name="email"
                value="{{ old('email') }}"
                required
-               title="الرجاء تعبئة هذه الحقل"
+               title="الرجاء تعبئة هذا الحقل"
                autocomplete="off"
                oninvalid="this.setCustomValidity('الرجاء ادخال بريدك الالكتروني')"
                 oninput="setCustomValidity('')"
