@@ -459,3 +459,9 @@ input[name=email], input[name=password], input[name=password_confirmation],input
     background-color: #131628;
     border-color: #131628;
 }
+.option .option-label .option-body{
+    color:#444;
+}
+.radio.radio-outline > span{
+    border-color:#666;
+}
