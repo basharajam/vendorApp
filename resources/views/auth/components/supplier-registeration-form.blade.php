@@ -62,7 +62,7 @@ input.error {
                     <span class="required">*</span>
                 </label>
                 <div class="col-12 col-form-label">
-                    <div class="radio-inline">
+                <div class="radio-inline">
                         <label class="radio radio-success">
                             <input  value="1"
                                     type="radio"
@@ -185,7 +185,72 @@ input.error {
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>تاريخ الولادة</span>
             </label>
-            <input id="kt_datepicker_3" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('brithdate') is-invalid @enderror" type="text" placeholder="" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"   />
+            <div class="w-100 d-flex justify-content-between">
+                <div class="col">
+                    <select id="day_birthdate" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                        <option >اليوم</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                </div>
+
+               <div class="col ">
+                <select id="month_birthdate" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                    <option value="">الشهر</option>
+                    <option value="01">كانون الثاني</option>
+                    <option value="02">شباط</option>
+                    <option value="03">آذار</option>
+                    <option value="04">نيسان</option>
+                    <option value="05">آيار</option>
+                    <option value="06">حزيران</option>
+                    <option value="07">تموز</option>
+                    <option value="08">آب</option>
+                    <option value="09">ايلول</option>
+                    <option value="10">تشرين الأول</option>
+                    <option value="11">تشرين الثاني</option>
+                    <option value="12">كانون الأول</option>
+                </select>
+               </div>
+               <div class="col ">
+                <select id="year_birthdate" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6">
+                    <option value="2011">السنة</option>
+                    @for($year=1900;$year<=date("Y");$year++)
+                    <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                </select>
+               </div>
+                <input type="hidden" id="birthdate" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}" />
+
+            </div>
             @error('brithdate')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -378,7 +443,72 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>تاريخ انشاء الشركة</span>
                 </label>
-                <input id="kt_datepicker_4" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
+                <div class="w-100 d-flex justify-content-between">
+                    <div class="col">
+                        <select id="day_company" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                            <option >اليوم</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                    </div>
+
+                   <div class="col ">
+                    <select id="month_company" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                        <option value="">الشهر</option>
+                        <option value="01">كانون الثاني</option>
+                        <option value="02">شباط</option>
+                        <option value="03">آذار</option>
+                        <option value="04">نيسان</option>
+                        <option value="05">آيار</option>
+                        <option value="06">حزيران</option>
+                        <option value="07">تموز</option>
+                        <option value="08">آب</option>
+                        <option value="09">ايلول</option>
+                        <option value="10">تشرين الأول</option>
+                        <option value="11">تشرين الثاني</option>
+                        <option value="12">كانون الأول</option>
+                    </select>
+                   </div>
+                   <div class="col ">
+                    <select id="year_company" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6">
+                        <option value="2011">السنة</option>
+                        @for($year=1900;$year<=date("Y");$year++)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                        @endfor
+                    </select>
+                   </div>
+                    <input type="hidden" id="company_created_at" name="company_created_at" value="{{$supplier->company_created_at ?? old('company_created_at') }}" />
+
+                </div>
                 @error('company_created_at')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -687,6 +817,35 @@ input.error {
         $("#provinceSelector").select2({
             dir: "rtl",
         });
+        $("#day_birthdate").select2({
+            dir:"rtl"
+        });
+        $("#day_company").select2({
+            dir:"rtl"
+        });
+        $("#month_company").select2({
+            dir:"rtl"
+        });
+        $("#year_company").select2({
+            dir:"rtl"
+        });
+
+        $("#month_birthdate").select2({
+            dir:"rtl"
+        });
+        $("#year_birthdate").select2({
+            dir:"rtl"
+        });
+        $('#day_birthdate,#month_birthdate,#year_birthdate').change(function() {
+            $('#birthdate').datepicker('setDate',
+                    new Date($('#year_birthdate').val() - 0, $('#month_birthdate').val() - 1, $('#day_birthdate').val() - 0));
+            console.log($("#birthdate").val());
+        });
+        $('#day_company,#month_compnay,#year_company').change(function() {
+            $('#company_created_at').datepicker('setDate',
+                    new Date($('#year_company').val() - 0, $('#month_company').val() - 1, $('#day_company').val() - 0));
+            console.log($("#company_created_at").val());
+        });
         $(document).on('change','#provinceSelector',function(){
             let province_id = $(this).val();
             let citiesselector = document.getElementById('cititesSelector');
@@ -940,15 +1099,15 @@ input.error {
                     let passport_image = document.getElementById('passport_image');
                     let visa_image = document.getElementById('visa_image');
 
-                    $("#kt_datepicker_2, #kt_datepicker_3").datepicker({
-                        rtl: true,
-                        todayHighlight: !0,
-                        orientation: "bottom left",
-                        templates: t,
-                        language: 'ar',
-                        endDate:'12/31/2060'
-
+                    $("#year_passport").select2({dir:"rtl"});
+                    $("#day_passport").select2({dir:"rtl"});
+                    $("#month_passport").select2({dir:"rtl"});
+                    $('#day_passport,#month_passport,#year_passport').change(function() {
+                        $('#passport_end_date').datepicker('setDate',
+                                new Date($('#year_passport').val() - 0, $('#month_passport').val() - 1, $('#day_passport').val() - 0));
+                        console.log($("#passport_end_date").val());
                     });
+
                     let $dropzone_passport_image =new Dropzone('#passport_image',{
                         url:   '{{ route('supplier.storeImage') }}',
                         addRemoveLinks: true,

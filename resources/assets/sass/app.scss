@@ -477,3 +477,10 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 {
     border-left:0px;
 }
+.radio>span {
+    background-color: #fff;
+
+}
+.radio.radio-success > span{
+    border:1px solid #3F4254;
+}
