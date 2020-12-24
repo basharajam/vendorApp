@@ -21,7 +21,8 @@
                         <span>الرسالة/الاستفسار</span>
                         <span class="required">*</span>
                     </label>
-                    <textarea class="form-control  form-control-lg" id="exampleTextarea" rows="11" name="message" required></textarea>
+                    <textarea class="form-control  form-control-lg" id="exampleTextarea" rows="11" name="message" required oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                    oninput="setCustomValidity('')"></textarea>
                 </div>
                 <!--end::Input-->
             </div>

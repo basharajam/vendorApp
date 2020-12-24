@@ -9,10 +9,14 @@
                  <span> الاسم </span>
                  <span class="required">*</span>
              </label>
-             <input id="taxonomy_name_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required  />
+             <input id="taxonomy_name_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required
+             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
          </div>
      </div>
-     <input id="taxonomy_slug_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="hidden" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required  />
+     <input id="taxonomy_slug_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="hidden" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required
+     oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
      @if($type=="product_cat")
      <div class="col-12">
          <div class="form-group">
@@ -26,6 +30,7 @@
                          id="parent"
                          name="parent"
                          required
+
                          >
                      <option ></option>
                      @foreach($categories  as $category)

@@ -14,7 +14,11 @@
     <!--end::Title-->
     <!--begin::Form group-->
     <div class="form-group">
-        <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 d-block text-right @error('otp') is-invalid @enderror" type="text" placeholder="" name="otp" value="{{ old('otp') }}" required  autofocus />
+        <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 d-block text-right @error('otp') is-invalid @enderror" type="text" placeholder=""
+         name="otp" value="{{ old('otp') }}" required  autofocus
+         oninvalid="this.setCustomValidity('الرجاء ادخال الرمز')"
+         oninput="setCustomValidity('')"
+         />
          @error('opt')
          <div class="fv-plugins-message-container">
              <div  class="fv-help-block">{{ $message }}</div>

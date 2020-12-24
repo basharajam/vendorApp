@@ -98,7 +98,9 @@ input.error {
                     <span>الاسم الكامل لصاحب الشركة المسجلة داخل الرخصة التجارية</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror" type="text" placeholder="الاسم" name="first_name" value="{{$supplier->first_name ??  old('first_name') }}" required autofocus
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 @error('first_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -119,7 +121,9 @@ input.error {
                     <span>اسم المستخدم</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus style="direction:ltr"/>
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"  name="name" value="{{$supplier->user->name ?? old('name') }}" required autofocus style="direction:ltr"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 @error('name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -136,7 +140,9 @@ input.error {
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
-                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"/>
+                <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 <div  class="fv-plugins-message-container" id="">
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
@@ -163,7 +169,9 @@ input.error {
                 <span class="required">*</span>
             </label>
 
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -227,7 +235,10 @@ input.error {
                <span>البريد الالكتروني</span>
                <span class="required">*</span>
            </label>
-           <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder="" name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"/>
+           <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder=""
+            name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"
+            oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
            @error('email')
            <div class="fv-plugins-message-container">
                <div  class="fv-help-block">{{ $message }}</div>
@@ -258,6 +269,8 @@ input.error {
             value = "{{ str_replace('+971','',$supplier->mobile_number) }}"
             @else value="{{ old('mobile_number_without_code') }}"
             @endif
+            oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"
               />
 
         @error('mobile_number')
@@ -276,7 +289,10 @@ input.error {
                     <span>اسم الشركة</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة" name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('company_name') is-invalid @enderror" type="text" placeholder="اسم الشركة"
+                name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 @error('company_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -553,7 +569,9 @@ input.error {
                     </span>
                     <span class="required">*</span>
                 </label>
-                <input id="bank_account_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number" />
+                <input id="bank_account_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"/>
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -570,7 +588,9 @@ input.error {
                     </span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')" />
                 @error('bank_account_owner_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
