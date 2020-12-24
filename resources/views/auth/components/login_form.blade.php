@@ -23,7 +23,10 @@
                value="{{ old('email') }}"
                required
                title="الرجاء تعبئة هذه الحقل"
-               autocomplete="off" />
+               autocomplete="off"
+               oninvalid="this.setCustomValidity('الرجاء ادخال بريدك الالكتروني')"
+                oninput="setCustomValidity('')"
+               />
         @error('email')
         <div class="fv-plugins-message-container">
             <div  class="fv-help-block">{{ $message }}</div>
@@ -39,7 +42,11 @@
                 <a href="{{ route('reset-password-page') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary  text-right d-block" id="kt_login_forgot"> نسيت كلمة المرور ؟</a>
             </label>
         </div>
-        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password" required autocomplete="off"   title="الرجاء تعبئة هذه الحقل" />
+        <input class="form-control  h-auto py-7 px-6 rounded-lg text-right d-block" type="password" name="password"
+        required autocomplete="off"   title="الرجاء تعبئة هذه الحقل"
+        oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
+        oninput="setCustomValidity('')"
+        />
     </div>
     <!--end::Form group-->
     <!--begin::Action-->
