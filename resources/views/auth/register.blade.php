@@ -35,13 +35,13 @@
             <!--begin::Aside-->
             <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden w-100">
                 <!--begin: Aside Container-->
-                <div class="w-100">
+                <div class="w-100 pr-5 pl-5">
                     <!--begin::Aside body-->
-                    <div class="w-100 d-flex justify-content-center">
+                    <div class="w-90 d-flex justify-content-center">
                         <!--begin::Signin-->
-                        <div class="login-form login-signin py-11 w-100">
+                        <div class="login-form login-signin py-11 w-90">
                            <!--begin::Form-->
-                           <div class="d-flex justify-content-center h-100 w-100" >
+                           <div class="d-flex justify-content-center h-100 w-90 pr-10 pl-10" >
                                <div class="row">
                                     <div class="col-12 mb-10" style="text-align: center">
                                         <div class="text-center pb-8">
