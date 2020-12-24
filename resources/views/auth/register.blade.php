@@ -26,25 +26,33 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+<body id="kt_body" style="background-color:#fff" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
     <div class="d-flex flex-column flex-root">
         <div class="row">
             <div class="col-12">
                    <!--begin::Login-->
-        <div class="login w-100 login-2 login-signin-on d-flex flex-column flex-lg-row-reverse   flex-column-fluid bg-white" id="kt_login">
+        <div class="login w-100 login-2 login-signin-on d-flex flex-column flex-lg-row-reverse justify-content-center  h-100   flex-column-fluid bg-white" id="kt_login">
             <!--begin::Aside-->
             <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden w-100">
                 <!--begin: Aside Container-->
-                <div class="py-7 px-5 py-lg-11 px-lg-33">
+                <div class="w-100">
                     <!--begin::Aside body-->
-                    <div class="w-100">
+                    <div class="w-100 d-flex justify-content-center">
                         <!--begin::Signin-->
-                        <div class="login-form login-signin py-11 w-90">
+                        <div class="login-form login-signin py-11 w-100">
                            <!--begin::Form-->
-                           <div class="d-flex justify-content-center h-100 w-90" >
+                           <div class="d-flex justify-content-center h-100 w-100" >
                                <div class="row">
                                     <div class="col-12 mb-10" style="text-align: center">
-                                        <h3>الرجاء اختيار نوع الحساب</h3>
+                                        <div class="text-center pb-8">
+                                            <!--begin::Logo-->
+                                            <a href="/" class="text-center mb-5 d-block">
+                                               <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
+                                           </a>
+                                           <!--end::Logo-->
+                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 system-color ">نظام الموردين</h2>
+                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">الرجاء اختيار نوع الحساب</h2>
+                                       </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 parent">
@@ -84,7 +92,7 @@
                                         <div class="col-12">
                                             <!--begin::Form group-->
                                             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                                <a href="#" id="selected_account_type"   type="button" id="" class="btn btn-primary font-weight-bolder disabled font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                                <a href="#" id="selected_account_type"   type="button" id="" class="btn btn-dark font-weight-bolder disabled font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
                                             </div>
                                             <!--end::Form group-->
                                         </div>
@@ -103,19 +111,7 @@
                 <!--end: Aside Container-->
             </div>
             <!--begin::Aside-->
-            <!--begin::Content-->
-            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
-                <!--begin::Title-->
-                <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <img src="{{ asset('images/logo.png') }}" class="max-h-200px max-w-200px text-center" alt="" />
-                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">نظام الموردين</h3>
-                </div>
-                <!--end::Title-->
-                <!--begin::Image-->
-                <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('/images/login-visual-2.svg') }});"></div>
-                <!--end::Image-->
-            </div>
-            <!--end::Content-->
+
         </div>
         <!--end::Login-->
             </div>
