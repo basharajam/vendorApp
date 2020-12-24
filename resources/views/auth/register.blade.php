@@ -50,7 +50,7 @@
                                                <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
                                            </a>
                                            <!--end::Logo-->
-                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 system-color ">نظام الموردين</h2>
+                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10  ">نظام الموردين</h2>
                                             <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">الرجاء اختيار نوع الحساب</h2>
                                        </div>
                                     </div>
@@ -58,7 +58,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 parent">
                                             <label class="option">
                                                 <span class="option-control">
-                                                    <span class="radio">
+                                                    <span class="radio radio-outline">
                                                         <input type="radio" name="account_type" value="{{ route("supplier_registeration_view") }}">
                                                         <span></span>
                                                     </span>
@@ -75,7 +75,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 parent">
                                             <label class="option">
                                                 <span class="option-control">
-                                                    <span class="radio">
+                                                    <span class="radio radio-outline">
                                                         <input type="radio" name="account_type" value="{{ route("supplier_manager_registeration_view") }}">
                                                         <span></span>
                                                     </span>
