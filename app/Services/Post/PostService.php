@@ -401,17 +401,18 @@ class PostService extends BaseService implements IPostService
     public function store_product_tags(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
         if($post){
-          foreach($request->product_tags as $term_taxonomy_id){
-            TermRelation::updateOrCreate(
-                [
-                    'term_taxonomy_id'=>$term_taxonomy_id,
-                    'object_id'=>$post->ID,
-                ]
-                ,[
-                'object_id'=>$post->ID,
-                'term_order'=>0
-            ]);
-
+            if($request->product_tags){
+                foreach($request->product_tags as $term_taxonomy_id){
+                    TermRelation::updateOrCreate(
+                        [
+                            'term_taxonomy_id'=>$term_taxonomy_id,
+                            'object_id'=>$post->ID,
+                        ]
+                        ,[
+                        'object_id'=>$post->ID,
+                        'term_order'=>0
+                    ]);
+            }
           }
         }
 
