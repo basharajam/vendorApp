@@ -110,7 +110,7 @@ if($product){
     <div class="col-lg-6">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>الاضاقات</span>
+                <span>الاضافات</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"></span>
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_added') is-invalid @enderror" type="text" placeholder="" name="al_added" value="{{ $meta['al_added'] ?? old('al_added') }}"   title="الرجاء تعبئة هذا الحقل" />
