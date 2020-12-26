@@ -30,7 +30,7 @@
                          id="parent"
                          name="parent"
                          required
-
+                         title="الرجاء تعبئة هذا الحقل"
                          >
                      <option ></option>
                      @foreach($categories  as $category)
@@ -46,7 +46,7 @@
              <label class="font-size-h6 font-weight-bolder text-dark">
                  <span>اختر صورة </span>
              </label>
-             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""   />
+             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""  title="الرجاء تعبئة هذا الحقل" />
          </div>
      </div>
      @endif

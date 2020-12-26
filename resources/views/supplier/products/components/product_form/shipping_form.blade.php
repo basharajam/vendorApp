@@ -11,7 +11,7 @@ if($product){
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>الوزن (كيلو غرام)</span>
             </label>
-            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_weight') is-invalid @enderror" type="text" placeholder="0" name="_weight" value="{{ array_key_exists('_weight',$meta ) ? $meta['_weight']  :  old('_weight')}}"   />
+            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_weight') is-invalid @enderror" type="text" placeholder="0" name="_weight" value="{{ array_key_exists('_weight',$meta ) ? $meta['_weight']  :  old('_weight')}}"   title="الرجاء تعبئة هذا الحقل"/>
             @error('_weight')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -28,7 +28,7 @@ if($product){
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل Cbm لكل كارتون."></span>
 
             </label>
-            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_cbm') is-invalid @enderror" type="text" placeholder="0" name="al_cbm" value="{{array_key_exists('al_cbm',$meta ) ? $meta['al_cbm']  :  old('al_cbm')}}"   />
+            <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_cbm') is-invalid @enderror" type="text" placeholder="0" name="al_cbm" value="{{array_key_exists('al_cbm',$meta ) ? $meta['al_cbm']  :  old('al_cbm')}}" title="الرجاء تعبئة هذا الحقل"   />
             @error('al_cbm')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

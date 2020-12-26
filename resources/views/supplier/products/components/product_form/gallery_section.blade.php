@@ -103,7 +103,7 @@ if($product){
                     <span>اضافة صور</span>
                     <span>اقصى عدد للصور هو 15 صورة</span>
                 </label>
-               <input type="file" name="gallery[]" class="form-control" multiple >
+               <input type="file" name="gallery[]" class="form-control" multiple  title="الرجاء تعبئة هذا الحقل">
             </div>
         </div>
     </div>

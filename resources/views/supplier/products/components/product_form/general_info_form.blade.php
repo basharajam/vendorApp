@@ -29,7 +29,7 @@ if($product){
                 <span>السعر بعد الحسم</span>
             </label>
             <input  data-inputmask="'regex': '^[0-9.]+$'"
-                id="_sale_price" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 _sale_price @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}"   />
+                id="_sale_price" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 _sale_price @error('_sale_price') is-invalid @enderror" type="text" placeholder="" name="_sale_price" value="{{$meta['_sale_price'] ??  old('_sale_price') }}" title="الرجاء تعبئة هذا الحقل"  />
             <div class="fv-plugins-message-container">
                 <div id="_sale_price_help" class="fv-help-block"></div>
             </div>
@@ -111,7 +111,7 @@ if($product){
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>Added</span>
-                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title=""></span>
+                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark" title="الرجاء تعبئة هذا الحقل"></span>
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_added') is-invalid @enderror" type="text" placeholder="" name="al_added" value="{{ $meta['al_added'] ?? old('al_added') }}"   />
 
@@ -121,7 +121,7 @@ if($product){
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>المزيد من المعلومات</span>
-                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title=""></span>
+                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="الرجاء تعبئة هذا الحقل"></span>
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_more_info') is-invalid @enderror" type="text" placeholder="" name="al_more_info" value="{{ $meta['al_more_info'] ?? old('al_more_info') }}"   />
 
@@ -131,7 +131,7 @@ if($product){
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>اللون</span>
-                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title=""></span>
+                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="الرجاء تعبئة هذا الحقل"></span>
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_color') is-invalid @enderror" type="text" placeholder="" name="al_color" value="{{ $meta['al_color'] ?? old('al_color') }}"   />
 

@@ -9,6 +9,7 @@
             <input id="passport_number_id" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{ old('passport_number') }}" required autocomplete="national_number"
             oninvalid="this.setCustomValidity('الرجاء ادخال رقم جواز السفر')"
             oninput="setCustomValidity('')"
+            title="الرجاء تعبئة هذا الحقل"
             />
             @error('passport_number')
             <div class="fv-plugins-message-container">
@@ -27,7 +28,7 @@
             </label>
             <div class="w-100 d-flex justify-content-between">
                 <div class="col">
-                    <select id="day_passport" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                    <select id="day_passport" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل">
                         <option >اليوم</option>
                         <option value="01">1</option>
                         <option value="02">2</option>
@@ -64,7 +65,7 @@
                 </div>
 
                <div class="col ">
-                <select id="month_passport" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                <select id="month_passport" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل">
                     <option value="">الشهر</option>
                     <option value="01">كانون الثاني</option>
                     <option value="02">شباط</option>
@@ -81,7 +82,7 @@
                 </select>
                </div>
                <div class="col ">
-                <select id="year_passport" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6">
+                <select id="year_passport" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل" >
                     <option value="2011">السنة</option>
                     @for($year=1900;$year<=date("Y")+20;$year++)
                     <option value="{{ $year }}">{{ $year }}</option>
@@ -106,7 +107,7 @@
             <span class="required">*</span>
             <span>صورة عن جواز السفر الشخصية</span>
         </label>
-        <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image">
+        <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image" title="الرجاء تعبئة هذا الحقل">
             <div class="dropzone-msg dz-message needsclick">
                 <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
                 <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
@@ -123,7 +124,7 @@
                 <span class="required">*</span>
                 <span>صورة عن بطاقة التأشيرة الصينية</span>
             </label>
-            <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="visa_image">
+            <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="visa_image" title="الرجاء تعبئة هذا الحقل">
                 <div class="dropzone-msg dz-message needsclick">
                     <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
                     <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>

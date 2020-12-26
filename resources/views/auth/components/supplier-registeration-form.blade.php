@@ -178,7 +178,6 @@ input.error {
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr"
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
-                title="الرجاء تعبئة هذا الحقل"
                 />
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
@@ -195,7 +194,7 @@ input.error {
             </label>
             <div class="w-100 d-flex justify-content-between">
                 <div class="col">
-                    <select id="day_birthdate" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                    <select id="day_birthdate" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
                         <option >اليوم</option>
                         <option value="01">1</option>
                         <option value="02">2</option>
@@ -232,7 +231,7 @@ input.error {
                 </div>
 
                <div class="col ">
-                <select id="month_birthdate" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                <select id="month_birthdate" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
                     <option value="">الشهر</option>
                     <option value="01">كانون الثاني</option>
                     <option value="02">شباط</option>
@@ -249,14 +248,14 @@ input.error {
                 </select>
                </div>
                <div class="col ">
-                <select id="year_birthdate" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6">
+                <select id="year_birthdate" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل">
                     <option value="2011">السنة</option>
                     @for($year=1900;$year<=date("Y");$year++)
                     <option value="{{ $year }}">{{ $year }}</option>
                     @endfor
                 </select>
                </div>
-                <input type="hidden" id="birthdate" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}" />
+                <input type="hidden" id="birthdate" name="brithdate" value="{{$supplier->brithdate ?? old('brithdate') }}"  />
 
             </div>
             @error('brithdate')
@@ -278,6 +277,7 @@ input.error {
                             type="radio"
                             name="gender"
                             @if($supplier && $supplier->gender=="male") checked="checked" @endif
+                            title="الرجاء تعبئة هذا الحقل"
                             />
                     <span></span>
                     ذكر
@@ -287,6 +287,7 @@ input.error {
                             type="radio"
                             name="gender"
                             @if($supplier && $supplier->gender=="female") checked="checked" @endif
+                            title="الرجاء تعبئة هذا الحقل"
                             />
                     <span></span>
                     انثى
@@ -369,7 +370,7 @@ input.error {
                 name="company_name" value="{{$supplier->company_name ??  old('company_name') }}" required autofocus
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
-                title="الرجاء تعبئة هذا الحقل"/>
+                />
                 @error('company_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -440,7 +441,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المصنع</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المصنع" name="company_factory_address" value="{{$supplier->company_factory_address ?? old('company_factory_address') }}"  />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المصنع" name="company_factory_address" value="{{$supplier->company_factory_address ?? old('company_factory_address') }}"  title="الرجاء تعبئة هذا الحقل"/>
                 @error('company_factory_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -457,7 +458,7 @@ input.error {
                 </label>
                 <div class="w-100 d-flex justify-content-between">
                     <div class="col">
-                        <select id="day_company" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                        <select id="day_company" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
                             <option >اليوم</option>
                             <option value="01">1</option>
                             <option value="02">2</option>
@@ -494,7 +495,7 @@ input.error {
                     </div>
 
                    <div class="col ">
-                    <select id="month_company" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " >
+                    <select id="month_company" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 "  title="الرجاء تعبئة هذا الحقل">
                         <option value="">الشهر</option>
                         <option value="01">كانون الثاني</option>
                         <option value="02">شباط</option>
@@ -511,7 +512,7 @@ input.error {
                     </select>
                    </div>
                    <div class="col ">
-                    <select id="year_company" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6">
+                    <select id="year_company" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل">
                         <option value="2011">السنة</option>
                         @for($year=1900;$year<=date("Y");$year++)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -535,7 +536,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المقاطعة التي تتبع لها الشركة</span>
                 </label>
-                <select id="provinceSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}">
+                <select id="provinceSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}" title="الرجاء تعبئة هذا الحقل">
                     <option></option>
                     @foreach($provinces as $province)
                         <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -555,7 +556,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المدينة التي تتبع لها الشركة</span>
                 </label>
-                <select id="cititesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="city_id" >
+                <select id="cititesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="city_id" title="الرجاء تعبئة هذا الحقل">
                     <option></option>
                     @foreach($cities as $city)
                         <option @if(($supplier && $supplier->city_id == $city->id )|| old('city_id')==$city->id ) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
@@ -576,7 +577,7 @@ input.error {
                     <span>صورة الرخصة التجارية</span>
                     <span class="required">*</span>
                 </label>
-                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
+                <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" title="الرجاء تعبئة هذا الحقل" >
                     <div class="dropzone-msg dz-message needsclick">
                         <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
                         <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
@@ -593,7 +594,7 @@ input.error {
                     <span>صورة العلامة التجارية الخاصة بالشركة</span>
                     <span class="required">*</span>
                 </label>
-                <div id="company_logo" class="dropzone dropzone-default dropzone-primary dz-clickable" id="">
+                <div id="company_logo" class="dropzone dropzone-default dropzone-primary dz-clickable" id="" title="الرجاء تعبئة هذا الحقل">
                     <div class="dropzone-msg dz-message needsclick">
                         <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
                         <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
@@ -612,7 +613,7 @@ input.error {
                     <span>المنتجات التي تعمل بها الشركة</span>
                 </label>
                 <div class="w-100">
-                    <select id="cateogiresSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="">
+                    <select id="cateogiresSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="" title="الرجاء تعبئة هذا الحقل">
                         @foreach($categories  as $category)
                             <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
                         @endforeach
@@ -635,7 +636,7 @@ input.error {
                 </label>
                 <div class="w-100">
 
-                    <select id="CountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
+                    <select id="CountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="" title="الرجاء تعبئة هذا الحقل">
                         <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
                         <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت</option>
                         <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات</option>
@@ -661,7 +662,7 @@ input.error {
                     <span>الدول التي لا يمكن بيع المنتجات لها</span>
                 </label>
                 <div class="w-100">
-                    <select id="ReCountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
+                    <select id="ReCountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="" title="الرجاء تعبئة هذا الحقل">
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت</option>
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات</option>
@@ -686,7 +687,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>صورة الشهادات لدى الشركة</span>
                 </label>
-                <div id="license_images" class="dropzone dropzone-default dropzone-primary dz-clickable" id="">
+                <div id="license_images" class="dropzone dropzone-default dropzone-primary dz-clickable" id="" title="الرجاء تعبئة هذا الحقل">
                     <div class="dropzone-msg dz-message needsclick">
                         <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
                         <span class="dropzone-msg-desc">قم برفع 10 صور  كحد اقصى</span>

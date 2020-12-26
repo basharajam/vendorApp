@@ -15,7 +15,7 @@ if($product){
         <div class="d-flex align-items-center mb-6">
             <!--begin::Checkbox-->
             <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
-                <input type="checkbox" name="product_categories[]" value="{{ $main_category->term_taxonomy_id}}" @if(in_array($main_category->term_taxonomy_id,$product_categories)) checked @endif>
+                <input type="checkbox" name="product_categories[]" value="{{ $main_category->term_taxonomy_id}}" @if(in_array($main_category->term_taxonomy_id,$product_categories)) checked @endif title="الرجاء تعبئة هذا الحقل">
                 <span></span>
             </label>
             <!--end::Checkbox-->
@@ -34,7 +34,7 @@ if($product){
                 <div class="d-flex align-items-center mb-6 pr-10">
                     <!--begin::Checkbox-->
                     <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
-                        <input type="checkbox" name="product_categories[]" value="{{ $sub_cateogry->term_taxonomy_id}}" @if(in_array($sub_cateogry->term_taxonomy_id,$product_categories)) checked @endif>
+                        <input type="checkbox" name="product_categories[]" value="{{ $sub_cateogry->term_taxonomy_id}}" @if(in_array($sub_cateogry->term_taxonomy_id,$product_categories)) checked @endif title="الرجاء تعبئة هذا الحقل">
                         <span></span>
                     </label>
                     <!--end::Checkbox-->

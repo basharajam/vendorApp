@@ -47,7 +47,7 @@
                         <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
                             <span>صورة المنتج</span>
                         </label>
-                       <input id="thumbnail" type="file" name="thumbnail" class="form-control" >
+                       <input id="thumbnail" type="file" name="thumbnail" class="form-control" title="الرجاء تعبئة هذا الحقل" >
 
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
                             <span>معرض الصور</span>
                         </label>
-                       <input type="file" name="gallery[]" class="form-control" multiple>
+                       <input type="file" name="gallery[]" class="form-control" multiple title="الرجاء تعبئة هذا الحقل">
                     </div>
                 </div>
                 @endif
