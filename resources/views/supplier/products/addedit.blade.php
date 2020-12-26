@@ -186,6 +186,7 @@
             let min = $("#_wc_min_qty_product").val();
             if(parseInt(max) < parseInt(min))
             {
+                toastr.error('الرجاء ادخال قيمة اكبر من الحد الادنى للكمية')
                 return false;
             }
             else{
