@@ -60,27 +60,7 @@
         </div>
         <!--End:: App Aside-->
         @endif
-        <!--Begin:: App Aside-->
-        <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user2_profile_aside">
-            <div class="kt-portlet kt-portlet--height-fluid-">
 
-                <div class="kt-portlet__body">
-                    <div class="kt-widget kt-widget--user-profile-4" >
-                        <div class="kt-widget__head">
-                            <div class="kt-widget__content">
-                                <div class="kt-widget__section">
-                                    <a href="#" class="kt-widget__username" id="">
-                                        الاصناف
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        @include('supplier.products.components.product_form.categories_selector')
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End:: App Aside-->
 
 
         </div>
@@ -109,6 +89,7 @@
                                 <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
                                 @include('supplier.products.components.product_form.product_main')
                                 @include('supplier.products.components.product_form.general_info')
+                                @include('supplier.products.components.product_form.categories_selector')
                                 @include('supplier.products.components.product_form.inventory_info')
                                 @include('supplier.products.components.product_form.shipping_info')
                                 <div class="row">
@@ -131,6 +112,7 @@
                                 <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
                                 @include('supplier.products.components.product_form.product_main')
                                 @if($product)
+                                    @include('supplier.products.components.product_form.categories_selector')
                                     @include('supplier.products.components.product_form.attributes_info')
                                     @include('supplier.products.components.product_form.product_variations')
                                 @endif

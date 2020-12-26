@@ -68,15 +68,13 @@ class ProductController extends Controller
                 $product =  $this->post_service->store_product_inventory($request,$product->ID);
                 $product =  $this->post_service->store_product_shipping($request,$product->ID);
                 $product =  $this->post_service->store_product_attributes_relation($request,$product->ID);
-
+                $product =  $this->post_service->store_product_categories($request,$request->post_id);
+                $product =  $this->post_service->store_product_tags($request,$request->post_id);
 
             }else{
                 switch($request->request_type){
                     case "gallery":
                             $this->post_service->store_gallery($request,$request->post_id);
-                    case "categories":
-                        $product =  $this->post_service->store_product_categories($request,$request->post_id);
-                        $product =  $this->post_service->store_product_tags($request,$request->post_id);
                     break;
                 }
 
