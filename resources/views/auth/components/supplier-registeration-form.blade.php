@@ -599,15 +599,12 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المنتجات التي تعمل بها الشركة</span>
                 </label>
-                <div class="input-group-prepend">
+                <div class="w-100">
                     <select id="cateogiresSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="">
                         @foreach($categories  as $category)
                             <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
                         @endforeach
                     </select>
-                    <span class="input-group-text line-height-0 py-0">
-                        <i class="flaticon2-down icon-sm"></i>
-                    </span>
                 </div>
 
                 @error('company_address_city')
@@ -624,7 +621,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>اهم الدول التي تعمل بها الشركة</span>
                 </label>
-                <div class="input-group-prepend">
+                <div class="w-100">
 
                     <select id="CountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="">
                         <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
@@ -635,9 +632,7 @@ input.error {
                         <option @if($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries))) selected @endif>سوريا</option>
                         <option @if($supplier && $supplier->company_countries && in_array('لبنان',explode(',',$supplier->company_countries))) selected @endif>لبنان</option>
                     </select>
-                    <span class="input-group-text line-height-0 py-0">
-                        <i class="flaticon2-down icon-sm"></i>
-                    </span>
+
                 </div>
                 @error('company_address_city')
                 <div class="fv-plugins-message-container">
@@ -653,7 +648,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>الدول التي لا يمكن بيع المنتجات لها</span>
                 </label>
-                <div class="input-group-prepend">
+                <div class="w-100">
                     <select id="ReCountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="">
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت</option>
@@ -663,9 +658,7 @@ input.error {
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>سوريا</option>
                         <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>لبنان</option>
                     </select>
-                    <span class="input-group-text line-height-0 py-0">
-                        <i class="flaticon2-down icon-sm"></i>
-                    </span>
+
                 </div>
                 @error('company_address_city')
                 <div class="fv-plugins-message-container">
