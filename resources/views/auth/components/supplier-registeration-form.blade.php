@@ -359,7 +359,7 @@ input.error {
     <!--end::Form group User Name-->
 </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" id="companyDetails">
             <!--begin::Form group Company Name-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
@@ -1219,6 +1219,9 @@ input.error {
             ) {
             e.preventDefault();
             toastr.error("الرجاء ادخال احد عنواين الشركة");
+            $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#companyDetails").offset().top
+                }, 2000);
             return false;
         }
         else{
