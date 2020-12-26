@@ -710,6 +710,7 @@ input.error {
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
                 title="الرجاء تعبئة هذا الحقل"
                 pattern="6228[0-9]{15}"/>
+
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -963,8 +964,7 @@ input.error {
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
-        // Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
-        Inputmask({ regex: "6228^[0-9]{15}$" }).mask(bank_account_number_Id);
+        Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
 
 
        // Inputmask().mask(document.querySelectorAll("input"));
