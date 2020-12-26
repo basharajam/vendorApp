@@ -10,7 +10,7 @@
             type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{ old('national_number') }}"
              required autocomplete="national_number"
              oninvalid="this.setCustomValidity('الرجاء ادخال  رقم البطاقة الشخصية')"
-             oninput="setCustomValidity('')" />
+             oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('national_number')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -28,8 +28,8 @@
         </label>
         <div id="national_id_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
             <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
-                <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
+                <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
             </div>
         </div>
 

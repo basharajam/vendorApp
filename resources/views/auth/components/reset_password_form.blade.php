@@ -16,7 +16,7 @@
         <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 d-block text-right @error('email') is-invalid @enderror"
         type="email" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
         oninvalid="this.setCustomValidity('الرجاء ادخال البريد الالكتروني')"
-        oninput="setCustomValidity('')" />
+        oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
          @error('email')
          <div class="fv-plugins-message-container">
              <div  class="fv-help-block">{{ $message }}</div>

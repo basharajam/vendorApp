@@ -47,7 +47,7 @@ if($product){
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'" id="days_to_delivery" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_days_to_delivery') is-invalid @enderror" type="text" placeholder="0" name="al_days_to_delivery" value="{{ array_key_exists('al_days_to_delivery',$meta ) ? $meta['al_days_to_delivery']  :  old('al_days_to_delivery') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('al_days_to_delivery')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

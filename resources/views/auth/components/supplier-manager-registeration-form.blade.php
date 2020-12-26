@@ -18,7 +18,7 @@
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror"
                 type="text" placeholder="الاسم" name="first_name" value="{{ old('first_name') }}" required autofocus
                 oninvalid="this.setCustomValidity('الرجاء ادخال الاسم')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -37,7 +37,7 @@
                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية"
                name="last_name" value="{{ old('last_name') }}" required autofocus
                oninvalid="this.setCustomValidity('الرجاء ادخال الكنية')"
-               oninput="setCustomValidity('')"/>
+               oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
                @error('last_name')
                <div class="fv-plugins-message-container">
                    <div  class="fv-help-block">{{ $message }}</div>
@@ -56,7 +56,7 @@
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"
                  placeholder="اسم المستخدم" name="name" value="{{ old('name') }}" required autofocus
                  oninvalid="this.setCustomValidity('الرجاء ادخال اسم المستخدم')"
-                 oninput="setCustomValidity('')" />
+                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
                 @error('name')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -75,7 +75,7 @@
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" placeholder="البريد الالكتروني"
                 name="email" required value="{{ old('email') }}" autocomplete="off"
                 oninvalid="this.setCustomValidity('الرجاء ادخال البريد الالكتروني')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
                 @error('email')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -94,7 +94,7 @@
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required
                 autocomplete="off"
                 oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
-                oninput="setCustomValidity('')"/>
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
                 @error('password')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -114,7 +114,7 @@
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation"
                 required autocomplete="new-password"
                 oninvalid="this.setCustomValidity('الرجاء ادخال قيمة هذه الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             </div>
             <!--end::Form group Password Confirmation-->
        </div> <div class="form-group">

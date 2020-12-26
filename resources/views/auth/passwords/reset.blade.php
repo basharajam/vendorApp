@@ -30,7 +30,7 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email"
                                 autofocus
                                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                                oninput="setCustomValidity('')">
+                                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
                                 required autocomplete="new-password"
                                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                                oninput="setCustomValidity('')">
+                                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"
                                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                                oninput="setCustomValidity('')">
+                                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
                             </div>
                         </div>
 

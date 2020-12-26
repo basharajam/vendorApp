@@ -14,7 +14,7 @@ if($product){
             <input data-inputmask="'regex': '^[0-9.]+$'"
             id="_regular_price" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"/>
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
             @error('_regular_price')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -49,7 +49,7 @@ if($product){
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_material') is-invalid @enderror" type="text" placeholder="" name="al_material" value="{{$meta['al_material'] ?? old('al_material') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('al_material')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -98,7 +98,7 @@ if($product){
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_size') is-invalid @enderror" type="text" placeholder="" name="al_size" value="{{ $meta['al_size'] ?? old('al_size') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('al_size')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>

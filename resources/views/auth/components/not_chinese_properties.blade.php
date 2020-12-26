@@ -108,8 +108,8 @@
         </label>
         <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image">
             <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
-                <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
+                <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
             </div>
         </div>
     </div>
@@ -125,8 +125,8 @@
             </label>
             <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="visa_image">
                 <div class="dropzone-msg dz-message needsclick">
-                    <h3 class="dropzone-msg-title">قم بإسقاط الملفات هنا أو انقر للتحميل</h3>
-                    <span class="dropzone-msg-desc">قم برفع 1 ملف واحد كحد اقصى</span>
+                    <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
+                    <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@
                         </label>
                         <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('post_title') is-invalid @enderror" type="text" placeholder="" name="post_title" value="{{ $product->post_title  ?? old('post_title') }}"  required
                         oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"/>
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
                         @error('post_title')
                         <div class="fv-plugins-message-container">
                             <div  class="fv-help-block">{{ $message }}</div>
@@ -33,7 +33,7 @@
                         </label>
                         <textarea id="editor" class="form-control @error('post_content') is-invalid @enderror" name="post_content" required
                         oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                        oninput="setCustomValidity('')"
+                        oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
                     >   @if($product){{ $product->post_content}}@endif</textarea>
                         @error('post_content')
                         <span class="invalid-feedback" role="alert">

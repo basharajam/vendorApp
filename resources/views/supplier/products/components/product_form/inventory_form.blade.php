@@ -14,7 +14,7 @@ if($product){
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_sku') is-invalid @enderror" type="text" placeholder="" name="_sku" value="{{ array_key_exists('_sku',$meta ) ? $meta['_sku']  :  old('_sku') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('_sku')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -91,7 +91,7 @@ if($product){
             <input id="al_carton_qty" data-inputmask="'regex': '^[0-9]+$'"
             class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_carton_qty') is-invalid @enderror" type="text" placeholder="" name="al_carton_qty" value="{{ array_key_exists('al_carton_qty',$meta) ?  $meta['al_carton_qty'] : old('al_carton_qty') }}"  required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"/>
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
             @error('al_carton_qty')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -131,7 +131,7 @@ if($product){
             </label>
             <input data-inputmask="'regex': '^[0-9]+$'" id="al_price_for_desc" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_price_for_desc') is-invalid @enderror" type="text" placeholder="" name="al_price_for_desc" value="{{$meta['al_price_for_desc'] ??  old('al_price_for_desc') }}"  required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')" />
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
             @error('al_price_for_desc')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
@@ -150,7 +150,7 @@ if($product){
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_mix_of_package') is-invalid @enderror" type="text" placeholder="" name="al_mix_of_package" value="{{$meta['al_mix_of_package'] ?? old('al_mix_of_package') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"/>
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
             @error('al_mix_of_package')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
