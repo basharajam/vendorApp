@@ -7,9 +7,11 @@
                 <span>رقم جواز السفر</span>
             </label>
             <input id="passport_number_id" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{ old('passport_number') }}" required autocomplete="national_number"
-            oninvalid="this.setCustomValidity('الرجاء ادخال رقم جواز السفر')"
+            oninvalid="this.setCustomValidity(' الرجاء ادخال رقم جواز السفر والذي يتكون من 16 محرف')"
             oninput="setCustomValidity('')"
             title="الرجاء تعبئة هذا الحقل"
+            pattern="[a-zA-Z0-9]{16}"
+
             />
             @error('passport_number')
             <div class="fv-plugins-message-container">

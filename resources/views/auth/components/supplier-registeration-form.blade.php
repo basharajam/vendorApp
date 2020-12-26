@@ -395,7 +395,7 @@ input.error {
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span>المحل</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="company_shop_address" value="{{$supplier->company_shop_address ?? old('company_shop_address') }}"  autocomplete="national_number" />
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="عنوان المحل" name="company_shop_address" value="{{$supplier->company_shop_address ?? old('company_shop_address') }}"  autocomplete="off" />
                 @error('company_shop_address')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -708,7 +708,8 @@ input.error {
                 <input id="bank_account_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم حساب البنك " name="bank_account_number" value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required autocomplete="bank_account_number"
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
-                title="الرجاء تعبئة هذا الحقل"/>
+                title="الرجاء تعبئة هذا الحقل"
+                pattern="6228[0-9]{15}"/>
                 @error('bank_account_number')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -725,7 +726,7 @@ input.error {
                     </span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="national_number"
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="اسم صاحب الحساب" name="bank_account_owner_name" value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required autocomplete="off"
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
                 @error('bank_account_owner_name')
@@ -790,6 +791,7 @@ input.error {
             utilsScript: "{{ asset('/plugins/telinput/js/utils.js') }}"
         });
         Inputmask({ mask: "99999999999" }).mask(input);
+
         if(supplier){
             if(supplier.mobile_number.indexOf('+86')!==-1){
                 iti.setCountry('cn');
@@ -803,6 +805,7 @@ input.error {
         // do something with iti.getSelectedCountryData()
             if(iti.getSelectedCountryData().iso2=='ae'){
                 Inputmask({ mask: "999999999" }).mask(input);
+
             }
             else{
                 Inputmask({ mask: "99999999999" }).mask(input);
@@ -960,7 +963,10 @@ input.error {
         let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
-        Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
+        // Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
+        Inputmask({ regex: "6228^[0-9]{15}$" }).mask(bank_account_number_Id);
+
+
        // Inputmask().mask(document.querySelectorAll("input"));
        let  t = {
                         leftArrow: '<i class="la la-angle-right"></i>',
@@ -1102,7 +1108,7 @@ input.error {
                     $('#chinese_or_not_div').append(not_chinese_properties);
                     $("#not_chinese_properties").show();
                     let passport_number_id = document.getElementById('passport_number_id');
-                    Inputmask({ regex: "^[a-zA-Z0-9]+$" }).mask(passport_number_id);
+                    Inputmask({ regex: "^[a-zA-Z0-9]{16}$" }).mask(passport_number_id);
                     let passport_image = document.getElementById('passport_image');
                     let visa_image = document.getElementById('visa_image');
 

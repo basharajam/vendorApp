@@ -9,8 +9,9 @@
             <input id="national_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
             type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{ old('national_number') }}"
              required autocomplete="national_number"
-             oninvalid="this.setCustomValidity('الرجاء ادخال  رقم البطاقة الشخصية')"
-             oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
+             oninvalid="this.setCustomValidity('الرجاء ادخال  رقم البطاقة الشخصية و التي تتكون من 18 رقم')"
+             oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
+             pattern="[0-9]{18}" />
             @error('national_number')
             <div class="fv-plugins-message-container">
                 <div  class="fv-help-block">{{ $message }}</div>
