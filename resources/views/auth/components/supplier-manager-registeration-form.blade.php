@@ -54,7 +54,7 @@
                     <span class="required">*</span>
                 </label>
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"
-                 placeholder="اسم المستخدم" name="name" value="{{ old('name') }}" required autofocus
+                 placeholder="e.g. muhammad" name="name" value="{{ old('name') }}" required autofocus
                  oninvalid="this.setCustomValidity('الرجاء ادخال اسم المستخدم')"
                  oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
                 @error('name')
@@ -72,7 +72,7 @@
                     <span>البريد الالكتروني</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" placeholder="البريد الالكتروني"
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror"  placeholder="example@gmail.com"
                 name="email" required value="{{ old('email') }}" autocomplete="off"
                 oninvalid="this.setCustomValidity('الرجاء ادخال البريد الالكتروني')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
@@ -91,7 +91,7 @@
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="كلمة المرور" name="password" required
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" required
                 autocomplete="off"
                 oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
