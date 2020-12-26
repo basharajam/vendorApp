@@ -173,7 +173,10 @@
             let price = $("#_regular_price").val();
             if(parseFloat(sale) >= parseFloat(price))
             {
-                toastr.error('الرجاء ادخال قيمة اصغر من السعر')
+                toastr.error('الرجاء ادخال قيمة اصغر من السعر');
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#GeneralInfo").offset().top
+                }, 2000);
                 return false;
             }
             else{
@@ -186,7 +189,10 @@
             let min = $("#_wc_min_qty_product").val();
             if(parseInt(max) < parseInt(min))
             {
-                toastr.error('الرجاء ادخال قيمة اكبر من الحد الادنى للكمية')
+                toastr.error('الرجاء ادخال قيمة اكبر من الحد الادنى للكمية');
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#InventoryInfo").offset().top
+                }, 500  );
                 return false;
             }
             else{
