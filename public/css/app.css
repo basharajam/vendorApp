@@ -112676,3 +112676,21 @@ input[name=name] {
   background-color: #fff;
 }
 
+.iti__country-list {
+  text-align: right;
+  left: 0px;
+}
+
+.iti__country.iti__standard {
+  text-align: right;
+}
+
+.iti__flag-box {
+  margin-left: 6px;
+  margin-right: unset;
+}
+
+.iti__arrow {
+  margin-right: 6px;
+}
+
