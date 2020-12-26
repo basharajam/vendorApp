@@ -15576,7 +15576,7 @@ canvas {
   -ms-user-select: none; }
 
 /* Customize website's scrollbar like Mac OS */
-/* 
+/*
 ::-webkit-scrollbar {
     background-color:#f6f6f6;
     width:14px;
@@ -94367,7 +94367,7 @@ code {
     border-radius: 0.42rem; }
   .dropzone.dropzone-default .dz-remove {
     color: #7E8299;
-    font-size: 1px;
+
     font-weight: 500;
     -webkit-transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;

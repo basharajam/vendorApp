@@ -4457,7 +4457,7 @@ Build date: 2019-12-19 16:51:02
   margin-top: -27px; }
 
 .dropzone .dz-preview .dz-success-mark svg, .dropzone .dz-preview .dz-error-mark svg {
-  display: block;
+  display: none;
   width: 54px;
   height: 54px; }
 
@@ -6046,16 +6046,16 @@ Build date: 2019-12-19 16:51:02
   filter: brightness(105%); }
 
 /*!
- * 
+ *
  * Super simple wysiwyg editor v0.8.18
  * https://summernote.org
- * 
- * 
+ *
+ *
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
- * 
+ *
  * Date: 2020-05-20T16:47Z
- * 
+ *
  */
 
 [class^=note-icon]:before, [class*=" note-icon"]:before {

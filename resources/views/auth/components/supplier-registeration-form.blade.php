@@ -1000,11 +1000,16 @@ input.error {
                     acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                     method:'POST',
                     maxFiles: 1,
+                    dictRemoveFile :"احذف الصورة",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="commercial_license_image" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
                     },
+
                     removedfile: function (file) {
+                        console.log('sdfs');
                         file.previewElement.remove()
                         var name = ''
                         if (typeof file.file_name !== 'undefined') {
@@ -1025,6 +1030,8 @@ input.error {
                     acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                     method:'POST',
                     maxFiles: 1,
+                    dictRemoveFile :"احذف الصورة",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="company_logo" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1050,6 +1057,8 @@ input.error {
                     acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                     method:'POST',
                     maxFiles: 10,
+                    dictRemoveFile :"احذف الصورة",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="license_images" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1086,6 +1095,8 @@ input.error {
                     acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                     method:'POST',
                     maxFiles: 1,
+                    dictRemoveFile :"احذف الصورة",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
