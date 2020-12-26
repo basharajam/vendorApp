@@ -33,7 +33,9 @@ if($product){
             <div class="kt-input-icon">
                 <select  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
                         id="_stock_status"
-                        name="_stock_status" required>
+                        name="_stock_status" required
+                        oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                        oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"  >
                     <option value="instock" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='instock') selected @endif>متوفر</option>
                     <option value="onbackorder" @if(array_key_exists('_stock_status',$meta)  && $meta['_stock_status']=='onbackorder') selected @endif>تحت الطلب</option>
                 </select>
