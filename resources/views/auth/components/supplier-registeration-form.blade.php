@@ -1002,7 +1002,13 @@ input.error {
                     maxFiles: 1,
                     dictRemoveFile :"احذف الصورة",
                     dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
-
+                    dictCancelUpload:"إلغاء التحميل",
+                    init: function() {
+                        this.on("maxfilesexceeded", function(file){
+                           toastr.error('لا يمكنك تحميل المزيد من الصور')
+                            this.removeFile(file);
+                        });
+                    },
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="commercial_license_image" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1032,6 +1038,13 @@ input.error {
                     maxFiles: 1,
                     dictRemoveFile :"احذف الصورة",
                     dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                    dictCancelUpload:"إلغاء التحميل",
+                    init: function() {
+                        this.on("maxfilesexceeded", function(file){
+                           toastr.error('لا يمكنك تحميل المزيد من الصور')
+                            this.removeFile(file);
+                        });
+                    },
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="company_logo" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1058,7 +1071,14 @@ input.error {
                     method:'POST',
                     maxFiles: 10,
                     dictRemoveFile :"احذف الصورة",
-                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور",
+                    dictCancelUpload:"إلغاء التحميل",
+                    init: function() {
+                        this.on("maxfilesexceeded", function(file){
+                           toastr.error('لا يمكنك تحميل المزيد من الصور')
+                            this.removeFile(file);
+                        });
+                    },
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="license_images" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1097,6 +1117,13 @@ input.error {
                     maxFiles: 1,
                     dictRemoveFile :"احذف الصورة",
                     dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                    dictCancelUpload:"إلغاء التحميل",
+                    init: function() {
+                        this.on("maxfilesexceeded", function(file){
+                           toastr.error('لا يمكنك تحميل المزيد من الصور')
+                            this.removeFile(file);
+                        });
+                    },
                     success: function (file, response) {
                     $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
@@ -1141,6 +1168,15 @@ input.error {
                         acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                         method:'POST',
                         maxFiles: 1,
+                        dictRemoveFile :"احذف الصورة",
+                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                        dictCancelUpload:"إلغاء التحميل",
+                        init: function() {
+                            this.on("maxfilesexceeded", function(file){
+                            toastr.error('لا يمكنك تحميل المزيد من الصور')
+                                this.removeFile(file);
+                            });
+                        },
                         success: function (file, response) {
                         $('#supplier_registeration_form').append('<input type="hidden" name="passport_image" value="' + response.name + '">')
                             uploadedDocumentMap[file.name] = response.name
@@ -1166,6 +1202,15 @@ input.error {
                         acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
                         method:'POST',
                         maxFiles: 1,
+                        dictRemoveFile :"احذف الصورة",
+                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                        dictCancelUpload:"إلغاء التحميل",
+                        init: function() {
+                            this.on("maxfilesexceeded", function(file){
+                            toastr.error('لا يمكنك تحميل المزيد من الصور')
+                                this.removeFile(file);
+                            });
+                        },
                         success: function (file, response) {
                         $('#supplier_registeration_form').append('<input type="hidden" name="visa_image" value="' + response.name + '">')
                             uploadedDocumentMap[file.name] = response.name
