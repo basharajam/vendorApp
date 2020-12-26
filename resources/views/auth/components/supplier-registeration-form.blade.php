@@ -179,7 +179,7 @@ input.error {
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
                 title="الرجاء تعبئة هذا الحقل"
-                placeholder="example@gmail.com"/>
+                />
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -308,11 +308,12 @@ input.error {
                <span>البريد الالكتروني</span>
                <span class="required">*</span>
            </label>
-           <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني" placeholder=""
+           <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror" type="البريد الالكتروني"
             name="email" required value="{{ $supplier->email ?? old('email') }}" autocomplete="off" style="direction:ltr"
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
-                title="الرجاء تعبئة هذا الحقل"/>
+                oninput="setCustomValidity('')"
+                title="الرجاء تعبئة هذا الحقل"
+                placeholder="example@gmail.com"/>
            @error('email')
            <div class="fv-plugins-message-container">
                <div  class="fv-help-block">{{ $message }}</div>
