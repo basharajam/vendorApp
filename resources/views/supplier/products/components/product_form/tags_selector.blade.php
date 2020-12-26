@@ -4,12 +4,7 @@ if($product){
     $product_tags = $product->tags->pluck('term_taxonomy_id')->toArray();
 }
 @endphp
-<form action="{{ route('supplier.products.store') }}" method="post">
     <div class="w-100" style="max-height: 400px; overflow-y:scroll">
-        @csrf
-        <input type="hidden" name="post_id"  value="{{ $product->ID ?? 0 }}">
-        <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}">
-        <input type="hidden" name="request_type" value="tags">
         @foreach($tags as $tag)
         <!--begin::Item-->
         <div class="d-flex align-items-center mb-6">
@@ -33,12 +28,4 @@ if($product){
 
     </div>
 
-    <div class="form-group row mt-10 mb-0">
-        <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary ">
-                حفظ
-                <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
-            </button>
-        </div>
-    </div>
-</form>
+

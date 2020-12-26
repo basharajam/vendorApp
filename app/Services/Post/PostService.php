@@ -381,19 +381,49 @@ class PostService extends BaseService implements IPostService
     }
     public function store_product_categories(Request $request , int $post_id){
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
-        if($post && $request->product_categories){
-          foreach($request->product_categories as $term_taxonomy_id){
-            TermRelation::updateOrCreate(
-                [
-                    'term_taxonomy_id'=>$term_taxonomy_id,
-                    'object_id'=>$post->ID,
-                ]
-                ,[
-                'object_id'=>$post->ID,
-                'term_order'=>0
-            ]);
+        if($post){
+            /*
+            Store Categories
+            */
+            if($request->product_categories){
+                foreach($request->product_categories as $term_taxonomy_id){
+                    TermRelation::updateOrCreate(
+                        [
+                            'term_taxonomy_id'=>$term_taxonomy_id,
+                            'object_id'=>$post->ID,
+                        ]
+                        ,[
+                        'object_id'=>$post->ID,
+                        'term_order'=>0
+                    ]);
+                }
+                if($post->categories && count($request->product_categories) < count($post->categories) ){
+                    foreach($post->categories as $cat){
+                        if(!in_array($cat->term_taxonomy_id,$request->product_categories)){
+                            $term = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$cat->term_taxonomy_id)->first();
+                            $table_name = \General::DB_PREFIX."term_relationships";
+                            if($term){
+                                \DB::delete("DELETE From ".$table_name." where object_id =".$post->ID." and term_taxonomy_id =".$cat->term_taxonomy_id);
+                            }
+                        }
+                    }
+                   }
+            }
+            else
+            {
+                if($post->categories){
+                    foreach($post->categories as $cat) {
+                        $term = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$cat->term_taxonomy_id)->first();
+                        $table_name = \General::DB_PREFIX."term_relationships";
+                        if($term){
+                            \DB::delete("DELETE From ".$table_name." where object_id =".$post->ID." and term_taxonomy_id =".$cat->term_taxonomy_id);
+                        }
+                    }
+                }
+            }
 
-          }
+            /** End of Store Categories */
+
         }
 
         return $post;
@@ -412,8 +442,31 @@ class PostService extends BaseService implements IPostService
                         'object_id'=>$post->ID,
                         'term_order'=>0
                     ]);
+                }
+                if($post->tags && count($request->product_tags) < count($post->tags) ){
+                    foreach($post->tags as $tag){
+                        if(!in_array($tag->term_taxonomy_id,$request->product_tags)){
+                            $term = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$tag->term_taxonomy_id)->first();
+                            $table_name = \General::DB_PREFIX."term_relationships";
+                            if($term){
+                                \DB::delete("DELETE From ".$table_name." where object_id =".$post->ID." and term_taxonomy_id =".$tag->term_taxonomy_id);
+                            }
+                        }
+                    }
+                   }
             }
-          }
+            else
+            {
+                if($post->tags){
+                    foreach($post->tags as $tag) {
+                        $term = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$tag->term_taxonomy_id)->first();
+                        $table_name = \General::DB_PREFIX."term_relationships";
+                        if($term){
+                            \DB::delete("DELETE From ".$table_name." where object_id =".$post->ID." and term_taxonomy_id =".$tag->term_taxonomy_id);
+                        }
+                    }
+                }
+            }
         }
 
         return $post;

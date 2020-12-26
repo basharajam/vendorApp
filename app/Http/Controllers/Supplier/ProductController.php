@@ -28,22 +28,6 @@ class ProductController extends Controller
     }
 
     public function index(){
-        //  $meta_key = "_product_attributes";
-        //  $post_id = 1951;
-        //  $meta = PostMeta::where('meta_key',$meta_key)->where('post_id',$post_id)->first();
-        //  dd(unserialize($meta->meta_value));
-        // $option_name = "_transient_wc_product_children_2086";
-        // $option_name2 = "_transient_wc_var_prices_1762";
-        // $option_name3 = "_transient_wc_child_has_weight_1762";
-         //$option_name4 = "_transient_wc_var_prices_2113";
-        // $optoin_name5= "_transient_wc_term_counts";
-        //  $option = Option::where('option_name',$option_name)->first();
-        //  $option2 = Option::where('option_name',$option_name2)->first();
-        //  $option3 = Option::where('option_name',$option_name3)->first();
-         // $option4 = Option::where('option_name',$option_name4)->first();
-        //dd(json_decode($option4->option_value));
-          //  $option5 = Option::where('option_name',$optoin_name5)->first();
-        //  dd(unserialize($option->option_value));
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')
@@ -92,8 +76,6 @@ class ProductController extends Controller
                             $this->post_service->store_gallery($request,$request->post_id);
                     case "categories":
                         $product =  $this->post_service->store_product_categories($request,$request->post_id);
-                    break;
-                    case "tags":
                         $product =  $this->post_service->store_product_tags($request,$request->post_id);
                     break;
                 }

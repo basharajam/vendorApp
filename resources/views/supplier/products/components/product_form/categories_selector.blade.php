@@ -52,7 +52,20 @@ if($product){
         @endforeach
 
     </div>
-
+    <div class="w-100">
+        <div class="kt-widget kt-widget--user-profile-4" >
+            <div class="kt-widget__head">
+                <div class="kt-widget__content">
+                    <div class="kt-widget__section">
+                        <a href="#" class="kt-widget__username" id="">
+                            التاغات
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @include('supplier.products.components.product_form.tags_selector')
+        </div>
+    </div>
     <div class="form-group row mt-10 mb-0">
         <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary ">
