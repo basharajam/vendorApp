@@ -112671,3 +112671,8 @@ input[name=name] {
   border: 1px solid #3F4254;
 }
 
+.checkbox > span {
+  border: 1px solid #3F4254;
+  background-color: #fff;
+}
+

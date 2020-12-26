@@ -484,3 +484,7 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 .radio.radio-success > span{
     border:1px solid #3F4254;
 }
+.checkbox > span{
+    border:1px solid #3F4254;
+    background-color: #fff;
+}

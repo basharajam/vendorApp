@@ -7,7 +7,7 @@
             <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
         </a>
         <!--end::Logo-->
-        <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 system-color ">نظام الموردين</h2>
+        <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">نظام الموردين</h2>
         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h2-lg">تسجيل دخول</h2>
         <span class="text-muted font-weight-bold font-size-h5 d-block">أو</span>
         <span class="text-muted font-weight-bold font-size-h5"><a href="{{ route('register') }}" class="text-primary font-weight-bolder" >إنشاء حساب جديد</a></span>
