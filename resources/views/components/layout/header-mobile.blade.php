@@ -3,6 +3,9 @@
     </div>
     <div class="kt-header-mobile__toolbar">
         <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+        <div class="logo" style="width:55px;padding:5px;">
+            <img src="{{ asset('/images/logo.png') }}" style="width:100%;">
+        </div>
         <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more-1"></i></button>
     </div>
 </div>

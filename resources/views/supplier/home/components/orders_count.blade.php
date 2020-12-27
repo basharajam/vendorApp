@@ -1,4 +1,4 @@
-<a href="{{ route('supplier.orders') }}" class=" col-md-3 col-sm-12 bg-white px-6 py-8 rounded-xl  d-flex justify-content-between align-items-center">
+<a href="{{ route('supplier.orders') }}" class=" col-md-3 col-sm-12 bg-white px-6 py-8 rounded-xl  d-flex justify-content-between align-items-center mt-10">
     <div class="">
         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2 text-center"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-12-10-081610/theme/html/demo2/dist/../src/media/svg/icons/Layout/Layout-grid.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
