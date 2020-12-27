@@ -17,6 +17,10 @@
 .kt-widget__pic.kt-widget__pic--warning {background: rgba(255, 184, 34, 0.1); }
 .kt-widget__pic.kt-widget__pic--danger {background: rgba(253, 57, 122, 0.1); }
 
+
+html, body {
+    height: 100%;
+}
 .kt-avatar .kt-avatar__holder .kt-widget__pic{
     display: -webkit-box;
     display: flex;
