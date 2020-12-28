@@ -2,11 +2,12 @@
 
 namespace App\Rules;
 
-use App\Models\WP\Term;
-use App\Models\WP\TermTaxonomy;
 use Illuminate\Contracts\Validation\Rule;
 
-class CheckCategoryRule implements Rule
+use App\Models\WP\Term;
+use App\Models\WP\TermTaxonomy;
+
+class CheckTagUniqueRule implements Rule
 {
     /**
      * Create a new rule instance.
@@ -27,13 +28,10 @@ class CheckCategoryRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
         $terms = Term::where('name',$value)->pluck('term_id');
-        $term_exists = TermTaxonomy::where('taxonomy','product_cat')->whereIn('term_id',$terms)->get();
-        foreach($term_exists as $key=>$taxonomy){
-            if($taxonomy->parent==request('parent')){
-                return false;
-            }
+        $term_exists = TermTaxonomy::where('taxonomy','product_tag')->whereIn('term_id',$terms)->get();
+        if($term_exists && count($term_exists)>0){
+            return false;
         }
         return true;
     }
@@ -45,7 +43,6 @@ class CheckCategoryRule implements Rule
      */
     public function message()
     {
-
         return 'الاسم موجود مسبقاً الرجاء اختيار اسم آخر';
     }
 }

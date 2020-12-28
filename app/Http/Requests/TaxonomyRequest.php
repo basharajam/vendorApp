@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\CheckCategoryRule;
+use App\Rules\CheckTagUniqueRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaxonomyRequest extends FormRequest
@@ -32,9 +33,13 @@ class TaxonomyRequest extends FormRequest
                 'parent'=>['required']
             ];
         }
+        else if(request('type')=='product_tag'){
+            return [
+                'name'=>['required',new CheckTagUniqueRule()],
+            ];
+        }
         else{
             return [
-
                 //
                 'name'=>['unique:App\Models\WP\Term']
             ];
@@ -48,6 +53,7 @@ class TaxonomyRequest extends FormRequest
      */
     public function messages()
     {
+
         return [
             'name.unique' => 'هذه الاسم موجود مسبقاً الرجاء ادخال اسم آخر',
 

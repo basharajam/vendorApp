@@ -163,7 +163,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         $term_taxonomy = TermTaxonomy::create([
             'term_id'=>$term->term_id,
             'taxonomy'=>$request->taxonomy,
-            'description'=>$request->description,
+            'description'=>$request->description ?? ' ',
             'parent'=>0,
             "supplier_id"=>$supplier_id
         ]);

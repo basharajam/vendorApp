@@ -134,6 +134,14 @@
     <script>
         let content="{{ session('message') }}";
         let status =" {{ session('status') }}";
+        let validation_erros_exist = "{{ $errors->any() }}"
+        // let validation_errors = "{!! json_encode($errors->all()) !!}";
+        if(validation_erros_exist==1){
+            let verrors = {!! json_encode($errors->all()) !!};
+            for(let i=0;i<verrors.length;i++){
+                toastr.error(verrors[i]);
+            }
+        }
         console.log(status);
         toastr.options = {
             "closeButton": true,
