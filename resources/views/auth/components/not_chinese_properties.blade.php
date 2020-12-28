@@ -30,64 +30,71 @@
             </label>
             <div class="w-100 d-flex justify-content-between">
                 <div class="col">
-                    <select id="day_passport" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل">
+                    <select id="day_passport" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" required
+                    oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                    oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
                         <option >اليوم</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
+                        <option value="01" @if(date('d',strtotime(old('passport_end_date')))==1) selected @endif>1</option>
+                        <option value="02" @if(date('d',strtotime(old('passport_end_date')))==2) selected @endif>2</option>
+                        <option value="03" @if(date('d',strtotime(old('passport_end_date')))==3) selected @endif>3</option>
+                        <option value="04" @if(date('d',strtotime(old('passport_end_date')))==4) selected @endif>4</option>
+                        <option value="05" @if(date('d',strtotime(old('passport_end_date')))==5) selected @endif>5</option>
+                        <option value="06" @if(date('d',strtotime(old('passport_end_date')))==6) selected @endif>6</option>
+                        <option value="07" @if(date('d',strtotime(old('passport_end_date')))==7) selected @endif>7</option>
+                        <option value="08" @if(date('d',strtotime(old('passport_end_date')))==8) selected @endif>8</option>
+                        <option value="09" @if(date('d',strtotime(old('passport_end_date')))==9) selected @endif>9</option>
+                        <option value="10" @if(date('d',strtotime(old('passport_end_date')))==10) selected @endif>10</option>
+                        <option value="11" @if(date('d',strtotime(old('passport_end_date')))==11) selected @endif>11</option>
+                        <option value="12" @if(date('d',strtotime(old('passport_end_date')))==12) selected @endif>12</option>
+                        <option value="13" @if(date('d',strtotime(old('passport_end_date')))==13) selected @endif>13</option>
+                        <option value="14" @if(date('d',strtotime(old('passport_end_date')))==14) selected @endif>14</option>
+                        <option value="15" @if(date('d',strtotime(old('passport_end_date')))==15) selected @endif>15</option>
+                        <option value="16" @if(date('d',strtotime(old('passport_end_date')))==16) selected @endif>16</option>
+                        <option value="17" @if(date('d',strtotime(old('passport_end_date')))==17) selected @endif>17</option>
+                        <option value="18" @if(date('d',strtotime(old('passport_end_date')))==18) selected @endif>18</option>
+                        <option value="19" @if(date('d',strtotime(old('passport_end_date')))==19) selected @endif>19</option>
+                        <option value="20" @if(date('d',strtotime(old('passport_end_date')))==20) selected @endif>20</option>
+                        <option value="21" @if(date('d',strtotime(old('passport_end_date')))==21) selected @endif>21</option>
+                        <option value="22" @if(date('d',strtotime(old('passport_end_date')))==22) selected @endif>22</option>
+                        <option value="23" @if(date('d',strtotime(old('passport_end_date')))==23) selected @endif>23</option>
+                        <option value="24" @if(date('d',strtotime(old('passport_end_date')))==24) selected @endif>24</option>
+                        <option value="25" @if(date('d',strtotime(old('passport_end_date')))==25) selected @endif>25</option>
+                        <option value="26" @if(date('d',strtotime(old('passport_end_date')))==26) selected @endif>26</option>
+                        <option value="27" @if(date('d',strtotime(old('passport_end_date')))==27) selected @endif>27</option>
+                        <option value="28" @if(date('d',strtotime(old('passport_end_date')))==28) selected @endif>28</option>
+                        <option value="29" @if(date('d',strtotime(old('passport_end_date')))==29) selected @endif>29</option>
+                        <option value="30" @if(date('d',strtotime(old('passport_end_date')))==30) selected @endif>30</option>
+                        <option value="31" @if(date('d',strtotime(old('passport_end_date')))==31) selected @endif>31</option>
                     </select>
                 </div>
 
                <div class="col ">
-                <select id="month_passport" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل">
+                <select id="month_passport" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل"
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
+                required>
                     <option value="">الشهر</option>
-                    <option value="01">كانون الثاني</option>
-                    <option value="02">شباط</option>
-                    <option value="03">آذار</option>
-                    <option value="04">نيسان</option>
-                    <option value="05">آيار</option>
-                    <option value="06">حزيران</option>
-                    <option value="07">تموز</option>
-                    <option value="08">آب</option>
-                    <option value="09">ايلول</option>
-                    <option value="10">تشرين الأول</option>
-                    <option value="11">تشرين الثاني</option>
-                    <option value="12">كانون الأول</option>
+                    <option value="01" @if(date('m',strtotime(old('passport_end_date')))==1) selected @endif>كانون الثاني</option>
+                    <option value="02" @if(date('m',strtotime(old('passport_end_date')))==2) selected @endif>شباط</option>
+                    <option value="03" @if(date('m',strtotime(old('passport_end_date')))==3) selected @endif>آذار</option>
+                    <option value="04" @if(date('m',strtotime(old('passport_end_date')))==4) selected @endif>نيسان</option>
+                    <option value="05" @if(date('m',strtotime(old('passport_end_date')))==5) selected @endif>آيار</option>
+                    <option value="06" @if(date('m',strtotime(old('passport_end_date')))==6) selected @endif>حزيران</option>
+                    <option value="07" @if(date('m',strtotime(old('passport_end_date')))==7) selected @endif>تموز</option>
+                    <option value="08" @if(date('m',strtotime(old('passport_end_date')))==8) selected @endif>آب</option>
+                    <option value="09" @if(date('m',strtotime(old('passport_end_date')))==9) selected @endif>ايلول</option>
+                    <option value="10" @if(date('m',strtotime(old('passport_end_date')))==10) selected @endif>تشرين الأول</option>
+                    <option value="11" @if(date('m',strtotime(old('passport_end_date')))==11) selected @endif>تشرين الثاني</option>
+                    <option value="12" @if(date('m',strtotime(old('passport_end_date')))==12) selected @endif>كانون الأول</option>
                 </select>
                </div>
                <div class="col ">
-                <select id="year_passport" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل" >
+                <select id="year_passport" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل"  required
+                oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
+                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
                     <option value="2011">السنة</option>
                     @for($year=1900;$year<=date("Y")+20;$year++)
-                    <option value="{{ $year }}">{{ $year }}</option>
+                    <option value="{{ $year }}"  @if(date('Y',strtotime(old('passport_end_date')))==$year) selected @endif>{{ $year }}</option>
                     @endfor
                 </select>
                </div>
@@ -115,6 +122,7 @@
                 <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
             </div>
         </div>
+        <input id="passport_image_value" type="hidden" name="passport_image" value="{{ old('passport_image') }}">
     </div>
     <!--end::Form group Passport ID Picture-->
     </div>
@@ -134,6 +142,8 @@
             </div>
         </div>
         <!--end::Form group Passport ID Picture-->
+        <input id="visa_image_value" type="hidden" name="visa_image" value="{{ old('visa_image') }}">
+
         </div>
 
 </div>

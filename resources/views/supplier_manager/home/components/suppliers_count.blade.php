@@ -14,7 +14,6 @@
     <div class="d-flex flex-column">
         <span class="font-weight-bolder font-size-h1">{{ $suppliers_count }} </span>
         {{-- <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span> --}}
-
     </div>
 
 </a>

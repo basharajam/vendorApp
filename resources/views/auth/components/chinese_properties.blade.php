@@ -33,7 +33,7 @@
                 <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
             </div>
         </div>
-
+        <input id="national_image_value" type="hidden" name="national_id_image" value="{{ old('national_id_image') }}">
     </div>
     <!--end::Form group National ID Picture-->
     </div>

@@ -112705,3 +112705,7 @@ input[name=name] {
   margin-right: 6px;
 }
 
+.dz-image img {
+  width: 100%;
+}
+

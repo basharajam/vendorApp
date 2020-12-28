@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ImageController extends Controller
 {
     public function uploadImage(Request $request){
-        $path = storage_path('tmp/uploads');
+        $path = storage_path('app/public/tmp/uploads');
 
         if (!file_exists($path)) {
             mkdir($path, 0777, true);

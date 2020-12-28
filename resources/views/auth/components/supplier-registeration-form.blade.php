@@ -68,7 +68,7 @@ input.error {
                                     type="radio"
                                     name="ischinese"
                                     title="الرجاء تعبئة هذا الحقل"
-                                    @if($supplier && $supplier->ischinese==true) checked="checked" @endif
+                                    @if(($supplier && $supplier->ischinese==true) || old('ischinese')==1) checked="checked" @endif
                                     />
                             <span></span>
                             صيني
@@ -78,7 +78,7 @@ input.error {
                                     type="radio"
                                     name="ischinese"
                                     title="الرجاء تعبئة هذا الحقل"
-                                    @if($supplier && $supplier->ischinese==false) checked="checked" @endif
+                                    @if(($supplier && $supplier->ischinese==false) || old('ischinese')=='0') checked="checked" @endif
                                     />
                             <span></span>
                             لست صيني
@@ -194,64 +194,64 @@ input.error {
             </label>
             <div class="w-100 d-flex justify-content-between">
                 <div class="col">
-                    <select id="day_birthdate" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
+                    <select id="day_birthdate" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل"  >
                         <option >اليوم</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
+                        <option value="01" @if(date('d',strtotime(old('brithdate')))==1) selected @endif>1</option>
+                        <option value="02" @if(date('d',strtotime(old('brithdate')))==2) selected @endif>2</option>
+                        <option value="03" @if(date('d',strtotime(old('brithdate')))==3) selected @endif>3</option>
+                        <option value="04" @if(date('d',strtotime(old('brithdate')))==4) selected @endif>4</option>
+                        <option value="05" @if(date('d',strtotime(old('brithdate')))==5) selected @endif>5</option>
+                        <option value="06" @if(date('d',strtotime(old('brithdate')))==6) selected @endif>6</option>
+                        <option value="07" @if(date('d',strtotime(old('brithdate')))==7) selected @endif>7</option>
+                        <option value="08" @if(date('d',strtotime(old('brithdate')))==8) selected @endif>8</option>
+                        <option value="09" @if(date('d',strtotime(old('brithdate')))==9) selected @endif>9</option>
+                        <option value="10" @if(date('d',strtotime(old('brithdate')))==10) selected @endif>10</option>
+                        <option value="11" @if(date('d',strtotime(old('brithdate')))==11) selected @endif>11</option>
+                        <option value="12" @if(date('d',strtotime(old('brithdate')))==12) selected @endif>12</option>
+                        <option value="13" @if(date('d',strtotime(old('brithdate')))==13) selected @endif>13</option>
+                        <option value="14" @if(date('d',strtotime(old('brithdate')))==14) selected @endif>14</option>
+                        <option value="15" @if(date('d',strtotime(old('brithdate')))==15) selected @endif>15</option>
+                        <option value="16" @if(date('d',strtotime(old('brithdate')))==16) selected @endif>16</option>
+                        <option value="17" @if(date('d',strtotime(old('brithdate')))==17) selected @endif>17</option>
+                        <option value="18" @if(date('d',strtotime(old('brithdate')))==18) selected @endif>18</option>
+                        <option value="19" @if(date('d',strtotime(old('brithdate')))==19) selected @endif>19</option>
+                        <option value="20" @if(date('d',strtotime(old('brithdate')))==20) selected @endif>20</option>
+                        <option value="21" @if(date('d',strtotime(old('brithdate')))==21) selected @endif>21</option>
+                        <option value="22" @if(date('d',strtotime(old('brithdate')))==22) selected @endif>22</option>
+                        <option value="23" @if(date('d',strtotime(old('brithdate')))==23) selected @endif>23</option>
+                        <option value="24" @if(date('d',strtotime(old('brithdate')))==24) selected @endif>24</option>
+                        <option value="25" @if(date('d',strtotime(old('brithdate')))==25) selected @endif>25</option>
+                        <option value="26" @if(date('d',strtotime(old('brithdate')))==26) selected @endif>26</option>
+                        <option value="27" @if(date('d',strtotime(old('brithdate')))==27) selected @endif>27</option>
+                        <option value="28" @if(date('d',strtotime(old('brithdate')))==28) selected @endif>28</option>
+                        <option value="29" @if(date('d',strtotime(old('brithdate')))==29) selected @endif>29</option>
+                        <option value="30" @if(date('d',strtotime(old('brithdate')))==30) selected @endif>30</option>
+                        <option value="31" @if(date('d',strtotime(old('brithdate')))==31) selected @endif>31</option>
                     </select>
                 </div>
 
                <div class="col ">
                 <select id="month_birthdate" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
                     <option value="">الشهر</option>
-                    <option value="01">كانون الثاني</option>
-                    <option value="02">شباط</option>
-                    <option value="03">آذار</option>
-                    <option value="04">نيسان</option>
-                    <option value="05">آيار</option>
-                    <option value="06">حزيران</option>
-                    <option value="07">تموز</option>
-                    <option value="08">آب</option>
-                    <option value="09">ايلول</option>
-                    <option value="10">تشرين الأول</option>
-                    <option value="11">تشرين الثاني</option>
-                    <option value="12">كانون الأول</option>
+                    <option value="01" @if(date('m',strtotime(old('brithdate')))==1) selected @endif>كانون الثاني</option>
+                    <option value="02" @if(date('m',strtotime(old('brithdate')))==2) selected @endif>شباط</option>
+                    <option value="03" @if(date('m',strtotime(old('brithdate')))==3) selected @endif>آذار</option>
+                    <option value="04" @if(date('m',strtotime(old('brithdate')))==4) selected @endif>نيسان</option>
+                    <option value="05" @if(date('m',strtotime(old('brithdate')))==5) selected @endif>آيار</option>
+                    <option value="06" @if(date('m',strtotime(old('brithdate')))==6) selected @endif>حزيران</option>
+                    <option value="07" @if(date('m',strtotime(old('brithdate')))==7) selected @endif>تموز</option>
+                    <option value="08" @if(date('m',strtotime(old('brithdate')))==8) selected @endif>آب</option>
+                    <option value="09" @if(date('m',strtotime(old('brithdate')))==9) selected @endif>ايلول</option>
+                    <option value="10" @if(date('m',strtotime(old('brithdate')))==10) selected @endif>تشرين الأول</option>
+                    <option value="11" @if(date('m',strtotime(old('brithdate')))==11) selected @endif>تشرين الثاني</option>
+                    <option value="12" @if(date('m',strtotime(old('brithdate')))==12) selected @endif>كانون الأول</option>
                 </select>
                </div>
                <div class="col ">
                 <select id="year_birthdate" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل">
                     <option value="2011">السنة</option>
                     @for($year=1900;$year<=date("Y");$year++)
-                    <option value="{{ $year }}">{{ $year }}</option>
+                    <option value="{{ $year }}" @if(date('Y',strtotime(old('brithdate')))==$year) selected @endif>{{ $year }}</option>
                     @endfor
                 </select>
                </div>
@@ -276,7 +276,7 @@ input.error {
                     <input  value="male"
                             type="radio"
                             name="gender"
-                            @if($supplier && $supplier->gender=="male") checked="checked" @endif
+                            @if(($supplier && $supplier->gender=="male") || old('gender')=='male') checked="checked" @endif
                             title="الرجاء تعبئة هذا الحقل"
                             />
                     <span></span>
@@ -286,7 +286,7 @@ input.error {
                     <input  value="female"
                             type="radio"
                             name="gender"
-                            @if($supplier && $supplier->gender=="female") checked="checked" @endif
+                            @if(($supplier && $supplier->gender=="female") || old('gender')=='female') checked="checked" @endif
                             title="الرجاء تعبئة هذا الحقل"
                             />
                     <span></span>
@@ -349,7 +349,7 @@ input.error {
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
                 title="الرجاء تعبئة هذا الحقل"
               />
-
+        <input type="hidden" value="{{ old('country_code') }}" name="country_code" id="country_code">
         @error('mobile_number')
         <div class="fv-plugins-message-container">
             <div  class="fv-help-block"     >{{ $message }}</div>
@@ -460,62 +460,62 @@ input.error {
                     <div class="col">
                         <select id="day_company" name="day" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 " title="الرجاء تعبئة هذا الحقل" >
                             <option >اليوم</option>
-                            <option value="01">1</option>
-                            <option value="02">2</option>
-                            <option value="03">3</option>
-                            <option value="04">4</option>
-                            <option value="05">5</option>
-                            <option value="06">6</option>
-                            <option value="07">7</option>
-                            <option value="08">8</option>
-                            <option value="09">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
+                            <option value="01" @if(date('d',strtotime(old('company_created_at')))==1) selected @endif>1</option>
+                            <option value="02" @if(date('d',strtotime(old('company_created_at')))==2) selected @endif>2</option>
+                            <option value="03" @if(date('d',strtotime(old('company_created_at')))==3) selected @endif>3</option>
+                            <option value="04" @if(date('d',strtotime(old('company_created_at')))==4) selected @endif>4</option>
+                            <option value="05" @if(date('d',strtotime(old('company_created_at')))==5) selected @endif>5</option>
+                            <option value="06" @if(date('d',strtotime(old('company_created_at')))==6) selected @endif>6</option>
+                            <option value="07" @if(date('d',strtotime(old('company_created_at')))==7) selected @endif>7</option>
+                            <option value="08" @if(date('d',strtotime(old('company_created_at')))==8) selected @endif>8</option>
+                            <option value="09" @if(date('d',strtotime(old('company_created_at')))==9) selected @endif>9</option>
+                            <option value="10" @if(date('d',strtotime(old('company_created_at')))==10) selected @endif>10</option>
+                            <option value="11" @if(date('d',strtotime(old('company_created_at')))==11) selected @endif>11</option>
+                            <option value="12" @if(date('d',strtotime(old('company_created_at')))==12) selected @endif>12</option>
+                            <option value="13" @if(date('d',strtotime(old('company_created_at')))==13) selected @endif>13</option>
+                            <option value="14" @if(date('d',strtotime(old('company_created_at')))==14) selected @endif>14</option>
+                            <option value="15" @if(date('d',strtotime(old('company_created_at')))==15) selected @endif>15</option>
+                            <option value="16" @if(date('d',strtotime(old('company_created_at')))==16) selected @endif>16</option>
+                            <option value="17" @if(date('d',strtotime(old('company_created_at')))==17) selected @endif>17</option>
+                            <option value="18" @if(date('d',strtotime(old('company_created_at')))==18) selected @endif>18</option>
+                            <option value="19" @if(date('d',strtotime(old('company_created_at')))==19) selected @endif>19</option>
+                            <option value="20" @if(date('d',strtotime(old('company_created_at')))==20) selected @endif>20</option>
+                            <option value="21" @if(date('d',strtotime(old('company_created_at')))==21) selected @endif>21</option>
+                            <option value="22" @if(date('d',strtotime(old('company_created_at')))==22) selected @endif>22</option>
+                            <option value="23" @if(date('d',strtotime(old('company_created_at')))==23) selected @endif>23</option>
+                            <option value="24" @if(date('d',strtotime(old('company_created_at')))==24) selected @endif>24</option>
+                            <option value="25" @if(date('d',strtotime(old('company_created_at')))==25) selected @endif>25</option>
+                            <option value="26" @if(date('d',strtotime(old('company_created_at')))==26) selected @endif>26</option>
+                            <option value="27" @if(date('d',strtotime(old('company_created_at')))==27) selected @endif>27</option>
+                            <option value="28" @if(date('d',strtotime(old('company_created_at')))==28) selected @endif>28</option>
+                            <option value="29" @if(date('d',strtotime(old('company_created_at')))==29) selected @endif>29</option>
+                            <option value="30" @if(date('d',strtotime(old('company_created_at')))==30) selected @endif>30</option>
+                            <option value="31" @if(date('d',strtotime(old('company_created_at')))==31) selected @endif>31</option>
                         </select>
                     </div>
 
                    <div class="col ">
                     <select id="month_company" name="month" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 "  title="الرجاء تعبئة هذا الحقل">
                         <option value="">الشهر</option>
-                        <option value="01">كانون الثاني</option>
-                        <option value="02">شباط</option>
-                        <option value="03">آذار</option>
-                        <option value="04">نيسان</option>
-                        <option value="05">آيار</option>
-                        <option value="06">حزيران</option>
-                        <option value="07">تموز</option>
-                        <option value="08">آب</option>
-                        <option value="09">ايلول</option>
-                        <option value="10">تشرين الأول</option>
-                        <option value="11">تشرين الثاني</option>
-                        <option value="12">كانون الأول</option>
+                        <option value="01" @if(date('m',strtotime(old('company_created_at')))==1) selected @endif>كانون الثاني</option>
+                        <option value="02" @if(date('m',strtotime(old('company_created_at')))==2) selected @endif>شباط</option>
+                        <option value="03" @if(date('m',strtotime(old('company_created_at')))==3) selected @endif>آذار</option>
+                        <option value="04" @if(date('m',strtotime(old('company_created_at')))==4) selected @endif>نيسان</option>
+                        <option value="05" @if(date('m',strtotime(old('company_created_at')))==5) selected @endif>آيار</option>
+                        <option value="06" @if(date('m',strtotime(old('company_created_at')))==6) selected @endif>حزيران</option>
+                        <option value="07" @if(date('m',strtotime(old('company_created_at')))==7) selected @endif>تموز</option>
+                        <option value="08" @if(date('m',strtotime(old('company_created_at')))==8) selected @endif>آب</option>
+                        <option value="09" @if(date('m',strtotime(old('company_created_at')))==9) selected @endif>ايلول</option>
+                        <option value="10" @if(date('m',strtotime(old('company_created_at')))==10) selected @endif>تشرين الأول</option>
+                        <option value="11" @if(date('m',strtotime(old('company_created_at')))==11) selected @endif>تشرين الثاني</option>
+                        <option value="12" @if(date('m',strtotime(old('company_created_at')))==12) selected @endif>كانون الأول</option>
                     </select>
                    </div>
                    <div class="col ">
                     <select id="year_company" name="year" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" title="الرجاء تعبئة هذا الحقل">
-                        <option value="2011">السنة</option>
+                        <option value="">السنة</option>
                         @for($year=1900;$year<=date("Y");$year++)
-                        <option value="{{ $year }}">{{ $year }}</option>
+                        <option value="{{ $year }}" @if(date('Y',strtotime(old('company_created_at')))==$year) selected @endif>{{ $year }}</option>
                         @endfor
                     </select>
                    </div>
@@ -539,7 +539,7 @@ input.error {
                 <select id="provinceSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="company_address_sector" value="{{$supplier->company_address_sector ?? old('company_address_sector') }}" title="الرجاء تعبئة هذا الحقل">
                     <option></option>
                     @foreach($provinces as $province)
-                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                        <option value="{{ $province->id }}" @if(( $supplier && $supplier->company_address_sector==$province->id)||old('company_address_sector')==$province->id) selected @endif>{{ $province->name }}</option>
                     @endforeach
                 </select>
                 @error('company_address_sector')
@@ -583,6 +583,7 @@ input.error {
                         <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
                     </div>
                 </div>
+                <input id="commercial_license_image_value" type="hidden" name="commercial_license_image" value="{{ old('commercial_license_image') }}">
 
             </div>
             <!--end::Form group National ID Picture-->
@@ -600,6 +601,7 @@ input.error {
                         <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
                     </div>
                 </div>
+                <input id="company_logo_value" type="hidden" name="company_logo" value="{{ old('company_logo') }}">
 
             </div>
             <!--end::Form group National ID Picture-->
@@ -615,7 +617,7 @@ input.error {
                 <div class="w-100">
                     <select id="cateogiresSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="categories[]" value="" title="الرجاء تعبئة هذا الحقل">
                         @foreach($categories  as $category)
-                            <option value="{{ $category->term_taxonomy_id }}">{{ $category->term->name }}</option>
+                            <option value="{{ $category->term_taxonomy_id }}" @if(old('categories') &&  in_array($category->term_taxonomy_id,old('categories'))) selected @endif>{{ $category->term->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -637,13 +639,13 @@ input.error {
                 <div class="w-100">
 
                     <select id="CountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="company_countries[]" value="" title="الرجاء تعبئة هذا الحقل">
-                        <option @if($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries))) selected @endif >تركيا</option>
-                        <option @if($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries))) selected @endif>الكويت</option>
-                        <option @if($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries))) selected @endif>إمارات</option>
-                        <option @if($supplier && $supplier->company_countries && in_array('قطر',explode(',',$supplier->company_countries))) selected @endif>قطر </option>
-                        <option @if($supplier && $supplier->company_countries && in_array('عمان',explode(',',$supplier->company_countries))) selected @endif>عمان</option>
-                        <option @if($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries))) selected @endif>سوريا</option>
-                        <option @if($supplier && $supplier->company_countries && in_array('لبنان',explode(',',$supplier->company_countries))) selected @endif>لبنان</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('تركيا',explode(',',$supplier->company_countries)))||(old('company_countries') && in_array('تركيا',old('company_countries')))) selected @endif >تركيا</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('الكويت',explode(',',$supplier->company_countries)))|| (old('company_countries') && in_array('الكويت',old('company_countries')))) selected @endif>الكويت</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('إمارات',explode(',',$supplier->company_countries)))|| (old('company_countries') && in_array('إمارات',old('company_countries')))) selected @endif>إمارات</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('قطر',explode(',',$supplier->company_countries))) || (old('company_countries') && in_array('قطر',old('company_countries')))) selected @endif>قطر </option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('عمان',explode(',',$supplier->company_countries)))|| (old('company_countries') && in_array('عمان',old('company_countries'))))  selected @endif>عمان</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('سوريا',explode(',',$supplier->company_countries)))|| (old('company_countries') && in_array('سوريا',old('company_countries')))) selected @endif>سوريا</option>
+                        <option @if(($supplier && $supplier->company_countries && in_array('لبنان',explode(',',$supplier->company_countries))) || (old('company_countries') && in_array('لبنان',old('company_countries')))) selected @endif>لبنان</option>
                     </select>
 
                 </div>
@@ -663,13 +665,13 @@ input.error {
                 </label>
                 <div class="w-100">
                     <select id="ReCountriesSelector" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" multiple type="text" placeholder="" name="countries_which_company_doesnot_work_with[]" value="" title="الرجاء تعبئة هذا الحقل">
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif >تركيا</option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>الكويت</option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>إمارات</option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('قطر',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>قطر </option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('عمان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>عمان</option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>سوريا</option>
-                        <option @if($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with))) selected @endif>لبنان</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with)))||(old('countries_which_company_doesnot_work_with') && in_array('تركيا',old('countries_which_company_doesnot_work_with')))) selected @endif >تركيا</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('الكويت',old('countries_which_company_doesnot_work_with')))) selected @endif>الكويت</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('إمارات',old('countries_which_company_doesnot_work_with')))) selected @endif>إمارات</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('قطر',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('قطر',old('countries_which_company_doesnot_work_with')))) selected @endif>قطر </option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('عمان',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('عمان',old('countries_which_company_doesnot_work_with')))) selected @endif>عمان</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('سوريا',old('countries_which_company_doesnot_work_with')))) selected @endif>سوريا</option>
+                        <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with && in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with)))|| (old('countries_which_company_doesnot_work_with') && in_array('لبنان',old('countries_which_company_doesnot_work_with')))) selected @endif>لبنان</option>
                     </select>
 
                 </div>
@@ -693,6 +695,11 @@ input.error {
                         <span class="dropzone-msg-desc">قم برفع 10 صور  كحد اقصى</span>
                     </div>
                 </div>
+                @if(old('license_images'))
+                    @foreach(old('license_images') as $key=>$value)
+                        <input type="hidden" id="license_images_value" name="license_images[]" value="{{ $value }}">
+                    @endforeach
+                @endif
 
             </div>
             <!--end::Form group National ID Picture-->
@@ -777,10 +784,10 @@ input.error {
     let cities = {!! json_encode($cities) !!};
     let supplier = {!!  json_encode($supplier)  !!};
     let countries = ["تركيا","قطر","عمان","الكويت","إمارات","سوريا","لبنان"];
-
+    let old_mobile_number = {{ old('mobile_number') }}
     $(function(){
         validMsg = document.querySelector("#valid-msg");
-
+        let old_country_code = $('#country_code').val();
 
         const input = document.getElementById("phone");
         var iti = window.intlTelInput(input, {
@@ -790,27 +797,42 @@ input.error {
             hiddenInput:'mobile_number',
             formatOnDisplay:true,
             utilsScript: "{{ asset('/plugins/telinput/js/utils.js') }}"
+
         });
         Inputmask({ mask: "99999999999" }).mask(input);
+        console.log('ld mobile',old_country_code);
 
         if(supplier){
             if(supplier.mobile_number.indexOf('+86')!==-1){
                 iti.setCountry('cn');
+                $('#country_code').val('cn')
             }
             else if(supplier.mobile_number.indexOf('+971')!==-1){
                 iti.setCountry('ae');
+                $('#country_code').val('ae')
+
             }
 
+        }
+        else if(old_country_code) {
+            console.log('ld mobile',old_country_code);
+            if(old_country_code=="cn"){
+                iti.setCountry('cn');
+            }
+            else if(old_country_code=='ae'){
+                iti.setCountry('ae');
+
+            }
         }
         input.addEventListener("countrychange", function() {
         // do something with iti.getSelectedCountryData()
             if(iti.getSelectedCountryData().iso2=='ae'){
                 Inputmask({ mask: "999999999" }).mask(input);
-
+                $('#country_code').val('ae');
             }
             else{
                 Inputmask({ mask: "99999999999" }).mask(input);
-
+                $('#country_code').val('cn');
             }
         });
         $("#cateogiresSelector").select2({
@@ -965,7 +987,193 @@ input.error {
         let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
+        if($("input[name='ischinese']:checked").val()=="1"){
+            init_chinese();
+        }
+        else if($("input[name='ischinese']:checked").val()=="0"){
+            init_not_chinese();
+        }
+        function init_chinese(){
+            $('#chinese_or_not_div').append(chinese_properties);
+                    $("#chinese_properties").show();
+                    let national_number_id = document.getElementById('national_number');
+                    Inputmask({ mask: "999999999999999999" }).mask(national_number_id);
+                    let national_id_image = document.getElementById('national_id_image');
+                    $dropzone_national_image =new Dropzone('#national_id_image',{
+                    url:   '{{ route('supplier.storeImage') }}',
+                    addRemoveLinks: true,
+                    headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                    method:'POST',
+                    maxFiles: 1,
+                    dictRemoveFile :"احذف الصورة",
+                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                    dictCancelUpload:"إلغاء التحميل",
+                    init: function() {
+                        this.on("maxfilesexceeded", function(file){
+                           toastr.error('لا يمكنك تحميل المزيد من الصور')
+                            this.removeFile(file);
+                        });
+                        let national_image_value = $('#national_image_value').val();
+                            if(national_image_value){
+                                var mockFile = { name: national_image_value.split('/ ').pop(),size:12345,  type: 'image/'+national_image_value.split('.').pop()};
+                                console.log(mockFile);
+                                 this.emit('addedfile',mockFile);
+                                this.files.push(mockFile);
 
+                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+national_image_value );
+                                $('.dz-progress').remove();
+                                var existingFileCount = 1; // The number of files already uploaded
+                                this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                            }
+                            this.on("addedfile", function (file) {
+
+                            if (this.files.length > this.options.maxFiles) {
+                               // this.removeFile(this.files[0]);
+                            }
+
+                            });
+                    },
+                    success: function (file, response) {
+
+                        uploadedDocumentMap[file.name] = response.name
+                        $("#national_image_value").val(response.name);
+
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        var name = ''
+                        if (typeof file.file_name !== 'undefined') {
+                            name = file.file_name
+                        } else {
+                            name = uploadedDocumentMap[file.name]
+                        }
+                        this.options.maxFiles = this.options.maxFiles +1;
+                        $('#supplier_registeration_form').find('input[name="national_id_image"][value="' + name + '"]').val('')
+                    },
+
+                    });
+
+        }
+        function init_not_chinese(){
+            $('#chinese_or_not_div').append(not_chinese_properties);
+                    $("#not_chinese_properties").show();
+                    let passport_number_id = document.getElementById('passport_number_id');
+                    Inputmask({ regex: "^[a-zA-Z0-9]{16}$" }).mask(passport_number_id);
+                    let passport_image = document.getElementById('passport_image');
+                    let visa_image = document.getElementById('visa_image');
+
+                    $("#year_passport").select2({dir:"rtl"});
+                    $("#day_passport").select2({dir:"rtl"});
+                    $("#month_passport").select2({dir:"rtl"});
+                    $('#day_passport,#month_passport,#year_passport').change(function() {
+                        $('#passport_end_date').datepicker('setDate',
+                                new Date($('#year_passport').val() - 0, $('#month_passport').val() - 1, $('#day_passport').val() - 0));
+                        console.log($("#passport_end_date").val());
+                    });
+
+                     $dropzone_passport_image =new Dropzone('#passport_image',{
+                        url:   '{{ route('supplier.storeImage') }}',
+                        addRemoveLinks: true,
+                        headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                        method:'POST',
+                        maxFiles: 1,
+                        dictRemoveFile :"احذف الصورة",
+                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                        dictCancelUpload:"إلغاء التحميل",
+                        init: function() {
+                            let old_passprot_image = $('#passport_image_value').val();
+                            if(old_passprot_image){
+                                var mockFile = { name: old_passprot_image.split('/ ').pop(),size:12345,  type: 'image/'+old_passprot_image.split('.').pop()};
+                                console.log(mockFile);
+                                 this.emit('addedfile',mockFile);
+                                 this.files.push(mockFile);
+                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+old_passprot_image );
+                                $('.dz-progress').remove();
+                                var existingFileCount = 1; // The number of files already uploaded
+                                this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                            }
+
+
+                            this.on("maxfilesexceeded", function(file){
+                            toastr.error('لا يمكنك تحميل المزيد من الصور')
+                                this.removeFile(file);
+                            });
+                        },
+                        success: function (file, response) {
+
+                            uploadedDocumentMap[file.name] = response.name
+                            console.log('response',response);
+                            console.log('file',file);
+                            $("#passport_image_value").val(response.name);
+                        },
+                        removedfile: function (file) {
+                            file.previewElement.remove()
+                            var name = ''
+                            if (typeof file.file_name !== 'undefined') {
+                                name = file.file_name
+                            } else {
+                                name = uploadedDocumentMap[file.name]
+                            }
+                            this.options.maxFiles = this.options.maxFiles +1;
+                            $('#supplier_registeration_form').find('input[name="passport_image"][value="' + name + '"]').val('')
+                        },
+
+                    });
+                     $dropzone_visa_image =new Dropzone('#visa_image',{
+                        url:   '{{ route('supplier.storeImage') }}',
+                        addRemoveLinks: true,
+                        headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                        method:'POST',
+                        maxFiles: 1,
+                        dictRemoveFile :"احذف الصورة",
+                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
+                        dictCancelUpload:"إلغاء التحميل",
+                        init: function() {
+                            this.on("maxfilesexceeded", function(file){
+                            toastr.error('لا يمكنك تحميل المزيد من الصور')
+                                this.removeFile(file);
+                            });
+                            let old_visa_image = $('#visa_image_value').val();
+                            if(old_visa_image){
+                                var mockFile = { name: old_visa_image.split('/ ').pop(),size:12345,  type: 'image/'+old_visa_image.split('.').pop()};
+
+                                this.emit('addedfile',mockFile);
+                                this.files.push(mockFile);
+                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+old_visa_image );
+
+                                $('.dz-progress').remove();
+                                var existingFileCount = 1; // The number of files already uploaded
+                                this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                            }
+                        },
+                        success: function (file, response) {
+
+                            uploadedDocumentMap[file.name] = response.name
+                            $("#visa_image_value").val(response.name);
+                        },
+                        removedfile: function (file) {
+                            file.previewElement.remove()
+                            var name = ''
+                            if (typeof file.file_name !== 'undefined') {
+                                name = file.file_name
+                            } else {
+                                name = uploadedDocumentMap[file.name]
+                            }
+                            this.options.maxFiles = this.options.maxFiles +1;
+                            $('#supplier_registeration_form').find('input[name="visa_image"][value="' + name + '"]').val('')
+                        },
+
+                    });
+        }
 
        // Inputmask().mask(document.querySelectorAll("input"));
        let  t = {
@@ -991,7 +1199,7 @@ input.error {
 
                     });
         let uploadedDocumentMap = {};
-        let $CommercialDropzone =new Dropzone('#commercial_license_image',{
+        var $CommercialDropzone =new Dropzone('#commercial_license_image',{
                     url:   '{{ route('supplier.storeImage') }}',
                     addRemoveLinks: true,
                     headers: {
@@ -1004,13 +1212,26 @@ input.error {
                     dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
                     dictCancelUpload:"إلغاء التحميل",
                     init: function() {
+                        var dropzone = this;
                         this.on("maxfilesexceeded", function(file){
                            toastr.error('لا يمكنك تحميل المزيد من الصور')
                             this.removeFile(file);
                         });
+                        let commercial_license_image = $('#commercial_license_image_value').val();
+                            if(commercial_license_image){
+                                var mockFile = { name: commercial_license_image.split('/ ').pop(),size:12345,  type: 'image/'+commercial_license_image.split('.').pop()};
+
+                                this.files.push(mockFile);
+                                this.emit('addedfile',mockFile);
+                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+commercial_license_image );
+                                $('.dz-progress').remove();
+                                var existingFileCount = 1; // The number of files already uploaded
+                                this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                            }
+
                     },
                     success: function (file, response) {
-                    $('#supplier_registeration_form').append('<input type="hidden" name="commercial_license_image" value="' + response.name + '">')
+                        $("#commercial_license_image_value").val(response.name);
                         uploadedDocumentMap[file.name] = response.name
                     },
 
@@ -1023,11 +1244,12 @@ input.error {
                         } else {
                             name = uploadedDocumentMap[file.name]
                         }
-                        $('#supplier_registeration_form').find('input[name="commercial_license_image"][value="' + name + '"]').remove()
+                        this.options.maxFiles = this.options.maxFiles + 1;
+                        $('#supplier_registeration_form').find('input[name="commercial_license_image"][value="' + name + '"]').val('')
                     },
 
         });
-        let $CompanyDropzone =new Dropzone('#company_logo',{
+        var $CompanyDropzone =new Dropzone('#company_logo',{
                     url:   '{{ route('supplier.storeImage') }}',
                     addRemoveLinks: true,
                     headers: {
@@ -1044,10 +1266,21 @@ input.error {
                            toastr.error('لا يمكنك تحميل المزيد من الصور')
                             this.removeFile(file);
                         });
+                        let company_logo_value = $('#company_logo_value').val();
+                            if(company_logo_value){
+                                var mockFile = { name: company_logo_value.split('/ ').pop(),size:12345,  type: 'image/'+company_logo_value.split('.').pop()};
+                                console.log(mockFile);
+                                this.emit('addedfile',mockFile);
+                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+company_logo_value );
+                                $('.dz-progress').remove();
+                                this.files.push(mockFile);
+                                var existingFileCount = 1; // The number of files already uploaded
+                                this.options.maxFiles = this.options.maxFiles - existingFileCount;
+                            }
                     },
                     success: function (file, response) {
-                    $('#supplier_registeration_form').append('<input type="hidden" name="company_logo" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
+                        $("#company_logo_value").val(response.name);
                     },
                     removedfile: function (file) {
                         file.previewElement.remove()
@@ -1057,11 +1290,13 @@ input.error {
                         } else {
                             name = uploadedDocumentMap[file.name]
                         }
-                        $('#supplier_registeration_form').find('input[name="company_logo"][value="' + name + '"]').remove()
+                        this.options.maxFiles = this.options.maxFiles +1;
+                        $('#supplier_registeration_form').find('input[name="company_logo"][value="' + name + '"]').val()
                     },
 
         });
-        let $LicensesDropzone =new Dropzone('#license_images',{
+        let uploadLicenseImages=[];
+        var $CompanyLisenceImages  =new Dropzone('#license_images',{
                     url:   '{{ route('supplier.storeImage') }}',
                     addRemoveLinks: true,
                     headers: {
@@ -1078,10 +1313,32 @@ input.error {
                            toastr.error('لا يمكنك تحميل المزيد من الصور')
                             this.removeFile(file);
                         });
+                        //let license_images_value = $('#license_images_value').val();
+                        let license_images_value = $("input[name='license_images[]']");
+                        console.log('license images ',license_images_value);
+                            if(license_images_value.length>0){
+                                for(let i=0;i<license_images_value.length;i++)
+                                {
+                                    uploadLicenseImages.push(license_images_value[i].value);
+                                    var mockFile = { name: license_images_value[i].value.split('/ ').pop(),size:12345,  type: 'image/'+license_images_value[i].value.split('.').pop()};
+                                    this.emit('addedfile',mockFile);
+                                    this.files.push(mockFile);
+                                    this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+license_images_value[i].value );
+                                    $('.dz-progress').remove();
+                                    this.options.maxFiles = this.options.maxFiles - 1;
+                                }
+                            }
+
+
                     },
                     success: function (file, response) {
-                    $('#supplier_registeration_form').append('<input type="hidden" name="license_images" value="' + response.name + '">')
+                    $('#supplier_registeration_form').append('<input type="hidden" name="license_images[]" value="' + response.name + '">')
                         uploadedDocumentMap[file.name] = response.name
+                        uploadLicenseImages.push(response.name);
+                        // console.log('uploadLicenseImages after add',uploadLicenseImages);
+                        // $("#license_images_value").val(uploadLicenseImages);
+                        // console.log('input value',$("#license_images_value").val());
+
                     },
                     removedfile: function (file) {
                         file.previewElement.remove()
@@ -1091,164 +1348,33 @@ input.error {
                         } else {
                             name = uploadedDocumentMap[file.name]
                         }
+                        uploadLicenseImages = uploadLicenseImages.filter((item)=>{
+                            return item !=name;
+                        });
+                        console.log('uploadLicenseImages after remove',uploadLicenseImages);
+                        this.options.maxFiles = this.options.maxFiles +1;
                         $('#supplier_registeration_form').find('input[name="license_images"][value="' + name + '"]').remove()
                     },
 
         });
+        var $dropzone_national_image;
+        var $dropzone_visa_image;
+        var $dropzone_passport_image;
         $( "input[name='ischinese']" ).on('change',function(){
             let selected_value = $(this).val();
             $('#chinese_or_not_div').empty();
             let uploadedDocumentMap = {};
             switch(selected_value){
                 case "1":
-                    $('#chinese_or_not_div').append(chinese_properties);
-                    $("#chinese_properties").show();
-                    let national_number_id = document.getElementById('national_number');
-                    Inputmask({ mask: "999999999999999999" }).mask(national_number_id);
-                    let national_id_image = document.getElementById('national_id_image');
-                    let $dropzone =new Dropzone('#national_id_image',{
-                    url:   '{{ route('supplier.storeImage') }}',
-                    addRemoveLinks: true,
-                    headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-                    method:'POST',
-                    maxFiles: 1,
-                    dictRemoveFile :"احذف الصورة",
-                    dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
-                    dictCancelUpload:"إلغاء التحميل",
-                    init: function() {
-                        this.on("maxfilesexceeded", function(file){
-                           toastr.error('لا يمكنك تحميل المزيد من الصور')
-                            this.removeFile(file);
-                        });
-                    },
-                    success: function (file, response) {
-                    $('#supplier_registeration_form').append('<input type="hidden" name="national_id_image" value="' + response.name + '">')
-                        uploadedDocumentMap[file.name] = response.name
-                    },
-                    removedfile: function (file) {
-                        file.previewElement.remove()
-                        var name = ''
-                        if (typeof file.file_name !== 'undefined') {
-                            name = file.file_name
-                        } else {
-                            name = uploadedDocumentMap[file.name]
-                        }
-                        $('#supplier_registeration_form').find('input[name="national_id_image"][value="' + name + '"]').remove()
-                    },
-
-                    });
-
+                init_chinese();
                 break;
                 case "0":
-                    $('#chinese_or_not_div').append(not_chinese_properties);
-                    $("#not_chinese_properties").show();
-                    let passport_number_id = document.getElementById('passport_number_id');
-                    Inputmask({ regex: "^[a-zA-Z0-9]{16}$" }).mask(passport_number_id);
-                    let passport_image = document.getElementById('passport_image');
-                    let visa_image = document.getElementById('visa_image');
-
-                    $("#year_passport").select2({dir:"rtl"});
-                    $("#day_passport").select2({dir:"rtl"});
-                    $("#month_passport").select2({dir:"rtl"});
-                    $('#day_passport,#month_passport,#year_passport').change(function() {
-                        $('#passport_end_date').datepicker('setDate',
-                                new Date($('#year_passport').val() - 0, $('#month_passport').val() - 1, $('#day_passport').val() - 0));
-                        console.log($("#passport_end_date").val());
-                    });
-
-                    let $dropzone_passport_image =new Dropzone('#passport_image',{
-                        url:   '{{ route('supplier.storeImage') }}',
-                        addRemoveLinks: true,
-                        headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-                        method:'POST',
-                        maxFiles: 1,
-                        dictRemoveFile :"احذف الصورة",
-                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
-                        dictCancelUpload:"إلغاء التحميل",
-                        init: function() {
-                            this.on("maxfilesexceeded", function(file){
-                            toastr.error('لا يمكنك تحميل المزيد من الصور')
-                                this.removeFile(file);
-                            });
-                        },
-                        success: function (file, response) {
-                        $('#supplier_registeration_form').append('<input type="hidden" name="passport_image" value="' + response.name + '">')
-                            uploadedDocumentMap[file.name] = response.name
-                        },
-                        removedfile: function (file) {
-                            file.previewElement.remove()
-                            var name = ''
-                            if (typeof file.file_name !== 'undefined') {
-                                name = file.file_name
-                            } else {
-                                name = uploadedDocumentMap[file.name]
-                            }
-                            $('#supplier_registeration_form').find('input[name="passport_image"][value="' + name + '"]').remove()
-                        },
-
-                    });
-                    let $dropzone_visa_image =new Dropzone('#visa_image',{
-                        url:   '{{ route('supplier.storeImage') }}',
-                        addRemoveLinks: true,
-                        headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
-                        method:'POST',
-                        maxFiles: 1,
-                        dictRemoveFile :"احذف الصورة",
-                        dictMaxFilesExceeded :"لا يمكنك تحميل المزيد من الصور.",
-                        dictCancelUpload:"إلغاء التحميل",
-                        init: function() {
-                            this.on("maxfilesexceeded", function(file){
-                            toastr.error('لا يمكنك تحميل المزيد من الصور')
-                                this.removeFile(file);
-                            });
-                        },
-                        success: function (file, response) {
-                        $('#supplier_registeration_form').append('<input type="hidden" name="visa_image" value="' + response.name + '">')
-                            uploadedDocumentMap[file.name] = response.name
-                        },
-                        removedfile: function (file) {
-                            file.previewElement.remove()
-                            var name = ''
-                            if (typeof file.file_name !== 'undefined') {
-                                name = file.file_name
-                            } else {
-                                name = uploadedDocumentMap[file.name]
-                            }
-                            $('#supplier_registeration_form').find('input[name="visa_image"][value="' + name + '"]').remove()
-                        },
-
-                    });
-                  break;
+                init_not_chinese();
+                break;
 
             }
         });
-    });
-</script>
-<script>
-    $(function(){
-        $(function(){
-        $("input[name='terms_and_conditions']").on('change',function(){
-            if($(this).is(':checked')){
-                document.getElementById('create_account').disabled = false;
-            }
-            else{
-                document.getElementById('create_account').disabled = true;
-            }
-        });
-    });
-    });
-</script>
-<script>
-    $("#supplier_registeration_form").on('submit',function(e){
+        $("#supplier_registeration_form").on('submit',function(e){
         var company_shop_address = document.getElementsByName('company_shop_address')[0].value;
         var company_office_address = document.getElementsByName('company_office_address')[0].value;
         var company_warehouse_address = document.getElementsByName('company_warehouse_address')[0].value;
@@ -1269,9 +1395,63 @@ input.error {
                 }, 2000);
             return false;
         }
+        else if($CommercialDropzone.files.length==0){
+            e.preventDefault();
+            toastr.error("الرجاء رفع صورة الرخصة التجارية");
+            $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#provinceSelector").offset().top
+                }, 2000);
+        }
+        else if($CompanyDropzone.files.length==0){
+            e.preventDefault();
+            toastr.error("الرجاء رفع صورة العلامة التجاربة الخاصة بالشركة");
+            $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#commercial_license_image").offset().top
+                }, 2000);
+        }
+        else if($("input[name='ischinese']:checked").val()=="1" && $dropzone_national_image && $dropzone_national_image.files.length==0){
+            e.preventDefault();
+            toastr.error("الرجاء رفع صورة عن البطاقة الشخصية");
+            $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#national_number").offset().top
+                }, 2000);
+        }
+        else if($("input[name='ischinese']:checked").val()=="0" && $dropzone_passport_image && $dropzone_passport_image.files.length==0){
+                e.preventDefault();
+                toastr.error("الرجاء رفع صورة عن جواز السفر ");
+                $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#passport_number_id").offset().top
+                    }, 2000);
+
+        }
+        else if($("input[name='ischinese']:checked").val()=="0" && $dropzone_visa_image && $dropzone_visa_image.files.length==0){
+                e.preventDefault();
+                toastr.error("الرجاء رفع صورة عن بطاقة التأشيرة الصينية ");
+                $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#passport_number_id").offset().top
+                    }, 2000);
+            }
         else{
-            return true;
+             return true;
         }
     })
+    });
+</script>
+<script>
+    $(function(){
+        $(function(){
+        $("input[name='terms_and_conditions']").on('change',function(){
+            if($(this).is(':checked')){
+                document.getElementById('create_account').disabled = false;
+            }
+            else{
+                document.getElementById('create_account').disabled = true;
+            }
+        });
+    });
+    });
+</script>
+<script>
+
 </script>
 @endpush
