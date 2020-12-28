@@ -72,7 +72,7 @@
                             <td class="datatable-cell-sorted datatable-cell">
                                 <span>
                                     <div class="font-weight-bolder font-size-lg mb-0">
-                                        {{ $taxonomy->term->description  ?? '--'}}
+                                        {{ $taxonomy->description  ?? '--'}}
                                     </div>
                                 </span>
                             </td>

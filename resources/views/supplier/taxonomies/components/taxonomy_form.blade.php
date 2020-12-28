@@ -49,6 +49,16 @@
              <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""  title="الرجاء تعبئة هذا الحقل" />
          </div>
      </div>
+     @elseif($type="product_tag")
+     <div class="col-12">
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">
+                <span> الوصف </span>
+            </label>
+            <textarea id="taxonomy_name_description" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="description"
+                title="الرجاء تعبئة هذا الحقل">{{ $taxonomy->description ?? old('description') }}</textarea>
+        </div>
+    </div>
      @endif
      <div class="col-12">
          <div class="form-group mb-0">
