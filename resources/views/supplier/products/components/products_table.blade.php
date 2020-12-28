@@ -195,7 +195,7 @@
                     @php
                     $meta_variation = $variation->meta;
                     @endphp
-                    <tr class="child-row{{ $product->ID }}" style="display:none">
+                    <tr class="child-row{{ $variation->ID }}" style="display:none">
                         <td></td>
                         <td>
                             <span>
