@@ -78,7 +78,7 @@
                         <div class="row mt-10"  style="direction: rtl;text-align:right">
                             @foreach($order->order_details as $detail)
                             @php
-                                $product = $detail->post;
+                                $product = $detail;
                                 $meta = $product->meta
                             @endphp
                             <div class="col-12">
