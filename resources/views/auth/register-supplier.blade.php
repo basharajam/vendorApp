@@ -39,7 +39,7 @@
         /* The message box is shown when the user clicks on the password field */
     #strong_container {
       display:none;
-      background: #f1f1f1;
+      background: transparent;
       color: #000;
       position: relative;
       margin-top: 10px;
@@ -51,27 +51,31 @@
       font-size: 16px;
       margin-bottom: 0px;
     }
+    #strong_container h3{
+        font-size:14px;
+        font-weight: bold;
+    }
 
     /* Add a green text color and a checkmark when the requirements are right */
     .valid {
-      color: green;
+     direction: ltr;
     }
 
-    .valid:after {
+    .valid:before {
       position: relative;
-      left: -35px;
       content: "✔";
+      left: -3px;
     }
 
     /* Add a red text color and an "x" when the requirements are wrong */
     .invalid {
-      color: red;
+        direction: ltr;
     }
 
-    .invalid:after {
+    .invalid:before {
       position: relative;
-      left: -35px;
       content: "✖";
+      left: -3px;
     }
     </style>
     @stack('styles')

@@ -3,14 +3,18 @@
 
     /* The message box is shown when the user clicks on the password field */
 #strong_container {
-  display:none;
-  background: #f1f1f1;
+  display:block;
+  background: transparent;
   color: #000;
   position: relative;
   margin-top: 10px;
 
 }
 
+#strong_container h3{
+    font-size:14px;
+    font-weight: bold;
+}
 #strong_container p {
   padding: 10px 10px;
   font-size: 16px;
@@ -19,24 +23,25 @@
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
-  color: green;
+  direction: ltr;
 }
 
-.valid:after {
+.valid:before {
   position: relative;
-  left: -35px;
   content: "✔";
+  left: -3px;
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-  color: red;
+    direction: ltr;
+
 }
 
-.invalid:after {
+.invalid:before {
   position: relative;
-  left: -35px;
   content: "✖";
+  left: -3px;
 }
 #error-msg {
   color: red;
@@ -153,10 +158,12 @@ input.error {
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
                         <h3>يجب أن تحتوي كلمة المرور على ما يلي:</h3>
-                        <p id="letter" class="invalid"> حرف صغير</p>
-                        <p id="capital" class="invalid">حرف  كبير</p>
-                        <p id="number" class="invalid">رقم</p>
-                        <p id="length" class="invalid">الحد الادنى 8 احرف</p>
+                        <div class="d-flex justify-content-between">
+                              <span id="letter"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف صغير</span>
+                              <span id="capital" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف كبير</span>
+                              <span id="number"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">رقم</span>
+                              <span id="length" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">الحد الادنى 8  احرف</span>
+                        </div>
                       </div>
                 </div>
                 @error('password')
@@ -943,39 +950,56 @@ input.error {
       var lowerCaseLetters = /[a-z]/g;
       if(myInput.value.match(lowerCaseLetters)) {
         letter.classList.remove("invalid");
+        letter.classList.remove("label-light-danger");
         letter.classList.add("valid");
+        letter.classList.add("label-light-success");
       } else {
         letter.classList.remove("valid");
+        letter.classList.remove("label-light-success");
         letter.classList.add("invalid");
+        letter.classList.add("label-light-danger");
       }
 
       // Validate capital letters
       var upperCaseLetters = /[A-Z]/g;
       if(myInput.value.match(upperCaseLetters)) {
         capital.classList.remove("invalid");
+        capital.classList.remove("label-light-danger");
         capital.classList.add("valid");
+        capital.classList.add("label-light-success");
+
       } else {
         capital.classList.remove("valid");
+        capital.classList.remove("label-light-success");
         capital.classList.add("invalid");
+        capital.classList.add("label-light-danger");
       }
 
       // Validate numbers
       var numbers = /[0-9]/g;
       if(myInput.value.match(numbers)) {
         number.classList.remove("invalid");
+        number.classList.remove("label-light-danger");
         number.classList.add("valid");
+        number.classList.add("label-light-success");
       } else {
         number.classList.remove("valid");
+        number.classList.remove("label-light-success");
         number.classList.add("invalid");
+        number.classList.add("label-light-danger");
       }
 
       // Validate length
       if(myInput.value.length >= 8) {
         length.classList.remove("invalid");
+        length.classList.remove("label-light-danger");
         length.classList.add("valid");
+        length.classList.add("label-light-success");
       } else {
         length.classList.remove("valid");
+        length.classList.remove("label-light-success");
         length.classList.add("invalid");
+        length.classList.add("label-light-danger");
       }
     }
     </script>
