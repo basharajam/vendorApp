@@ -516,3 +516,20 @@ input[name=email], input[name=password], input[name=password_confirmation],input
 
     }
 }
+
+td .nav__link{
+    margin-left:3px;
+    margin-right:3px;
+
+}
+.checkbox.checkbox-primary > span{
+    border:1px solid #3F4254;
+    background-color: #fff;
+}
+.radio > span{
+    border:1px solid #3F4254;
+    background-color: #fff;
+}
+.cmdPage{
+    cursor: pointer;
+}

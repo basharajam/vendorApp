@@ -21,7 +21,7 @@
                         @endif
                 </div>
                 <div class="card-toolbar">
-
+                    @if(\Auth::user()->hasRole(\UserRoles::SUPPLIER))
                     <!--begin::Button-->
                     <a href="{{ route('supplier.products.create') }}" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
@@ -35,6 +35,7 @@
                         </svg>
                         <!--end::Svg Icon-->
                     </span></a>
+                    @endif
                     {{-- <div>
                         <form action="{{ route('supplier.products.import') }}" method="POST"  enctype="multipart/form-data">
                             @csrf

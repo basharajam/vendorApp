@@ -60,6 +60,7 @@ class ProductController extends Controller
                 if($request->post_id == 0){
                     $product =  $this->post_service->store_product($request);
                     $this->post_service->store_gallery($request,$product->ID);
+                    return redirect()->route('supplier.products.create',0);
                 }
                 else{
                     $product =  $this->post_service->update_product($request,$request->post_id);
@@ -70,11 +71,12 @@ class ProductController extends Controller
                 $product =  $this->post_service->store_product_attributes_relation($request,$product->ID);
                 $product =  $this->post_service->store_product_categories($request,$request->post_id);
                 $product =  $this->post_service->store_product_tags($request,$request->post_id);
+                return redirect()->route('supplier.products.create',$product->ID);
 
             }else{
                 switch($request->request_type){
                     case "gallery":
-                            $this->post_service->store_gallery($request,$request->post_id);
+                         $this->post_service->store_gallery($request,$request->post_id);
                     break;
                 }
 

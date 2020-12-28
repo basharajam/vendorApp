@@ -14,7 +14,7 @@ if($product){
         <div class="row">
             <div class="col-6">
                 <h3 class="kt-portlet__head-title text-center mb-4">الاصناف</h3>
-                <div class="w-100" style="max-height: 400px; overflow-y:scroll">
+                <div class="w-100" style="max-height: 400px; overflow-y:scroll;border:1px solid #aaa">
                     @foreach($main_categories as $main_category)
                     <!--begin::Item-->
                     <div class="d-flex align-items-center mb-6">

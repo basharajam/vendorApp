@@ -4,7 +4,7 @@ if($product){
     $product_tags = $product->tags->pluck('term_taxonomy_id')->toArray();
 }
 @endphp
-    <div class="w-100" style="max-height: 400px; overflow-y:scroll">
+    <div class="w-100" style="max-height: 400px; overflow-y:scroll;border:1px solid #aaa">
         @foreach($tags as $tag)
         <!--begin::Item-->
         <div class="d-flex align-items-center mb-6">

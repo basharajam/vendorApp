@@ -114,7 +114,7 @@
     <div class="form-group">
         <label class="font-size-h6 font-weight-bolder text-dark">
             <span class="required">*</span>
-            <span>صورة عن جواز السفر الشخصية</span>
+            <span>صورة عن جواز السفر </span>
         </label>
         <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image" title="الرجاء تعبئة هذا الحقل">
             <div class="dropzone-msg dz-message needsclick">
