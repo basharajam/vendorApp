@@ -109,8 +109,8 @@
                                         <span class="text-dark-75 font-weight-bolder">{{$detail->product_qty }}</span></span>
                                         <span class="text-muted font-weight-bold font-size-lg">بتاريخ:
                                             <span class="text-dark-75 font-weight-bolder">{{date('Y-m-d',strtotime($detail->date_created)) }}</span></span>
-                                            <span class="text-muted font-weight-bold font-size-lg">صافي إيرادات المنتج:
-                                                <span class="text-dark-75 font-weight-bolder">{{$detail->product_net_revenue}}</span></span>
+                                            <span class="text-muted font-weight-bold font-size-lg">يوم التسليم:
+                                                <span class="text-dark-75 font-weight-bolder">{{ date('Y-m-d',strtotime($order->post->post_date))+ 4}}</span></span>
                                                 <span class="text-muted font-weight-bold font-size-lg">إجمالي عائدات المنتج:
                                                     <span class="text-dark-75 font-weight-bolder">{{$detail->product_gross_revenue}}</span></span>
                                 </div>
