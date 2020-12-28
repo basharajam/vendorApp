@@ -61,7 +61,6 @@ class TaxonomyController extends Controller
             }
             else{
                 $this->taxonomy_service->store($request,\Auth::user()->userable->id);
-
             }
             \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);

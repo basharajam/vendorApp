@@ -46,7 +46,7 @@
                         <ul class="attributes_list w-100">
                         @foreach($taxonomy->terms as $term)
                         @if($term->term_taxonomy_id!=$taxonomy->term_taxonomy_id)
-                        <li class="w-100 list-item ">
+                        <li class="w-100 list-item " id="term{{ $term->term_taxonomy_id }}">
                             <div class="d-flex justify-content-between align-items-center w-100">
                                 <div>
                                     <span class="font-weight-bolder font-size-h4">
@@ -61,7 +61,7 @@
                                     <a href="#"  id="{{ $term->term_taxonomy_id }}" data-type="{{ $type }}"  data-action-name="{{ route('supplier.taxonomies.edit') }}" title="تعديل" class="btn btn-icon btn-primary btn-xs edit_taxonomy ml-3">
                                         <i class="flaticon-edit-1  font-weigh-bolder"></i>
                                     </a>
-                                    <a href="javascript:;" id="{{ $term->term_taxonomy_id }}"    data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" title="حذف" class="btn btn-icon btn-danger btn-xs delete ml-3">
+                                    <a href="javascript:;" id="{{ $term->term_taxonomy_id }}"  data-remove="#term{{$term->term_taxonomy_id  }}"  data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" title="حذف" class="btn btn-icon btn-danger btn-xs delete ml-3">
                                         <i class="flaticon2-trash font-weigh-bolder"></i>
                                     </a>
                                 </div>

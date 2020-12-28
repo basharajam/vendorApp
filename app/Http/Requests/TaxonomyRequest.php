@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CheckAttributeUniqueRule;
 use App\Rules\CheckCategoryRule;
 use App\Rules\CheckTagUniqueRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -40,8 +41,8 @@ class TaxonomyRequest extends FormRequest
         }
         else{
             return [
-                //
-                'name'=>['unique:App\Models\WP\Term']
+                //attribute or term
+                'name'=>['required',new CheckAttributeUniqueRule()]
             ];
         }
 

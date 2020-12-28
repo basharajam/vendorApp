@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
 
+use App\Http\Requests\TaxonomyRequest;
 
 class AttributeController extends Controller
 {
@@ -47,7 +48,7 @@ class AttributeController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(TaxonomyRequest $request){
         try{
 
             $type="pa_".$request->name;
@@ -64,7 +65,7 @@ class AttributeController extends Controller
 
         return redirect()->back();
     }
-    public function storeTerm(Request $request){
+    public function storeTerm(TaxonomyRequest $request){
         try{
             $this->taxonomy_service->store($request,\Auth::user()->userable->id);
             \Session::flash('message',"تمت العملية بنجاح");
