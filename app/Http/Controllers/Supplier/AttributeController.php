@@ -53,7 +53,7 @@ class AttributeController extends Controller
             $type="pa_".$request->name;
             $request->merge(['taxonomy' => $type]);
             $this->taxonomy_service->store($request,\Auth::user()->userable->id);
-            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
         catch(Exception $ex){
@@ -67,7 +67,7 @@ class AttributeController extends Controller
     public function storeTerm(Request $request){
         try{
             $this->taxonomy_service->store($request,\Auth::user()->userable->id);
-            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
         catch(Exception $ex){
@@ -82,7 +82,7 @@ class AttributeController extends Controller
         try{
             $request->merge(['taxonomy' => "pa_".$request->name]);
             $this->taxonomy_service->updateAttribute($request,$term_taxonomy_id);
-            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
         catch(Exception $ex){

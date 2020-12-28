@@ -63,7 +63,7 @@ class TaxonomyController extends Controller
                 $this->taxonomy_service->store($request,\Auth::user()->userable->id);
 
             }
-            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
         catch(Exception $ex){
@@ -79,7 +79,7 @@ class TaxonomyController extends Controller
         //save
         try{
             $this->taxonomy_service->update($request,$term_taxonomy_id);
-            \Session::flash('message',"تمت العلية بنجاح");
+            \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
         catch(Exception $ex){
