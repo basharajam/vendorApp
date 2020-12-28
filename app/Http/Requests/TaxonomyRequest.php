@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CheckCategoryRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaxonomyRequest extends FormRequest
@@ -23,10 +24,22 @@ class TaxonomyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-            'name'=>['unique:App\Models\WP\Term']
-        ];
+        if(request('type')=='product_cat')
+        {
+
+            return [
+                'name'=>['required',new CheckCategoryRule()],
+                'parent'=>['required']
+            ];
+        }
+        else{
+            return [
+
+                //
+                'name'=>['unique:App\Models\WP\Term']
+            ];
+        }
+
     }
       /**
      * Get the error messages for the defined validation rules.
