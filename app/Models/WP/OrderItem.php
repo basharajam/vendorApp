@@ -23,8 +23,10 @@ class OrderItem extends Model
     public function order_meta(){
         return $this->hasMany(OrderItemMeta::class,'order_item_id','order_item_id');
     }
-    public function order_details(){
-        return $this->hasMany(OrderDetail::class,'order_id','order_id');
+    public function getOrderDetailsAttribute(){
+        // return $this->hasMany(OrderDetail::class,'order_id','order_id');
+        $products_Ids = OrderItemMeta::where('order_item_id',$this->order_item_id)->where('meta_key','_product_id')->get()->pluc('meta_value');
+        return Post::whereIn("ID",$products_Ids)->get();
     }
     public function getCustomerAttribute(){
         if($this->post){

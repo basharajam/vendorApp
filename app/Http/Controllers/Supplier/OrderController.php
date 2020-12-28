@@ -48,6 +48,7 @@ class OrderController extends Controller
 
     public function viewOrder($order_id){
          $order = $this->order_item_service->view($order_id);
+         dd('viewordedr ',$order->order_details);
         return view('supplier.orders.view')->with('order',$order);
     }
 }
