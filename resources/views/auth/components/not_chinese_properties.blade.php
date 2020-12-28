@@ -93,7 +93,7 @@
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل">
                     <option value="2011">السنة</option>
-                    @for($year=1900;$year<=date("Y")+20;$year++)
+                    @for($year=date("Y");$year<=date("Y")+20;$year++)
                     <option value="{{ $year }}"  @if(date('Y',strtotime(old('passport_end_date')))==$year) selected @endif>{{ $year }}</option>
                     @endfor
                 </select>
@@ -118,8 +118,8 @@
         </label>
         <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="passport_image" title="الرجاء تعبئة هذا الحقل">
             <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
-                <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
+                <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
+                <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
             </div>
         </div>
         <input id="passport_image_value" type="hidden" name="passport_image" value="{{ old('passport_image') }}">
@@ -136,8 +136,8 @@
             </label>
             <div class="dropzone dropzone-default dropzone-primary dz-clickable" id="visa_image" title="الرجاء تعبئة هذا الحقل">
                 <div class="dropzone-msg dz-message needsclick">
-                    <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
-                    <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
+                    <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
+                    <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
                 </div>
             </div>
         </div>

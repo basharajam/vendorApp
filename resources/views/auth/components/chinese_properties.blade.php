@@ -29,8 +29,8 @@
         </label>
         <div id="national_id_image" class="dropzone dropzone-default dropzone-primary dz-clickable" >
             <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
-                <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
+                <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
+                <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
             </div>
         </div>
         <input id="national_image_value" type="hidden" name="national_id_image" value="{{ old('national_id_image') }}">

@@ -112690,6 +112690,7 @@ input[name=name] {
 .iti__country-list {
   text-align: right;
   left: 0px;
+  min-width: 200px;
 }
 
 .iti__country.iti__standard {

@@ -586,8 +586,8 @@ input.error {
                 </label>
                 <div id="commercial_license_image" class="dropzone dropzone-default dropzone-primary dz-clickable" title="الرجاء تعبئة هذا الحقل" >
                     <div class="dropzone-msg dz-message needsclick">
-                        <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
-                        <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
+                        <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
+                        <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
                     </div>
                 </div>
                 <input id="commercial_license_image_value" type="hidden" name="commercial_license_image" value="{{ old('commercial_license_image') }}">
@@ -604,8 +604,8 @@ input.error {
                 </label>
                 <div id="company_logo" class="dropzone dropzone-default dropzone-primary dz-clickable" id="" title="الرجاء تعبئة هذا الحقل">
                     <div class="dropzone-msg dz-message needsclick">
-                        <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
-                        <span class="dropzone-msg-desc">قم برفع 1 صورة واحدة كحد اقصى</span>
+                        <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
+                        <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
                     </div>
                 </div>
                 <input id="company_logo_value" type="hidden" name="company_logo" value="{{ old('company_logo') }}">
@@ -698,8 +698,9 @@ input.error {
                 </label>
                 <div id="license_images" class="dropzone dropzone-default dropzone-primary dz-clickable" id="" title="الرجاء تعبئة هذا الحقل">
                     <div class="dropzone-msg dz-message needsclick">
-                        <h3 class="dropzone-msg-title">قم بإسقاط الصور هنا أو انقر للتحميل</h3>
+                        <h3 class="dropzone-msg-title"> قم بإسقاط الصور هنا او انقر للتحميل</h3>
                         <span class="dropzone-msg-desc">قم برفع 10 صور  كحد اقصى</span>
+
                     </div>
                 </div>
                 @if(old('license_images'))
@@ -772,7 +773,11 @@ input.error {
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
                 <button type="submit" id="create_account"  @if(Route::currentRouteName() != 'supplier.profile' && Route::currentRouteName()!='supplier_manager.suppliers.create' && Route::currentRouteName()!="supplier_manager.suppliers.edit") disabled  @endif class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> حفظ</button>
-                <button type="button" id="kt_login_signup_cancel" class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
+                @auth
+                    <a href="{{ route('supplier_manager.suppliers.index') }}" id="kt_login_signup_cancel" class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</a>
+                @else
+                    <a href="{{ route('register') }}" id="kt_login_signup_cancel" class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</a>
+                @endauth
             </div>
             <!--end::Form group-->
         </div>
