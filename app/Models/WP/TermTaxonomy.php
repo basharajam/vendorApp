@@ -52,4 +52,11 @@ class TermTaxonomy extends Model
         }
         return '';
     }
+    public function getParentCategoryAttribute(){
+        if($this->parent){
+            return TermTaxonomy::where('term_taxonomy_id',$this->parent)->first();
+        }
+        else
+        return null;
+    }
 }

@@ -27,6 +27,9 @@
                         <th>الصورة</th>
                         @endif
                         <th>الاسم</th>
+                        @if($type=='product_cat')
+                        <th>تابع للصنف</th>
+                        @endif
                         <th>الوصف</th>
                         <th>العدد</th>
                         <th>..</th>
@@ -57,6 +60,15 @@
                                     </div>
                                 </span>
                             </td>
+                            @if($type=='product_cat')
+                            <td class="datatable-cell-sorted datatable-cell">
+                                <span>
+                                    <div class="font-weight-bolder font-size-lg mb-0">
+                                        {{ $taxonomy->parent_category->term->name }}
+                                    </div>
+                                </span>
+                            </td>
+                            @endif
                             <td class="datatable-cell-sorted datatable-cell">
                                 <span>
                                     <div class="font-weight-bolder font-size-lg mb-0">
