@@ -773,9 +773,8 @@ var KTHeader = function(elementId, options) {
 
             window.addEventListener('scroll', function() {
                 var offset = 0, on, off, st;
-
                 if (KTUtil.isInResponsiveRange('desktop')) {
-                    offset = the.options.offset.desktop;
+                     offset = the.options.offset.desktop;
                     on = the.options.minimize.desktop.on;
                     off = the.options.minimize.desktop.off;
                 } else if (KTUtil.isInResponsiveRange('tablet-and-mobile')) {

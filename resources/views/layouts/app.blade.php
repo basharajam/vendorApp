@@ -54,7 +54,7 @@
                       <div class="kt-content h-100" id="kt_content" style="">
 
                         @yield('content')
-                        <div class="push" style="height: 62px;"> </div>
+                        <div id="push" class="push" style=""> </div>
                       </div>
                   </div>
                     <x-layout.footer></x-layout.footer>
@@ -77,6 +77,15 @@
 
     <script>
         $(function(){
+            console.log('cohntent height',$("#kt_content").height());
+
+            if($("#kt_content").height() > 600){
+                document.getElementById('push').style.height = "0px";
+            }
+            else{
+                document.getElementById('push').style.height = "62px";
+
+            }
             $(document).on('click','.delete',function(e){
                 e.preventDefault();
                 let $this = $(this);
