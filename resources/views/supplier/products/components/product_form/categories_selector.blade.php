@@ -32,7 +32,7 @@ if($product){
                              <!--begin::Sub Item-->
                             <div class="d-flex align-items-center mb-6 pr-10">
                                 <!--begin::Checkbox-->
-                                <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
+                                <label class="checkbox checkbox-lg  flex-shrink-0 m-0 mr-4">
                                     <input type="checkbox" name="product_categories[]" value="{{ $sub_cateogry->term_taxonomy_id}}" @if(in_array($sub_cateogry->term_taxonomy_id,$product_categories)) checked @endif title="الرجاء تعبئة هذا الحقل">
                                     <span ></span>
 
