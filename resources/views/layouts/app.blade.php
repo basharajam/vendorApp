@@ -51,7 +51,7 @@
                     <x-layout.header></x-layout.header>
                     @endauth
                     <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body" style="">
-                      <div class="kt-content h-100" id="kt_content" style="">
+                      <div class="kt-content h-100 mt-10" id="kt_content" style="">
 
                         @yield('content')
                         <div id="push" class="push" style=""> </div>
