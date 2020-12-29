@@ -76,6 +76,7 @@ class TaxonomyController extends Controller
 
     public function update($term_taxonomy_id,Request $request){
         //save
+
         try{
             $this->taxonomy_service->update($request,$term_taxonomy_id);
             \Session::flash('message',"تمت العملية بنجاح");

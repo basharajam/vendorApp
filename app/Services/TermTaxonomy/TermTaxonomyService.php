@@ -94,53 +94,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         //savge image
             $file = $request->file('image');
             if($file){
-                $now = Carbon::now();
-            // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
-            $path = 'wp-content/uploads';
-            $name =  $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $mdf5 = md5($name.'_'.time()).'.'.$extension;
-            $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-            if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
-                File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
-
-            }
-            $destination_path = "/home2/alyamanl/public_html/data/".$path;
-            $file->move($destination_path, $mdf5);
-            $image_post = Post::create([
-                'post_author'=>\Auth::user()->wordpress_user->ID,
-                'post_parent'=>0,
-                'post_date'=>now(),
-                'post_date_gmt'=>now(),
-                'post_content'=>"",
-                'post_title'=>$request->name,
-                'post_name'=>$mdf5,
-                'post_status'=>'inherit',
-                'comment_status'=>'closed',
-                'ping_status'=>'closed',
-                'post_type'=>'attachment',
-                'post_excerpt'=>'',
-                'to_ping'=>"",
-                'pinged'=>'',
-                'post_content_filtered'=>'',
-                'post_modified'=>now(),
-                'post_modified_gmt'=>now(),
-                'guid'=>$guid,
-                'post_mime_type'=>'image/'.$extension
-            ]);
-            TermMeta::updateOrCreate(
-                [
-                    'term_id'=>$term->term_id,
-                    'meta_key'=>'thumbnail_id'
-                ]
-                ,[
-                'term_id'=>$term->term_id,
-                'meta_key'=>'thumbnail_id',
-                'meta_value'=>$image_post->ID
-            ]);
-            $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
-            $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
-            $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+                $this->store_image($file,$request,$term);
             }
 
 
@@ -231,7 +185,15 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
 
             }
             $term = $term_taxonomy->term;
-        return \DB::table(\General::DB_PREFIX.'terms')
+
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                if($file){
+                    $this->store_image($file,$request,$term);
+                }
+            }
+
+         return \DB::table(\General::DB_PREFIX.'terms')
             ->where('term_id', $term->term_id)
             ->update([
                 'name'=>$request->name,
@@ -279,5 +241,57 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'meta_key'=>$meta_key,
             'meta_value'=>$meta_value
         ]);
+    }
+    private function store_image($file,Request $request,Term $term){
+        $now = Carbon::now();
+        // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
+        $path = 'wp-content/uploads';
+        $name =  $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $mdf5 = md5($name.'_'.time()).'.'.$extension;
+        $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
+        if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
+            File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
+
+        }
+        $destination_path = "/home2/alyamanl/public_html/data/".$path;
+        $file->move($destination_path, $mdf5);
+        $image_post = Post::updateOrCreate([
+            'post_title'=>$request->name,
+            'post_author'=>\Auth::user()->wordpress_user->ID,
+        ],[
+            'post_author'=>\Auth::user()->wordpress_user->ID,
+            'post_parent'=>0,
+            'post_date'=>now(),
+            'post_date_gmt'=>now(),
+            'post_content'=>"",
+            'post_title'=>$request->name,
+            'post_name'=>$mdf5,
+            'post_status'=>'inherit',
+            'comment_status'=>'closed',
+            'ping_status'=>'closed',
+            'post_type'=>'attachment',
+            'post_excerpt'=>'',
+            'to_ping'=>"",
+            'pinged'=>'',
+            'post_content_filtered'=>'',
+            'post_modified'=>now(),
+            'post_modified_gmt'=>now(),
+            'guid'=>$guid,
+            'post_mime_type'=>'image/'.$extension
+        ]);
+        TermMeta::updateOrCreate(
+            [
+                'term_id'=>$term->term_id,
+                'meta_key'=>'thumbnail_id'
+            ]
+            ,[
+            'term_id'=>$term->term_id,
+            'meta_key'=>'thumbnail_id',
+            'meta_value'=>$image_post->ID
+        ]);
+        $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
+        $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
+        $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
     }
 }
