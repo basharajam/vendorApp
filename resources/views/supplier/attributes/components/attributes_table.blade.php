@@ -5,7 +5,7 @@
 </div>
 <div class="accordion accordion-solid accordion-panel accordion-svg-toggle" id="accordionExample8">
     @foreach($data as $taxonomy)
-    <div class="card mb-10 mt-10">
+    <div class="card mb-10 mt-10" id="attribute{{ $taxonomy->term_taxonomy_id }}">
         <div class="card-header" id="headingOne8" data-toggle="collapse" data-target="#collapseOne{{ $taxonomy->term_taxonomy_id }}" aria-expanded="false">
             <div class="card-title" >
                 <div class="card-label">
@@ -21,7 +21,7 @@
                 <a href="#"  id="{{ $taxonomy->term_taxonomy_id }}" data-type="{{ $taxonomy->taxonomy }}"  data-action-name="{{ route('supplier.attributes.edit') }}" title="تعديل" class="btn btn-icon btn-primary btn-xs edit_attribute ml-3">
                     <i class="flaticon-edit-1  font-weigh-bolder"></i>
                 </a>
-                <a href="javascript:;"  data-type="{{ $taxonomy->taxonomy }}"  data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" title="حذف" class="btn btn-icon btn-danger btn-xs delete ml-3">
+                <a href="javascript:;"  data-type="{{ $taxonomy->taxonomy }}" data-remove="#attribute{{ $taxonomy->term_taxonomy_id }}"  data-action-name="{{ route('supplier.taxonomies.delete',$taxonomy->term_taxonomy_id) }}" title="حذف" class="btn btn-icon btn-danger btn-xs delete ml-3">
                     <i class="flaticon2-trash font-weigh-bolder"></i>
                 </a>
                 @endif
