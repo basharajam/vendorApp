@@ -52,14 +52,19 @@ class OrderItemService extends BaseService implements IOrderItemService
         foreach($suppliers as $supplier){
             array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
         }
-        $products_ids =Post::whereIn('post_author',$suppliers_ids)
-        ->whereIn('post_type',['product','product_variation'])
-        ->get()->pluck('ID')->toArray();
+        if($suppliers_ids && count($suppliers_ids)>0){
+            $products_ids =Post::whereIn('post_author',$suppliers_ids)
+            ->whereIn('post_type',['product','product_variation'])
+            ->get()->pluck('ID')->toArray();
 
-        // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
-        $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
-        // return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->get();
-        return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->get();
+            // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+            $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
+            // return OrderItem::where('order_item_type','line_item')->whereIn('order_id',$orders_ids)->get();
+            return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->get();
+        }
+        else
+        return collect();
+
 
     }
     /** get paid orders for a supplier
@@ -88,15 +93,19 @@ class OrderItemService extends BaseService implements IOrderItemService
         foreach($suppliers as $supplier){
             array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
         }
-        $products_ids =Post::where('post_author',$suppliers_ids)
-        ->whereIn('post_type',['product','product_variation'])
-        ->get()->pluck('ID')->toArray();
-        // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
-        $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
+        if($suppliers_ids && count($suppliers_ids)>0){
+            $products_ids =Post::whereIn('post_author',$suppliers_ids)
+            ->whereIn('post_type',['product','product_variation'])
+            ->get()->pluck('ID')->toArray();
+            // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+            $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
 
-        return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->whereHas('post',function($query){
-            return $query->where('post_status','wc-completed');
-        })->get();
+            return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->whereHas('post',function($query){
+                return $query->where('post_status','wc-completed');
+            })->get();
+        }
+        else return collect();
+
     }
     /** get not  paid  (canceld , and pending ) orders for a supplier
      * @param $supplier_id
@@ -123,15 +132,19 @@ class OrderItemService extends BaseService implements IOrderItemService
         foreach($suppliers as $supplier){
             array_push($suppliers_ids,$supplier->user->wordpress_user->ID);
         }
-        $products_ids =Post::where('post_author',$suppliers_ids)
-        ->whereIn('post_type',['product','product_variation'])
-        ->get()->pluck('ID')->toArray();
-        // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
-        $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
+        if($suppliers_ids && count($suppliers_ids)>0){
+            $products_ids =Post::whereIn('post_author',$suppliers_ids)
+            ->whereIn('post_type',['product','product_variation'])
+            ->get()->pluck('ID')->toArray();
+            // $orders_ids = OrderDetail::whereIn('product_id',$products_ids)->get()->pluck('order_id')->toArray();
+            $orders_ids = OrderItemMeta::whereIn('meta_key',['_product_id','_variation_id'])->whereIn('meta_value',$products_ids)->get()->pluck('order_item_id')->toArray();
 
-        return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->whereHas('post',function($query){
-            return $query->where('post_status','!=','wc-completed');
-        })->get();
+            return OrderItem::where('order_item_type','line_item')->whereIn('order_item_id',$orders_ids)->whereHas('post',function($query){
+                return $query->where('post_status','!=','wc-completed');
+            })->get();
+        }
+        else return collect();
+
     }
     public function view($id){
         return OrderItem::where('order_item_id',$id)->first();
