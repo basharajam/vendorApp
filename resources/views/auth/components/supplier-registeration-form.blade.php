@@ -64,11 +64,7 @@ input.error {
 }
 
 </style>
-<style>
-    #kt_body , html{
-        width:100vw !important;
-    }
-</style>
+
 @endpush
 
 <div class="row" style="">
@@ -823,7 +819,7 @@ input.error {
         var iti = window.intlTelInput(input, {
             separateDialCode: false,
             autoPlaceholder:'aggressive',
-            onlyCountries: ['ae','cn'],
+            onlyCountries: ['cn'],
             hiddenInput:'mobile_number',
             formatOnDisplay:true,
             utilsScript: "{{ asset('/plugins/telinput/js/utils.js') }}"
