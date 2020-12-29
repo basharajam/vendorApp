@@ -1,5 +1,5 @@
 <div class="row m-0 statsitcs-container">
-    <div class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl  d-flex justify-content-between align-items-center">
+    <a href="{{ route('supplier_manager.not_paid_orders') }}" class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl  d-flex justify-content-between align-items-center">
         <div class="">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2 text-center">
                 <!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Design/Layers.svg-->
@@ -12,7 +12,7 @@
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">الطلبات غير المدفوعة</a>
+            <span class="text-danger font-weight-bold font-size-h6 mt-2">الطلبات غير المدفوعة</span>
         </div>
         <div class="d-flex flex-column">
             <span class="font-weight-bolder font-size-h1">{{ $not_paid_count }} </span>
@@ -20,9 +20,9 @@
 
         </div>
 
-    </div>
+    </a>
     <div class="col-md-2 col-sm-12"></div>
-    <div class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl d-flex justify-content-between align-items-center statsitcs-second-item" >
+    <a href="{{ route('supplier_manager.paid_orders') }}" class="col-md-5 col-sm-12 bg-white px-6 py-8 rounded-xl d-flex justify-content-between align-items-center statsitcs-second-item" >
         <div>
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2 text-center">
                 <!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Communication/Urgent-mail.svg-->
@@ -35,12 +35,12 @@
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">الطلبات المدفوعة</a>
+            <span class="text-success font-weight-bold font-size-h6 mt-2">الطلبات المدفوعة</span>
         </div>
         <div class="d-flex flex-column">
             <span class="font-weight-bolder font-size-h1">{{ $paid_count }}</span>
             {{-- <span class="font-size-sm text-muted font-weight-bold mt-1">عدد الطلبات 10</span> --}}
         </div>
 
-    </div>
+    </a>
 </div>

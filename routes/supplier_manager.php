@@ -19,6 +19,9 @@ Route::get('/suppliers/delete/{id}',[App\Http\Controllers\SupplierManager\Suppli
 
 //Orders
 Route::get('/orders',[App\Http\Controllers\SupplierManager\OrderController::class,'index'])->name('supplier_manager.orders');
+Route::get('/orders/paid',[App\Http\Controllers\SupplierManager\OrderController::class,'paidOrders'])->name('supplier_manager.paid_orders');
+Route::get('/orders/not-paid',[App\Http\Controllers\SupplierManager\OrderController::class,'notPaidOrders'])->name('supplier_manager.not_paid_orders');
+Route::get('/orders/view/{order_id}',[App\Http\Controllers\SupplierManager\OrderController::class,'viewOrder'])->name('supplier_manager.orders.view');
 
 //Support Request
 Route::get('/support',[App\Http\Controllers\SupplierManager\SupportController::class, 'viewForm'])->name('supplier_manager.support_view');
