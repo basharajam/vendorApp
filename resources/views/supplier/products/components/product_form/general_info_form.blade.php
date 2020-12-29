@@ -11,7 +11,7 @@ if($product){
                 <span class="required">*</span>
 
             </label>
-            <input data-inputmask="'regex': '^[0-9.]+.[0-9]+$'"
+            <input data-inputmask="'regex': '^[0-9]+.[0-9]+$'"
             id="_regular_price" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('_regular_price') is-invalid @enderror" type="text" placeholder="" name="_regular_price" value="{{ $meta['_regular_price'] ?? old('_regular_price') }}" required
             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
