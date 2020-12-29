@@ -1071,7 +1071,7 @@ input.error {
                                  this.emit('addedfile',mockFile);
                                 this.files.push(mockFile);
 
-                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+national_image_value );
+                                this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+national_image_value );
                                 $('.dz-progress').remove();
                                 var existingFileCount = 1; // The number of files already uploaded
                                 this.options.maxFiles = this.options.maxFiles - existingFileCount;
@@ -1141,7 +1141,7 @@ input.error {
                                 console.log(mockFile);
                                  this.emit('addedfile',mockFile);
                                  this.files.push(mockFile);
-                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+old_passprot_image );
+                                this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+old_passprot_image );
                                 $('.dz-progress').remove();
                                 var existingFileCount = 1; // The number of files already uploaded
                                 this.options.maxFiles = this.options.maxFiles - existingFileCount;
@@ -1196,7 +1196,7 @@ input.error {
 
                                 this.emit('addedfile',mockFile);
                                 this.files.push(mockFile);
-                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+old_visa_image );
+                                this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+old_visa_image );
 
                                 $('.dz-progress').remove();
                                 var existingFileCount = 1; // The number of files already uploaded
@@ -1271,7 +1271,7 @@ input.error {
 
                                 this.files.push(mockFile);
                                 this.emit('addedfile',mockFile);
-                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+commercial_license_image );
+                                this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+commercial_license_image );
                                 $('.dz-progress').remove();
                                 var existingFileCount = 1; // The number of files already uploaded
                                 this.options.maxFiles = this.options.maxFiles - existingFileCount;
@@ -1319,7 +1319,7 @@ input.error {
                                 var mockFile = { name: company_logo_value.split('/ ').pop(),size:12345,  type: 'image/'+company_logo_value.split('.').pop()};
                                 console.log(mockFile);
                                 this.emit('addedfile',mockFile);
-                                this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+company_logo_value );
+                                this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+company_logo_value );
                                 $('.dz-progress').remove();
                                 this.files.push(mockFile);
                                 var existingFileCount = 1; // The number of files already uploaded
@@ -1371,7 +1371,7 @@ input.error {
                                     var mockFile = { name: license_images_value[i].value.split('/ ').pop(),size:12345,  type: 'image/'+license_images_value[i].value.split('.').pop()};
                                     this.emit('addedfile',mockFile);
                                     this.files.push(mockFile);
-                                    this.options.thumbnail.call(this,mockFile,'/storage/tmp/uploads/'+license_images_value[i].value );
+                                    this.options.thumbnail.call(this,mockFile,'/storage/app/public/tmp/uploads/'+license_images_value[i].value );
                                     $('.dz-progress').remove();
                                     this.options.maxFiles = this.options.maxFiles - 1;
                                 }
