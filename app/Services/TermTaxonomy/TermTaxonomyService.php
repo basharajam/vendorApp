@@ -88,7 +88,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'term_id'=>$term->term_id,
             'taxonomy'=>$request->type,
             'description'=>$request->description,
-            'parent'=>$request->parent,
+            'parent'=>$request->parent??0,
             'supplier_id'=>$supplier_id
         ]);
         //savge image
@@ -172,7 +172,9 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ->where('term_taxonomy_id', $id)
             ->update([
                 'description'=>$request->description,
-                'parent'=>$request->parent ?? 0
+                'parent'=>$request->parent ?? 0,
+                "supplier_id"=>$request->supplier_id ?? $term_taxonomy->supplier_id
+
             ]);
 
             if(isset($request->type) && $request->type=="attributes"){

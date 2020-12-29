@@ -31,7 +31,6 @@ class TaxonomyRequest extends FormRequest
 
             return [
                 'name'=>['required',new CheckCategoryRule()],
-                'parent'=>['required']
             ];
         }
         else if(request('type')=='product_tag'){

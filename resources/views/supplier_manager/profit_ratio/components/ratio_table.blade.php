@@ -15,6 +15,7 @@
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Profit Ratio</div>
                 </th>
+                <th>...</th>
                 <th></th>
 
             </tr>
@@ -37,6 +38,10 @@
                         value="{{ $ratios->where('term_taxonomy_id',$category->term_taxonomy_id)->first()->ratio ?? '' }}"
                         >
                 </td>
+                    <td class="datatable-cell-sorted datatable-cell" style="min-width:100px;">
+                        <a id="{{ $category->term_taxonomy_id }}" class="kt-nav__link mr-5 delete" data-action-name="{{ route('supplier_manager.taxonomies.delete',$category->term_taxonomy_id) }}" href="javascript:;"  ><i class="kt-nav__link-icon flaticon2-trash "></i></a>
+                        <a class="kt-nav__link edit_taxonomy" data-type="{{ $type }}" id="{{ $category->term_taxonomy_id }}" data-action-name="{{ route('supplier_manager.taxonomies.edit') }}" href="#"  ><i class="kt-nav__link-icon color-primary flaticon-edit-1 "></i></a>
+                    </td>
                 <td >
                     <div id="loader{{$category->term_taxonomy_id}}" class="spinner spinner-warning spinner-md" style="display:none"></div>
                 </td>
@@ -138,5 +143,40 @@
 
     });
 } );
+</script>
+<script>
+    $(function(){
+        $(".edit_taxonomy").click(function(event){
+                        event.preventDefault();
+                        let url = $(this).attr("data-action-name");
+                        let id =$(this).attr('id');
+                        let taxonomy_type =$(this).attr('data-type');
+                        let  csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+                        let taxonomy_data ={
+
+                            "type":taxonomy_type,
+                            "term_taxonomy_id":id
+                        }
+                        $.ajax(url,{
+                            type:"POST",
+                            async:true,
+                            headers: {
+                            'X-CSRF-Token': csrf_token
+                            },
+                            data:taxonomy_data,
+                            success:function(response){
+                                if(response)
+                                {
+                                    $('body').prepend(response);
+                                    $('#EditModal').modal('show');
+                                }
+                            },
+                            error:function(error){
+                                console.log(error);
+                            },
+                        });
+                    });
+    })
 </script>
 @endpush

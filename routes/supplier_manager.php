@@ -36,3 +36,10 @@ Route::post('/profit-ratio',[App\Http\Controllers\SupplierManager\ProfitRatioCon
 //Products
 Route::get('/products',[App\Http\Controllers\SupplierManager\ProductController::class,'index'])->name('supplier_manager.suppliers.all_products');
 Route::get('/products/{supplier}',[App\Http\Controllers\SupplierManager\ProductController::class,'view'])->name('supplier_manager.suppliers.products');
+
+
+//Taxonomies
+Route::post('/taxonomies/store',[App\Http\Controllers\SupplierManager\TaxonomyController::class,'store'])->name('supplier_manager.taxonomies.store');
+Route::post('/taxonomies/update/{term_taxonomy_id}',[App\Http\Controllers\SupplierManager\TaxonomyController::class,'update'])->name('supplier_manager.taxonomies.update');
+Route::post('/taxonomies/edit',[App\Http\Controllers\SupplierManager\TaxonomyController::class,'getEditModal'])->name('supplier_manager.taxonomies.edit');
+Route::get('/taxonomies/delete/{term_taxonomy_id}',[App\Http\Controllers\SupplierManager\TaxonomyController::class,'delete'])->name('supplier_manager.taxonomies.delete');

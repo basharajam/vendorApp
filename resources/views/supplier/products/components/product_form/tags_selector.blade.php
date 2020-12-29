@@ -12,15 +12,11 @@ if($product){
             <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
                 <input type="checkbox" name="product_tags[]" value="{{ $tag->term_taxonomy_id}}" @if(in_array($tag->term_taxonomy_id,$product_tags)) checked @endif>
                 <span></span>
+                <div class="mr-4">  {{ $tag->term->name }}</div>
+
             </label>
             <!--end::Checkbox-->
-            <!--begin::Text-->
-            <div class="d-flex flex-column flex-grow-1 py-2" style="text-align: right" >
-                <a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1 mr-10">
-                    {{ $tag->term->name }}
-                </a>
-            </div>
-            <!--end::Text-->
+
         </div>
         <!--end::Item-->
 

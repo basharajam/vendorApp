@@ -22,15 +22,9 @@ if($product){
                         <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
                             <input type="checkbox" name="product_categories[]" value="{{ $main_category->term_taxonomy_id}}" @if(in_array($main_category->term_taxonomy_id,$product_categories)) checked @endif title="الرجاء تعبئة هذا الحقل">
                             <span></span>
+                           <div class="mr-4"> {{ $main_category->term->name }}</div>
                         </label>
                         <!--end::Checkbox-->
-                        <!--begin::Text-->
-                        <div class="d-flex flex-column flex-grow-1 py-2" style="text-align: right" >
-                            <a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1 mr-10">
-                                {{ $main_category->term->name }}
-                            </a>
-                        </div>
-                        <!--end::Text-->
                     </div>
                     <!--end::Item-->
                     @foreach($categories as $sub_cateogry)
@@ -40,16 +34,12 @@ if($product){
                                 <!--begin::Checkbox-->
                                 <label class="checkbox checkbox-lg checkbox-primary flex-shrink-0 m-0 mr-4">
                                     <input type="checkbox" name="product_categories[]" value="{{ $sub_cateogry->term_taxonomy_id}}" @if(in_array($sub_cateogry->term_taxonomy_id,$product_categories)) checked @endif title="الرجاء تعبئة هذا الحقل">
-                                    <span></span>
+                                    <span ></span>
+
+                                    <div class="mr-4"> {{ $sub_cateogry->term->name }}</div>
                                 </label>
                                 <!--end::Checkbox-->
-                                <!--begin::Text-->
-                                <div class="d-flex flex-column flex-grow-1 py-2" style="text-align: right" >
-                                    <a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1 mr-10">
-                                        {{ $sub_cateogry->term->name }}
-                                    </a>
-                                </div>
-                                <!--end::Text-->
+
                             </div>
                             <!--end::Sub Item-->
                         @endif
