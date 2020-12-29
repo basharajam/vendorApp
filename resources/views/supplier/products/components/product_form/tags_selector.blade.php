@@ -9,7 +9,7 @@ if($product){
         <!--begin::Item-->
         <div class="d-flex align-items-center mb-6">
             <!--begin::Checkbox-->
-            <label class="checkbox checkbox-lg  flex-shrink-0 m-0 mr-4">
+            <label class="checkbox checkbox-lg flex-shrink-0 m-0 mr-4">
                 <input type="checkbox" name="product_tags[]" value="{{ $tag->term_taxonomy_id}}" @if(in_array($tag->term_taxonomy_id,$product_tags)) checked @endif>
                 <span></span>
                 <div class="mr-4">  {{ $tag->term->name }}</div>
