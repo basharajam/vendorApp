@@ -45,14 +45,18 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->national_id_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->national_id_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->national_id_image))->toMediaCollection('national_id_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->national_id_image))
+                ->preservingOriginal()
+                ->toMediaCollection('national_id_images');
 
             }
         }
         if(isset($request->passport_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->passport_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->passport_image))->toMediaCollection('passport_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->passport_image))
+                ->preservingOriginal()
+                ->toMediaCollection('passport_images');
 
             }
         }
@@ -60,21 +64,27 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->visa_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->visa_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->visa_image))->toMediaCollection('visa_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->visa_image))
+                ->preservingOriginal()
+                ->toMediaCollection('visa_images');
 
             }
         }
         if(isset($request->commercial_license_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image))->toMediaCollection('commercial_license_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image))
+                ->preservingOriginal()
+                ->toMediaCollection('commercial_license_images');
 
             }
         }
         if(isset($request->company_logo)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->company_logo)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->company_logo))->toMediaCollection('company_logo_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->company_logo))
+                ->preservingOriginal()
+                ->toMediaCollection('company_logo_images');
 
             }
         }
@@ -82,7 +92,9 @@ class SupplierService extends BaseService implements ISupplierService
             {
                 if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->license_images)))
                 {
-                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))->toMediaCollection('license_images');
+                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))
+                    ->preservingOriginal()
+                    ->toMediaCollection('license_images');
 
                 }
             }
@@ -108,14 +120,18 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->national_id_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->national_id_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->national_id_image))->toMediaCollection('national_id_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->national_id_image))
+                ->preservingOriginal()
+                ->toMediaCollection('national_id_images');
 
             }
         }
         if(isset($request->passport_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->passport_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->passport_image))->toMediaCollection('passport_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->passport_image))
+                ->preservingOriginal()
+                ->toMediaCollection('passport_images');
 
             }
         }
@@ -123,21 +139,27 @@ class SupplierService extends BaseService implements ISupplierService
         if(isset($request->visa_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->visa_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->visa_image))->toMediaCollection('visa_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->visa_image))
+                ->preservingOriginal()
+                ->toMediaCollection('visa_images');
 
             }
         }
         if(isset($request->commercial_license_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image))->toMediaCollection('commercial_license_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->commercial_license_image))
+                ->preservingOriginal()
+                ->toMediaCollection('commercial_license_images');
 
             }
         }
         if(isset($request->company_logo)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->company_logo)))
             {
-                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->company_logo))->toMediaCollection('company_logo_images');
+                $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->company_logo))
+                ->preservingOriginal()
+                ->toMediaCollection('company_logo_images');
 
             }
         }
@@ -145,7 +167,9 @@ class SupplierService extends BaseService implements ISupplierService
             {
                 if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->license_images)))
                 {
-                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))->toMediaCollection('license_images');
+                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))
+                    ->preservingOriginal()
+                    ->toMediaCollection('license_images');
 
                 }
             }
