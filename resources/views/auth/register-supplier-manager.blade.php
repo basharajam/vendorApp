@@ -24,6 +24,71 @@
     <!-- Styles -->
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('styles')
+    <style>
+
+        /* The message box is shown when the user clicks on the password field */
+    #strong_container {
+      display:block;
+      background: transparent;
+      color: #000;
+      position: relative;
+      margin-top: 10px;
+
+    }
+
+    #strong_container h3{
+        font-size:14px;
+        font-weight: bold;
+    }
+    #strong_container p {
+      padding: 10px 10px;
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      direction: ltr;
+    }
+
+    .valid:before {
+      position: relative;
+      content: "✔";
+      left: -3px;
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+        direction: ltr;
+
+    }
+
+    .invalid:before {
+      position: relative;
+      content: "✖";
+      left: -3px;
+    }
+    #error-msg {
+      color: red;
+    }
+    #valid-msg {
+      color: #00C900;
+    }
+    input.error {
+      border: 1px solid #FF7C7C;
+    }
+    .hide {
+      display: none;
+    }
+    .field-icon {
+        position: absolute;
+        margin-right: 15px;
+        color:#aaa;
+        z-index: 2;
+        float: right
+    }
+    </style>
 </head>
 
 <body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">

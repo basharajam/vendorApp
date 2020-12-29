@@ -1,3 +1,69 @@
+@push('styles')
+<style>
+
+    /* The message box is shown when the user clicks on the password field */
+#strong_container {
+  display:block;
+  background: transparent;
+  color: #000;
+  position: relative;
+  margin-top: 10px;
+
+}
+
+#strong_container h3{
+    font-size:14px;
+    font-weight: bold;
+}
+#strong_container p {
+  padding: 10px 10px;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  direction: ltr;
+}
+
+.valid:before {
+  position: relative;
+  content: "✔";
+  left: -3px;
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    direction: ltr;
+
+}
+
+.invalid:before {
+  position: relative;
+  content: "✖";
+  left: -3px;
+}
+#error-msg {
+  color: red;
+}
+#valid-msg {
+  color: #00C900;
+}
+input.error {
+  border: 1px solid #FF7C7C;
+}
+.hide {
+  display: none;
+}
+.field-icon {
+    position: absolute;
+    margin-right: 15px;
+    color:#aaa;
+    z-index: 2;
+    float: right
+}
+</style>
+@endpush
 <form class="form" class="w-100" method="POST" action="{{ route('supplier_manager_registeration') }}" id="supplier_registeration_form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIERMANAGER }}">
@@ -91,10 +157,25 @@
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" required
-                autocomplete="off"
-                oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
-                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
+                <div class="w-100 d-flex align-items-center" style="position: relative">
+                    <span toggle="#password_input" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    <input id="password_input"  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" required
+                    autocomplete="off"
+                    oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
+                    oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
+                  </div>
+                  <div  class="fv-plugins-message-container" id="">
+                    <div id="strong_password_message" class="fv-help-block"></div>
+                    <div id="strong_container">
+                        <h3>يجب أن تحتوي كلمة المرور على ما يلي:</h3>
+                        <div class="d-flex justify-content-between">
+                              <span id="letter"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف صغير</span>
+                              <span id="capital" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف كبير</span>
+                              <span id="number"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">رقم</span>
+                              <span id="length" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">الحد الادنى 8  احرف</span>
+                        </div>
+                      </div>
+                </div>
                 @error('password')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -111,10 +192,13 @@
                 <span class="required">*</span>
             </label>
 
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation"
+            <div class="w-100 d-flex align-items-center" style="position: relative">
+                <span toggle="#password_conf" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                <input id="password_conf" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation"
                 required autocomplete="new-password"
                 oninvalid="this.setCustomValidity('الرجاء ادخال قيمة هذه الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
+            </div>
             </div>
             <!--end::Form group Password Confirmation-->
        </div> <div class="form-group">
@@ -156,4 +240,95 @@
         });
     });
 </script>
+<script>
+    $(function(){
+        $(".toggle-password").click(function() {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            } else {
+            input.attr("type", "password");
+            }
+            });
+    });
+    </script>
+    <script>
+        var myInput = document.getElementById("password_input");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+          document.getElementById("strong_container").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+          document.getElementById("strong_container").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.remove("label-light-danger");
+            letter.classList.add("valid");
+            letter.classList.add("label-light-success");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.remove("label-light-success");
+            letter.classList.add("invalid");
+            letter.classList.add("label-light-danger");
+          }
+
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.remove("label-light-danger");
+            capital.classList.add("valid");
+            capital.classList.add("label-light-success");
+
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.remove("label-light-success");
+            capital.classList.add("invalid");
+            capital.classList.add("label-light-danger");
+          }
+
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.remove("label-light-danger");
+            number.classList.add("valid");
+            number.classList.add("label-light-success");
+          } else {
+            number.classList.remove("valid");
+            number.classList.remove("label-light-success");
+            number.classList.add("invalid");
+            number.classList.add("label-light-danger");
+          }
+
+          // Validate length
+          if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.remove("label-light-danger");
+            length.classList.add("valid");
+            length.classList.add("label-light-success");
+          } else {
+            length.classList.remove("valid");
+            length.classList.remove("label-light-success");
+            length.classList.add("invalid");
+            length.classList.add("label-light-danger");
+          }
+        }
+        </script>
+
 @endpush

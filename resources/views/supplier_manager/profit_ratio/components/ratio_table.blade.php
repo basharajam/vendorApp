@@ -27,7 +27,7 @@
                 </td>
                 <td>
                     <input
-                        data-inputmask="'regex': '^[0-9]+$'"
+                    data-inputmask="'regex': '^[0-9]+.[0-9]+$'"
                         type="text"
                         class="form-control remotelyUpdate"
                         placeholder="ادخل نسبة الربح"

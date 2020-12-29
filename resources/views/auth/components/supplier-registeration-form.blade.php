@@ -55,6 +55,13 @@ input.error {
 .hide {
   display: none;
 }
+.field-icon {
+    position: absolute;
+    margin-right: 15px;
+    color:#aaa;
+    z-index: 2;
+    float: right
+}
 </style>
 @endpush
 
@@ -150,10 +157,13 @@ input.error {
                     <span>كلمة المرور</span>
                     <span class="required">*</span>
                 </label>
+              <div class="w-100 d-flex align-items-center" style="position: relative">
+                <span toggle="#password_input" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 <input id="password_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="يجب أن تحتوي كلمة المرور على رقم واحد على الأقل وحرف واحد كبير وصغير و 8 أحرف على الأقل أو أكثر" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" @if($supplier==null) required  @endif autocomplete="off" style="direction:ltr"
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"
                />
+              </div>
                 <div  class="fv-plugins-message-container" id="">
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
@@ -181,11 +191,13 @@ input.error {
                 <span>تأكيد كلمة المرور</span>
                 <span class="required">*</span>
             </label>
-
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr"
+            <div class="w-100 d-flex align-items-center" style="position: relative">
+                <span toggle="#password_conf" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                <input id="password_conf" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password_confirmation" @if($supplier==null) required @endif autocomplete="new-password" style="direction:ltr"
                 oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
                 />
+            </div>
                 @error('password_confirmation')
                 <div class="fv-plugins-message-container">
                     <div  class="fv-help-block">{{ $message }}</div>
@@ -1481,6 +1493,17 @@ input.error {
     });
 </script>
 <script>
+$(function(){
+    $(".toggle-password").click(function() {
 
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+        input.attr("type", "text");
+        } else {
+        input.attr("type", "password");
+        }
+        });
+});
 </script>
 @endpush
