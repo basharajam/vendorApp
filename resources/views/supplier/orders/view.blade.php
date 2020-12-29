@@ -110,7 +110,7 @@
                                         <span class="text-muted font-weight-bold font-size-lg">بتاريخ:
                                             <span class="text-dark-75 font-weight-bolder">{{date('Y-m-d',strtotime($detail->date_created)) }}</span></span>
                                             <span class="text-muted font-weight-bold font-size-lg">يوم التسليم:
-                                                <span class="text-dark-75 font-weight-bolder">{{ Carbon\Carbon::parse($order->post->post_date)->addDays(5)->format('Y-m-d') }}</span></span>
+                                                <span class="text-dark-75 font-weight-bolder">{{ Carbon\Carbon::parse($order->post->post_date)->addDays($meta['al_days_to_delivery'])->format('Y-m-d') }}</span></span>
                                                 <span class="text-muted font-weight-bold font-size-lg">إجمالي عائدات المنتج:
                                                     <span class="text-dark-75 font-weight-bolder">{{$detail->product_gross_revenue}}</span></span>
                                 </div>
