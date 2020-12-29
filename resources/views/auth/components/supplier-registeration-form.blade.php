@@ -62,10 +62,16 @@ input.error {
     z-index: 2;
     float: right
 }
+
+</style>
+<style>
+    #kt_body , html{
+        width:100vw !important;
+    }
 </style>
 @endpush
 
-<div class="row " style="">
+<div class="row" style="">
         <div class="col-md-12">
              <!--begin::Form group Nationality-->
             <div class="form-group">
