@@ -87,6 +87,7 @@
     <style>
         #kt_body , html{
             width:100vw !important;
+            background-color: #fff;
         }
     </style>
     @stack('styles')
