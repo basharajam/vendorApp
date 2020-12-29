@@ -7,7 +7,7 @@
                 <span>رقم البطاقة الشخصية</span>
             </label>
             <input id="national_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6"
-            type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{ old('national_number') }}"
+            type="text" placeholder="رقم البطاقة الشخصية" name="national_number" value="{{($supplier && $supplier->national_number)? $supplier->national_number  : old('national_number') }}"
              required autocomplete="national_number"
              oninvalid="this.setCustomValidity('الرجاء ادخال  رقم البطاقة الشخصية و التي تتكون من 18 رقم')"
              oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"
@@ -33,7 +33,7 @@
                 <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
             </div>
         </div>
-        <input id="national_image_value" type="hidden" name="national_id_image" value="{{ old('national_id_image') }}">
+        <input id="national_image_value" type="hidden" name="national_id_image" value="{{ ($supplier && $supplier->national_id_image) ? $supplier->national_id_image->name.'.'.$supplier->national_id_image->extension : old('national_id_image') }}">
     </div>
     <!--end::Form group National ID Picture-->
     </div>

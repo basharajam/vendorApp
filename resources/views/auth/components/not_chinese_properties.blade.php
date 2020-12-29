@@ -6,7 +6,7 @@
                 <span class="required">*</span>
                 <span>رقم جواز السفر</span>
             </label>
-            <input id="passport_number_id" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{ old('passport_number') }}" required autocomplete="national_number"
+            <input id="passport_number_id" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="رقم جواز السفر" name="passport_number" value="{{($supplier && $supplier->passport_number)?$supplier->passport_number: old('passport_number') }}" required autocomplete="national_number"
             oninvalid="this.setCustomValidity(' الرجاء ادخال رقم جواز السفر والذي يتكون من 16 محرف')"
             oninput="setCustomValidity('')"
             title="الرجاء تعبئة هذا الحقل"
@@ -122,7 +122,7 @@
                 <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
             </div>
         </div>
-        <input id="passport_image_value" type="hidden" name="passport_image" value="{{ old('passport_image') }}">
+        <input id="passport_image_value" type="hidden" name="passport_image" value="{{ ($supplier && $supplier->passport_image) ? $supplier->passport_image->name.'.'.$supplier->passport_image->extension:old('passport_image') }}">
     </div>
     <!--end::Form group Passport ID Picture-->
     </div>
@@ -142,7 +142,7 @@
             </div>
         </div>
         <!--end::Form group Passport ID Picture-->
-        <input id="visa_image_value" type="hidden" name="visa_image" value="{{ old('visa_image') }}">
+        <input id="visa_image_value" type="hidden" name="visa_image" value="{{($supplier && $supplier->visa_image) ? $supplier->visa_image->name.'.'.$supplier->visa_image->extension : old('visa_image') }}">
 
         </div>
 

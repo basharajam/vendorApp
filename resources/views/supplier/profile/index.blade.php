@@ -64,6 +64,38 @@
 
                         </div>
                         @endif
+                        @if($profile->commercial_license_image!=null)
+                        <div class="kt-widget__head">
+                            <div class="kt-widget__content">
+                                <div class="kt-widget__section">
+                                    <a href="#" class="kt-widget__username" id="product_name">
+                                 صورةالرخصة التجارية
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="kt-widget__media">
+                                <!--Product Image-->
+                                <img id="AsidePhoto" class="kt-widget__img " src="{{$profile->commercial_license_image->getFullUrl()}}" style="object-fit: cover" alt="image">
+                            </div>
+
+                        </div>
+                        @endif
+                        @if($profile->company_logo_image!=null)
+                        <div class="kt-widget__head">
+                            <div class="kt-widget__content">
+                                <div class="kt-widget__section">
+                                    <a href="#" class="kt-widget__username" id="product_name">
+                                 صورة العلامة التجارية الخاصة بالشركة
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="kt-widget__media">
+                                <!--Product Image-->
+                                <img id="AsidePhoto" class="kt-widget__img " src="{{$profile->company_logo_image->getFullUrl()}}" style="object-fit: cover" alt="image">
+                            </div>
+
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -591,6 +591,7 @@ input.error {
             </div>
             <!--end::Form group National Number-->
         </div>
+
         <div class="col-md-12">
             <!--begin::Form group National ID Picture-->
             <div class="form-group">
@@ -604,7 +605,7 @@ input.error {
                         <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
                     </div>
                 </div>
-                <input id="commercial_license_image_value" type="hidden" name="commercial_license_image" value="{{ old('commercial_license_image') }}">
+                <input id="commercial_license_image_value" type="hidden" name="commercial_license_image" value="{{($supplier && $supplier->commercial_license_image) ? $supplier->commercial_license_image->name.'.'.$supplier->commercial_license_image->extension: old('commercial_license_image') }}">
 
             </div>
             <!--end::Form group National ID Picture-->
@@ -622,7 +623,7 @@ input.error {
                         <span class="dropzone-msg-desc"> قم برفع صورة واحدة فقط</span>
                     </div>
                 </div>
-                <input id="company_logo_value" type="hidden" name="company_logo" value="{{ old('company_logo') }}">
+                <input id="company_logo_value" type="hidden" name="company_logo" value="{{($supplier && $supplier->company_logo_image) ? $supplier->company_logo_image->name.'.'.$supplier->company_logo_image->extension: old('company_logo') }}">
 
             </div>
             <!--end::Form group National ID Picture-->
@@ -721,6 +722,10 @@ input.error {
                     @foreach(old('license_images') as $key=>$value)
                         <input type="hidden" id="license_images_value" name="license_images[]" value="{{ $value }}">
                     @endforeach
+                @elseif($supplier && $supplier->license_images )
+                @foreach($supplier->license_images as $key=>$value)
+                        <input type="hidden" id="license_images_value" name="license_images[]" value="{{ $value->name.'.'.$value->extension }}">
+                @endforeach
                 @endif
 
             </div>
@@ -1026,8 +1031,8 @@ input.error {
 <script>
     Dropzone.autoDiscover = false;
     $(function(){
-        let chinese_properties = `{!! view('auth.components.chinese_properties') !!}`;
-        let not_chinese_properties = `{!! view('auth.components.not_chinese_properties') !!}`;
+        let chinese_properties = `{!! view('auth.components.chinese_properties',['supplier'=>$supplier ?? null]) !!}`;
+        let not_chinese_properties = `{!! view('auth.components.not_chinese_properties',['supplier'=>$supplier ?? null]) !!}`;
         let bank_account_number_Id = document.getElementById('bank_account_number');
         Inputmask({ mask: "6228999999999999999" }).mask(bank_account_number_Id);
         if($("input[name='ischinese']:checked").val()=="1"){
