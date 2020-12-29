@@ -56,7 +56,7 @@ class RegisterController extends Controller
     public function create(StoreSupplierRequest $request){
         try{
            $manager =  $this->supplier_manager_service->store($request);
-            \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
+            \Session::flash('message',"تم انشاء الحساب بنجاح ");
             \Session::flash('status',true);
             \Auth::login($manager->user);
             return redirect()->route('supplier_manager.home');

@@ -88,7 +88,7 @@ if($product){
             <label class="font-size-h6 font-weight-bolder text-dark">
                 <span>كمية بالكرتونة الواحدة</span>
                 <span class="required">*</span>
-                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="أدخل كمية كل كارتون"></span>
+                <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title="مثال: كمية الحزم داخل الكرتونة أو كمية البطاقات داخل الحزمة الواحدة"></span>
             </label>
             <input id="al_carton_qty" data-inputmask="'regex': '^[0-9]+$'"
             class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('al_carton_qty') is-invalid @enderror" type="text" placeholder="" name="al_carton_qty" value="{{ array_key_exists('al_carton_qty',$meta) ?  $meta['al_carton_qty'] : old('al_carton_qty') }}"  required
