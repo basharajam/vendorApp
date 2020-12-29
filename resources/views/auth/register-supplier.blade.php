@@ -35,7 +35,13 @@
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
     @toaster
     <style>
-
+.field-icon {
+    position: absolute;
+    margin-right: 15px;
+    color:#aaa;
+    z-index: 2;
+    float: right
+}
         /* The message box is shown when the user clicks on the password field */
     #strong_container {
       display:none;
