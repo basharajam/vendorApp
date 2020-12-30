@@ -4,11 +4,6 @@
         <thead class="thead-light">
             <tr>
                 <th>
-                    {{-- <label class="checkbox">
-                        <input type="checkbox"  name="checlAll" id="checkAll"/>
-                        <span></span>
-                    </label> --}}
-
                 </th>
                 <th class="">
                     <span>المنتج</span>
@@ -66,11 +61,6 @@
                             <span id="row-arrow{{ $product->ID }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
                         </div>
                         @else
-                        {{-- <label class="checkbox">
-                            <input type="checkbox"  class="check" data-id="{{ $product->ID }}" name="Checkboxes4"/>
-                            <span></span>
-
-                        </label> --}}
 
                         @endif
                     </td>
@@ -194,8 +184,10 @@
                     @endif
                     @php
                     $meta_variation = $variation->meta;
+
                     @endphp
-                    <tr class="child-row{{ $variation->ID }}" style="display:none">
+
+                    <tr class="child-row{{ $product->ID }}" style="display:none">
                         <td></td>
                         <td>
                             <span>
@@ -278,15 +270,6 @@
                     $(this).siblings('.child-' + this.id).toggle();
                 });
             $('tr[class^=child-]').hide().children('td');
-            var checkAllCheckBox = document.getElementById("checkAll");
-
-                checkAllCheckBox.addEventListener('change', function() {
-                if (this.checked) {
-                    checkAll();
-                } else {
-                    uncheckAll();
-                }
-            });
     });
 
 </script>
