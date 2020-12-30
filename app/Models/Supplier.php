@@ -79,6 +79,6 @@ class Supplier extends BaseModel implements HasMedia
         return $this->getFirstMedia('company_logo_images');
     }
     public function getLicenseImagesAttribute(){
-        return $this->getFirstMedia('license_images');
+        return $this->getMedia('license_images');
     }
 }

@@ -90,13 +90,16 @@ class SupplierService extends BaseService implements ISupplierService
         }
         if(isset($request->license_images)){
             {
-                if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->license_images)))
-                {
-                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))
-                    ->preservingOriginal()
-                    ->toMediaCollection('license_images');
+                foreach($request->license_images as $license_image){
+                    if(\File::exists(storage_path('app/public/tmp/uploads/' .$license_image)))
+                    {
+                        $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $license_image))
+                        ->preservingOriginal()
+                        ->toMediaCollection('license_images');
 
+                    }
                 }
+
             }
         }
 
@@ -165,13 +168,16 @@ class SupplierService extends BaseService implements ISupplierService
         }
         if(isset($request->license_images)){
             {
-                if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->license_images)))
-                {
-                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $request->license_images))
-                    ->preservingOriginal()
-                    ->toMediaCollection('license_images');
+                foreach($request->license_images as $license_image){
+                    if(\File::exists(storage_path('app/public/tmp/uploads/' .$license_image)))
+                    {
+                        $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $license_image))
+                        ->preservingOriginal()
+                        ->toMediaCollection('license_images');
 
+                    }
                 }
+
             }
         }
         return $supplier;
