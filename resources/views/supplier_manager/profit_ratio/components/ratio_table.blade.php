@@ -4,13 +4,13 @@
         <thead class="thead-light">
             <tr>
                 <th class="">
-                    <span>الفئة</span>
+                    <span>{{__("الصنف")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Category</div>
                 </th>
                 <th class="">
-                    <span>النسبة</span>
+                    <span>{{__('نسبة الربح')}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Profit Ratio</div>
@@ -31,7 +31,7 @@
                     data-inputmask="'regex': '^[0-9]+.[0-9]+$'"
                         type="text"
                         class="form-control remotelyUpdate"
-                        placeholder="ادخل نسبة الربح"
+                        placeholder="{{__('ادخل نسبة الربح')}}"
                         data-loader="#loader{{$category->term_taxonomy_id}}"
                         data-manager="{{ \Auth::user()->userable->id }}"
                         data-category="{{$category->term_taxonomy_id}}"
@@ -78,11 +78,11 @@
                     type:"POST",
                     data:UpdateForm,
                     success:function(response){
-                        toastr.success('تم التعديل بنجاح');
+                        toastr.success('{{__("تم التعديل بنجاح")}}');
 
                     },
                     error:function(){
-                        toastr.error('لقد حدث خطأ ما الرجاء المحاولة لاحقاً');
+                        toastr.error('{{__("لقد حدث خطأ ما , الرجاء المحاولة لاحقاً")}}');
                     },
                     complete:function(){
                         $(loader).hide();
@@ -98,24 +98,24 @@
     $('#RatioTable').DataTable({
         scrollCollapse: true,
         language:{
-            "emptyTable": "ليست هناك بيانات متاحة في الجدول",
-            "loadingRecords": "جارٍ التحميل...",
-            "processing": "جارٍ التحميل...",
-            "lengthMenu": "أظهر _MENU_ مدخلات",
-            "zeroRecords": "لم يعثر على أية سجلات",
-            "info": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-            "infoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
-            "infoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
-            "search": "ابحث:",
+            "emptyTable": "{{__('ليست هناك بيانات متاحة في الجدول')}}",
+            "loadingRecords": "{{__('جارٍ التحميل')}}...",
+            "processing": "{{__('جارٍ التحميل')}}...",
+            "lengthMenu": "{{__('أظهر')}} _MENU_ {{__('مدخلات')}}",
+            "zeroRecords": "{{__('لم يعثر على أية سجلات')}}",
+            "info": "{{__('أظهر')}} _START_ إلى _END_ {{__('من أصل')}} _TOTAL_ {{__('مدخل')}}",
+            "infoEmpty": "{{__('عرض')}} 0 {{__('إلى')}} 0 {{__('من أصل')}} 0 {{__('سجل')}}",
+            "infoFiltered": "({{__('منتقاة')}} من مجموع _MAX_ {{__('مدخل')}})",
+            "search": "{{__('ابحث')}}:",
             "paginate": {
-                "first": "الأول",
-                "previous": "السابق",
-                "next": "التالي",
-                "last": "الأخير"
+                "first": "{{('الأول')}}",
+                "previous": "{{__('السابق')}}",
+                "next": "{{__('التالي')}}",
+                "last": "{{('الأخير')}}"
             },
             "aria": {
-                "sortAscending": ": تفعيل لترتيب العمود تصاعدياً",
-                "sortDescending": ": تفعيل لترتيب العمود تنازلياً"
+                "sortAscending": ": {{__('تفعيل لترتيب العمود تصاعدياً')}}",
+                "sortDescending": ": {{__('تفعيل لترتيب العمود تنازلياً')}}"
             },
             "select": {
                 "rows": {
@@ -125,17 +125,17 @@
                 }
             },
             "buttons": {
-                "print": "طباعة",
-                "colvis": "الأعمدة الظاهرة",
-                "copy": "نسخ إلى الحافظة",
-                "copyTitle": "نسخ",
-                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>ليتم نسخها إلى الحافظة<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
+                "print": "{{__('طباعة')}}",
+                "colvis": "{{__('الأعمدة الظاهرة')}}",
+                "copy": "{{__('نسخ إلى الحافظة')}}",
+                "copyTitle": "{{__('نسخ')}}",
+                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>{{__('ليتم نسخها إلى الحافظة')}}<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
                 "copySuccess": {
                     "_": "%d قيمة نسخت",
                     "1": "1 قيمة نسخت"
                 },
                 "pageLength": {
-                    "-1": "اظهار الكل",
+                    "-1": "{{__('اظهار الكل')}}",
                     "_": "إظهار %d أسطر"
                 }
             }
@@ -173,7 +173,7 @@
                                 }
                             },
                             error:function(error){
-                                console.log(error);
+                               
                             },
                         });
                     });

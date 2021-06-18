@@ -14,7 +14,9 @@ class ImageController extends Controller
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
+        
         $file = $request->file('file');
+        
         $name = uniqid() . '_' . trim($file->getClientOriginalName());
 
         $file->move($path, $name);

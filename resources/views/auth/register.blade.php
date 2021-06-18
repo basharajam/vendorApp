@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@if (app()->getLocale() ==="ar")
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+@endif
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,10 +29,34 @@
     <!-- Styles -->
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/flag-icon.min.css') }}" rel="stylesheet">
 </head>
 
 <body id="kt_body" style="background-color:#fff" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
     <div class="d-flex flex-column flex-root">
+        <div class="langSelector">
+            <button id='LangSelectorBut' class="LangSelectorBut"  >
+                
+                @if (app()->getLocale() ==="ar")
+                 <span class="flag-icon flag-icon-sa"></span>
+                @endif
+                @if (app()->getLocale() ==="en")
+                 <span class="flag-icon flag-icon-us"></span>
+                @endif
+                @if (app()->getLocale() ==="ch")
+                 <span class="flag-icon flag-icon-cn"></span>
+                @endif
+            </button>
+            <ul class="langSelList" >
+                <li>
+                    <a href="{{ route('setLangEn') }}"><span class="flag-icon flag-icon-us"> </span> English </a>
+                </li>
+                <li>
+                    <a href="{{ route('setLangAr') }}"><span class="flag-icon flag-icon-sa"></span>   العربية </a></li>
+                <li>
+                    <a href="{{ route('setLangCh') }}"><span class="flag-icon flag-icon-cn"></span>   中文 </a></li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-12">
                    <!--begin::Login-->
@@ -50,8 +79,8 @@
                                                <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
                                            </a>
                                            <!--end::Logo-->
-                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10  ">نظام الموردين</h2>
-                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">الرجاء اختيار نوع الحساب</h2>
+                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10  ">{{__('نظام الموردين')}}</h2>
+                                            <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">{{__('الرجاء اختيار نوع الحساب')}}</h2>
                                        </div>
                                     </div>
                                     <div class="row">
@@ -65,10 +94,10 @@
                                                 </span>
                                                 <span class="option-label">
                                                     <span class="option-head">
-                                                        <span class="option-title">مورد</span>
+                                                        <span class="option-title">{{__('مورد')}}</span>
                                                         <span class="option-focus"></span>
                                                     </span>
-                                                    <span class="option-body">إنشاء حساب مورد</span>
+                                                    <span class="option-body">{{__('إنشاء حساب مورد')}}</span>
                                                 </span>
                                             </label>
                                         </div>
@@ -82,17 +111,17 @@
                                                 </span>
                                                 <span class="option-label">
                                                     <span class="option-head">
-                                                        <span class="option-title">مدير موردين</span>
+                                                        <span class="option-title">{{__('مدير موردين')}}</span>
                                                         <span class="option-focus"></span>
                                                     </span>
-                                                    <span class="option-body">إنشاء حساب مدير  موردين</span>
+                                                    <span class="option-body">{{__('إنشاء حساب مدير  موردين')}}</span>
                                                 </span>
                                             </label>
                                         </div>
                                         <div class="col-12">
                                             <!--begin::Form group-->
                                             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                                <a href="#" id="selected_account_type"   type="button" id="" class="btn btn-dark font-weight-bolder disabled font-size-h6 px-8 py-4 my-3 mx-4" type="button">التالي</a>
+                                                <a href="#" id="selected_account_type"   type="button" id="" class="btn btn-dark font-weight-bolder disabled font-size-h6 px-8 py-4 my-3 mx-4" type="button">{{__('التالي')}}</a>
                                             </div>
                                             <!--end::Form group-->
                                         </div>
@@ -133,9 +162,18 @@
                // $(this).parentsUntil('.parent')[2].style.border = "2px solid black";
                $('.option').removeClass('bold');
                $(this).parentsUntil('.parent')[2].classList.add('bold')
-                console.log();
+        
             })
         });
+
+
+        $(document).on('click','.LangSelectorBut',function(){
+
+
+            $('.langSelList').toggleClass('display')
+
+        })
+
     </script>
 </body>
 </html>

@@ -54,10 +54,36 @@ class RegisterController extends Controller
     }
 
     public function create(StoreSupplierRequest $request){
+
+
+        //Validate inputs 
+        $validate = Validator::make(request()->all(), [
+            'role'=>'required',
+            'first_name'=>'required',
+            'last_name'=>"required",
+            'username'=>'required|unique:users',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:8',
+            'password_confirmation'=>'required|min:8',
+        ]);
+
+        if ($validate->fails()) {
+            
+            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+            return redirect()->back();
+        }
+
+
         try{
            $manager =  $this->supplier_manager_service->store($request);
-            \Session::flash('message',"تم انشاء الحساب بنجاح ");
+
+           //By Blaxk
+           //Send Activation Message 
+           $manager->user->sendEmailVerificationNotification();
+           
+            \Session::flash('message',"تم تسجيل الحساب بنجاح");
             \Session::flash('status',true);
+            
             \Auth::login($manager->user);
             return redirect()->route('supplier_manager.home');
         }

@@ -1,5 +1,10 @@
 <!doctype html>
+@if (app()->getLocale() ==="ar")
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+@endif
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,9 +36,83 @@
     <link href="{{ asset('plugins/telinput/css/intlTelInput.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/toastr.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/flag-icon.min.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
 
 
+    <style type="text/css" >
+    
+    .LangSelectorBut{
+        width: 60px;
+        height: 40px;
+        margin: 6px;
+    }
+
+    .langSelList{
+        background: #ffffff;
+    }
+
+    #LangSelectorBut span{
+        font-size: 26px;
+
+
+    }
+
+    .langSelList ul{
+        padding: 4px
+
+    }
+
+    .langSelector ul li a span{
+        font-size: 30px;
+    }
+    .langSelector ul{
+        margin: 2px;
+    }
+
+    </style>
+    <!-- Rtl Style Customize -->
+    @if (app()->getLocale() === "ar")
+
+        <style type="text/css">
+        
+         .kt-menu__nav{
+             direction:rtl !important
+         };
+         table{
+             direction: rtl !important;
+             text-align: :right !important;
+         }
+         .langSelector ul li a span{
+            font-size: 30px;
+             margin-left: 15px;
+        }
+
+        </style>
+
+      @yield('Rtlstyle')
+          
+    @else
+          
+    <style type="text/css">
+        
+        table{
+            direction: ltr !important;
+            text-align: :left !important;
+        }
+
+        .langSelector ul li a span{
+            font-size: 30px;
+             margin-right: 15px;
+        }
+
+
+
+       </style>
+
+    @endif
+
+    @yield('style')
     @stack('styles')
 </head>
 
@@ -77,7 +156,6 @@
 
     <script>
         $(function(){
-            console.log('cohntent height',$("#kt_content").height());
 
             if($("#kt_content").height() > 600){
                 document.getElementById('push').style.height = "0px";
@@ -90,38 +168,53 @@
                 e.preventDefault();
                 let $this = $(this);
                 let action = $this.attr('data-action-name');
+                let type=$this.attr('data-type');
+                let varid=$this.attr('data-varid');
                 let id = $this.attr('id');
                 let  remove =$this.attr('data-remove');
-                console.log(id);
+          
                 Swal.fire({
-                    title: "هل انت متأكد؟",
-                    text: "لن تستطيع التراجع عن هذه العملية",
+                    title: "{{__('هل أنت متأكد ؟')}}",
+                    text: "{{__('لن تستطيع التراجع عن هذه العملية')}}",
                     icon: "تحذير",
                     showCancelButton: true,
-                    confirmButtonText: "حذف",
-                    cancelButtonText: "إلغاء"
+                    confirmButtonText: "{{__('حذف')}}",
+                    cancelButtonText: "{{__('إلغاء')}}"
                 }).then(function(result) {
                     if(result.value){
                     var tr = "#" + id;
 
-                    console.log(tr);
+           
                     var url = action;
                     $.ajax({
                         type: "get",
                         url: url,
                         success: function (data) {
                             toastr.options.progressBar = true;
-                                toastr.success('تم حذف المادة بنجاح');
+                        
+                                toastr.success('{{__("تم حذف المادة بنجاح")}}');
                                 $(tr).css({
                                     "display": "none"
                                 });
                                 $(remove).css({
                                     "display":"none"
                                 })
+                                
+
+                                if(type ==='variation'){
+
+                                    //Remove Collpase Card
+                                    var removeCardId= '.card'+varid
+                                    $(removeCardId).remove()
+                                }
+
+                                
+
+
                         },
                         error: function () {
                                 toastr.options.progressBar = true;
-                                toastr.error('لقد حدث خطأ ما الرجاء المحاولة لاحقاً');
+                                toastr.error('{{__("لقد حدث خطأ ما , الرجاء المحاولة لاحقاً")}}');
                         }
                      });
                     }
@@ -132,23 +225,25 @@
         })
     </script>
     <script>
-        let content="{{ session('message') }}";
+        let content="{{ __(session('message')) }}";
+        let where = "{{ session('where') }}";
         let status =" {{ session('status') }}";
+
         let validation_erros_exist = "{{ $errors->any() }}"
         // let validation_errors = "{!! json_encode($errors->all()) !!}";
         if(validation_erros_exist==1){
             let verrors = {!! json_encode($errors->all()) !!};
             for(let i=0;i<verrors.length;i++){
-                toastr.error(verrors[i]);
+                toastr.error('{{__(' . verrors[i] . ')}}');
             }
         }
-        console.log(status);
+
         toastr.options = {
             "closeButton": true,
             "debug": false,
             "newestOnTop": false,
             "progressBar": true,
-            "positionClass": "toast-top-right",
+            "positionClass": "toast-top-center",
             "preventDuplicates": true,
             "onclick": null,
             "showDuration": "300",
@@ -160,7 +255,8 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        if(content!=''){
+      
+        if(content!=''  && where != 'support' ){
             if(status==true){
              toastr.success(content);
             }else{
@@ -169,8 +265,19 @@
 
         }
 
+
+        $(document).on('click','.LangSelectorBut',function(){
+
+
+                $('.langSelList').toggleClass('display')
+
+         })
+
     </script>
+    @yield('scripts')
     @stack('scripts')
+
+
 </body>
 </body>
 </html>

@@ -4,13 +4,13 @@
             <h3 class="kt-portlet__head-title">
                 @switch($type)
                 @case('product_cat')
-                    الاصناف / الفئات
+                    {{__("الاصناف / الفئات")}}
                     @break
                 @case('product_tag')
-                     التاغات
+                     {{__("التاغات")}}
                     @break
                 @case('attributes')
-                    السمات
+                    {{__("السمات")}}
                    @break
                 @default
 
@@ -20,22 +20,23 @@
     </div>
     <div class="kt-portlet__body">
         <div class="table-responsive">
-            <table id="GridTaxnomies" class="table table-bordered" style="direction:rtl;text-align:right">
+            <table id="GridTaxnomies" class="table table-bordered" style="">
                 <thead class="thead-light">
                     <tr>
                         @if($type=='product_cat')
-                        <th>الصورة</th>
+                        <th>{{__("الصورة")}}</th>
                         @endif
-                        <th>الاسم</th>
+                        <th>{{__("الاسم")}}</th>
                         @if($type=='product_cat')
-                        <th>تابع للصنف</th>
+                        <th>{{__("تابع لصنف")}}</th>
                         @endif
-                        <th>الوصف</th>
-                        <th>العدد</th>
+                        <th>{{__("الوصف")}}</th>
+                        <th>{{__("العدد")}}</th>
                         <th>..</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach($data as $taxonomy)
                         <tr id="{{ $taxonomy->term_taxonomy_id }}">
                             @if($type=='product_cat')
@@ -101,24 +102,24 @@
     $('#GridTaxnomies').DataTable({
         scrollCollapse: true,
         language:{
-            "emptyTable": "ليست هناك بيانات متاحة في الجدول",
-            "loadingRecords": "جارٍ التحميل...",
-            "processing": "جارٍ التحميل...",
-            "lengthMenu": "أظهر _MENU_ مدخلات",
-            "zeroRecords": "لم يعثر على أية سجلات",
-            "info": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-            "infoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
-            "infoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
-            "search": "ابحث:",
+            "emptyTable": "{{__('ليست هناك بيانات متاحة في الجدول')}}",
+            "loadingRecords": "{{__('جارٍ التحميل')}}...",
+            "processing": "{{__('جارٍ التحميل')}}...",
+            "lengthMenu": "{{__('أظهر')}} _MENU_ {{__('مدخلات')}}",
+            "zeroRecords": "{{__('لم يعثر على أية سجلات')}}",
+            "info": "{{__('أظهر')}} _START_ إلى _END_ {{__('من أصل')}} _TOTAL_ {{__('مدخل')}}",
+            "infoEmpty": "{{__('عرض')}} 0 {{__('إلى')}} 0 {{__('من أصل')}} 0 {{__('سجل')}}",
+            "infoFiltered": "({{__('منتقاة')}} من مجموع _MAX_ {{__('مدخل')}})",
+            "search": "{{__('ابحث')}}:",
             "paginate": {
-                "first": "الأول",
-                "previous": "السابق",
-                "next": "التالي",
-                "last": "الأخير"
+                "first": "{{('الأول')}}",
+                "previous": "{{__('السابق')}}",
+                "next": "{{__('التالي')}}",
+                "last": "{{('الأخير')}}"
             },
             "aria": {
-                "sortAscending": ": تفعيل لترتيب العمود تصاعدياً",
-                "sortDescending": ": تفعيل لترتيب العمود تنازلياً"
+                "sortAscending": ": {{__('تفعيل لترتيب العمود تصاعدياً')}}",
+                "sortDescending": ": {{__('تفعيل لترتيب العمود تنازلياً')}}"
             },
             "select": {
                 "rows": {
@@ -128,17 +129,17 @@
                 }
             },
             "buttons": {
-                "print": "طباعة",
-                "colvis": "الأعمدة الظاهرة",
-                "copy": "نسخ إلى الحافظة",
-                "copyTitle": "نسخ",
-                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>ليتم نسخها إلى الحافظة<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
+                "print": "{{__('طباعة')}}",
+                "colvis": "{{__('الأعمدة الظاهرة')}}",
+                "copy": "{{__('نسخ إلى الحافظة')}}",
+                "copyTitle": "{{__('نسخ')}}",
+                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>{{__('ليتم نسخها إلى الحافظة')}}<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
                 "copySuccess": {
                     "_": "%d قيمة نسخت",
                     "1": "1 قيمة نسخت"
                 },
                 "pageLength": {
-                    "-1": "اظهار الكل",
+                    "-1": "{{__('اظهار الكل')}}",
                     "_": "إظهار %d أسطر"
                 }
             }
@@ -176,7 +177,7 @@
                                     }
                                 },
                                 error:function(error){
-                                    console.log(error);
+                                   
                                 },
                             });
                         });

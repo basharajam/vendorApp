@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
 use App\Http\Requests\TaxonomyRequest;
+use Illuminate\Support\Facades\Validator;
 class TaxonomyController extends Controller
 {
     private $taxonomy_service;
@@ -53,8 +54,43 @@ class TaxonomyController extends Controller
     }
 
     public function store(TaxonomyRequest $request){
-        //save
+  
+
+        //By Blaxk 
+        if(!empty($request->input('type')) && $request->input('type') ==='product_tag'  ){
+
+        //validate Inputs (tag )
+        $validate = Validator::make(request()->all(), [
+            'type'=>'required',
+            'name'=>'required|min:6',
+            'slug'=>'required|min:6',
+
+        ]);
+
+        }elseif(!empty($request->input('type')) && $request->input('type') ==='product_cat'){
+
+        //validate Inputs
+        $validate = Validator::make(request()->all(), [
+            'type'=>'required',
+            'name'=>'required|min:6',
+            'slug'=>'required|min:6',
+            'parent'=>'required|integer'
+        ]);
+
+        }
+
+
+
+        if ($validate->fails()) {
+    
+            \Session::flash('message',"عذرا حدث خطأ تقني");
+            return redirect()->back();
+        }
+
+        ///End
+
         try{
+            
             $request->merge(['taxonomy' => $request->type]);
             if($request->type=="product_cat"){
                 $this->taxonomy_service->storeCategory($request,\Auth::user()->userable->id);

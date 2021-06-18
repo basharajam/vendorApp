@@ -20,25 +20,26 @@ class UsersDatabaseSeeder extends Seeder
      */
     public function run()
     {
-       // $this->create_supplier();
-        $this->create_supplier_manager();
+        $this->create_supplier();
+       // $this->create_supplier_manager();
     }
 
     private function create_supplier(){
         $supplier = Supplier::factory()->count(1)->create()[0];
         $supplier_role = Role::whereName(\App\Constants\UserRoles::SUPPLIER)->first();
-        $user_id = User::updateORCreate(["userable_id"=>$supplier->id, 'userable_type'=>'App\\Models\\Supplier'],[
-            'name' => 'supplier',
-            'email' => 'supplier2020@gmail.com',
+         $supplier_user_id = User::firstOrCreate([
+            'name' => 'supplier_namager',
+            'email' => 'supplier2022@gmail.com',
             'password' => bcrypt('12345678'),
-            'userable_type'=>'App\\Models\\Supplier',
+            'userable_type'=>'App\\Models\\SupplierManager',
             'userable_id'=>$supplier->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ])->id;
+       
 
         if ($supplier_role) {
-            $supplier_role->users()->attach($user_id);
+            $supplier_role->users()->attach($supplier_user_id);
         }
         $wp_supplier_user = WpugUser::create([
             "user_login" =>$supplier->first_name,
@@ -52,7 +53,7 @@ class UsersDatabaseSeeder extends Seeder
         $wp_supplier_user_meta =UserMeta::create([
             "user_id" =>$wp_supplier_user->id,
             "meta_key" =>'user_id',
-            "meta_value" =>$user_id,
+            "meta_value" =>$supplier_user_id,
         ]);
 
     }

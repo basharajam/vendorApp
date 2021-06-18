@@ -4,11 +4,14 @@ if($product){
     $product_attributes = $product->product_attributes;
 }
 @endphp
+<div id="loading-varaiations" class="mb-15 mt-15 text-center" style="display:none">
+    <div class="spinner spinner-primary spinner-lg mr-15" style=""></div>
+</div>
 <div class="w-100" id="variationsContainer">
     <div class="accordion accordion-solid accordion-panel accordion-svg-toggle" id="accordionExample8">
         @if($product)
         @foreach($product->product_variations as $variation)
-        <div class="card mb-10 mt-10">
+        <div class="card mb-10 mt-10 card{{$variation->ID}}">
             <div class="card-header" id="headingOne8" data-toggle="collapse" data-target="#collapseOne{{ $variation->ID }}" aria-expanded="false">
                 <div class="card-title" >
                     <div class="card-label">

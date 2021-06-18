@@ -66,6 +66,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      * @return Collection
      */
     public function attributes($supplier_id=null){
+        
         return TermTaxonomy::where('taxonomy','like','pa_%')
                             ->groupBy('taxonomy')
                             ->when($supplier_id, function ($query, $supplier_id) {
@@ -106,14 +107,15 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
      * @return TermTaxonomy
      */
     public function store(Request $request , $supplier_id=null){
-
+        
         $term = Term::create([
             'name'=>$request->name,
             'slug'=>str_replace(' ','-',$request->name),
             'item_group'=>0,
-
+        
 
         ]);
+        
         $term_taxonomy = TermTaxonomy::create([
             'term_id'=>$term->term_id,
             'taxonomy'=>$request->taxonomy,
@@ -121,6 +123,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             'parent'=>0,
             "supplier_id"=>$supplier_id
         ]);
+        //dd($term_taxonomy);
         if(isset($request->type) && $request->type=="attributes"){
             $new_taxonomy = AttributeTaxonomy::create([
                 'attribute_name'=>$request->name,
@@ -133,6 +136,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ]);
             $option_name = '_transient_wc_attribute_taxonomies';
             $option = Option::where('option_name',$option_name)->first();
+            return $option;
             $option_value = unserialize($option->option_value);
             array_push($option_value,(object)[
                 'attribute_name'=>$request->name,
@@ -141,6 +145,7 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
                 'attribute_public'=>'0',
                 'attribute_orderby'=>'menu_order',
             ]);
+            //dd($option_value);
             \DB::table(\General::DB_PREFIX."options")
             ->where('option_name',$option_name)
             ->update([
@@ -245,18 +250,17 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         ]);
     }
     private function store_image($file,Request $request,Term $term){
+        
         $now = Carbon::now();
-        // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
         $path = 'wp-content/uploads';
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
         $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
-            File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
-
+        if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
+            File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
         }
-        $destination_path = "/home2/alyamanl/public_html/data/".$path;
+        $destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
         $file->move($destination_path, $mdf5);
         $image_post = Post::updateOrCreate([
             'post_title'=>$request->name,

@@ -17,7 +17,7 @@
                                         <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">
                                            <h4>
                                             @if($order->post)
-                                            الطلب :   {{ str_replace('wc_order_','',$order->post->meta['_order_key']) }}
+                                            {{__("الطلب")}} :   {{ str_replace('wc_order_','',$order->post->meta['_order_key']) }}
                                               @endif
                                     </h4>
                                     @if($order->post)
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row mt-20"  style="direction: rtl;text-align:right">
                             <div class="col-12">
-                                <h3>المنتجات</h3>
+                                <h3>{{__("المنتجات")}}</h3>
                             </div>
                         </div>
                         <div class="row mt-10"  style="direction: rtl;text-align:right">
@@ -105,13 +105,13 @@
                                     <!--end::Title-->
                                 </div>
                                 <div class="d-flex mb-8 justify-content-between">
-                                    <span class="text-muted font-weight-bold font-size-lg">الكمية:
+                                    <span class="text-muted font-weight-bold font-size-lg">{{__("الكمية")}}:
                                         <span class="text-dark-75 font-weight-bolder">{{$detail->product_qty }}</span></span>
-                                        <span class="text-muted font-weight-bold font-size-lg">بتاريخ:
+                                        <span class="text-muted font-weight-bold font-size-lg">{{__("بتاريخ")}}:
                                             <span class="text-dark-75 font-weight-bolder">{{date('Y-m-d',strtotime($detail->date_created)) }}</span></span>
-                                            <span class="text-muted font-weight-bold font-size-lg">يوم التسليم:
+                                            <span class="text-muted font-weight-bold font-size-lg">{{__("يوم التسليم")}}:
                                                 <span class="text-dark-75 font-weight-bolder">{{ Carbon\Carbon::parse($order->post->post_date)->addDays(array_key_exists('al_days_to_delivery',$meta)?$meta['al_days_to_delivery'] :0)->format('Y-m-d') }}</span></span>
-                                                <span class="text-muted font-weight-bold font-size-lg">إجمالي عائدات المنتج:
+                                                <span class="text-muted font-weight-bold font-size-lg">{{__("إجمالي عائدات المنتج")}}:
                                                     <span class="text-dark-75 font-weight-bolder">{{$detail->product_gross_revenue}}</span></span>
                                 </div>
                             </div>

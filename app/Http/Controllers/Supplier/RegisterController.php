@@ -64,10 +64,45 @@ class RegisterController extends Controller
     }
 
     public function create(StoreSupplierRequest $request){
+
+
+        //validate Inputs 
+        $validate = Validator::make(request()->all(), [
+            'role'=>'required',
+            'ischinese'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'national_number'=>'required|integer',
+            'username'=>'required|min:6',
+            'password'=>'required|min:6',
+            'password_confirmation'=>'required|min:6',
+            'day'=>'required|integer',
+            'month'=>'required|integer',
+            'year'=>'required|integer',
+            'brithdate'=>'required|integer',
+            'gender'=>'required',
+            'email'=>'required',
+            'mobile_number_without_code'=>'required|integer',
+            'mobile_number'=>'required',
+            'company_name'=>'required',
+            'bank_account_number'=>'required|integer',
+            'bank_account_owner_name'=>'required'
+
+
+        ]);
+
+        if ($validate->fails()) {
+            
+            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+            \Session::flash('status',false);
+            return redirect()->back();
+        }
+
+        
         try{
             $supplier = $this->supplier_service->store($request);
             request()->merge(['user_id'=>$supplier->user->id]);
-            \Session::flash('message',"تم التسجيل بنجاح الرجاء تسجيل الدخول");
+            \Session::flash('message',"تم تسجيل الحساب بنجاح");
             \Session::flash('status',true);
              //return \Route::sendToRoute($request, 'auth.sendOTP');
             \Auth::login($supplier->user);

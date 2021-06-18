@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@if (app()->getLocale() ==="ar")
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+@endif
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,10 +29,42 @@
     <!-- Styles -->
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/flag-icon.min.css') }}" rel="stylesheet">
+    <style type="text/css">
+       input{
+        text-align: left !important ;
+       }
+    </style>
 </head>
 
 <body id="kt_body" style="background-image: url(/metronic/theme/html/demo2/dist/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+
     <div class="d-flex flex-column flex-root">
+    
+            <div class="langSelector">
+                <button id='LangSelectorBut' class="LangSelectorBut"  >
+                    
+                    @if (app()->getLocale() ==="ar")
+                     <span class="flag-icon flag-icon-sa"></span>
+                    @endif
+                    @if (app()->getLocale() ==="en")
+                     <span class="flag-icon flag-icon-us"></span>
+                    @endif
+                    @if (app()->getLocale() ==="ch")
+                     <span class="flag-icon flag-icon-cn"></span>
+                    @endif
+                </button>
+                <ul class="langSelList" >
+                    <li>
+                        <a href="{{ route('setLangEn') }}"><span class="flag-icon flag-icon-us"> </span> English </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('setLangAr') }}"><span class="flag-icon flag-icon-sa"></span>   العربية </a></li>
+                    <li>
+                        <a href="{{ route('setLangCh') }}"><span class="flag-icon flag-icon-cn"></span>   中文 </a></li>
+                </ul>
+            </div>
+      
         <!--begin::Login-->
         <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row-reverse  justify-content-center flex-column-fluid bg-white" id="kt_login">
             <!--begin::Aside-->
@@ -63,9 +100,8 @@
     <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('/js/login.js') }}"></script>
     <script>
-        let content="{{ session('message') }}";
+        let content="{{ __(session('message')) }}";
         let status =" {{ session('status') }}";
-        console.log(status);
         toastr.options = {
             "closeButton": true,
             "debug": false,
@@ -92,7 +128,16 @@
 
         }
 
+
+
+        $(document).on('click','.LangSelectorBut',function(){
+
+
+            $('.langSelList').toggleClass('display')
+
+        })
+
+
     </script>
 </body>
 </html>
-

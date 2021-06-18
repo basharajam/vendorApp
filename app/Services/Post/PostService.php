@@ -9,6 +9,7 @@ use App\Services\Contracts\BaseService;
 use Illuminate\Http\Request;
 use App\Models\WP\Post;
 use App\Models\WP\PostMeta;
+use App\Models\Property;
 use Carbon\Carbon;
 use App\Models\WP\TermRelation;
 use App\Models\WP\TermTaxonomy;
@@ -90,12 +91,13 @@ class PostService extends BaseService implements IPostService
         }
 
         $term_taxonomy_id = 0;
-        if($request->product_type == 'simple'){
-            $term_taxonomy_id = 2;
+         if($request->product_type == 'simple'){
+            $term_taxonomy_id = 280;
         }
         else if($request->product_type=='variable'){
-            $term_taxonomy_id = 4;
+            $term_taxonomy_id = 282;
         }
+
         // save product type : simple or variable
         TermRelation::create([
             'object_id'=>$post->ID,
@@ -116,19 +118,19 @@ class PostService extends BaseService implements IPostService
         $post_title_appendix = ' - ';
         $attributes_values = $request->attributes_values;
         $post_excerpt = '';
-        foreach($attributes_values as $key => $attribute){
+   
             //attribute is the term_taxonomy_id
-            if($attribute!=0){
-                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+            if($attributes_values!=0){
+                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attributes_values)->first();
                 $post_excerpt .=str_replace('pa_','',$taxonomy->taxonomy).": ".$taxonomy->term->name;
                 $post_title_appendix .= $taxonomy->term->name;
-                if(next($attributes_values)){
-                    $post_title_appendix.=' , ';
-                    $post_excerpt.="\n";
-                }
+                // if(next($attributes_values)){
+                //     $post_title_appendix.=' , ';
+                //     $post_excerpt.="\n";
+                // }
             }
 
-        }
+      
         $post_title = $post_parent->post_title .$post_title_appendix;
         $post = Post::create([
             'post_author'=>\Auth::user()->wordpress_user->ID,
@@ -154,20 +156,21 @@ class PostService extends BaseService implements IPostService
             'guid'=>General::URL.'/product'.$post->post_name
         ]);
         //create term relation foreach attribute
-        foreach($request->attributes_values as  $attribute){
-            if($attribute!=0)
+   
+            if($attributes_values!=0)
             {
                 //attribute is the term_taxonomy_id
-                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attribute)->first();
+                $taxonomy = TermTaxonomy::where('term_taxonomy_id',$attributes_values)->first();
                 TermRelation::create([
                     'object_id'=>$post->ID,
                     'term_taxonomy_id'=>$taxonomy->term_taxonomy_id,
                     'term_order'=> 0
                 ]);
                 //
+
                 $this->creatPostMeta($post->ID,'attribute_'.$taxonomy->taxonomy,$taxonomy->term->name);
             }
-        }
+ 
         //store option
         $option_name = "_transient_wc_product_children_".$post_parent->ID;
         $prices_option_name = "_transient_wc_var_prices_".$post_parent->ID;
@@ -175,7 +178,7 @@ class PostService extends BaseService implements IPostService
         $option_prices = Option::where('option_name',$prices_option_name)->first();
         if($option_prices){
             $options_table_name= \General::DB_PREFIX.'options';
-                    \DB::delete("DELETE From ".$options_table_name." where option_name = ".$prices_option_name);
+                    \DB::delete("DELETE From ".$options_table_name." where option_name = '".$prices_option_name."'");
         }
 
         $option_value=[];
@@ -191,16 +194,21 @@ class PostService extends BaseService implements IPostService
             ]);
         }
         else{
+
+            
             $option_value = unserialize($option->option_value);
-            array_push($option_value['all'],$post->ID);
-            array_push($option_value['visible'],$post->ID);
+            array_push($option_value[0]->all,$post->ID);
+            array_push($option_value[0]->visible,$post->ID);
             \DB::table(\General::DB_PREFIX."options")
             ->where('option_name',$option_name)
             ->update([
                 'option_value'=>serialize($option_value)
             ]);
         }
+        
         return $post;
+
+        
     }
 
      /** update product's data  in posts wordpress table
@@ -209,6 +217,7 @@ class PostService extends BaseService implements IPostService
      * @return Post updated post
      */
     public function update_product(Request $request,$post_id){
+
         $post = Post::where('ID',$post_id)->first();
         $post->update([
                 'post_author'=>\Auth::user()->wordpress_user->ID,
@@ -306,6 +315,7 @@ class PostService extends BaseService implements IPostService
         return $post;
     }
     public function store_product_attributes(Request $request , int $post_id){
+        $post = $this->find_product_for_supplier($post_id,$request->post_author);
         //dd($request);
         $meta_key = "_product_attributes";
         $meta = PostMeta::where('meta_key',$meta_key)->where('post_id',$post_id)->first();
@@ -340,6 +350,7 @@ class PostService extends BaseService implements IPostService
                 'meta_value'=>serialize($meta_value)
             ]);
         }
+        return  $post;
 
     }
      /** stores  product attributes relations  in posts wordpress table
@@ -347,12 +358,14 @@ class PostService extends BaseService implements IPostService
      * @return Post  post
      */
     public function store_product_attributes_relation(Request $request , int $post_id){
+
+        
         $post = $this->find_product_for_supplier($post_id,$request->post_author);
         if($post && isset($request->taxonomies_relation)){
           foreach($request->taxonomies_relation as $term_taxonomy_id){
             //store termRelation
-        $taxonomy =TermTaxonomy::where('term_taxonomy_id',$term_taxonomy_id)->first();
-        $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
+           $taxonomy =TermTaxonomy::where('term_taxonomy_id',$term_taxonomy_id)->first();
+            $exists = TermRelation::where('object_id',$post->ID)->where('term_taxonomy_id',$term_taxonomy_id)->first();
             if($exists==null){
                $attribute =  TermRelation::create([
                     'object_id'=>$post->ID,
@@ -476,7 +489,15 @@ class PostService extends BaseService implements IPostService
      * @return Collection of posts which represents the products for a supplier
      */
     public function get_products_for_supplier(int $post_author){
-        return Post::where('post_author',$post_author)->where('post_type','product')->get();
+        return Post::where('post_author',$post_author)->where('post_type','product')->get()->append('product_attributes');
+    }
+
+    //By Blaxk
+    public function get_product_variation(int $post_author,int $post_parent)
+    {
+      
+        return Post::where('post_author',$post_author)->where('post_parent',$post_parent)->get();
+
     }
 
     /** find  product for a supplier
@@ -485,6 +506,8 @@ class PostService extends BaseService implements IPostService
      * @return Post or the product
      */
     public function find_product_for_supplier(int $post_id,$post_author){
+
+        
         return Post::where('post_author',$post_author)
                     ->where('ID',$post_id)
                     ->first();
@@ -494,38 +517,63 @@ class PostService extends BaseService implements IPostService
      * @param $id product id (post_id)
      */
     public function delete($id){
+
+
+        //Updated By Blaxk
         $post = Post::where('ID',$id)->first();
-        //delete term relation
-        $terms = TermRelation::where('object_id',$id)->get();
-        $table_name = \General::DB_PREFIX."term_relationships";
-        if($terms){
-            \DB::delete("DELETE From ".$table_name." where object_id =".$id);
-        }
-        $post_meta = PostMeta::where('post_id',$id)->get();
-        if($post_meta){
-            foreach($post_meta as $meta){
-                $meta->delete();
+
+        //Delete Product Variation first
+        if($post->product_type && $post->product_type->term->name ==='variable'){
+
+            //get Product variation
+            $ProdVariation=$this->get_product_variation($post->post_author,$post->ID);
+            foreach($ProdVariation as $variation){
+
+                //Delete TermRelations
+                $DelTerm=TermRelation::where('object_id',$variation->ID)->delete();
+
+                //Delete Variation PostMeta
+                $DelPostMeta=PostMeta::where('post_id',$variation->ID)->delete();
+
+                //Delete Variation
+                $DeleteVariation=Post::where('ID',$variation->ID)->first();
+                $DeleteVariation->delete();
+
+                // $terms = TermRelation::where('object_id',$variation->ID)->get();
+                // $table_name = \General::DB_PREFIX."term_relationships";
+                // if($terms){
+                //     TermRelation::where('object_id',$variation->ID)->delete();
+                // }
+                // $post_meta = PostMeta::where('post_id',$variation->ID)->get();
+                // if($post_meta){
+                //     foreach($post_meta as $meta){
+                //         $meta->delete();
+                //     }
+                // }
+                // $variation->delete();
+            
             }
-        }
-        if($post->product_type && $post->product_type->term=='variable'){
-                foreach($post->product_variations as $variation){
-                    $terms = TermRelation::where('object_id',$variation->ID)->get();
-                    $table_name = \General::DB_PREFIX."term_relationships";
-                    if($terms){
-                        \DB::delete("DELETE From ".$table_name." where object_id =".$variation->ID);
-                    }
-                    $post_meta = PostMeta::where('post_id',$variation->ID)->get();
-                    if($post_meta){
-                        foreach($post_meta as $meta){
-                            $meta->delete();
-                        }
-                    }
-                    $variation->delete();
-                }
+
+            //Updated By Blaxk
         }
 
-        //delete post meta
-        return $post->delete();
+        //delete parent product
+        $terms = TermRelation::where('object_id',$id)->get();
+        $table_name = \General::DB_PREFIX."term_relationships";
+            if($terms){
+                // \DB::delete("DELETE From ".$table_name." where object_id =".$id);
+                TermRelation::where('object_id',$id)->delete();
+            }
+            $post_meta = PostMeta::where('post_id',$id)->get();
+            if($post_meta){
+                foreach($post_meta as $meta){
+                //$meta->delete();
+                }
+            }
+
+            //delete post
+            return $post->delete();
+    
     }
 
     /** stores the data into wpug_postmeta table in wordpress
@@ -563,16 +611,16 @@ class PostService extends BaseService implements IPostService
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        // $file = $request->file('thumbnail');
-        // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$now->year.'/'.$now->month.'/'.$mdf5;
         $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        if(!File::isDirectory('../../'.str_replace('vendor','data',public_path($path)))){
-            File::makeDirectory('../../'.str_replace('vendor','data',public_path($path)), 0777, true, true);
+       
+        if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
+            File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
 
         }
         // $destination_path = "/home2/alyamanl/public_html/test/".$path;
-        $destination_path = "/home2/alyamanl/public_html/data/".$path;
+        $destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
         $file->move($destination_path, $mdf5);
+        //dd($guid);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
             $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
@@ -619,6 +667,23 @@ class PostService extends BaseService implements IPostService
          return Post::whereIn('post_author',$suppliers_ids)
          ->whereIn('post_type',['product'])
          ->get();
+
+    }
+
+    public function save_product_props(int $post_id,string $username,Request $request)
+    {
+        //get Attributes
+        $getProps=Property::where('PropUser',$username)->get();
+        
+        foreach ($getProps as $prop ) {
+            
+            //Check Prop Status 
+            if($prop['PropStatus'] === 1){
+
+                //Save Property as post meta 
+                $this->creatPostMeta($post_id,$prop['PropName'],$prop['PropValue']);
+            }
+        }
 
     }
 }

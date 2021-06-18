@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'لقد قمت بادخال اسم مستخدم او كلمة مرور خاطئة',
-    'throttle' => 'محاولات تسجيل دخول كثيرة جدًا. يرجى المحاولة مرة أخرى في :seconds ثواني.',
+    'failed' => 'You enterd wrong Username or wrong password',
+    'throttle' => 'too many login attempts please wait',
 
 ];

@@ -54,6 +54,7 @@ class SupplierController extends Controller
         $cities = City::all();
         return view("supplier_manager.suppliers.edit")
                 ->with('supplier',$supplier)
+                ->with('profile', $supplier )
                 ->with('categories',$categories)
                 ->with('provinces',$provinces)
                 ->with('cities',$cities);

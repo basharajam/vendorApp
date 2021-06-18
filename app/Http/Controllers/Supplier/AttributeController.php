@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WP\TermTaxonomy;
 use App\Services\TermTaxonomy\ITermTaxonomyService;
-
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\TaxonomyRequest;
 
 class AttributeController extends Controller
@@ -25,7 +25,8 @@ class AttributeController extends Controller
 
     public function index(){
         $type="attributes";
-        $data = $this->taxonomy_service->attributes(\Auth::user()->userable->id);
+        $data = $this->taxonomy_service->attributes(\Auth::user()->userable_id);
+       
         return view('supplier.attributes.index')
                 ->with('data',$data)
                 ->with('type',$type);
@@ -49,11 +50,28 @@ class AttributeController extends Controller
 
 
     public function store(TaxonomyRequest $request){
-        try{
 
+
+               //validate Inputs
+               $validate = Validator::make(request()->all(), [
+                'type'=>'required',
+                'description'=>'required|max:120',
+                'name'=>"required:max:120",
+                'slug'=>'required|max:120'
+            ]);
+    
+            if ($validate->fails()) {
+        
+                \Session::flash('message',"عذرا حدث خطأ تقني");
+                return redirect()->back();
+            }
+    
+
+        try{
+            //dd($request);
             $type="pa_".$request->name;
             $request->merge(['taxonomy' => $type]);
-            $this->taxonomy_service->store($request,\Auth::user()->userable->id);
+            $this->taxonomy_service->store($request,\Auth::user()->userable_id);
             \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }
@@ -67,7 +85,7 @@ class AttributeController extends Controller
     }
     public function storeTerm(TaxonomyRequest $request){
         try{
-            $this->taxonomy_service->store($request,\Auth::user()->userable->id);
+            $this->taxonomy_service->store($request,\Auth::user()->userable_id);
             \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
         }

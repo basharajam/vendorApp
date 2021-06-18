@@ -27,8 +27,13 @@ class SupportController extends Controller
     public function store(StoreSupportRequest $request){
         try{
             $this->support_request_service->store($request);
-            \Session::flash('message',"تم ارسال طلب المساعدة بنجاح");
+
+            \Session::flash('message',"شكرا لتواصلك مع اليمان ,سيتم الرد على أستفسارك خلال 24 ساعة");
+            \Session::flash('site',"where");
             \Session::flash('status',true);
+            
+            //By Blaxk
+
         }
         catch(Exception $ex){
                 \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");

@@ -15,6 +15,7 @@ class HomeController extends Controller
         $this->order_service = $order_service;
     }
     public function index(){
+
         $products_count = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID)->count();
         $orders_count = $this->order_service->getSupplierOrders(\Auth::user()->wordpress_user->ID)->count();
         return view('supplier.home.index')

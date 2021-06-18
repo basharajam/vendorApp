@@ -99,4 +99,9 @@ interface IPostService extends IBaseService
      * @return Collection of posts which represents the products for a manager
      */
     public function get_products_for_supplier_manager(int $manager_id);
+
+    //By Blaxk
+    public function get_product_variation(int $post_author,int $post_parent);
+
+    public function save_product_props(int $post_id,string $username,Request $request);
 }

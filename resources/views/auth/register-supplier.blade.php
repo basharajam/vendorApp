@@ -1,5 +1,10 @@
 <!doctype html>
+@if (app()->getLocale() ==="ar")
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+@endif
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,13 +40,19 @@
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.22/datatables.min.css"/> --}}
     @toaster
     <style>
-.field-icon {
-    position: absolute;
-    margin-right: 15px;
-    color:#aaa;
-    z-index: 2;
-    float: right
-}
+    [dir=rtl] .field-icon {
+      position: absolute;
+      left: 4%;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    [dir=ltr] .field-icon{
+      position: absolute;
+      left: 93%;
+      color: #aaa;
+      z-index: 2;
+    }
         /* The message box is shown when the user clicks on the password field */
     #strong_container {
       display:none;
@@ -90,12 +101,36 @@
             background-color: #fff;
         }
     </style>
+    <link href="{{ asset('css/flag-icon.min.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 
 <body id="kt_body" style="" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
   <div class="container-fluid">
     <div class="d-flex flex-column justify-content-center flex-root">
+        <div class="langSelector">
+            <button id='LangSelectorBut' class="LangSelectorBut"  >
+                
+                @if (app()->getLocale() ==="ar")
+                 <span class="flag-icon flag-icon-sa"></span>
+                @endif
+                @if (app()->getLocale() ==="en")
+                 <span class="flag-icon flag-icon-us"></span>
+                @endif
+                @if (app()->getLocale() ==="ch")
+                 <span class="flag-icon flag-icon-cn"></span>
+                @endif
+            </button>
+            <ul class="langSelList" style="left: 0; margin:20px; margin-top:4px" >
+                <li>
+                    <a href="{{ route('setLangEn') }}"><span class="flag-icon flag-icon-us"> </span> English </a>
+                </li>
+                <li>
+                    <a href="{{ route('setLangAr') }}"><span class="flag-icon flag-icon-sa"></span>   العربية </a></li>
+                <li>
+                    <a href="{{ route('setLangCh') }}"><span class="flag-icon flag-icon-cn"></span>   中文 </a></li>
+            </ul>
+        </div>
         <!--begin::Login-->
         <div class="login login-2 login-signin-on d-flex flex-column justify-content-center flex-lg-row flex-column-fluid bg-white" id="kt_login">
             <!--begin::Aside-->
@@ -117,8 +152,8 @@
                                 <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIER }}">
                                    <!--begin::Title-->
                                     <div class="text-center pb-8">
-                                        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
-                                        <p class="text-muted font-weight-bold font-size-h4">الرجاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
+                                        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{__("إنشاء حساب جديد")}}</h2>
+                                        <p class="text-muted font-weight-bold font-size-h4">{{__("الرجاء ادخال المعلومات التالية لانشاء جساب جديد")}}</p>
                                     </div>
                                     <!--end::Title-->
                                 @include('auth.components.supplier-registeration-form',['supplier'=>null])
@@ -149,7 +184,17 @@
         <script src="{{ asset('/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('plugins/dropzone/dist/dropzone.js') }}"></script>
+
+    <script>
+     $(document).on('click','.LangSelectorBut',function(){
+
+        $('.langSelList').toggleClass('display')
+
+    })
+    </script>
     @stack('scripts')
+
+
 </body>
 </html>
 

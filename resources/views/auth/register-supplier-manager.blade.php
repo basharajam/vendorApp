@@ -1,5 +1,10 @@
 <!doctype html>
+@if (app()->getLocale() ==="ar")
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+@endif
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,12 +86,18 @@
     .hide {
       display: none;
     }
-    .field-icon {
-        position: absolute;
-        margin-right: 15px;
-        color:#aaa;
-        z-index: 2;
-        float: right
+    [dir=rtl] .field-icon {
+      position: absolute;
+      left: 4%;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    [dir=ltr] .field-icon{
+      position: absolute;
+      left: 93%;
+      color: #aaa;
+      z-index: 2;
     }
     </style>
 </head>
@@ -126,7 +137,7 @@
                 <!--begin::Title-->
                 <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
                     <img style="width:100px;height:100px" src="{{ asset('/images/logo.png') }}">
-                     <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">نظام الموردين</h3>
+                     <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">{{__('نظام الموردين')}}</h3>
                 </div>
                 <!--end::Title-->
                 <!--begin::Image-->

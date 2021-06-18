@@ -15,6 +15,7 @@ class Supplier extends BaseModel implements HasMedia
         "first_name",
         "last_name",
         "email",
+        "username",
         "bank_account_number",
         "bank_account_owner_name",
         "company_name",

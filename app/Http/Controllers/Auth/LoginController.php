@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -53,10 +54,17 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
+        
+      
         if ($this->attemptLogin($request)) {
 
             return $this->sendLoginResponse($request);
         }
+
+       
+
+  
+
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
@@ -65,6 +73,23 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
+
+
+
+
+    protected function validateLogin(Request $request)
+    {
+        $messages = [
+            'cred.required' => 'Email or username cannot be empty',
+            'password.required' => 'Password cannot be empty',
+        ];
+
+        $request->validate([
+            'cred' => 'required|string',
+            'password' => 'required|string',
+        ], $messages);
+    }
+
 
     public function redirectTo()
     {
@@ -80,4 +105,19 @@ class LoginController extends Controller
         }
         // dd($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER));
     }
+
+    
+    public function username()
+{
+
+ 
+     $login = request()->input('cred');
+
+     $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+     request()->merge([$field => $login]);
+
+
+     return $field;
+}
+
 }

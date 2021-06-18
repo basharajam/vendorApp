@@ -69,8 +69,8 @@ input.error {
     <input type="hidden" name="role" value="{{ \App\Constants\UserRoles::SUPPLIERMANAGER }}">
     <!--begin::Title-->
     <div class="text-center pb-8">
-        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء حساب جديد</h2>
-        <p class="text-muted font-weight-bold font-size-h4">الرجاء ادخال المعلومات التالية لإنشاء حساب جديد</p>
+        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{__('إنشاء حساب جديد')}}</h2>
+        <p class="text-muted font-weight-bold font-size-h4">{{__('الرجاء ادخال المعلومات التالية لانشاء جساب جديد')}}</p>
     </div>
     <!--end::Title-->
     <div class="row" >
@@ -79,15 +79,15 @@ input.error {
              <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
                     <span class="required">*</span>
-                    <span>الاسم</span>
+                    <span>{{__("الاسم")}}</span>
                 </label>
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('first_name') is-invalid @enderror"
-                type="text" placeholder="الاسم" name="first_name" value="{{ old('first_name') }}" required autofocus
-                oninvalid="this.setCustomValidity('الرجاء ادخال الاسم')"
-                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
+                type="text" placeholder="{{__('الاسم')}}" name="first_name" value="{{ old('first_name') }}" required autofocus
+                oninvalid="this.setCustomValidity('{{__('الرجاء ادخال الاسم')}}')"
+                oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}" />
                 @error('first_name')
                 <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
+                    <div  class="fv-help-block">{{ __($message) }}</div>
                 </div>
                 @enderror
             </div>
@@ -97,16 +97,16 @@ input.error {
             <!--begin::Form group Last Name-->
             <div class="form-group">
                <label class="font-size-h6 font-weight-bolder text-dark">
-                   <span>الكنية</span>
+                   <span>{{__('الكنية')}}</span>
                    <span class="required">*</span>
                </label>
-               <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="الكنية"
+               <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('last_name') is-invalid @enderror" type="text" placeholder="{{__('الكنية')}}"
                name="last_name" value="{{ old('last_name') }}" required autofocus
-               oninvalid="this.setCustomValidity('الرجاء ادخال الكنية')"
-               oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
+               oninvalid="this.setCustomValidity('{{ __('الرجاء ادخال الكنية') }}')"
+               oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}"/>
                @error('last_name')
                <div class="fv-plugins-message-container">
-                   <div  class="fv-help-block">{{ $message }}</div>
+                   <div  class="fv-help-block">{{ __($message) }}</div>
                </div>
                @enderror
            </div>
@@ -116,16 +116,16 @@ input.error {
             <!--begin::Form group User Name-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>اسم المستخدم</span>
+                    <span>{{__('اسم المستخدم')}}</span>
                     <span class="required">*</span>
                 </label>
-                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('name') is-invalid @enderror" type="text"
-                 placeholder="e.g. muhammad" name="name" value="{{ old('name') }}" required autofocus
-                 oninvalid="this.setCustomValidity('الرجاء ادخال اسم المستخدم')"
-                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
-                @error('name')
+                <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('username') is-invalid @enderror" type="text"
+                 placeholder="e.g. muhammad" name="username" value="{{ old('uername') }}" required autofocus
+                 oninvalid="this.setCustomValidity('{{__('الرجاء ادخال اسم المستخدم')}}')"
+                 oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}" />
+                @error('username')
                 <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
+                    <div  class="fv-help-block">{{ __($message) }}</div>
                 </div>
                 @enderror
             </div>
@@ -135,16 +135,16 @@ input.error {
              <!--begin::Form group Email-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>البريد الالكتروني</span>
+                    <span>{{__('البريد الالكتروني')}}</span>
                     <span class="required">*</span>
                 </label>
                 <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror"  placeholder="example@gmail.com"
                 name="email" required value="{{ old('email') }}" autocomplete="off"
-                oninvalid="this.setCustomValidity('الرجاء ادخال البريد الالكتروني')"
-                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
+                oninvalid="this.setCustomValidity('{{__('الرجاء ادخال البريد الالكتروني')}}')"
+                oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}" />
                 @error('email')
                 <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
+                    <div  class="fv-help-block">{{ __($message) }}</div>
                 </div>
                 @enderror
             </div>
@@ -154,31 +154,31 @@ input.error {
             <!--begin::Form group Password-->
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark">
-                    <span>كلمة المرور</span>
+                    <span>{{__('كلمة المرور')}}</span>
                     <span class="required">*</span>
                 </label>
                 <div class="w-100 d-flex align-items-center" style="position: relative">
                     <span toggle="#password_input" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     <input id="password_input"  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password"  name="password" required
                     autocomplete="off"
-                    oninvalid="this.setCustomValidity('الرجاء ادخال كلمة المرور')"
-                    oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
+                    oninvalid="this.setCustomValidity('{{__('الرجاء ادخال كلمة المرور')}}')"
+                    oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}"/>
                   </div>
                   <div  class="fv-plugins-message-container" id="">
                     <div id="strong_password_message" class="fv-help-block"></div>
                     <div id="strong_container">
-                        <h3>يجب أن تحتوي كلمة المرور على ما يلي:</h3>
+                        <h3>{{__('يجب أن تحتوي كلمة المرور على ما يلي:')}}</h3>
                         <div class="d-flex justify-content-between">
-                              <span id="letter"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف صغير</span>
-                              <span id="capital" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">حرف كبير</span>
-                              <span id="number"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">رقم</span>
-                              <span id="length" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">الحد الادنى 8  احرف</span>
+                              <span id="letter"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">{{__('حرف صغير')}}</span>
+                              <span id="capital" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">{{__('حرف كبير')}}</span>
+                              <span id="number"  class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">{{__('رقم')}}</span>
+                              <span id="length" class="m-2 label font-weight-bold label-lg label-light-danger label-inline invalid">{{__('الحد الادنى 8 احرف')}}</span>
                         </div>
                       </div>
                 </div>
                 @error('password')
                 <div class="fv-plugins-message-container">
-                    <div  class="fv-help-block">{{ $message }}</div>
+                    <div  class="fv-help-block">{{ __($message) }}</div>
                 </div>
                 @enderror
             </div>
@@ -188,13 +188,13 @@ input.error {
             <!--begin::Form group Password Confirmation-->
             <div class="form-group">
                  <label class="font-size-h6 font-weight-bolder text-dark">
-                <span>تأكيد كلمة المرور</span>
+                <span>{{__('تأكيد كلمة المرور')}}</span>
                 <span class="required">*</span>
             </label>
 
             <div class="w-100 d-flex align-items-center" style="position: relative">
                 <span toggle="#password_conf" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                <input id="password_conf" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد كلمة المرور" name="password_confirmation"
+                <input id="password_conf" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="{{__('تأكيد كلمة المرور')}}" name="password_confirmation"
                 required autocomplete="new-password"
                 oninvalid="this.setCustomValidity('الرجاء ادخال قيمة هذه الحقل')"
                 oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل" />
@@ -209,7 +209,7 @@ input.error {
                 <div class="checkbox-inline">
                     <label class="checkbox">
                     <input type="checkbox" name="terms_and_conditions">
-                    <span></span>لقد قرأت ووافقت على الشروط والأحكام</label>
+                    <span></span>{{__('لقد قرأت ووافقت على الشروط والأحكام')}}</label>
 
                 </div>
             </div>
@@ -218,8 +218,8 @@ input.error {
         <div class="col-md-12">
              <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                <button type="submit"  class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" id="create_account" disabled type="submit"> إنشاء حساب</button>
-                <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</button>
+                <button type="submit"  class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" id="create_account" disabled type="submit"> {{__('إنشاء حساب')}}</button>
+                <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">{{__('إلغاء')}}</button>
             </div>
             <!--end::Form group-->
         </div>
@@ -329,6 +329,146 @@ input.error {
             length.classList.add("label-light-danger");
           }
         }
+
+
+            
+
+
+
+        //By Blaxk
+        // let passValid = false;
+        let UserValid0= false;
+        let MailValid0= false;
+        function userValidCheck(status) {
+            UserValid0 = status
+            return status
+        }
+        function MailValidCheck(status) {
+          MailValid0 = status
+          return status
+        }
+
+         
+        $(document).on('click','#create_account',function(e){
+
+            e.preventDefault();
+
+            //Check Passwords
+            var password = document.getElementById("password_input").value;
+            var confirmPassword = document.getElementById("password_conf").value;
+            if ((confirmPassword.length==0) || (password.length==0)) 
+            {
+                
+                toastr.error("{{__('الرجاء التأكد من إدخال كلمة المرور وتأكيدها')}}");
+                
+            }
+            else if (confirmPassword != password) 
+            {
+           
+                toastr.error("{{__('كلمة المرور وتأكيدها غير متطابقتين')}}");
+                
+            }
+            else{
+              passValid = true
+            }
+        })
+
+
+        //username Unique Validation
+        $(document).on('click','#create_account',function(e){
+
+          e.preventDefault();
+           //Get Input Val 
+           var username= $('input[name="username"]').val();
+
+           if(username){
+
+            //Set url 
+            var url = "{{ route('CheckUser',['username'=>':username']) }}";
+            url = url.replace(':username', username);
+
+            //Do Request 
+            $.ajax({
+              url:url,
+              method:'get',
+              success:function(res){
+
+                if(res == 0){
+
+                  var UserValid = true;
+                  
+                  // $("#supplier_registeration_form").submit();
+                }
+                if(res == 1 ){
+                  var UserValid = false;
+                  toastr.error('{{__("اسم المستخدم موجود مسبقا")}}');
+
+                }
+
+                userValidCheck(UserValid);
+              }
+            })
+
+
+
+           }
+        })
+
+
+        //Email Unique Validation 
+         $(document).on('click','#create_account',function(e){
+
+              e.preventDefault();
+              
+              //Get Input Val 
+              var email= $('input[name="email"]').val();
+
+              if(email){
+
+                //Set url 
+                var url = "{{ route('CheckMail',['email'=>':emal']) }}";
+                url = url.replace(':emal', email);
+
+                //Do Request 
+                $.ajax({
+                  url:url,
+                  method:'get',
+                  success:function(res){
+
+                    if(res == 0){
+                      var MailValid = true;
+                      
+                      // $("#supplier_registeration_form").submit();
+                    }
+                    if(res == 1 ){
+                      var MailValid = false;
+                      toastr.error('{{__("البريد الإلكتروني موجود مسبقا")}}');
+
+                    }
+
+                    MailValidCheck(MailValid)
+                  }
+                })
+
+
+
+              }
+          })
+
+
+
+          $(document).on('click','#create_account',function(e){
+
+            e.preventDefault();
+            
+            if(UserValid0 && MailValid0 && passValid){
+              $("#supplier_registeration_form").submit();
+            }
+
+          })
+
+
+
         </script>
 
 @endpush

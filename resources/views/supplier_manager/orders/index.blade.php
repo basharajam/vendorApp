@@ -12,8 +12,8 @@
             <!--begin::Header-->
             <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                    <h3 class="card-label">الطلبات
-                    <span class="d-block text-muted pt-2 font-size-sm">الطلبات الخاصة بمنتجاتك</span></h3>
+                    <h3 class="card-label">{{__("الطلبات")}}
+                    <span class="d-block text-muted pt-2 font-size-sm">{{__("الطلبات الخاصة بمنتجاتك")}}</span></h3>
                 </div>
 
             </div>

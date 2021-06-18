@@ -38,7 +38,7 @@ class TermTaxonomy extends Model
         else{
             return TermTaxonomy::where('taxonomy',$this->taxonomy)
                             ->where('term_taxonomy_id','!=',$this->term_taxonomy_id)
-                            ->where('supplier_id',\Auth::user()->userable->id)->get();
+                            ->where('supplier_id',\Auth::user()->userable_id)->get();
         }
     }
     public function getImageAttribute()

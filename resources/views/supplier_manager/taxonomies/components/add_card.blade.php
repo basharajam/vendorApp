@@ -10,13 +10,13 @@
                     <h2 class="kt-widget__username font-weight-bolder" id="product_name">
                       @switch($type)
                           @case('product_cat')
-                              إضافة صنف جديد
+                              {{__('إضافة صنف جديد')}}
                               @break
                           @case('product_tag')
-                               إضافة تاغ
+                               {{__('إضافة تاغ')}}
                               @break
                           @case('attributes')
-                                 إضافة سمة جديدة
+                                 {{__('إضافة سمة جديدة')}}
                              @break
                           @default
 

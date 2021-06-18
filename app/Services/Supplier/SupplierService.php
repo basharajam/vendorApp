@@ -8,6 +8,7 @@ use App\Repositories\SupplierRepository;
 use App\Services\Contracts\BaseService;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use Auth;
 /**
  * Class SupplierService
  * @package App\Services\Supplier
@@ -42,6 +43,7 @@ class SupplierService extends BaseService implements ISupplierService
         }
         $supplier =  $this->repository->create($request->all());
 
+
         if(isset($request->national_id_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->national_id_image)))
             {
@@ -88,10 +90,14 @@ class SupplierService extends BaseService implements ISupplierService
 
             }
         }
+        
+        
+        
         if(isset($request->license_images)){
             {
+                
                 foreach($request->license_images as $license_image){
-                    if(\File::exists(storage_path('app/public/tmp/uploads/' .$license_image)))
+                    if(\File::exists(storage_path('app/public/tmp/uploads/' . $license_image)))
                     {
                         $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $license_image))
                         ->preservingOriginal()
@@ -102,9 +108,17 @@ class SupplierService extends BaseService implements ISupplierService
 
             }
         }
+        
+        
 
 
         event(new SupplierRegistered($supplier));
+
+        //By Blaxk 
+
+        //Send Activation Mail
+        $supplier->user->sendEmailVerificationNotification();
+       
         return $supplier;
     }
 
@@ -120,6 +134,8 @@ class SupplierService extends BaseService implements ISupplierService
         $supplier =  $this->repository->find($id);
         $supplier->update($request->all());
 
+        
+
         if(isset($request->national_id_image)){
             if(\File::exists(storage_path('app/public/tmp/uploads/' . $request->national_id_image)))
             {
@@ -167,19 +183,18 @@ class SupplierService extends BaseService implements ISupplierService
             }
         }
         if(isset($request->license_images)){
-            {
-                foreach($request->license_images as $license_image){
-                    if(\File::exists(storage_path('app/public/tmp/uploads/' .$license_image)))
-                    {
-                        $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $license_image))
-                        ->preservingOriginal()
-                        ->toMediaCollection('license_images');
-
-                    }
+            //$supplier->clearMediaCollection('license_images');
+            foreach($request->license_images as $license_image){
+                if(\File::exists(storage_path('app/public/tmp/uploads/' . $license_image))) {
+                    $supplier->addMedia(storage_path('app/public/tmp/uploads/' . $license_image))
+                    ->preservingOriginal()
+                    ->toMediaCollection('license_images');
                 }
-
             }
         }
+        
+        
+        
         return $supplier;
     }
 

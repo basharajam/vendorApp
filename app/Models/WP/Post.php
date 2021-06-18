@@ -11,7 +11,8 @@ class Post extends Model
     protected $table=\General::DB_PREFIX."posts";
     protected $primaryKey="ID";
 
-    protected $appends = ['meta','categories','product_type','product_attributes','product_image','tags'];
+    protected $appends = ['meta','categories','product_type','product_image','tags'];
+    //protected $appends = ['meta','categories','product_type','product_attributes','product_image','tags'];
     public $timestamps = false;
 
     protected $fillable =  [
@@ -39,9 +40,9 @@ class Post extends Model
     "comment_count" ,
     ];
 
-    public function scopeProducts($query){
-        return $query->where('post_type','product');
-    }
+    // public function scopeProducts($query){
+    //     return $query->where('post_type','product');
+    // }
     public function getCategoriesAttribute(){
       return    TermTaxonomy::whereIn('term_taxonomy_id',
                             TermRelation::where('object_id',$this->ID)
@@ -60,16 +61,23 @@ class Post extends Model
         return    TermTaxonomy::whereIn('term_taxonomy_id',
                                 TermRelation::where('object_id',$this->ID)
                                             ->pluck('term_taxonomy_id'))
-                                ->whereIn('taxonomy',['product_type'])
+                                ->where('taxonomy','product_type')
                                 ->first();
     }
+
+    ///
     public function getProductAttributesAttribute(){
-        return    TermTaxonomy::whereIn('term_taxonomy_id',
-                                    TermRelation::where('object_id',$this->ID)
-                                                ->pluck('term_taxonomy_id'))
-                                ->where('taxonomy','like','pa_%')
-                                ->get()->groupBy('taxonomy');
-    }
+
+        return  TermTaxonomy::whereIn('term_taxonomy_id',
+                  TermRelation::where('object_id',$this->ID)
+                              ->pluck('term_taxonomy_id'))
+              ->where('taxonomy','like','pa_%')
+              ->get()->groupBy('taxonomy');
+
+}
+
+
+    ///
     public function getMetaAttribute(){
         return PostMeta::where('post_id',$this->ID)->pluck('meta_value','meta_key')->toArray();
     }

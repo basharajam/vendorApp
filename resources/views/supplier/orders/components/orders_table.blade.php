@@ -5,7 +5,7 @@
             <tr>
                 <th class="">
                     <span>
-                            <span class="ml-2">رقم الطلب</span>
+                            <span class="ml-2">{{__("رقم الطلب")}}</span>
                             <span class="fas icon fa-arrow-up"></span>
                             <span class="fas icon fa-arrow-down"></span>
 
@@ -13,25 +13,25 @@
                     <div class="font-weight-bold text-muted">Order</div>
                 </th>
                 <th class="">
-                    <span class="ml-2">تاريخ الطلب</span>
+                    <span class="ml-2">{{__("تاريخ الطلب")}}</span>
                     <span class="fas icon fa-arrow-up"></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Date</div>
                 </th>
                 <th class="">
-                    <span class="ml-2">حالة الطلب</span>
+                    <span class="ml-2">{{__("حالة الطلب")}}</span>
                     <span class="fas icon fa-arrow-up"></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Order Status</div>
                 </th>
                 <th class="">
-                    <span class="ml-2">المنتجات</span>
+                    <span class="ml-2">{{__("المنتجات")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Products Count</div>
                 </th>
                 <th class="">
-                    <span class="ml-2">المجموع</span>
+                    <span class="ml-2">{{__("المجموع")}}</span>
                     <span class="fas icon fa-arrow-up"></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Total</div>
@@ -97,24 +97,24 @@
     $('#OrdersTable').DataTable({
         scrollCollapse: true,
         language:{
-            "emptyTable": "ليست هناك بيانات متاحة في الجدول",
-            "loadingRecords": "جارٍ التحميل...",
-            "processing": "جارٍ التحميل...",
-            "lengthMenu": "أظهر _MENU_ مدخلات",
-            "zeroRecords": "لم يعثر على أية سجلات",
-            "info": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-            "infoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
-            "infoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
-            "search": "ابحث:",
+            "emptyTable": "{{__('ليست هناك بيانات متاحة في الجدول')}}",
+            "loadingRecords": "{{__('جارٍ التحميل')}}...",
+            "processing": "{{__('جارٍ التحميل')}}...",
+            "lengthMenu": "{{__('أظهر')}} _MENU_ {{__('مدخلات')}}",
+            "zeroRecords": "{{__('لم يعثر على أية سجلات')}}",
+            "info": "{{__('أظهر')}} _START_ إلى _END_ {{__('من أصل')}} _TOTAL_ {{__('مدخل')}}",
+            "infoEmpty": "{{__('عرض')}} 0 {{__('إلى')}} 0 {{__('من أصل')}} 0 {{__('سجل')}}",
+            "infoFiltered": "({{__('منتقاة')}} من مجموع _MAX_ {{__('مدخل')}})",
+            "search": "{{__('ابحث')}}:",
             "paginate": {
-                "first": "الأول",
-                "previous": "السابق",
-                "next": "التالي",
-                "last": "الأخير"
+                "first": "{{('الأول')}}",
+                "previous": "{{__('السابق')}}",
+                "next": "{{__('التالي')}}",
+                "last": "{{('الأخير')}}"
             },
             "aria": {
-                "sortAscending": ": تفعيل لترتيب العمود تصاعدياً",
-                "sortDescending": ": تفعيل لترتيب العمود تنازلياً"
+                "sortAscending": ": {{__('تفعيل لترتيب العمود تصاعدياً')}}",
+                "sortDescending": ": {{__('تفعيل لترتيب العمود تنازلياً')}}"
             },
             "select": {
                 "rows": {
@@ -124,17 +124,17 @@
                 }
             },
             "buttons": {
-                "print": "طباعة",
-                "colvis": "الأعمدة الظاهرة",
-                "copy": "نسخ إلى الحافظة",
-                "copyTitle": "نسخ",
-                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>ليتم نسخها إلى الحافظة<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
+                "print": "{{__('طباعة')}}",
+                "colvis": "{{__('الأعمدة الظاهرة')}}",
+                "copy": "{{__('نسخ إلى الحافظة')}}",
+                "copyTitle": "{{__('نسخ')}}",
+                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>{{__('ليتم نسخها إلى الحافظة')}}<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
                 "copySuccess": {
                     "_": "%d قيمة نسخت",
                     "1": "1 قيمة نسخت"
                 },
                 "pageLength": {
-                    "-1": "اظهار الكل",
+                    "-1": "{{__('اظهار الكل')}}",
                     "_": "إظهار %d أسطر"
                 }
             }

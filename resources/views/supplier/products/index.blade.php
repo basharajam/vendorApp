@@ -9,15 +9,15 @@
             <!--begin::Header-->
             <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                    <h3 class="card-label">المنتجات
+                    <h3 class="card-label">{{__("المنتجات")}}
                         @if(\Auth::user()->hasRole(\UserRoles::SUPPLIERMANAGER))
                             @if(Route::currentRouteName()  == 'supplier_manager.suppliers.all_products')
-                            <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة بالموردين لديك</span></h3>
+                            <span class="d-block text-muted pt-2 font-size-sm">{{__("المنتجات الخاصة بالموردين لديك")}}</span></h3>
                             @elseif(Route::currentRouteName()=='supplier_manager.suppliers.products')
-                            <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة ب {{ $supplier->fullname }}</span></h3>
+                            <span class="d-block text-muted pt-2 font-size-sm">{{__("المنتجات الخاصة ب")}} {{ $supplier->fullname }}</span></h3>
                             @endif
                         @else
-                        <span class="d-block text-muted pt-2 font-size-sm">المنتجات الخاصة بك</span></h3>
+                        <span class="d-block text-muted pt-2 font-size-sm">{{__("المنتجات الخاصة بك")}}</span></h3>
                         @endif
                 </div>
                 <div class="card-toolbar">
@@ -25,7 +25,7 @@
                     <!--begin::Button-->
                     <a href="{{ route('supplier.products.create') }}" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
-                        إضافة منتج جديد
+                        {{__("إضافة منتج جديد")}}
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <rect x="0" y="0" width="24" height="24"></rect>

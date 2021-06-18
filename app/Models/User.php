@@ -10,7 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\WP\UserMeta;
 use App\Models\WP\WpugUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail 
 {
     use HasFactory, Notifiable,HasRoles;
 
@@ -22,6 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
         'mobile',
         'mobile_verified_at',
@@ -48,6 +49,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
     public function userable()
     {

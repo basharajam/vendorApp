@@ -9,7 +9,7 @@
             </g>
         </svg><!--end::Svg Icon--></span>
 
-        <span  class="text-primary font-weight-bold font-size-h6 mt-2">عدد الموردين</span>
+        <span  class="text-primary font-weight-bold font-size-h6 mt-2">{{__("عدد الموردين")}}</span>
     </div>
     <div class="d-flex flex-column">
         <span class="font-weight-bolder font-size-h1">{{ $suppliers_count }} </span>

@@ -30,6 +30,8 @@
 
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
     $(function(){
         $('select').select2();
@@ -39,4 +41,50 @@
         })
     })
 </script>
+
+
+<!-- By Blaxk -->
+<script>
+
+
+//validate Cateogry Form 
+$(document).ready(function(){
+
+    var maxLengthVal = 128 ;
+
+$( "#TaxonomyForm" ).validate({
+        rules: {
+            name:{
+                required:true,
+                maxlength:maxLengthVal
+            },
+            description:{
+                maxlength:maxLengthVal
+            }
+        },messages:{
+
+            "name":{
+                maxlength:function(){
+                toastr.error('{{ __("تجاوزت الحد الاعلى لعدد المحارف المدخلة") }}')
+              }
+            },
+            "description":{
+                maxlength:function(){
+                toastr.error('{{ __("تجاوزت الحد الاعلى لعدد المحارف المدخلة") }}')
+              }
+            }
+
+
+        }
+
+    })
+
+
+})
+
+
+
+</script>
+
+
 @endpush

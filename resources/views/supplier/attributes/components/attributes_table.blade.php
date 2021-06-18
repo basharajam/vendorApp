@@ -1,10 +1,12 @@
 <div class="kt-portlet__head-label">
     <h3 class="kt-portlet__head-title font-weight-bolder font-size-h1" style="text-align: right">
-            السمات
+            {{__("السمات")}}
     </h3>
 </div>
 <div class="accordion accordion-solid accordion-panel accordion-svg-toggle" id="accordionExample8">
+    
     @foreach($data as $taxonomy)
+    
     <div class="card mb-10 mt-10" id="attribute{{ $taxonomy->term_taxonomy_id }}">
         <div class="card-header" id="headingOne8" data-toggle="collapse" data-target="#collapseOne{{ $taxonomy->term_taxonomy_id }}" aria-expanded="false">
             <div class="card-title" >
@@ -107,11 +109,11 @@
                                         $('body').prepend(response);
                                         switch(modal_id){
                                             case "EditModal":
-                                                console.log('edit modal')
+                                               
                                                 $("#EditModal").modal('show');
                                                 break;
                                             case "EditAttributeModal":
-                                                console.log('edit attribute modal')
+                                                
                                                 $("#EditAttributeModal").modal('show');
                                                 break;
                                             case "AddTermModal":
@@ -122,7 +124,7 @@
                                     }
                                 },
                                 error:function(error){
-                                    console.log(error);
+                                  
                                 },
                                 complete:function(){
                                     document.querySelectorAll('.add_term').forEach(elem => {
@@ -148,7 +150,7 @@
 
             });
             $('.edit_attribute').click(function(event){
-                console.log('edit attribu');
+   
                 event.preventDefault();
                             let url = $(this).attr("data-action-name");
                             let id =$(this).attr('id');

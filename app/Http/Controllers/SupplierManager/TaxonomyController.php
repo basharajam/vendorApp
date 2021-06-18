@@ -41,10 +41,10 @@ class TaxonomyController extends Controller
         try{
             $request->merge(['taxonomy' => $request->type]);
             if($request->type=="product_cat"){
-                $this->taxonomy_service->storeCategory($request,$request->supplier_id);
+                $this->taxonomy_service->storeCategory($request, $request->supplier_id);
             }
             else{
-                $this->taxonomy_service->store($request,$request->supplier_id);
+                $this->taxonomy_service->store($request, $request->supplier_id);
             }
             \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);

@@ -8,7 +8,7 @@
             </g>
         </svg><!--end::Svg Icon--></span>
 
-        <span  class="text-success font-weight-bold font-size-h6 mt-2">عدد الطلبات</span>
+        <span  class="text-success font-weight-bold font-size-h6 mt-2">{{__("عدد الطلبات")}}</span>
     </div>
     <div class="d-flex flex-column">
         <span class="font-weight-bolder font-size-h1">{{ $orders_count }} </span>

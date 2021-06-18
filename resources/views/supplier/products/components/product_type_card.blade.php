@@ -6,7 +6,7 @@ if($product)
 @endphp
 <div class="row">
     <div class="col-12 mb-10" style="text-align: right">
-        <h3>اختر نوع المنتج</h3>
+        <h3>{{__("اختر نوع المنتج")}}</h3>
     </div>
     <div class="col-lg-6">
         <label class="option" style="direction: ltr">
@@ -18,7 +18,7 @@ if($product)
             </span>
             <span class="option-label">
                 <span class="option-head">
-                    <span class="option-title">قياس واحد</span>
+                    <span class="option-title">{{__("قياس واحد")}}</span>
                     <span class="option-focus"></span>
                 </span>
                 {{-- <span class="option-body">some descriptoin about this type</span> --}}
@@ -35,7 +35,7 @@ if($product)
             </span>
             <span class="option-label">
                 <span class="option-head">
-                    <span class="option-title">عدة قياسات</span>
+                    <span class="option-title">{{__("عدة قياسات")}}</span>
                     <span class="option-focus"></span>
                 </span>
                 {{-- <span class="option-body">some descriptoin about this type</span> --}}

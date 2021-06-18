@@ -12,7 +12,7 @@
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <span class="text-danger font-weight-bold font-size-h6 mt-2">الطلبات غير المدفوعة</span>
+            <span class="text-danger font-weight-bold font-size-h6 mt-2">{{__('الطلبات غير المدفوعة')}}</span>
         </div>
         <div class="d-flex flex-column">
             <span class="font-weight-bolder font-size-h1">{{ $not_paid_count }} </span>
@@ -35,7 +35,7 @@
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <span class="text-success font-weight-bold font-size-h6 mt-2">الطلبات المدفوعة</span>
+            <span class="text-success font-weight-bold font-size-h6 mt-2">{{__('الطلبات المدفوعة')}}</span>
         </div>
         <div class="d-flex flex-column">
             <span class="font-weight-bolder font-size-h1">{{ $paid_count }}</span>

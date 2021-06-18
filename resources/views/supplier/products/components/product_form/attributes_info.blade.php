@@ -7,7 +7,7 @@ if($product){
 <div class="kt-portlet" id="AttributesInfo" style="" >
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">سمات المنتج</h3>
+            <h3 class="kt-portlet__head-title">{{__('توابع المنتج')}}</h3>
         </div>
     </div>
     <div class="kt-portlet__body">
@@ -15,16 +15,18 @@ if($product){
                 <div class="col-12">
                     <div class="form-group">
                         <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
-                            <span>احتر سمة</span>
+                            <span>{{__("اختر سمة")}}</span>
                             <span class="required">*</span>
                         </label>
                         <div class="kt-input-icon d-flex justify-contenct-between">
-                            <select  data-post="{{ $product->ID ?? 0 }}"  class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}" title="الرجاء تعبئة هذا الحقل"
+                            <select  data-post="{{ $product->ID ?? 0 }}" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" data-action-name="{{ route('supplier.products.getAttributeSelector') }}" title="{{__('الرجاء تعبئة هذا الحقل')}}"
                                     id="attriubtes"
                                     name="attriubtes">
                                     <option></option>
                                 @foreach($attributes as $attribute)
+                               
                                 <option value="{{ $attribute->term_taxonomy_id }}" >  {{ str_replace('pa_','',$attribute->taxonomy) }}</option>
+                               
                                 @endforeach
                             </select>
                         </div>
@@ -36,9 +38,10 @@ if($product){
                 <div class="spinner spinner-primary spinner-lg mr-15" style=""></div>
             </div>
             <div class="row" id="attributes_container">
-                @foreach($product_attributes as $key => $p_attribute)
-                @include('supplier.products.components.product_form.attribute_selector',['taxonomy'=>$key,'terms'=>$p_attribute[0]->terms,'selected_terms'=>$p_attribute])
-                @endforeach
+                 
+            </div>
+            <div class="form-group">
+                <button id='AddAttrBtn' data-post="{{ $product->ID ?? 0 }}" data-author="{{ $product->post_author }}"  class="btn btn-dark " disabled >{{__('اضافة تابع')}}</button>
             </div>
     </div>
 </div>
@@ -224,7 +227,7 @@ function LegacyValidation(field) {
                 },
                 error:function(error){
                    $('#loading-attribute-selector').hide();
-                    console.log(error);
+                  
                 },
             }
            );
@@ -256,7 +259,7 @@ function LegacyValidation(field) {
                 },
                 error:function(error){
                    $('#loading-attribute-selector').hide();
-                    console.log(error);
+                  
                 },
             }
            );
@@ -271,10 +274,10 @@ function LegacyValidation(field) {
            // event.preventDefault();
             $("#loading-varaiations-form").show();
             formvalid =  validateForm(event);
-            console.log('fomrvalide',formvalid);
+           
             if(!formvalid){
                 $("#loading-varaiations-form").hide();
-                toastr.error('الرجاء التحقق من القيم المدحلة سابقاً قبل حفظ السمات');
+                toastr.error('{{__("الرجاء التحقق من القيم المدخلة سابقاً قبل حفظ السمات")}}');
                 return false;
             }
             return;
@@ -284,9 +287,88 @@ function LegacyValidation(field) {
             let selected_option_value = $(this).val();
             $("#variationFormContainer").slideDown();
             $(":input").inputmask();
-            $("#ProductFormVariation").submit();
+            //$("#ProductFormVariation").submit();
+            $('#AddAttrBtn').prop("disabled", false);
         })
         });
+
+
+        // By Blaxk
+
+        // Disable AddAttr Button if Validation wrong
+
+        // When Click Add Do ajax Request To Update 
+        $(document).on('click','#AddAttrBtn',function(e){
+
+             e.preventDefault()
+
+            
+            //Get Requierd Values 
+            let post_ID = $(this).attr('data-post');
+            let Post_Author = $(this).attr('data-author')
+            let AttrArr=$('.tagsinput-field').select2('val')
+            let SupplierName=$('input[name=al_supplier_name]').val();
+            let PostTitle=$('input[name=post_title]').val();
+            let PostContent=$('textarea[name=post_content]').val();
+            let Attributes=$('select[name=attriubtes]').val();
+            
+
+            AttrArr.forEach(function(element){
+
+                var form = {
+                    post_id:post_ID,
+                    post_parent:post_ID,
+                    post_author:Post_Author,
+                    product_type:'variable',
+                    supplier_name:SupplierName,
+                    post_title:PostTitle,
+                    post_content:PostContent,
+                    attributes:Attributes,
+                    attributes_values:element,
+                    _token:"{{csrf_token()}}"
+                }
+
+
+                //Do Request 
+                $.ajax({
+                    url:"{{ route('AddAttrPost') }}",
+                    method:"post",
+                    data:form,
+                    success:function(resp){
+
+                        //Remove Old Data accordion 
+                        $( "#variationsContainer" ).empty();
+
+                        //Display Spinner On Attributes Container 
+                        $("#loading-varaiations").show();
+                        
+                        //Push Success Error
+                        toastr.success("{{__('تمت العملية بنجاح')}}");
+                        
+                        //Fetch New Data
+                        $("#variationsContainer").load("{{ route('VariationCard') }}",{'variation':resp.prods,'product':resp.prods[0].ID,'_token':"{{csrf_token()}}"});
+
+                        //Display Spinner On Attributes Container 
+                        $("#loading-varaiations").hide();
+
+                    },
+                    error:function(xhr){
+                        
+                        var error = xhr.responseJSON;
+                    
+                        if(error.message ==='exists'){
+
+                            toastr.error("{{__('المنتج موجود بالفعل')}}");
+                        }
+                        if(error.message ==='worng'){
+                            toastr.error("{{__('لقد حدث خطأ ما , الرجاء المحاولة لاحقاً')}}");
+                        }
+                    }
+                })
+
+           })
+
+        })
 
     </script>
 

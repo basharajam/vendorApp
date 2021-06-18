@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\WP\WpugUser;
 use App\Models\WP\UserMeta;
 use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
+
 class SupplierObserver
 {
     /**
@@ -14,12 +16,26 @@ class SupplierObserver
      *
      * @param  \App\Models\Supplier  $supplier
      * @return void
+     * 
      */
+
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+
+
+
     public function created(Supplier $supplier)
     {
+
        $user =  User::create([
             'name'=>$supplier->first_name,
             'email'=>$supplier->email,
+            'username'=>$supplier->username,
             'password'=>bcrypt(request()->password),
             'userable_type'=>'App\\Models\\Supplier',
             'userable_id'=>$supplier->id,

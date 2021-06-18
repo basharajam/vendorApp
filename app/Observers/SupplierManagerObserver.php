@@ -21,6 +21,7 @@ class SupplierManagerObserver
         $user =  User::create([
             'name'=>$supplierManager->first_name,
             'email'=>$supplierManager->email,
+            'username'=>$supplierManager->username,
             'password'=>bcrypt(request()->password),
             'userable_type'=>'App\\Models\\SupplierManager',
             'userable_id'=>$supplierManager->id

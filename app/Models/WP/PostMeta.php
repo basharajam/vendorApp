@@ -20,5 +20,4 @@ class PostMeta extends Model
     }
 
 
-
 }

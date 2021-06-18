@@ -12089,6 +12089,10 @@ button.toast-close-button {
   right: 0;
   left: auto; }
 
+  [dir=ltr] .form-control:invalid  {
+    background-position:left calc(0.375em + 0.325rem) center !important;
+  }
+
 @supports (-ms-accelerator: true) {
   .swal2-range input {
     width: 100% !important; }

@@ -100,10 +100,10 @@ if($product){
         <div class="col-12">
             <div class="form-group">
                 <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
-                    <span>اضافة صور</span>
-                    <span>اقصى عدد للصور هو 15 صورة</span>
+                    <span>{{__("اضافة صور")}}</span>
+                    <span>{{__("اقصى عدد للصور هو 15 صورة")}}</span>
                 </label>
-               <input type="file" name="gallery[]" class="form-control" multiple  title="الرجاء تعبئة هذا الحقل">
+               <input type="file" name="gallery[]" class="form-control" multiple  title="{{__("الرجاء تعبئة هذا الحقل")}}">
             </div>
         </div>
     </div>

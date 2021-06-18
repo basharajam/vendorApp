@@ -31,7 +31,7 @@
                                     <input type="hidden" name="id" value="{{ $supplier->id }}">
                                        <!--begin::Title-->
                                         <div class="text-center pb-8">
-                                            <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تعديل حساب مورد</h2>
+                                            <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{__('تعديل حساب مورد')}}</h2>
                                         </div>
                                         <!--end::Title-->
                                     @include('auth.components.supplier-registeration-form',['supplier'=>$supplier])

@@ -24,9 +24,10 @@ class StoreSupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+         
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username'=>['required','unique:users']
         ];
     }
 
@@ -38,12 +39,14 @@ class StoreSupplierRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'الرجاء ادخال اسم المستخدم',
+
+            'username.required' => 'حقل اسم المستخدم مطلوب',
+            'username.unique'=>'اسم المستخدم موجود مسبقا',
             'email.required' => 'الرجاء ادخال البريدالالكتروني',
-            'email.unique' => 'هذا البريد موجود مسبقاً الرجاء اختيار بريد أخر',
+            'email.unique' => 'البريد الإلكتروني موجود مسبقا',
             'password.required' => 'الرجاء ادخال كلمة المرور',
             'password.min' => 'الرجاء اداخال كلمة مرور اكثر من 6 احرف',
-            'password.confirmed' => 'كلمة المرور غير مطابقة مع التاكيد',
+            'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقتين',
         ];
     }
 }

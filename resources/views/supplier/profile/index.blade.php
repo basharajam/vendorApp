@@ -4,6 +4,7 @@
 @section('content')
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
     <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+
          <!--Begin:: App Aside Mobile Toggle-->
          <button class="kt-app__aside-close" id="kt_user_profile_aside_close">
             <i class="la la-close"></i>
@@ -21,7 +22,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                  صورة الهوية
+                                  {{__("صورة عن البطاقة الشخصية")}}
                                     </a>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                  صورة جواز السفر
+                                     {{__("صورة عن جواز السفر")}}
                                     </a>
                                 </div>
                             </div>
@@ -53,7 +54,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                 صورة التأشيرة الصينية
+                                        {{__("صورة عن بطاقة التأشيرة الصينية")}}
                                     </a>
                                 </div>
                             </div>
@@ -69,7 +70,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                 صورةالرخصة التجارية
+                                 {{__("صورة الرخصة التجارية")}}
                                     </a>
                                 </div>
                             </div>
@@ -85,7 +86,7 @@
                             <div class="kt-widget__content">
                                 <div class="kt-widget__section">
                                     <a href="#" class="kt-widget__username" id="product_name">
-                                 صورة العلامة التجارية الخاصة بالشركة
+                                 {{__("صورة العلامة التجارية الخاصة بالشركة")}}
                                     </a>
                                 </div>
                             </div>
@@ -110,8 +111,9 @@
                 <div class="col-xl-12">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            @include('supplier.profile.components.preview_card')
-                            @include('supplier.profile.components.edit_card')
+                            @include('supplier.profile.components.preview_card', ['profile', $profile])
+                            @include('supplier.profile.components.rest_password',['profile',$profile])
+                            @include('supplier.profile.components.edit_card', ['profile', $profile])
 
                         </div>
                     </div>
@@ -128,7 +130,21 @@
 @endpush
 
 @push('scripts')
+<!-- By Blaxk -->
+<!-- Fetch password Sent Error --> 
+@if (session('done'))
+    <script>
+         toastr.success('{{__("تم ارسال الطلب بنجاح")}}')
+    </script>
+@endif
+
+
 <script>
+
+
+
+
+    //
     $(function(){
         let Offcanvas = new KTOffcanvas('kt_user_profile_aside',{
                 overlay:true,

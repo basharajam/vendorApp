@@ -8,13 +8,13 @@
             <div class="kt-widget__content">
                 <div class="kt-widget__section">
                     <h2 class="kt-widget__username font-weight-bolder" id="product_name">
-                         إضافة سمة جديدة
+                         {{__("إضافة سمة جديدة")}}
                     </h2>
                 </div>
             </div>
         </div>
         <div class="kt-widget__body">
-           <form action="{{ route('supplier.attributes.store') }}" method="POST" enctype="multipart/form-data">
+           <form action="{{ route('supplier.attributes.store') }}" method="POST" id="AtrributeForm" enctype="multipart/form-data">
                 @include('supplier.taxonomies.components.taxonomy_form')
            </form>
         </div>

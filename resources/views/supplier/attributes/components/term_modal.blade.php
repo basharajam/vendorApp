@@ -12,7 +12,7 @@
                 <input type="hidden" name="taxonomy" id="taxonomy_type" value="{{ $taxonomy_type  ?? ''}}">
                 @include('supplier.taxonomies.components.taxonomy_form',['taxonomy'=>null])
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__("إلغاء")}}</button>
                 </div>
                </form>
             </div>

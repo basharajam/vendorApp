@@ -6,37 +6,37 @@
                 <th>
                 </th>
                 <th class="">
-                    <span>المنتج</span>
+                    <span>{{__("المنتج")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Product </div>
                 </th>
                 <th class="">
-                    <span>فئات المنتج</span>
+                    <span>{{__("فئات المنتج")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Product Categories</div>
                 </th>
                 <th class="">
-                    <span>السعر</span>
+                    <span>{{__("السعر")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Price</div>
                 </th>
                 <th class="">
-                    <span>المقاس</span>
+                    <span>{{__("المقاس")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Size</div>
                 </th>
                  <th class="">
-                    <span>الوزن</span>
+                    <span>{{__("الوزن")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">Weight</div>
                 </th>
                   <th class="">
-                    <span>حجم الكرتونة</span>
+                    <span>{{__("حجم الكرتونة")}}</span>
                     <span class="fas icon fa-arrow-up "></span>
                     <span class="fas icon fa-arrow-down"></span>
                     <div class="font-weight-bold text-muted">CBM</div>
@@ -58,7 +58,14 @@
                     <td >
                         @if($product_type== \ProductTypes::VARIABLE)
                         <div class="d-flex align-items-center justify-content-center">
-                            <span id="row-arrow{{ $product->ID }}" class="fas fa-arrow-alt-circle-left"  style="font-size:20px;"> </span>
+                            <span id="row-arrow{{ $product->ID }}" 
+                                @if (app()->getLocale() ==="ar")
+                                 class="fas fa-arrow-alt-circle-left"
+                                @else
+                                 class="fas fa-arrow-alt-circle-right" 
+                                @endif 
+                                
+                                style="font-size:20px;"> </span>
                         </div>
                         @else
 
@@ -93,7 +100,7 @@
                     </td>
                     @if($product && $product->product_type && $product->product_type->term &&  $product->product_type->term->name==\ProductTypes::VARIABLE)
                     <td colspan="5" style="">
-                        <span>منتج عدة قياسات </span>
+                        <span>{{__('منتج عدة قياسات')}} </span>
                     </td>
                     @else
                     <td class="datatable-cell-sorted datatable-cell">
@@ -160,19 +167,19 @@
                             <strong></strong>
                         </th>
                         <th>
-                            <strong>المنتج</strong>
+                            <strong>{{__("المنتج")}}</strong>
                         </th>
                         <th>
-                            <strong>السعر</strong>
+                            <strong>{{__("السعر")}}</strong>
                         </th>
                         <th>
-                            <strong>السعر بعد الحسم</strong>
+                            <strong>{{__("السعر بعد الحسم")}}</strong>
                         </th>
                         <th>
-                            <strong>المقاس</strong>
+                            <strong>{{__("المقاس")}}</strong>
                         </th>
                         <th>
-                            <strong>الوزن</strong>
+                            <strong>{{__("الوزن")}}</strong>
                         </th>
                         <th>
                             <strong>CBM</strong>
@@ -278,24 +285,24 @@
     $('#ProductsTable').DataTable({
         scrollCollapse: true,
         language:{
-            "emptyTable": "ليست هناك بيانات متاحة في الجدول",
-            "loadingRecords": "جارٍ التحميل...",
-            "processing": "جارٍ التحميل...",
-            "lengthMenu": "أظهر _MENU_ مدخلات",
-            "zeroRecords": "لم يعثر على أية سجلات",
-            "info": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-            "infoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
-            "infoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
-            "search": "ابحث:",
+            "emptyTable": "{{__('ليست هناك بيانات متاحة في الجدول')}}",
+            "loadingRecords": "{{__('جارٍ التحميل')}}...",
+            "processing": "{{__('جارٍ التحميل')}}...",
+            "lengthMenu": "{{__('أظهر')}} _MENU_ {{__('مدخلات')}}",
+            "zeroRecords": "{{__('لم يعثر على أية سجلات')}}",
+            "info": "{{__('أظهر')}} _START_ إلى _END_ {{__('من أصل')}} _TOTAL_ {{__('مدخل')}}",
+            "infoEmpty": "{{__('عرض')}} 0 {{__('إلى')}} 0 {{__('من أصل')}} 0 {{__('سجل')}}",
+            "infoFiltered": "({{__('منتقاة')}} من مجموع _MAX_ {{__('مدخل')}})",
+            "search": "{{__('ابحث')}}:",
             "paginate": {
-                "first": "الأول",
-                "previous": "السابق",
-                "next": "التالي",
-                "last": "الأخير"
+                "first": "{{('الأول')}}",
+                "previous": "{{__('السابق')}}",
+                "next": "{{__('التالي')}}",
+                "last": "{{('الأخير')}}"
             },
             "aria": {
-                "sortAscending": ": تفعيل لترتيب العمود تصاعدياً",
-                "sortDescending": ": تفعيل لترتيب العمود تنازلياً"
+                "sortAscending": ": {{__('تفعيل لترتيب العمود تصاعدياً')}}",
+                "sortDescending": ": {{__('تفعيل لترتيب العمود تنازلياً')}}"
             },
             "select": {
                 "rows": {
@@ -305,17 +312,17 @@
                 }
             },
             "buttons": {
-                "print": "طباعة",
-                "colvis": "الأعمدة الظاهرة",
-                "copy": "نسخ إلى الحافظة",
-                "copyTitle": "نسخ",
-                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>ليتم نسخها إلى الحافظة<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
+                "print": "{{__('طباعة')}}",
+                "colvis": "{{__('الأعمدة الظاهرة')}}",
+                "copy": "{{__('نسخ إلى الحافظة')}}",
+                "copyTitle": "{{__('نسخ')}}",
+                "copyKeys": "زر <i>ctrl<\/i> أو <i>⌘<\/i> + <i>C<\/i> من الجدول<br>{{__('ليتم نسخها إلى الحافظة')}}<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
                 "copySuccess": {
                     "_": "%d قيمة نسخت",
                     "1": "1 قيمة نسخت"
                 },
                 "pageLength": {
-                    "-1": "اظهار الكل",
+                    "-1": "{{__('اظهار الكل')}}",
                     "_": "إظهار %d أسطر"
                 }
             }

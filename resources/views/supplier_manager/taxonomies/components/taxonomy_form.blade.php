@@ -6,19 +6,19 @@
      <div class="col-12">
          <div class="form-group">
              <label class="font-size-h6 font-weight-bolder text-dark">
-                 <span> الاسم </span>
+                 <span> {{__('الاسم')}} </span>
                  <span class="required">*</span>
              </label>
              <input id="taxonomy_name_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="name" value="{{ $taxonomy->term->name ?? old('name') }}" required
-             oninvalid="this.setCustomValidity('الرجاء تعبئة هذا الحقل')"
-                oninput="setCustomValidity('')"   title="الرجاء تعبئة هذا الحقل"/>
+             oninvalid="this.setCustomValidity('{{__('الرجاء تعبئة هذا الحقل')}}')"
+                oninput="setCustomValidity('')"   title="{{__('الرجاء تعبئة هذا الحقل')}}"/>
          </div>
      </div>
      <input id="taxonomy_slug_input" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" readonly type="hidden" placeholder="" name="slug" value="{{$taxonomy->term->slug ?? '' }}" required/>
      <div class="col-12">
         <div class="form-group">
             <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
-                <span>اختر المورد</span>
+                <span>{{__('اختر المورد')}}</span>
                 <span class="required">*</span>
                 <span class="flaticon2-information" data-toggle="tooltip" data-theme="dark"  title=""></span>
             </label>
@@ -27,7 +27,7 @@
                         id="supplier_id"
                         name="supplier_id"
                         required
-                        title="الرجاء تعبئة هذا الحقل"
+                        title="{{__('الرجاء تعبئة هذا الحقل')}}"
                         >
                     <option ></option>
                     @foreach($suppliers  as $supplier)
@@ -42,26 +42,26 @@
      <div class="col-12">
          <div class="form-group">
              <label class="font-size-h6 font-weight-bolder text-dark">
-                 <span>اختر صورة </span>
+                 <span>{{__('اختر صورة')}} </span>
              </label>
-             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""  title="الرجاء تعبئة هذا الحقل" />
+             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="file" placeholder="" name="image" value=""  title="{{__('الرجاء تعبئة هذا الحقل')}}" />
          </div>
      </div>
      @elseif($type="product_tag")
      <div class="col-12">
         <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">
-                <span> الوصف </span>
+                <span> {{__('الوصف')}} </span>
             </label>
             <textarea id="taxonomy_name_description" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="" name="description"
-                title="الرجاء تعبئة هذا الحقل">{{ $taxonomy->description ?? old('description') }}</textarea>
+                title="{{__('الرجاء تعبئة هذا الحقل')}}">{{ $taxonomy->description ?? old('description') }}</textarea>
         </div>
     </div>
      @endif
      <div class="col-12">
          <div class="form-group mb-0">
              <button type="submit" class="btn btn-primary font-weight-bolder font-size-h5">
-                 <span>حفظ</span>
+                 <span>{{__('حفظ')}}</span>
                  <span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-11-19-154210/theme/html/demo12/dist/../src/media/svg/icons/General/Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <polygon points="0 0 24 0 24 24 0 24"/>

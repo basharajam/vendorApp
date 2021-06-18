@@ -17,8 +17,8 @@
                                 <!--begin::Header-->
                                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                     <div class="card-title">
-                                        <h3 class="card-label">نسبة الربح
-                                        <span class="d-block text-muted pt-2 font-size-sm">نسب الربح لكل فئة</span></h3>
+                                        <h3 class="card-label">{{__('نسبة الربح')}}
+                                        <span class="d-block text-muted pt-2 font-size-sm">{{__('نسب الربح لكل فئة')}}</span></h3>
                                     </div>
                                     <div class="card-toolbar">
 

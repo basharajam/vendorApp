@@ -13,7 +13,7 @@
                     </svg>
                     <!--end::Svg Icon-->
                 </span>
-                <div class="card-label pl-4">الشروط و الأحكام</div>
+                <div class="card-label pl-4">{{__("الشروط والاحكام")}}</div>
             </div>
         </div>
         <div id="collapseOne7" class="collapse" data-parent="#accordionExample7" style="">

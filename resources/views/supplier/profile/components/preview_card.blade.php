@@ -7,7 +7,7 @@
                     <!--begin::Name-->
                     <h4 class="d-flex justify-content-between">
                         <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">{{ $profile->company_name }}
-                        <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item">تعديل</a>
+                        <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item">{{__("تعديل")}}</a>
 
                         </h4>
                     <!--end::Name-->
@@ -51,19 +51,19 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group row my-2">
-                    <label class="col-4 col-form-label">اسم البنك:</label>
+                    <label class="col-4 col-form-label">{{__("اسم البنك")}}:</label>
                     <div class="col-8">
-                        <span class="form-control-plaintext font-weight-bolder">البنك الزراعي</span>
+                        <span class="form-control-plaintext font-weight-bolder">{{__("البنك الزراعي")}}</span>
                     </div>
                 </div>
                 <div class="form-group row my-2">
-                    <label class="col-4 col-form-label">رقم حساب البنك:</label>
+                    <label class="col-4 col-form-label">{{__("رقم حساب البنك")}}:</label>
                     <div class="col-8">
                         <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_number }}</span>
                     </div>
                 </div>
                 <div class="form-group row my-2">
-                    <label class="col-4 col-form-label">اسم صاحب البنك:</label>
+                    <label class="col-4 col-form-label">{{__("اسم صاحب حساب البنك")}}:</label>
                     <div class="col-8">
                         <span class="form-control-plaintext font-weight-bolder">{{ $profile->bank_account_owner_name }}</span>
                     </div>

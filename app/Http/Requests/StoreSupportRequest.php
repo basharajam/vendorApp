@@ -24,9 +24,9 @@ class StoreSupportRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required'],
+            'username' => ['required'],
             'message' => ['required'],
             'requestable_type' => ['required'],
             'requestable_id' => ['required'],
@@ -42,7 +42,8 @@ class StoreSupportRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'الرجاء ادخال اسم المستخدم',
+            'username.required' => 'الرجاء ادخال اسم المستخدم',
+
             'email.required' => 'الرجاء ادخال البريدالالكتروني',
             'phone.required' => 'الرجاء ادخال رقم الهاتف',
             'message.required' => 'الرجاء ادخال الرسالة',

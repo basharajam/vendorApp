@@ -9,13 +9,13 @@ if($product){
     <div class="kt-portlet">
         <div class="kt-portlet__head align-items-center d-flex justify-content-between" >
             <div class="kt-portlet__head-label">
-                <h3 class="kt-portlet__head-title">انواع المنتج</h3>
+                <h3 class="kt-portlet__head-title">{{__("انواع المنتج")}}</h3>
             </div>
             <div class="card-toolbar">
                 <!--begin::Button-->
                 <a href="#" class="btn btn-warning font-weight-bolder" id="addVariationButton">
                 <span class="svg-icon svg-icon-md">
-                   إضافة نوع
+                   {{__("إضافة نوع")}}
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"></rect>
@@ -39,14 +39,14 @@ if($product){
                     <input type="hidden" name="post_id"  value="0">
                     <input type="hidden" name="post_author"  value="{{ \Auth::user()->wordpress_user->ID ?? 0 }}"> --}}
                     <div class="row" style="align-items:center ">
-                        @foreach($product_attributes as $key => $attribute)
+                        {{-- @foreach($product_attributes as $key => $attribute)
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
                                         <span>{{ str_replace('pa_','',$key) }}</span>
                                     </label>
                                     <div class="kt-input-icon d-flex justify-content-center" >
-                                        <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control  font-size-h6 " title="الرجاء تعبئة هذا الحقل">
+                                        <select  id="attributesSelectorInput"   name="attributes_values[]" class="form-control  font-size-h6 " title="{{__("الرجاء تعبئة هذا الحقل")}}">
                                             <option value="0">اي قيمة</option>
                                             @foreach($attribute as $term)
                                             <option value="{{ $term->term_taxonomy_id }}" >{{ $term->term->name }}</option>
@@ -55,7 +55,7 @@ if($product){
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforeach --}}
                         @if($product_attributes)
                         <div class="col"  >
                             <button
@@ -68,7 +68,7 @@ if($product){
                                 data-author="{{ \Auth::user()->wordpress_user->ID ?? 0 }}"
                                 data-token="{{ csrf_token() }}"
                                 >
-                                حفظ
+                                {{__("حفظ")}}
                                 <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
                             </button>
                         </div>
@@ -114,16 +114,23 @@ if($product){
                 "post_parent":post_parent,
                 "attributes_values":attributes_values
             }
+           
             $("#loading-varaiations-form").show();
             $.ajax({
                 url:action,
                 type:"POST",
                 data:data,
                 success:function(respponse){
+                   
                    location.reload();
+                    toastr.success(' تم التعديل بنجاح ');
+                
+                    
                 },
                 error:function(){
                     toastr.error('لقد حدث حطأ ما الرجاء المحاولة لاحقاً');
+                
+                    
                 },
                 complete:function(){
                     $("#loading-varaiations-form").hide();
@@ -139,7 +146,7 @@ if($product){
             let regural_price_value =$(this).parentsUntil('.general_row')[2].children[0].children[0].children[1].value;
             if(parseFloat(value) >= parseFloat(regural_price_value))
             {
-                console.log($(this).parentsUntil('.general_row'));
+              
                 $(this).parentsUntil('.general_row')[0].children[2].children[0].innerText = 'الرجاء ادخال قيمة اصغر من السعر'
             }
             else{

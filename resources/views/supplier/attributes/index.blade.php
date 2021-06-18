@@ -36,6 +36,8 @@
 @endpush
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
     $(function(){
         $(document).on('change','#taxonomy_name_input',function(ev){
@@ -44,5 +46,47 @@
 
             })
     })
+</script>
+
+
+<!-- By Blaxk -->
+<script>
+
+    //validate inputs 
+    $(document).ready(function(){
+
+    var maxLengthVal = 120 ;
+
+    $( "#AtrributeForm" ).validate({
+        rules: {
+            name:{
+                required:true,
+                maxlength:maxLengthVal
+            },
+            description:{
+                required:true,
+                maxlength:maxLengthVal
+            }
+        },messages:{
+
+            "name":{
+                maxlength:function(){
+                toastr.error('{{ __("تجاوزت الحد الاعلى لعدد المحارف المدخلة") }}')
+            }
+            },
+            "description":{
+                maxlength:function(){
+                toastr.error('{{ __("تجاوزت الحد الاعلى لعدد المحارف المدخلة") }}')
+                }
+            }
+
+
+        }
+
+    })
+
+
+})
+
 </script>
 @endpush

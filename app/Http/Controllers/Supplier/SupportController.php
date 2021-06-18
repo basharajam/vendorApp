@@ -30,8 +30,9 @@ class SupportController extends Controller
     public function store(StoreSupportRequest $request){
         try{
            $support =  $this->support_request_service->store($request);
-            \Session::flash('message',"تم ارسال طلب المساعدة بنجاح");
+            \Session::flash('message',"شكرا لتواصلك مع اليمان ,سيتم الرد على أستفسارك خلال 24 ساعة");
             \Session::flash('status',true);
+            \Session::flash('where','support');
             event(new SupportStored($support));
         }
         catch(Exception $ex){
@@ -39,6 +40,8 @@ class SupportController extends Controller
                 \Session::flash('status',false);
                 return "error";
         }
+
+
 
          return redirect()->route('supplier.home');
 
