@@ -1,4 +1,5 @@
 @push('styles')
+<link href="{{ asset('css/toastr.min.css') }}">
 <style>
     /* The message box is shown when the user clicks on the password field */
     #strong_container {
@@ -856,10 +857,10 @@
             </label>
             <input id="bank_account_number" class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text"
                 placeholder="{{__("رقم حساب البنك")}}" name="bank_account_number"
-                value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" required
+                value="{{$supplier->bank_account_number ??  old('bank_account_number') }}" 
                 autocomplete="bank_account_number" oninvalid="this.setCustomValidity('{{ __('الرجاء تعبئة هذا الحقل') }}')"
                 oninput="setCustomValidity('')" title="{{ __('الرجاء تعبئة هذا الحقل') }}" title="{{ __('الرجاء تعبئة هذا الحقل') }}"
-                pattern="6228[0-9]{15}" />
+                pattern="6228[0-9]{15}" required />
 
             @error('bank_account_number')
             <div class="fv-plugins-message-container">
@@ -879,9 +880,9 @@
             </label>
             <input class="form-control  h-auto py-7 px-6 rounded-lg font-size-h6" type="text"
                 placeholder="{{__("اسم صاحب الحساب")}}" name="bank_account_owner_name"
-                value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" required
+                value="{{$supplier->bank_account_owner_name  ??  old('bank_account_owner_name') }}" 
                 autocomplete="off" oninvalid="this.setCustomValidity('{{ __('الرجاء تعبئة هذا الحقل') }}')"
-                oninput="setCustomValidity('')" title="{{ __('الرجاء تعبئة هذا الحقل') }}" />
+                oninput="setCustomValidity('')" title="{{ __('الرجاء تعبئة هذا الحقل') }}" required />
             @error('bank_account_owner_name')
             <div class="fv-plugins-message-container">
                 <div class="fv-help-block">{{__($message)}}</div>
@@ -935,8 +936,34 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="{{ asset('/plugins/telinput/js/intlTelInput.js') }}"></script>
 <script src="{{ asset('/js/bootstrap-datepicker.ar.js') }}"></script>
-
+<script src="{{ asset('/js/toastr.min.js') }}"></script>
 <script>
+
+    toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-center",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+    let content="{{ __(session('message')) }}";
+    let where = "{{ session('where') }}";
+    let status =" {{ session('status') }}";
+    if(content !='' ){
+        toastr.error(content);
+    }
+
     let cities = {!! json_encode($cities) !!};
     let supplier = {!!  json_encode($supplier)  !!};
     let countries = ["تركيا","قطر","عمان","الكويت","إمارات","سوريا","لبنان"];

@@ -72,15 +72,13 @@ class RegisterController extends Controller
             'ischinese'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
-            'national_number'=>'required|integer',
+            'national_number'=>'integer',
             'username'=>'required|min:6',
             'password'=>'required|min:6',
             'password_confirmation'=>'required|min:6',
             'day'=>'required|integer',
             'month'=>'required|integer',
             'year'=>'required|integer',
-            'brithdate'=>'required|integer',
-            'gender'=>'required',
             'email'=>'required',
             'mobile_number_without_code'=>'required|integer',
             'mobile_number'=>'required',
@@ -92,7 +90,6 @@ class RegisterController extends Controller
         ]);
 
         if ($validate->fails()) {
-            
             \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
             \Session::flash('status',false);
             return redirect()->back();
