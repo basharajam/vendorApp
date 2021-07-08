@@ -607,23 +607,24 @@ class PostService extends BaseService implements IPostService
     private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
         // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
-        $path = 'storage';
+        // $path = 'wp-content/uploads';
+        $path = 'storage/tmp/uploads';
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        $guid = General::IMAGE_URL.'storage'.$mdf5;
+        // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
+        $guid = General::IMAGE_URL.$path.'/'.$mdf5;
        
         if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
             File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
 
         }
         // $destination_path = "/home2/alyamanl/public_html/test/".$path;
-        $destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
-        // $file->move($destination_path, $mdf5);
-        //dd($guid);
+        $file->move($path, $mdf5);
+        // dd($guid);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
-            $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
+        $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
         $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
         $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
         $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
