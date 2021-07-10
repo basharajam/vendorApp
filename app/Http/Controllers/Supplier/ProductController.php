@@ -42,7 +42,6 @@ class ProductController extends Controller
 
     public function addedit($id=0){
 
-        
         $user0=\Auth::user()->username;
         $categories = $this->term_taxonomy_service->categories_and_sub(\Auth::user()->userable_id);
         $main_categories = $this->term_taxonomy_service->categories();
@@ -50,7 +49,7 @@ class ProductController extends Controller
         $attributes =$this->term_taxonomy_service->attributes(\Auth::user()->userable_id);
         $product = null;
         $props=Property::where('PropUser',$user0)->orderBy('created_at','desc')->get();
-        
+       
         
         
         if($id!=0)
