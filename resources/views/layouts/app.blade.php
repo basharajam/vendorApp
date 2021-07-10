@@ -234,7 +234,7 @@
         if(validation_erros_exist==1){
             let verrors = {!! json_encode($errors->all()) !!};
             for(let i=0;i<verrors.length;i++){
-                toastr.error('{{__(' . verrors[i] . ')}}');
+                toastr.error(verrors[i]);
             }
         }
 

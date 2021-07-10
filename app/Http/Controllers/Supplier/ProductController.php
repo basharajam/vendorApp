@@ -34,6 +34,7 @@ class ProductController extends Controller
     public function index(){
 
         
+        
         $products = $this->post_service->get_products_for_supplier(\Auth::user()->wordpress_user->ID);
 
         return view('supplier.products.index')
