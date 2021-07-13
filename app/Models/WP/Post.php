@@ -10,8 +10,8 @@ class Post extends Model
 {
     protected $table=\General::DB_PREFIX."posts";
     protected $primaryKey="ID";
-
-    protected $appends = ['meta','categories','product_type','product_image','tags'];
+    //protected $appends = ['meta','categories','product_type','product_image'];
+     protected $appends = ['meta','categories','product_type','product_image','tags'];
     //protected $appends = ['meta','categories','product_type','product_attributes','product_image','tags'];
     public $timestamps = false;
 
@@ -40,9 +40,9 @@ class Post extends Model
     "comment_count" ,
     ];
 
-    // public function scopeProducts($query){
-    //     return $query->where('post_type','product');
-    // }
+    public function scopeProducts($query){
+        return $query->where('post_type','product');
+    }
     public function getCategoriesAttribute(){
       return    TermTaxonomy::whereIn('term_taxonomy_id',
                             TermRelation::where('object_id',$this->ID)

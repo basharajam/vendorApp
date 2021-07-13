@@ -1,5 +1,4 @@
 
-
 @if (!empty($productID))
 @php
     $product=(object) array('ID'=>$productID)
@@ -13,7 +12,7 @@
         <div class="card-title" >
             <div class="card-label">
                 <h3 class="font-weight-bolder font-size-h3">
-                <span> {{ str_replace('pa_','',$prop['PropName']) }}</span>
+                <span> {{ str_replace('pa_','',$prop['PropName']) }} ( {{ $prop['category']['name'] }} ) </span>
                 </h3>
             </div>
             <a href="#"  title="تعديل" class="btn btn-icon btn-primary btn-xs edit_property ml-3" id="{{ $prop['id'] }}" data-action-name="{{ route('EditProp') }}">

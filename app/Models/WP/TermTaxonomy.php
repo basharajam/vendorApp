@@ -19,7 +19,7 @@ class TermTaxonomy extends Model
     protected $with=['term','posts'];
     public $timestamps = false;
 
-    protected $appends = ['image','terms'];
+    // protected $appends = ['image','terms'];
 
     public function scopeCategories($query){
         return $query->whereIn('taxonomy',['category'])->distinct('product_cat');

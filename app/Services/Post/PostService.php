@@ -608,7 +608,7 @@ class PostService extends BaseService implements IPostService
         $now = Carbon::now();
         // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
         // $path = 'wp-content/uploads';
-        $path = 'storage/tmp/uploads';
+        $path = '../../zhusdwcaru/public_html/wp-content/uploads/' .$now->year.'/'.$now->month;
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
