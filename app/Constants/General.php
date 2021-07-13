@@ -8,8 +8,8 @@ class General  {
     CONST DB_PREFIX = "wpdm_";
     // CONST DB_PREFIX = " AL_";
     CONST URL = 'https://www.alyaman.com';
-    CONST IMAGE_URL = 'http://vendor.alyaman.com/';
-    CONST IMAGE_URL_UPLOADS = "http://vendor.alyaman.com/storage/tmp/uploads/";
+    CONST IMAGE_URL = 'https://www.alyaman.com';
+    CONST IMAGE_URL_UPLOADS = "http://www.alyaman.com/wp-content/uploads/";
     // CONST URL = 'http://127.0.0.1:8000';
 
 }

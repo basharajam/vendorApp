@@ -602,26 +602,26 @@ class PostService extends BaseService implements IPostService
                 'meta_value'=>$meta_value
             ]);
         }
-
+    
     }
     private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
-        // $path = 'wp-content/uploads/'.$now->year.'/'.$now->month;
-        // $path = 'wp-content/uploads';
-        $path = '../../zhusdwcaru/public_html/wp-content/uploads/' .$now->year.'/'.$now->month;
+
+        $path='wp-content/uploads';
+        //$path2 = 'wp-content/uploads/' .$now->year.'/'.$now->month;
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        $guid = General::IMAGE_URL.$path.'/'.$mdf5;
+        $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
+        //$guid = General::IMAGE_URL.$ath.'/'.p$mdf5;
        
         if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
             File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
 
         }
-        // $destination_path = "/home2/alyamanl/public_html/test/".$path;
+        $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
         $file->move($path, $mdf5);
-        // dd($guid);
+        dd($guid);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
         $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
