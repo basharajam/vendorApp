@@ -607,7 +607,7 @@ class PostService extends BaseService implements IPostService
     private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
 
-        $path='alyaman/wp-content/uploads';
+        $path='wp-content/uploads';
         //$path2 = 'wp-content/uploads/' .$now->year.'/'.$now->month;
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
@@ -619,7 +619,8 @@ class PostService extends BaseService implements IPostService
             File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
 
         }
-        $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
+        // $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
+        $destination_path=$path;
         $file->move($destination_path, $mdf5);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
