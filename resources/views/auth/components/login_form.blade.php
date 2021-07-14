@@ -4,7 +4,7 @@
     <div class="text-center pb-8">
          <!--begin::Logo-->
          <a href="/" class="text-center mb-5 d-block">
-            <img src="{{ asset('images/logo.png') }}" class="max-h-150px max-w-150px" alt="" />
+            <img src="{{ asset('images/logo.png') }}" class="max-h-150px" alt="" />
         </a>
         <!--end::Logo-->
         <h2 class="font-weight-bolder text-dark font-size-h1 font-size-h1-lg mb-10 ">{{__('نظام الموردين')}}</h2>
