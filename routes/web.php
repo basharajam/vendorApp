@@ -18,9 +18,9 @@ use App\Models\User;
 
 //By Blaxk
 
-Route::get('/ar',['uses'=>'App\Http\Controllers\controller@setLangAr','as'=>'setLangAr']);
-Route::get('/en',['uses'=>'App\Http\Controllers\controller@setLangEn','as'=>'setLangEn']);
-Route::get('/ch',['uses'=>'App\Http\Controllers\controller@setLangCh','as'=>'setLangCh']);
+Route::get('/ar',['uses'=>'App\Http\Controllers\Controller@setLangAr','as'=>'setLangAr']);
+Route::get('/en',['uses'=>'App\Http\Controllers\Controller@setLangEn','as'=>'setLangEn']);
+Route::get('/ch',['uses'=>'App\Http\Controllers\Controller@setLangCh','as'=>'setLangCh']);
 Route::post('/AddAttr',['uses'=>'App\Http\Controllers\Supplier\ProductController@AddAttr','as'=>'AddAttrPost']);
 
 //By Blaxk
