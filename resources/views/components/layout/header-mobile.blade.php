@@ -2,8 +2,8 @@
     <div class="kt-header-mobile__logo">
     </div>
     <div class="kt-header-mobile__toolbar">
-        <div class="logo" style="width:55px;padding:5px;">
-            <img src="{{ asset('/images/logo.png') }}" style="width:100%;">
+        <div class="logo" style="width:55px;padding:10px;">
+            <img src="{{ asset('/images/icon.png') }}" style="width:100%;">
         </div>
         <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
 

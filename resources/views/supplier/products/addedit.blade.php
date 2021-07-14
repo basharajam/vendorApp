@@ -877,11 +877,13 @@
 
                //Empty Old Container 
                $('.PropsContainer').empty();
-
+                console.log('Prop Table Empty now')
                //Set New Values
              
 
                $(".PropsContainer"+where).load("{{ route('PropsTable') }}",{'props':resp.props,'productID':"@if(!empty($product)){{$product->ID}} @endif ",'where':where,'_token':"{{csrf_token()}}"}); 
+
+                console.log('Props Load')
 
                //Fetch Success Error
                if(resp.success){
@@ -943,7 +945,7 @@
 
 
                 $(".PropsContainer"+where).load("{{ route('PropsTableForm') }}",{'props':resp.props,'productID':"@if(!empty($product)){{$product->ID}} @endif ",'where':where,'_token':"{{csrf_token()}}"}); 
-
+                console.log('loading done')
 
 
             }
