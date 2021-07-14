@@ -9,7 +9,7 @@ class General  {
     // CONST DB_PREFIX = " AL_";
     CONST URL = 'https://www.alyaman.com';
     CONST IMAGE_URL = 'https://vendor.alyaman.com';
-    CONST IMAGE_URL_UPLOADS = "http://www.alyaman.com/wp-content/uploads/";
+    CONST IMAGE_URL_UPLOADS = "https://vendor.alyaman.com/wp-content/uploads/";
     // CONST URL = 'http://127.0.0.1:8000';
 
 }
