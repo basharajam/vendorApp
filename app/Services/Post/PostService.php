@@ -620,8 +620,7 @@ class PostService extends BaseService implements IPostService
 
         }
         $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
-        $file->move($path, $mdf5);
-        dd($guid);
+        $file->move($destination_path, $mdf5);
         $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
         if($type=="main")
         $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
