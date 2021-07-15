@@ -118,7 +118,7 @@
                                 @include('supplier.products.components.product_form.product_main')
                                 @if($product)
                                     @include('supplier.products.components.product_form.categories_selector')
-                                     @php $where='variation' @endphp
+                                     @php $where='variable' @endphp
                                      @include('supplier.products.components.product_form.props_main')
                                   
                                     @include('supplier.products.components.product_form.attributes_info')
@@ -917,17 +917,11 @@
             _token:"{{ csrf_token() }}"
         }
 
-        var prod = "{{$product}}";
-        if(prod){
+        let where = $('input[name="product_type"]:checked').val();
 
-            var where = 'variation'
-
+        if(where === undefined){
+             where = 'simple';
         }
-        else{
-           var  where = 'simple'
-        }
-
-     
         
         //get Properties 
         $.ajax({
@@ -945,7 +939,6 @@
 
 
                 $(".PropsContainer"+where).load("{{ route('PropsTableForm') }}",{'props':resp.props,'productID':"@if(!empty($product)){{$product->ID}} @endif ",'where':where,'_token':"{{csrf_token()}}"}); 
-                console.log('loading done')
 
 
             }
