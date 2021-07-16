@@ -607,7 +607,7 @@ class PostService extends BaseService implements IPostService
     private function store_post_image($post_id,$file,$type="main"){
         $now = Carbon::now();
 
-        //$path='wp-content/uploads';
+        $path='wp-content/uploads';
         //$path2 = 'wp-content/uploads/' .$now->year.'/'.$now->month;
         $name =  $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();

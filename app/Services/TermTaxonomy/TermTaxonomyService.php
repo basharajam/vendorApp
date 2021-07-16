@@ -260,7 +260,8 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
         if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
             File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
         }
-        $destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
+        //$destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
+        $destination_path= 'wp-content/uploads';
         $file->move($destination_path, $mdf5);
         $image_post = Post::updateOrCreate([
             'post_title'=>$request->name,

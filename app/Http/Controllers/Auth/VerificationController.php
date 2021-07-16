@@ -26,7 +26,24 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+     //protected $redirectTo = RouteServiceProvider::HOME;
+
+     //By-Blaxk fix Worng Redirection When Succes Verified
+     public function redirectTo()
+     {
+         $user = \Auth::user();
+         if($user->hasRole(\App\Constants\UserRoles::SUPPLIER)){
+             return  RouteServiceProvider::SUPPLIER_HOME;
+         }
+         else if($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER)){
+             return RouteServiceProvider::SUPPLIER_MANAGER_HOME;
+         }
+         else{
+            return RouteServiceProvider::SUPPLIER_HOME;
+         }
+         // dd($user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER));
+     }
+
 
     /**
      * Create a new controller instance.
