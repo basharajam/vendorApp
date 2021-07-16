@@ -29,6 +29,6 @@ class SendSupportMail
      */
     public function handle(SupportStored $event)
     {
-        Mail::to("sales@alyaman.com")->send(new SupportMail($event->support));
+        Mail::to("vendor@alyaman.com")->send(new SupportMail($event->support));
     }
 }

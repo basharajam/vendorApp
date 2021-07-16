@@ -24,7 +24,7 @@ class SupportController extends Controller
         return view('supplier_manager.support.create');
     }
 
-    public function store(StoreSupportRequest $request){
+    public function store(Request  $request){
         try{
             $this->support_request_service->store($request);
 

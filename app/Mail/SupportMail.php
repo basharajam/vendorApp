@@ -33,6 +33,7 @@ class SupportMail extends Mailable
     public function build()
     {
         return $this->subject('New Support Request | Alyaman Vendors System')
+        ->from('support@alyaman.com')
         ->markdown('emails.support')
         ->with('support',$this->support);
 
