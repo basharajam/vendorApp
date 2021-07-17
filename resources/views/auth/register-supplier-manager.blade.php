@@ -136,7 +136,7 @@
             <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
                 <!--begin::Title-->
                 <div class="d-flex flex-column justify-content-center text-center align-items-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <img style="width:100px;height:100px" src="{{ asset('/images/logo.png') }}">
+                    {{-- <img style="width:100px;height:100px" src="{{ asset('/images/logo.png') }}"> --}}
                      <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">{{__('نظام الموردين')}}</h3>
                 </div>
                 <!--end::Title-->

@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use App\Providers\RouteServiceProvider;
+use Auth;
 class CheckSupplier
 {
     /**
@@ -16,12 +17,14 @@ class CheckSupplier
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = $request->user();
-        if($user->hasRole(\App\Constants\UserRoles::SUPPLIER) || $user->hasRole(\App\Constants\UserRoles::SUPPLIERMANAGER) ){
+        $user=Auth::user();
+        $userType=$user['userable_type'];
+        if( $userType ==="App\Models\Supplier" ){
             return $next($request);
         }
         else{
-            return  redirect()->back();
+            return redirect(RouteServiceProvider::SUPPLIER_MANAGER_HOME);
+            // return  redirect()->back();
         }
 
     }
