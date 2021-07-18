@@ -1,4 +1,4 @@
-<div class="kt-portlet" id="PorpsInfo" >
+<div class="kt-portlet" id="PorpsInfo" style="cursor: pointer" >
     <input type="hidden" name="supplierU" value="{{ \Auth::user()->username }}" >
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">

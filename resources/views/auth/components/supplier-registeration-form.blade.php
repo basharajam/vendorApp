@@ -1773,27 +1773,36 @@
 
 
     //Check Username Input Values 
-    $(document).on('click','#create_account',function(){
+    $(document).on('click','#create_account',function(e){
 
-        //get Username Value
-        var UserName= $('input[name=username]').val();
+        if("{{ $supplier }}".length == 0) 
+            {
 
-        //Set Url 
-        var url= "{{ route('CheckUser',['username'=>':username']) }}"
-        url = url.replace(':username', UserName);
+                e.preventDefault();
 
-        //Do Request 
-        $.ajax({
-            method:'get',
-            url:url,
-            success:function(resp){
-                if(resp == 1){
-                    //Activate Toastr
-                    toastr.error('{{__("اسم المستخدم موجود مسبقا")}}');
-                    $([document.documentElement, document.body]).animate({scrollTop: $("#name_input").offset().top }, 2000);
-                }
+                //get Username Value
+                var UserName= $('input[name=username]').val();
+        
+                //Set Url 
+                var url= "{{ route('CheckUser',['username'=>':username']) }}"
+                url = url.replace(':username', UserName);
+        
+                //Do Request 
+                $.ajax({
+                    method:'get',
+                    url:url,
+                    success:function(resp){
+                        if(resp == 1){
+                            //Activate Toastr
+                            toastr.error('{{__("اسم المستخدم موجود مسبقا")}}');
+                            $([document.documentElement, document.body]).animate({scrollTop: $("#name_input").offset().top }, 2000);
+                        }
+                    }
+                })
+
+
             }
-        })
+
 
         
 

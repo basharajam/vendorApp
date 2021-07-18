@@ -6,7 +6,7 @@
                 <div class="mr-3">
                     <!--begin::Name-->
                     <h4 class="d-flex justify-content-between">
-                        <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">{{ $profile->company_name }}
+                        <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3" style=' overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 100px;display: inline-block !important; '>{{ $profile->company_name }}
                         <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item">{{__("تعديل")}}</a>
 
                         </h4>

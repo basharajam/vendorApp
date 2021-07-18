@@ -112084,6 +112084,12 @@ body {
 .kt-header__topbar-wrapper .kt-header__topbar-username {
   color: #ed6624 !important;
   font-weight: 600 !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100px;
+   display: inline-block !important; 
+  
 }
 
 .kt-notification .kt-notification__custom {
@@ -112787,6 +112793,10 @@ td .nav__link {
       display:none;
       border-radius:6px;
       left:2px;
+  }
+
+  [dir=rtl] .langSelector ul {
+    left:unset !important;
   }
   .langSelector ul li{
       padding: 12px;

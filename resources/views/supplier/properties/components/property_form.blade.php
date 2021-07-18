@@ -39,7 +39,7 @@
                          required
                          title="{{__('الرجاء تعبئة هذا الحقل')}}"
                          >
-                     <option >Please Choose Category</option>
+                     <option >{{__('الرجاء اختيار تصنيف')}}</option>
 
                      @foreach ($Categories as $Cat)
                          <option value="{{ $Cat['term_taxonomy_id'] }}" @if( $property && $property->PropCatId == $Cat['term_taxonomy_id'] ) selected @endif >{{ $Cat['term']['name'] }}</option>

@@ -43,6 +43,7 @@ class ProfileController extends Controller
         $this->supplier_service->update($request,$request->id);
         \Session::flash('message',"تمت العملية بنجاح");
             \Session::flash('status',true);
-        return redirect()->back();
+        return redirect()->route('supplier.home');
+        //return redirect()->back();
     }
 }
