@@ -84,7 +84,7 @@
     "تم تسجيل الحساب بنجاح":"Account Successfully Registerd",
     "نوع المنتج":"Product Type",
     "معرض الصور":"Gallery",
-    "إضافة صور اقصى عدد للصور هو 15 صورة":"Add pictures The maximum number of pictures is 15",
+    "اضافة صور اقصى عدد للصور هو 15 صورة":"Add pictures The maximum number of pictures is 15",
     "قياس واحد":"Simple",
     "عدة قياسات":"Variable",
     "المعلومات الاساسية":"Basic information",
@@ -100,7 +100,7 @@
     "المستودع":"Store",
     "عنوان المستودع":"Store Address",
     "معلومات المخزن":"Store information",
-    "رقم الصنف":"Category number",
+    "رقم الصنف":"Item number",
     "حالة المنتج":"Product condition",
     "متوفر":"Available",
     "تحت الطلب":"Under demand",
@@ -293,7 +293,18 @@
     "توابع المنتج":"Product Attributes",
     "اضافة تابع":"Add attribute",
     "الخصائص":"Properties",
-    "الرجاء اختيار تصنيف":"Please Choose Category"
+
+    
+    "الرجاء اختيار تصنيف":"Please Choose Category",
+    "انقر لعرض المزيد":"Click to view more",
+    "تركيا":"Turkey",
+    "الكويت":"Kuwait",
+    "إمارات":"united arab emirates",
+    "قطر":"Qatar",
+    "عمان":"Oman",
+    "سوريا":"Syria",
+    "لبنان":"Lebanon"
+
 
    
 }

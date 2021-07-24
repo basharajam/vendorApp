@@ -191,6 +191,13 @@
                 window.scrollTo(0, 0);
         });
 
+
+        //By Blaxk
+        $("#hideEditCard").on('click',function(e){
+            Offcanvas.hide();
+            hideAll();
+        })
+
     });
 </script>
 @endpush

@@ -301,6 +301,26 @@ function LegacyValidation(field) {
         $(document).on('click','#AddAttrBtn',function(e){
 
              e.preventDefault()
+            //  let AttrArr=$('.tagsinput-field');
+            //  var mainArr=[];
+            //  for(var i = 0; i < AttrArr.length; i++){
+            //       var attrArrs=$(AttrArr[i]).select2('val')
+            //       var ArrsLength=AttrArr[i].length;
+
+            //       attrArrs.forEach(test => {
+            //         // console.log(test)
+            //         mainArr.push(test)
+
+            //       });
+
+                  
+                //   console.log(ArrsLength)
+                //   console.log(attrArrs);
+
+            
+            //  console.log(mainArr)   
+
+
 
             
             //Get Requierd Values 
@@ -367,7 +387,6 @@ function LegacyValidation(field) {
                 })
 
            })
-
         })
 
     </script>

@@ -725,25 +725,25 @@
                     type="text" placeholder="" name="company_countries[]" value="" title="{{ __('الرجاء تعبئة هذا الحقل') }}">
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('تركيا',explode(',',$supplier->company_countries)))||(old('company_countries') &&
-                        in_array('تركيا',old('company_countries')))) selected @endif >تركيا</option>
+                        in_array('تركيا',old('company_countries')))) selected @endif >{{__('تركيا')}}</option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('الكويت',explode(',',$supplier->company_countries)))|| (old('company_countries') &&
-                        in_array('الكويت',old('company_countries')))) selected @endif>الكويت</option>
+                        in_array('الكويت',old('company_countries')))) selected @endif>{{__('الكويت')}}</option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('إمارات',explode(',',$supplier->company_countries)))|| (old('company_countries') &&
-                        in_array('إمارات',old('company_countries')))) selected @endif>إمارات</option>
+                        in_array('إمارات',old('company_countries')))) selected @endif>{{__('إمارات')}}</option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('قطر',explode(',',$supplier->company_countries))) || (old('company_countries') &&
-                        in_array('قطر',old('company_countries')))) selected @endif>قطر </option>
+                        in_array('قطر',old('company_countries')))) selected @endif>{{__('قطر')}} </option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('عمان',explode(',',$supplier->company_countries)))|| (old('company_countries') &&
-                        in_array('عمان',old('company_countries')))) selected @endif>عمان</option>
+                        in_array('عمان',old('company_countries')))) selected @endif>{{__('عمان')}}</option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('سوريا',explode(',',$supplier->company_countries)))|| (old('company_countries') &&
-                        in_array('سوريا',old('company_countries')))) selected @endif>سوريا</option>
+                        in_array('سوريا',old('company_countries')))) selected @endif>{{__("سوريا")}}</option>
                     <option @if(($supplier && $supplier->company_countries &&
                         in_array('لبنان',explode(',',$supplier->company_countries))) || (old('company_countries') &&
-                        in_array('لبنان',old('company_countries')))) selected @endif>لبنان</option>
+                        in_array('لبنان',old('company_countries')))) selected @endif>{{__('لبنان')}}</option>
                 </select>
 
             </div>
@@ -767,36 +767,36 @@
                     title="{{ __('الرجاء تعبئة هذا الحقل') }}">
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('تركيا',explode(',',$supplier->countries_which_company_doesnot_work_with)))||(old('countries_which_company_doesnot_work_with')
-                        && in_array('تركيا',old('countries_which_company_doesnot_work_with')))) selected @endif >تركيا
+                        && in_array('تركيا',old('countries_which_company_doesnot_work_with')))) selected @endif >{{__('تركيا')}}
                     </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('الكويت',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('الكويت',old('countries_which_company_doesnot_work_with')))) selected @endif>الكويت
+                        in_array('الكويت',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('الكويت')}}
                     </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('إمارات',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('إمارات',old('countries_which_company_doesnot_work_with')))) selected @endif>إمارات
+                        in_array('إمارات',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('إمارات')}}
                     </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('قطر',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('قطر',old('countries_which_company_doesnot_work_with')))) selected @endif>قطر </option>
+                        in_array('قطر',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('قطر')}} </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('عمان',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('عمان',old('countries_which_company_doesnot_work_with')))) selected @endif>عمان
+                        in_array('عمان',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('عمان')}}
                     </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('سوريا',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('سوريا',old('countries_which_company_doesnot_work_with')))) selected @endif>سوريا
+                        in_array('سوريا',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('سوريا')}}
                     </option>
                     <option @if(($supplier && $supplier->countries_which_company_doesnot_work_with &&
                         in_array('لبنان',explode(',',$supplier->countries_which_company_doesnot_work_with)))||
                         (old('countries_which_company_doesnot_work_with') &&
-                        in_array('لبنان',old('countries_which_company_doesnot_work_with')))) selected @endif>لبنان
+                        in_array('لبنان',old('countries_which_company_doesnot_work_with')))) selected @endif>{{__('لبنان')}}
                     </option>
                 </select>
 
@@ -917,8 +917,11 @@
                 Route::currentRouteName()!="supplier_manager.suppliers.edit" ) disabled @endif
                 class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" type="submit"> {{__("حفظ")}}</button>
             @auth
-            <a href="{{ route('supplier_manager.suppliers.index') }}" id="kt_login_signup_cancel"
-                class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">{{__("إلغاء")}}</a>
+            {{-- <a href="{{ route('supplier_manager.suppliers.index') }}" id="kt_login_signup_cancel"
+                class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">{{__("إلغاء")}}</a> --}}
+                {{-- <a id="cmdEditCard" data-target="EditCard" class="cmdPage kt-widget__item kt-widget__item--active">Edit</a> --}}
+            <a id="hideEditCard" data-target="EditCard"
+                class=" btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4 kt-widget__item--active">{{__("إلغاء")}}</a>
             @else
             <a href="{{ route('register') }}" id="kt_login_signup_cancel"
                 class="btn btn-light-dark font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">{{__("إلغاء")}}</a>

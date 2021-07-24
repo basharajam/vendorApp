@@ -100,8 +100,7 @@ if($product){
         <div class="col-12">
             <div class="form-group">
                 <label class="col-form-label col-12 font-size-h6 font-weight-bolder text-dark" >
-                    <span>{{__("اضافة صور")}}</span>
-                    <span>{{__("اقصى عدد للصور هو 15 صورة")}}</span>
+                    <span>{{__("اضافة صور اقصى عدد للصور هو 15 صورة")}}</span>
                 </label>
                <input type="file" name="gallery[]" class="form-control" multiple  title="{{__("الرجاء تعبئة هذا الحقل")}}">
             </div>
@@ -111,7 +110,7 @@ if($product){
     <div class="form-group row mt-10 mb-0">
         <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary ">
-                حفظ
+                {{__('حفظ')}}
                 <span class="spinner spinner-white spinner-md mr-10 saving" style="display:none"></span>
             </button>
         </div>

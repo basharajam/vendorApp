@@ -496,7 +496,7 @@ class PostService extends BaseService implements IPostService
     public function get_product_variation(int $post_author,int $post_parent)
     {
       
-        return Post::where('post_author',$post_author)->where('post_parent',$post_parent)->get();
+        return Post::where('post_author',$post_author)->where('post_parent',$post_parent)->where('post_type','!=','attachment')->get();
 
     }
 

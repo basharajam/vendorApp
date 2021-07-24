@@ -15,8 +15,7 @@
             @if (auth()
         ->user()
         ->hasRole(\App\Constants\UserRoles::SUPPLIER))
-                <a href="{{ route('supplier.profile') }}" class="kt-notification__item"
-                    style="direction: ltr;text-align:right">
+                <a href="{{ route('supplier.profile') }}" class="kt-notification__item">
                     <div class="kt-notification__item-details">
                         {{-- <div class="kt-notification__item-time"></div> --}}
                         <div class="kt-notification__item-title kt-font-bold mr-4">{{__("الصفحة الشخصية")}}</div>
@@ -25,7 +24,7 @@
                 </a>
             @else
                 <a href="{{ route('supplier_manager.profile') }}" class="kt-notification__item"
-                    style="direction: ltr;text-align:right">
+>
                     <div class="kt-notification__item-details">
                         {{-- <div class="kt-notification__item-time"></div> --}}
                         <div class="kt-notification__item-title kt-font-bold mr-4">{{__("الصفحة الشخصية")}}</div>
