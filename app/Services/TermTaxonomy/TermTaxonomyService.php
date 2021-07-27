@@ -17,6 +17,7 @@ use App\Models\WP\Option;
 use Carbon\Carbon;
 use App\Models\WP\AttributeTaxonomy;
 use App\Models\WP\TermMeta;
+use App\Http\Controllers\ImgController;
 use Illuminate\Support\Facades\File;
 
 
@@ -251,42 +252,66 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
     }
     private function store_image($file,Request $request,Term $term){
         
-        $now = Carbon::now();
-        $path = 'wp-content/uploads';
-        $name =  $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
-            File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
-        }
-        //$destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
-        $destination_path= 'wp-content/uploads';
-        $file->move($destination_path, $mdf5);
-        $image_post = Post::updateOrCreate([
-            'post_title'=>$request->name,
-            'post_author'=>\Auth::user()->wordpress_user->ID,
-        ],[
-            'post_author'=>\Auth::user()->wordpress_user->ID,
-            'post_parent'=>0,
-            'post_date'=>now(),
-            'post_date_gmt'=>now(),
-            'post_content'=>"",
-            'post_title'=>$request->name,
-            'post_name'=>$mdf5,
-            'post_status'=>'inherit',
-            'comment_status'=>'closed',
-            'ping_status'=>'closed',
-            'post_type'=>'attachment',
-            'post_excerpt'=>'',
-            'to_ping'=>"",
-            'pinged'=>'',
-            'post_content_filtered'=>'',
-            'post_modified'=>now(),
-            'post_modified_gmt'=>now(),
-            'guid'=>$guid,
-            'post_mime_type'=>'image/'.$extension
-        ]);
+
+        //Optimized By Blaxk
+
+        // $now = Carbon::now();
+        // $path = 'wp-content/uploads';
+        // $name =  $file->getClientOriginalName();
+        // $extension = $file->getClientOriginalExtension();
+        // $mdf5 = md5($name.'_'.time()).'.'.$extension;
+        // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
+        // if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
+        //     File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
+        // }
+        // //$destination_path = "/home2/alyamanl/public_html/alyaman/".$path;
+        // $destination_path= 'wp-content/uploads';
+        // $file->move($destination_path, $mdf5);
+        // $image_post = Post::updateOrCreate([
+        //     'post_title'=>$request->name,
+        //     'post_author'=>\Auth::user()->wordpress_user->ID,
+        // ],[
+        //     'post_author'=>\Auth::user()->wordpress_user->ID,
+        //     'post_parent'=>0,
+        //     'post_date'=>now(),
+        //     'post_date_gmt'=>now(),
+        //     'post_content'=>"",
+        //     'post_title'=>$request->name,
+        //     'post_name'=>$mdf5,
+        //     'post_status'=>'inherit',
+        //     'comment_status'=>'closed',
+        //     'ping_status'=>'closed',
+        //     'post_type'=>'attachment',
+        //     'post_excerpt'=>'',
+        //     'to_ping'=>"",
+        //     'pinged'=>'',
+        //     'post_content_filtered'=>'',
+        //     'post_modified'=>now(),
+        //     'post_modified_gmt'=>now(),
+        //     'guid'=>$guid,
+        //     'post_mime_type'=>'image/'.$extension
+        // ]);
+        // TermMeta::updateOrCreate(
+        //     [
+        //         'term_id'=>$term->term_id,
+        //         'meta_key'=>'thumbnail_id'
+        //     ]
+        //     ,[
+        //     'term_id'=>$term->term_id,
+        //     'meta_key'=>'thumbnail_id',
+        //     'meta_value'=>$image_post->ID
+        // ]);
+        // $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
+        // $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
+        // $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+
+        $img0=new ImgController;
+        $image_post=$img0->SaveImg($file);
+        $mdf5=$image_post->slug;
+        $guid=$image_post->source_url;
+        if($type=="main")
+
+
         TermMeta::updateOrCreate(
             [
                 'term_id'=>$term->term_id,
@@ -295,10 +320,14 @@ class TermTaxonomyService extends BaseService implements ITermTaxonomyService
             ,[
             'term_id'=>$term->term_id,
             'meta_key'=>'thumbnail_id',
-            'meta_value'=>$image_post->ID
+            'meta_value'=>$image_post->id
         ]);
-        $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
-        $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
-        $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+
+
+        $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->id);
+        $this->creatPostMeta($image_post->id,'_wp_attached_file',$mdf5);
+        $this->creatPostMeta($image_post->id,'_wp_attachment_metadata',$image_post->id);
+        $this->creatPostMeta($image_post->id,'_wc_attachment_source',$guid);
+
     }
 }

@@ -605,6 +605,29 @@ class PostService extends BaseService implements IPostService
         }
     
     }
+        // private function createAttachmentPost($post_id,$title,$guid,$extension,$file_name){
+    //     return Post::create([
+    //         'post_author'=>\Auth::user()->wordpress_user->ID,
+    //         'post_parent'=>$post_id,
+    //         'post_date'=>now(),
+    //         'post_date_gmt'=>now(),
+    //         'post_content'=>"",
+    //         'post_title'=>$title,
+    //         'post_name'=>$file_name,
+    //         'post_status'=>'inherit',
+    //         'comment_status'=>'closed',
+    //         'ping_status'=>'closed',
+    //         'post_type'=>'attachment',
+    //         'post_excerpt'=>'',
+    //         'to_ping'=>"",
+    //         'pinged'=>'',
+    //         'post_content_filtered'=>'',
+    //         'post_modified'=>now(),
+    //         'post_modified_gmt'=>now(),
+    //         'guid'=>$guid,
+    //         'post_mime_type'=>'image/'.$extension
+    //     ]);
+    // }
     private function store_post_image($post_id,$file,$type="main"){
         // $now = Carbon::now();
 
@@ -637,37 +660,16 @@ class PostService extends BaseService implements IPostService
         $image_post=$img0->SaveImg($file);
         $mdf5=$image_post->slug;
         $guid=$image_post->source_url;
+        if($type=="main")
         $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->id);
-        $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
-        $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
-        $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+        $this->creatPostMeta($image_post->id,'_wp_attached_file',$mdf5);
+        $this->creatPostMeta($image_post->id,'_wp_attachment_metadata',$image_post->id);
+        $this->creatPostMeta($image_post->id,'_wc_attachment_source',$guid);
 
         return $image_post;
     }
 
-    private function createAttachmentPost($post_id,$title,$guid,$extension,$file_name){
-        return Post::create([
-            'post_author'=>\Auth::user()->wordpress_user->ID,
-            'post_parent'=>$post_id,
-            'post_date'=>now(),
-            'post_date_gmt'=>now(),
-            'post_content'=>"",
-            'post_title'=>$title,
-            'post_name'=>$file_name,
-            'post_status'=>'inherit',
-            'comment_status'=>'closed',
-            'ping_status'=>'closed',
-            'post_type'=>'attachment',
-            'post_excerpt'=>'',
-            'to_ping'=>"",
-            'pinged'=>'',
-            'post_content_filtered'=>'',
-            'post_modified'=>now(),
-            'post_modified_gmt'=>now(),
-            'guid'=>$guid,
-            'post_mime_type'=>'image/'.$extension
-        ]);
-    }
+
       /** get all products for a supplier manager
      * @param $manager_id the id a manager
      * @return Collection of posts which represents the products for a manager
