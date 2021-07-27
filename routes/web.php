@@ -193,4 +193,6 @@ Route::get('checkUser/{username}',function($username){
 
 
 
+
+
 ///By Blaxk 

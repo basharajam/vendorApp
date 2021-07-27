@@ -18,6 +18,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Exists;
 use App\Models\Supplier;
 use App\Models\WP\Option;
+use App\Http\Controllers\ImgController;
 use Illuminate\Auth\EloquentUserProvider;
 
 /**
@@ -605,29 +606,35 @@ class PostService extends BaseService implements IPostService
     
     }
     private function store_post_image($post_id,$file,$type="main"){
-        $now = Carbon::now();
+        // $now = Carbon::now();
 
-        $path='wp-content/uploads';
-        //$path2 = 'wp-content/uploads/' .$now->year.'/'.$now->month;
-        $name =  $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $mdf5 = md5($name.'_'.time()).'.'.$extension;
-        $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
-        //$guid = General::IMAGE_URL.$ath.'/'.p$mdf5;
+        // $path='wp-content/uploads';
+        // //$path2 = 'wp-content/uploads/' .$now->year.'/'.$now->month;
+        // $name =  $file->getClientOriginalName();
+        // $extension = $file->getClientOriginalExtension();
+        // $mdf5 = md5($name.'_'.time()).'.'.$extension;
+        // $guid = General::IMAGE_URL.'/wp-content/uploads/'.$mdf5;
+        // //$guid = General::IMAGE_URL.$ath.'/'.p$mdf5;
        
-        if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
-            File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
+        // if(!File::isDirectory('../../'.str_replace('vendor','',public_path($path)))){
+        //     File::makeDirectory('../../'.str_replace('vendor','',public_path($path)), 0777, true, true);
 
-        }
-        // $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
-        $destination_path=$path;
-        $file->move($destination_path, $mdf5);
-        $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
-        if($type=="main")
-        $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
-        $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
-        $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
-        $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+        // }
+        // // $destination_path = "/home/master/applications/fgrscvtqkf/public_html/".$path;
+        // $destination_path=$path;
+        // $file->move($destination_path, $mdf5);
+        
+        // $image_post = $this->createAttachmentPost($post_id,$file->getClientOriginalName(),$guid,$extension,$mdf5);
+        // if($type=="main")
+        // $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->ID);
+        // $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
+        // $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
+        // $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
+
+        // return dd($image_post);
+        
+        $img0=new ImgController;
+        $image_post=$img0->SaveImg($file);
 
         return $image_post;
     }
