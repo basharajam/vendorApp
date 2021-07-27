@@ -635,6 +635,12 @@ class PostService extends BaseService implements IPostService
         
         $img0=new ImgController;
         $image_post=$img0->SaveImg($file);
+        $mdf5=$image_post->slug;
+        $guid=$image_post->source_url;
+        $this->creatPostMeta($post_id,'_thumbnail_id',$image_post->id);
+        $this->creatPostMeta($image_post->ID,'_wp_attached_file',$mdf5);
+        $this->creatPostMeta($image_post->ID,'_wp_attachment_metadata',$image_post->ID);
+        $this->creatPostMeta($image_post->ID,'_wc_attachment_source',$guid);
 
         return $image_post;
     }

@@ -59,7 +59,8 @@ class ImgController extends Controller
             "width" => 300,
             "height" => 300
         ));
-        $re=$resized->toFile('storage/tmp/tini/uploaded.'.$extension);
+        // $re=$resized->toFile('storage/tmp/tini/uploaded.'.$extension);
+        $re=$resized->toFile('public/tmp/tini/uploaded.'.$extension);
 
         //generate unique random file name
         $name=md5(uniqid(rand(), true));
@@ -78,7 +79,7 @@ class ImgController extends Controller
 
             $res=$req->object();
             return $res;
-
+            
         }
         else{
             return 'Image Erroe While Uploading';
