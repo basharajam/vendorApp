@@ -56,8 +56,8 @@ class ImgController extends Controller
         $source= $this->fromFile($UplFile);
         $resized = $source->resize(array(
             "method" => "fit",
-            "width" => 300,
-            "height" => 300
+            "width" => 500,
+            "height" => 500
         ));
         // $re=$resized->toFile('storage/tmp/tini/uploaded.'.$extension);
         $re=$resized->toFile('public/tmp/tini/uploaded.'.$extension);

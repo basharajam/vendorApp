@@ -81,74 +81,6 @@ class ProductController extends Controller
         //By Blaxk 
 
 
-        $ProdType =$request->input('product_type');
-
-        if(!empty($ProdType) && $ProdType ==="variable"){
-
-            //,"product_type":"variable","post_id":"0","supplier_name":"Blaxk","post_author":"0","post_title":"xxxxxxxxxxxxxxxxxxxxxx","post_content":"xxxxxxxxxxxxxxxxxxx"}
-            $validate = Validator::make(request()->all(), [
-                'product_type'=>'required',
-                'post_id'=>'required|integer',
-                'supplier_name'=>"required",
-                'post_author'=>'required|integer',
-                'post_title'=>'required|min:6',
-                'post_content'=>'required|min:6',
-
-            ]);
-
-            if ($validate->fails()) {
-                
-                
-                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
-                return redirect()->back();
-            }
-
-        }
-        elseif(!empty($ProdType)  && $ProdType ==="simple"){
-
-            //validate (simple) Inputs
-            $validate = Validator::make(request()->all(), [
-                'product_type'=>'required',
-                'post_id'=>'required|integer',
-                'al_supplier_name'=>"required",
-                'post_author'=>'required|integer',
-                'post_title'=>'required|min:6',
-                'post_content'=>'required|min:6',
-                '_regular_price'=>'required|integer',
-                '_sale_price'=>'integer|nullable',
-                'al_thickness'=>'max:120|nullable',
-                'al_printing'=>'max:120|nullable',
-                'al_size'=>'max:120|nullable',
-                'al_added'=>'max:120|nullable',
-                'al_more_info'=>'max:120|nullable',
-                'al_color'=>'max:120|nullable',
-                '_sku'=>'max:120|nullable',
-                '_stock_status'=>'required',
-                '_wc_min_qty_product'=>'integer|nullable',
-                '_wc_max_qty_product'=>'integer|nullable',
-                'al_carton_qty'=>'required|integer',
-                'al_price_for'=>'required',
-                'al_price_for_desc'=>'required|integer',
-                'al_mix_of_package'=>'required|integer',
-                '_weight'=>'nullable|integer',
-                'al_cbm'=>'nullable|integer',
-                'al_days_to_delivery'=>'required|integer',
-                'supplierU'=>'required'
-            ]);
-
-            if ($validate->fails()) {
-                \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
-                return redirect()->back();
-            }
-        }
-
-        else{
-
-            \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
-            return redirect()->back();
-        }
-        /// end 
-
 
      
                 
@@ -159,6 +91,74 @@ class ProductController extends Controller
               
 
 
+                $ProdType =$request->input('product_type');
+        
+                if(!empty($ProdType) && $ProdType ==="variable"){
+        
+                    //,"product_type":"variable","post_id":"0","supplier_name":"Blaxk","post_author":"0","post_title":"xxxxxxxxxxxxxxxxxxxxxx","post_content":"xxxxxxxxxxxxxxxxxxx"}
+                    $validate = Validator::make(request()->all(), [
+                        'product_type'=>'required',
+                        'post_id'=>'required|integer',
+                        'supplier_name'=>"required",
+                        'post_author'=>'required|integer',
+                        'post_title'=>'required|min:6',
+                        'post_content'=>'required|min:6',
+        
+                    ]);
+        
+                    if ($validate->fails()) {
+                        
+        
+                        \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                        return redirect()->back();
+                    }
+        
+                }
+                elseif(!empty($ProdType)  && $ProdType ==="simple"){
+        
+                    //validate (simple) Inputs
+                    $validate = Validator::make(request()->all(), [
+                        'product_type'=>'required',
+                        'post_id'=>'required|integer',
+                        'al_supplier_name'=>"required",
+                        'post_author'=>'required|integer',
+                        'post_title'=>'required|min:6',
+                        'post_content'=>'required|min:6',
+                        '_regular_price'=>'required|integer',
+                        '_sale_price'=>'integer|nullable',
+                        'al_thickness'=>'max:120|nullable',
+                        'al_printing'=>'max:120|nullable',
+                        'al_size'=>'max:120|nullable',
+                        'al_added'=>'max:120|nullable',
+                        'al_more_info'=>'max:120|nullable',
+                        'al_color'=>'max:120|nullable',
+                        '_sku'=>'max:120|nullable',
+                        '_stock_status'=>'required',
+                        '_wc_min_qty_product'=>'integer|nullable',
+                        '_wc_max_qty_product'=>'integer|nullable',
+                        'al_carton_qty'=>'required|integer',
+                        'al_price_for'=>'required',
+                        'al_price_for_desc'=>'required|integer',
+                        'al_mix_of_package'=>'required|integer',
+                        '_weight'=>'nullable|integer',
+                        'al_cbm'=>'nullable|integer',
+                        'al_days_to_delivery'=>'required|integer',
+                        'supplierU'=>'required'
+                    ]);
+        
+                    if ($validate->fails()) {
+                        
+                        \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                        return redirect()->back();
+                    }
+                }
+        
+                else{
+              
+                    \Session::flash('message',"لقد حدث خطأ ما , الرجاء المحاولة لاحقاً");
+                    return redirect()->back();
+                }
+                /// end 
                 
                 if($request->post_id == 0){
                     $product =  $this->post_service->store_product($request);
